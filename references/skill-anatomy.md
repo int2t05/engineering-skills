@@ -1,0 +1,42 @@
+# Skill Anatomy
+
+How to write a skill in this collection. Every skill conforms to this spec; the
+validator (scripts/validate-skills.sh) enforces it.
+
+## Folder layout
+<phase>/<skill-name>/SKILL.md            # lean core, always loaded
+<phase>/<skill-name>/references/<x>.md   # progressive disclosure, loaded on demand
+
+## Frontmatter (minimal, enforced)
+---
+name: kebab-case-name
+description: Use when [trigger]. [What it does]. [Optional: triggers on "中文短语".]
+disable-model-invocation: true   # OPTIONAL — only for skills that must be typed by the user
+---
+Allowed fields: name, description, disable-model-invocation. Nothing else.
+
+## Body sections (in order)
+## When to use    — 2-4 trigger conditions; include Chinese phrases where relevant
+## Steps          — numbered, each step independently verifiable
+## Verify         — concrete completion check (evidence, not "looks right")
+## References     — link ../../references/engineering-principles.md + skill-specific docs
+
+## Progressive disclosure
+Keep SKILL.md lean (target 15-150 lines, matching function complexity). Move
+encyclopedic data, long examples, and platform-specific detail into references/
+subfiles the skill loads only when needed.
+
+## User-invoked vs model-invoked
+- Model-invoked (default): rich trigger phrasing so the model reaches for it.
+- User-invoked: set disable-model-invocation: true. Must be typed (e.g. /brainstorm, /handoff).
+Use sparingly — only when auto-activation would cause false positives.
+
+## Naming
+- Skill folders and `name:` field: kebab-case.
+- Main file: SKILL.md (uppercase) — no exceptions.
+- In-skill reference docs: kebab-case.md.
+- Collection-level shared docs: kebab-case.md under references/.
+
+## Language
+English-primary bodies. Preserve and add Chinese trigger phrases in ## When to use
+where a skill serves a Chinese-speaking workflow.
