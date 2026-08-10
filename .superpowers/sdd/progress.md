@@ -92,3 +92,20 @@ Final validator: `bash scripts/validate-skills.sh` → 33 skills, 0 errors, exit
 - Task 23 (test-generation, 06-test): complete — commit 6ed760d, validator clean
 - Task 24 (api-testing, 06-test): complete — commit 6ed760d, validator clean
 - Task 25 (e2e-testing, 06-test): complete — commit 6ed760d, validator clean
+
+## Deployability refactor (packaging as plugin) — DONE
+
+Pivot after confirming Claude Code discovery rules (via claude-code-guide):
+- discovery is flat (direct children) — nested phase dirs need a plugin's skills[] array
+- relative ../../ shared-ref links unreliable — must use ${CLAUDE_PLUGIN_ROOT}
+- ambient principles need a SessionStart hook (not CLAUDE.md)
+- => package as a plugin (the superpowers-pack model)
+
+Commits:
+- 81cabf8: .claude-plugin/plugin.json + skills[] array (33 nested paths)
+- 2f19fa5: convert 40 shared-ref links to ${CLAUDE_PLUGIN_ROOT}/references/
+- ccdbcf6: hooks/ SessionStart — injects engineering-principles.md as ambient context (tested: valid JSON, 2287 chars)
+- 5057633: move phase dirs under skills/ (convention), marketplace.json, README install docs, validator manifest-sync check
+
+Final: 33 skills, 0 errors; plugin structurally complete.
+REMAINING (user must do): live install test — `claude --plugin-dir "C:/Users/int2t/Desktop/skills"` and confirm 33 skills + ambient principles load. Also clear ~/.claude/skills/ old 24 skills to avoid redundancy.
