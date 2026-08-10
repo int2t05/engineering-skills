@@ -6,13 +6,18 @@ first task not marked complete.
 
 ## Status
 
-- [ ] T1: Scaffold + git + validator
-- [ ] T2: Shared refs + CLAUDE.md
-- [ ] T3: Archive upstream repos
-- [ ] T4-36: Migrate 33 skills (per-skill lines below)
-- [ ] T37: Root README catalog
-- [ ] T38: Final verify + audit
-- [ ] Final whole-branch review
+- [x] T1: Scaffold + git + validator — commit 48800e8
+- [x] T2: Shared refs + CLAUDE.md — commit 2bcec2f
+- [x] T3: Archive upstream repos — commit f2ec37b (335 archive files; inner .git removed as tradeoff)
+- [x] T4-36: Migrate 33 skills — commits 0839173..ce0e75a (per-skill table below)
+- [x] T37: Root README catalog — commit 78f95d5
+- [x] T38: Final verify + audit — 33 skills, 0 errors, overlap clean
+- [x] Final whole-branch review — APPROVED_WITH_MINOR; fixes applied commit 2799393
+- [x] Fix subagent — 4 Important + 6 Minor fixes, validator still 33/0
+
+## DONE — refactor complete
+Final validator: `bash scripts/validate-skills.sh` → 33 skills, 0 errors, exit 0.
+15 commits total on master.
 
 ## Per-skill migration (T4-36)
 
