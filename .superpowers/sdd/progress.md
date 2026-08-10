@@ -55,3 +55,35 @@ first task not marked complete.
 ## Completion log
 
 (appended as tasks complete: `Task N: complete (commits <base7>..<head7>, review clean)`)
+
+- Task 4 (using-skills, meta): complete — commit 0839173, validator clean
+- Task 20 (performance, 05-tune): complete — commit 0839173, validator clean
+- Task 21 (simplify, 05-tune): complete — commit 0839173, validator clean
+- Task 34 (observability, 09-operate): complete — commit 302ac85, validator clean
+- Task 35 (documentation-audit, 09-operate): complete — commit 302ac85, validator clean
+- Task 36 (handoff, 09-operate): complete — commit 302ac85, validator clean
+- Task 17 (implement, 04-develop): complete — commit 93dbdfb, validator clean
+- Task 18 (breakdown, 04-develop): complete — commit 93dbdfb, validator clean
+- Task 19 (context-engineering, 04-develop): complete — commit 93dbdfb, validator clean
+- Task 5 (brainstorm, 01-product): complete — commit 44e2120, validator clean
+- Task 6 (spec, 01-product): complete — commit 44e2120, validator clean
+- Task 7 (oss-strategy, 01-product): complete — commit 44e2120, validator clean
+- Task 33 (oss-polish, 08-ship): complete — commit 200f830, validator clean
+- Task 11 (architecture, 03-design): complete — commit 4d1285d, validator clean
+- Task 12 (domain-modeling, 03-design): complete — commit 4d1285d, validator clean
+- Task 13 (api-design, 03-design): complete — commit 4d1285d, validator clean
+- Task 16 (prototype, 03-design): complete — commit 4d1285d, validator clean
+- Task 26 (code-review, 07-verify): complete — commit d08cada, validator clean
+- Task 27 (debugging, 07-verify): complete — commit d08cada, validator clean
+- Task 28 (security-review, 07-verify): complete — commit d08cada, validator clean
+- Task 8 (research, 02-research): complete — commit d08cada, validator clean
+- Task 9 (market-research, 02-research): complete — commit d08cada, validator clean
+- Task 10 (tech-selection, 02-research): complete — commit d08cada, validator clean
+- Task 29 (shipping, 08-ship): complete — commit 2645665, validator clean
+- Task 30 (git-workflow, 08-ship): complete — commit 2645665, validator clean
+- Task 31 (ci-cd, 08-ship): complete — commit 2645665, validator clean
+- Task 32 (deprecation-migration, 08-ship): complete — commit 2645665, validator clean
+- Task 22 (tdd, 06-test): complete — commit 6ed760d, validator clean
+- Task 23 (test-generation, 06-test): complete — commit 6ed760d, validator clean
+- Task 24 (api-testing, 06-test): complete — commit 6ed760d, validator clean
+- Task 25 (e2e-testing, 06-test): complete — commit 6ed760d, validator clean
