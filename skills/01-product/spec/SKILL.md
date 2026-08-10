@@ -82,7 +82,7 @@ Planning the implementation FROM this spec uses Claude Code's built-in plan mode
 ## Verify
 
 - The spec file exists on disk and is committed to version control.
-- It covers all sections: Objective, Structure, Commands, Code Style, Testing, Boundaries, Non-Goals.
+- It covers all sections: Objective, Success Criteria, Structure, Commands, Code Style, Testing, Boundaries, Non-Goals.
 - Success criteria are specific and testable, not vague.
 - Boundaries (Always / Ask first / Never) are defined.
 - The user has reviewed and approved the spec.

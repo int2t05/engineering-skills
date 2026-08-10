@@ -42,7 +42,7 @@
 - 产出：覆盖 6 个核心领域的规范文档。
 
 **`oss-strategy`** —— 开源战略：商业模式、COSS、open core、商业化、增长。
-- 触发："open source strategy"、"OSS 策略"。
+- 触发："open source strategy"、"OSS 策略"、"DevHunt"、"developer tools directory"。
 - 产出：战略决策（不是 GitHub 美化——那是 `oss-polish`）。
 
 ### 02-research（调研）—— 动手前先调研
@@ -110,7 +110,7 @@
 - 触发："tdd"、"测试驱动开发"、"red green refactor"、"红绿重构"。
 - 产出：通过的测试 + 行为已验证。参考：test-strategy（测试金字塔、测试替身层级）、mocking、good-tests、testing-anti-patterns。
 
-**`test-generation`** —— 为功能/bugfix 生成测试，任意框架。
+**`test-generation`** —— 为现有代码或从 spec 生成测试文件（非 TDD 循环——用 tdd）。任意框架。
 - 触发："生成测试"、"write tests for"、"create tests"。
 - 产出：测试文件 + 覆盖决策矩阵。
 

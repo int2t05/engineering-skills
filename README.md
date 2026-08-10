@@ -49,7 +49,7 @@ description phrases, or invoke explicitly by name (`/tdd`, `/code-review`, `/bra
 - Output: a spec document covering 6 core areas.
 
 **`oss-strategy`** — Open source strategy: business model, COSS, open core, commercialization, growth.
-- Triggers: "open source strategy", "OSS 策略".
+- Triggers: "open source strategy", "OSS 策略", "DevHunt", "developer tools directory".
 - Output: strategy decisions (not GitHub beautification — that's `oss-polish`).
 
 ### 02-research — investigate before building
@@ -117,7 +117,7 @@ description phrases, or invoke explicitly by name (`/tdd`, `/code-review`, `/bra
 - Triggers: "tdd", "测试驱动开发", "red green refactor", "红绿重构".
 - Output: passing tests + behavior verified. Refs: test-strategy (Test Pyramid, test-double hierarchy), mocking, good-tests, testing-anti-patterns.
 
-**`test-generation`** — Generate tests for a feature/bugfix, any framework.
+**`test-generation`** — Generate test files for existing code or from a spec (not the TDD loop — use tdd). Any framework.
 - Triggers: "generate tests", "write tests for", "生成测试".
 - Output: test files with a coverage decision matrix.
 

@@ -1,0 +1,12 @@
+# Normalize line endings: store LF in the repo, check out as-is locally.
+# Ends the CRLF warnings on Windows without forcing a global config change.
+* text=auto eol=lf
+
+# Shell scripts and hook scripts must stay LF (executed by bash).
+*.sh text eol=lf
+hooks/session-start text eol=lf
+hooks/run-hook.cmd text eol=crlf
+
+# JSON/markdown are text; let git normalize.
+*.json text eol=lf
+*.md text eol=lf
