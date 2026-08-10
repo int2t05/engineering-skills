@@ -1,0 +1,24 @@
+{
+  "name": "engineering-skills-local",
+  "owner": {
+    "name": "int2t"
+  },
+  "description": "Local marketplace for the engineering-skills plugin — 33 unified SDLC skills with shared engineering principles.",
+  "plugins": [
+    {
+      "name": "engineering-skills",
+      "source": "./",
+      "description": "Unified engineering skills pack — 33 skills across the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start.",
+      "category": "engineering",
+      "keywords": [
+        "engineering",
+        "skills",
+        "sdlc",
+        "tdd",
+        "code-review",
+        "architecture",
+        "best-practices"
+      ]
+    }
+  ]
+}
