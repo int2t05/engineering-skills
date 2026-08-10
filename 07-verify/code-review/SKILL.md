@@ -3,6 +3,8 @@ name: code-review
 description: Use when reviewing code before merge. Two-axis review: Standards (repo conventions + smell baseline) and Spec (faithful to the originating issue/spec). Run as parallel sub-agents for thoroughness.
 ---
 
+# Code Review
+
 ## When to use
 
 - Before merging any PR or change

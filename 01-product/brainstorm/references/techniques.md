@@ -24,6 +24,8 @@ Use these in Step 4 (Diverge) to generate 3–8 idea variations from a confirmed
 - **Expert lens:** "What would [domain] experts find obvious that outsiders wouldn't?"
   Facilitators know safety is the #1 retro killer, not format.
 
+**Best for:** Generating diverse variations from a confirmed intent during the diverge phase.
+
 ### SCAMPER
 
 Structured transformation of an existing idea. Best for improving or reimagining existing
@@ -47,6 +49,8 @@ Reframe problems as opportunities. Start with an observation, reframe as "How mi
   5 minutes")
 - **Bad:** Too broad ("make users happy"), too narrow ("add a sidebar"), or solution-embedded
   ("build a chatbot").
+
+**Best for:** Reframing stuck thinking. When someone is anchored on a solution, pull them back to the problem.
 
 ### First Principles Thinking
 
@@ -72,11 +76,47 @@ Format: "When I [situation], I want to [motivation], so I can [expected outcome]
 Key insight: people hire products to do a job. Netflix competes with sleep, not just other
 streaming services.
 
+**Best for:** Understanding the real problem. When you're not sure if you're solving the right thing.
+
 ### Constraint-Based Ideation
 
 Deliberately impose constraints to force creative solutions: time ("1 day to build"),
 feature ("only one feature"), tech ("can't use the obvious technology"), cost ("free
 forever"), audience ("never used a computer"), scale ("1 billion users" vs "just 10").
+
+**Best for:** Cutting through complexity. When the idea is growing too large or too vague.
+
+## Decision Techniques
+
+Alternatives to one-question-at-a-time dialogue for specific situations.
+
+### Design Tree / Frontier
+
+Map decisions as a **design tree**: every decision branches into the decisions that hang off it.
+Work the **frontier** — every decision whose prerequisites are already settled (the questions you
+can ask now without guessing at answers you haven't heard yet). Ask the whole frontier in one round:
+number each question and give your recommended answer. Then wait for answers before the next round.
+
+Each round of answers reshapes the tree — settled decisions push the frontier outward and unblock
+dependent questions. A question whose answer depends on another still-open question belongs to a
+later round, not this one.
+
+**Best for:** Complex multi-decision plans where questions have dependencies. Complements
+one-question-at-a-time — use when the decision graph is wide and shallow, not deep and narrow.
+
+### Questionnaire Handoff
+
+Turn a decision you can't fully answer into a **questionnaire** for a third party who holds
+knowledge you lack. Write it as a Markdown document they fill in async or walk through together.
+
+Interview the user only about the *send* (who it goes to, what they need back) — never grill them
+about the subject they can't answer. The questions in the document target the gap between what the
+recipient knows and what the user needs. Order questions most-important-first (async may be one
+pass), one idea per question, never compound.
+
+**Best for:** When a decision requires expertise the user doesn't have (domain knowledge,
+infrastructure details, stakeholder constraints) and an async handoff is more practical than a
+live session.
 
 ## Evaluation Rubric
 

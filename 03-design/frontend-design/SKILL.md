@@ -47,48 +47,24 @@ emoji as structural icons. Effects (shadows, blur, radius) must align with the c
 
 ### 3. Apply the color formula
 
-Use a dominant-surface-accent distribution, not timid even palettes:
+Use a dominant-surface-accent distribution, not timid even palettes. Define semantic tokens
+(never raw hex in components), meet WCAG contrast, and design light/dark variants together.
 
-- **Dominant (60%)** — the primary background/atmosphere color
-- **Surface (30%)** — cards, panels, elevated layers
-- **Accent (10%)** — sharp, high-contrast accent for CTAs and key actions
-- Define **semantic tokens** (`text-primary`, `bg-surface`, `border-default`, `error`, `success`) — never raw hex in components
-- **Contrast**: 4.5:1 for normal text, 3:1 for large text. Don't rely on color alone — pair with icon or text.
-- Design **light and dark variants together** — dark mode uses desaturated lighter tonal variants, not inverted colors. Test contrast independently per theme.
-
-- Load [references/palettes.md](references/palettes.md) for palette selection by product type, accessible color pairs, and dark-mode pairing rules
+- Load [references/palettes.md](references/palettes.md) for the 60/30/10 formula, semantic token table, contrast ratios, dark-mode rules, and palette selection by product type (see references/palettes.md)
 
 ### 4. Typography pairing
 
 Pair a distinctive display font with a refined body font. Avoid generic defaults. Vary between
 generations — never converge on the same choice every time.
 
-- **Type scale**: consistent ratio (e.g. 12 14 16 18 24 32). Don't skip heading levels.
-- **Weight hierarchy**: bold headings (600–700), regular body (400), medium labels (500).
-- **Line-height**: 1.5–1.75 for body. Line length: 65–75 chars desktop, 35–60 mobile.
-- **Tabular figures** for data columns, prices, timers. Respect default letter-spacing per platform.
-
-- Load [references/font-pairings.md](references/font-pairings.md) for the font pairing catalog by personality (elegant, playful, professional, modern, editorial) and Google Fonts selection
+- Load [references/font-pairings.md](references/font-pairings.md) for the type scale, weight hierarchy, line-height/line-length targets, tabular figures, and pairing catalog by personality (see references/font-pairings.md)
 
 ### 5. Specify interaction states and mark specs
 
 Every interactive element needs all states: default, hover, focus, pressed, disabled, loading.
+Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values.
 
-- **Touch targets**: 44×44pt (Apple) / 48×48dp (Material) minimum. 8px+ spacing between targets.
-- **Timing**: 150–300ms for micro-interactions. Ease-out for entering, ease-in for exiting. Exit ~60–70% of enter duration.
-- **Transform only**: animate `transform`/`opacity`, never `width`/`height`/`top`/`left`.
-- **Focus rings**: 2–4px, visible. Never remove focus outlines without a replacement.
-- **Loading**: skeleton/shimmer for >300ms operations. Never block input during animation.
-- **Reduced motion**: respect `prefers-reduced-motion`; reduce or disable animations.
-
-Mark specs — use consistent scales, not arbitrary values:
-
-- **Spacing**: 4pt/8dp increments (0, 4, 8, 12, 16, 24, 32, 48)
-- **Radius**: consistent scale (e.g. 0, 4, 8, 12, 16, full)
-- **Elevation**: consistent shadow scale; avoid random shadow values
-- **Icons**: one icon family, consistent stroke width and corner radius; SVG only
-
-- Load [references/ux-guidelines.md](references/ux-guidelines.md) for the full UX rule catalog (accessibility, touch, performance, layout, forms, navigation, charts) and the pre-delivery checklist
+- Load [references/ux-guidelines.md](references/ux-guidelines.md) for touch-target sizes, animation timing, focus rings, reduced-motion, spacing scale, and the pre-delivery checklist (see references/ux-guidelines.md)
 
 ### 6. Implement and verify
 
@@ -114,8 +90,8 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 ## References
 
 - [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [references/styles.md](references/styles.md) — 50+ UI styles with characteristics, when-to-use, and effects (shadows, blur, radius)
-- [references/palettes.md](references/palettes.md) — color palette selection by product type, accessible pairs, dark-mode rules
-- [references/font-pairings.md](references/font-pairings.md) — font pairing catalog by personality, type scale, Google Fonts selection
-- [references/ux-guidelines.md](references/ux-guidelines.md) — 99 UX guidelines across 10 categories + pre-delivery checklist
-- [references/apple-hig.md](references/apple-hig.md) — Apple HIG specs, routing table, URL construction, critical design rules
+- [references/styles.md](references/styles.md) — 18 UI styles with effect specs (shadows, blur, radius)
+- [references/palettes.md](references/palettes.md) — 12 palette directions by product type
+- [references/font-pairings.md](references/font-pairings.md) — 31 font pairings across 10 personality categories
+- [references/ux-guidelines.md](references/ux-guidelines.md) — 232 UX guidelines across 10 priority categories + pre-delivery checklist
+- [references/apple-hig.md](references/apple-hig.md) — Apple HIG routing table + quick-reference specs

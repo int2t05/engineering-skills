@@ -16,7 +16,7 @@ rejected, and why.
 - Making technology choices that carry lock-in (database, message bus, auth provider)
 - Planning for scalability or evaluating NFR trade-offs (performance, availability, cost)
 - Writing Architecture Decision Records (ADRs)
-- Triggers on "system design", "architecture review", "scalability", "ADR", "架构设计", "技术选型"
+- Triggers on "system design", "architecture review", "scalability", "ADR", "架构设计"
 
 **When NOT to use:** Code-level design patterns (use clean-code), database-only design without
 system context, or feature-level API contracts (use api-design).

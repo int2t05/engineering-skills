@@ -131,6 +131,6 @@ the About description).
 
 ## References
 
-- [Engineering Principles](../../references/engineering-principles.md) — discipline every skill shares.
+- [engineering-principles](../../references/engineering-principles.md) — discipline every skill shares.
 - [Badge reference](references/badges.md) — shields.io templates by category (languages, hosting, license, status, custom).
 - [Scripts](references/scripts/) — `collect-site-metrics.py` (README metrics), `validate-readme.py` (README linter, scores 0–100), `github_fetcher.py` + `readme_fetcher.py` + `config.py` (trending-repo research via GitHub API).

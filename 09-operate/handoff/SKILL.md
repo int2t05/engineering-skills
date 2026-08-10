@@ -18,7 +18,7 @@ Write a handoff brief summarizing the current conversation so a fresh agent can 
 
 1. **Summarize context and decisions.** Capture the goal, what was decided and why, what was tried and rejected, and the current state. Don't restate what's already in artifacts — reference specs, plans, ADRs, issues, commits, and diffs by path or URL.
 2. **List concrete next steps.** Numbered, each independently actionable, starting from exactly where the work stopped.
-3. **Suggest skills.** Add a "Suggested skills" section naming the skills the next agent should invoke (e.g. `test-driven-development`, `code-review`).
+3. **Suggest skills.** Add a "Suggested skills" section naming the skills the next agent should invoke (e.g. `tdd`, `code-review`).
 4. **Redact sensitive information.** API keys, passwords, and PII must not appear in the brief — it may become a background agent's prompt or a shared file.
 5. **Tailor to the next focus.** If the user passed an argument describing what the next session is for, weight the brief toward that focus.
 6. **Deliver.** Save the brief to the OS temporary directory (not the current workspace), or launch a background agent seeded with it: `claude --bg --name "<descriptive name>" "<brief>"`. Always pass `--name` with a descriptive title (e.g. `"Fix login bug"`) — it sets the display name in the job list, session picker, and terminal title. The launched agent starts in the current working directory and returns immediately; manage it with `claude agents`.

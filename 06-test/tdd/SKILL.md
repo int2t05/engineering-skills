@@ -40,8 +40,10 @@ the desired API, not the implementation. Name it as a specification
 ("rejects empty email", not "test1").
 
 Agree the **seam** (public interface under test) before writing. No test at an
-unconfirmed seam. Use real code over mocks unless the dependency is a slow
-external boundary; mocks are a means to isolate, not the thing being tested.
+unconfirmed seam — agreeing seams up front puts testing effort on critical paths
+instead of every edge case. Use real code over mocks; if you must double a
+dependency, use the simplest double that works (Real > Fake > Stub > Mock — see
+references/test-strategy.md). Mocks isolate boundaries, not the thing being tested.
 
 ### 2. Verify RED — watch it fail
 
@@ -94,6 +96,7 @@ guard. Never fix a bug without a reproduction test.
 ## References
 
 - [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [references/test-strategy.md](references/test-strategy.md) — test pyramid, test-double hierarchy (Real > Fake > Stub > Mock), DAMP over DRY
 - [references/testing-anti-patterns.md](references/testing-anti-patterns.md) — mock misuse, test-only methods, partial mocks, gate functions
 - [references/mocking.md](references/mocking.md) — when to mock, designing for mockability
 - [references/good-tests.md](references/good-tests.md) — good vs bad test examples, tautological tests

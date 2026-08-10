@@ -88,4 +88,4 @@ user has explicitly asked for speed over verification.
 ## References
 
 - [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill.
-- [references/techniques.md](references/techniques.md) — ideation frameworks (SCAMPER, HMW, first principles, JTBD), evaluation rubric, and worked examples.
+- [references/techniques.md](references/techniques.md) — ideation frameworks (SCAMPER, HMW, first principles, JTBD), decision techniques (design tree, questionnaire handoff), evaluation rubric, and worked examples.

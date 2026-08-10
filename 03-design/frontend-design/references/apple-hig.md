@@ -181,7 +181,6 @@ link, then scrape the target page.
 Use Firecrawl to scrape the relevant official page(s), then synthesize into a structured answer:
 ```
 ## [Topic]
-[Comprehensive content scraped from official page, in clear Chinese]
 > Source: [official URL]
 ```
 

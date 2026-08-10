@@ -1,6 +1,6 @@
 # UI Styles Catalog
 
-50+ visual styles with characteristics, when-to-use, and effect specs (shadows, blur, radius).
+18 visual styles with characteristics, when-to-use, and effect specs (shadows, blur, radius).
 Pick one style per project and apply it consistently — don't mix flat and skeuomorphic randomly.
 
 ## Style selection rules

@@ -1,6 +1,6 @@
 # UX Guidelines
 
-99 UX guidelines across 10 priority categories, plus common-rules tables and a pre-delivery
+232 UX guidelines across 10 priority categories, plus common-rules tables and a pre-delivery
 checklist. Follow priority 1→10 to decide which category to focus on first.
 
 ## Rule categories by priority

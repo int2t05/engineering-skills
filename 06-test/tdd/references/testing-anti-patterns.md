@@ -1,5 +1,7 @@
 # Testing Anti-Patterns
 
+<!-- Provenance: sourced from the original root test-driven-development skill (now deleted). -->
+
 **Load this reference when:** writing or changing tests, adding mocks, or tempted to add test-only methods to production code.
 
 ## Overview
