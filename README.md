@@ -11,23 +11,18 @@ Consolidated from three source collections (83 → 33): 24 root skills plus
 
 ## Install
 
-This is a **Claude Code plugin** (the superpowers-pack model). Two ways to use it:
+This is a **Claude Code plugin**. Install from GitHub:
 
-**Local plugin dir (simplest):**
+```
+/plugin marketplace add https://github.com/int2t05/engineering-skills
+/plugin install engineering-skills@int2t05
+```
+
+Or, for local development / trying it out without a marketplace:
 
 ```bash
-claude --plugin-dir "C:/Users/int2t/Desktop/skills"
+claude --plugin-dir /path/to/your/clone
 ```
-
-**Or from inside a session** — add the folder as a local marketplace, then install:
-
-```
-/plugin marketplace add C:/Users/int2t/Desktop/skills
-/plugin install engineering-skills
-```
-
-> A `marketplace.json` is only needed for the second path; for `--plugin-dir` the
-> `.claude-plugin/plugin.json` is sufficient.
 
 On install, the SessionStart hook injects the 8 engineering principles as ambient
 context — every session starts with the discipline loaded. Skills are discovered via the
@@ -120,8 +115,12 @@ the 9-phase taxonomy is preserved).
 - **Planning** uses Claude Code's built-in plan mode (`EnterPlanMode`/`ExitPlanMode`), not a custom skill. See principle §7.
 - **Validate** the whole collection: `bash scripts/validate-skills.sh`
 
-## Archive
+## Provenance
 
-[`archive/upstream-addyosmani/`](archive/upstream-addyosmani) and
-[`archive/upstream-mattpocock/`](archive/upstream-mattpocock) hold the original source
-repos (read-only, file content preserved) for provenance and diffing. Never edit them.
+Consolidated from three source collections (83 → 33):
+- 24 personal root skills
+- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) (24, MIT)
+- [mattpocock/skills](https://github.com/mattpocock/skills) (35, MIT)
+
+The original upstream repos are not bundled in this repo (kept locally under `archive/`,
+gitignored). Browse them via the links above.

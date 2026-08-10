@@ -1,9 +1,10 @@
 {
-  "name": "engineering-skills-local",
+  "name": "int2t05",
   "owner": {
-    "name": "int2t"
+    "name": "int2t05",
+    "url": "https://github.com/int2t05"
   },
-  "description": "Local marketplace for the engineering-skills plugin — 33 unified SDLC skills with shared engineering principles.",
+  "description": "int2t05's engineering-skills plugin — 33 unified SDLC skills with shared engineering principles injected at session start.",
   "plugins": [
     {
       "name": "engineering-skills",

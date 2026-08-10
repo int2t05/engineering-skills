@@ -24,7 +24,7 @@ directly by name.
 
 ## Working in this repo
 - Line endings: files are UTF-8; Git may warn LF→CRLF on Windows — harmless.
-- The archive/upstream-* dirs hold the original source repos read-only for provenance;
-  never edit them. New skills draw from them as needed.
+- Original upstream source repos (addyosmani/agent-skills, mattpocock/skills) are kept
+  locally under archive/ (gitignored, not published) for provenance. See README for links.
 - When adding/removing a skill, update BOTH the `skills[]` array in
   `.claude-plugin/plugin.json` AND run the validator (it checks the array stays in sync).

@@ -1,6 +1,6 @@
-# Ignore upstream repos' internal git (they're read-only archives, not submodules)
-archive/upstream-addyosmani/.git
-archive/upstream-mattpocock/.git
+# Archive: upstream source repos kept locally for provenance, not published.
+# Browse them via the upstream GitHub links in README.md instead.
+archive/
 
-# SDD scratch (ledger is tracked; transient task artifacts are not)
-.superpowers/sdd/*.output
+# SDD process scratch — ledger, dispatch briefs, review packages. Not plugin content.
+.superpowers/
