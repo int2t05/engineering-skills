@@ -1,0 +1,6 @@
+# Ignore upstream repos' internal git (they're read-only archives, not submodules)
+archive/upstream-addyosmani/.git
+archive/upstream-mattpocock/.git
+
+# SDD scratch (ledger is tracked; transient task artifacts are not)
+.superpowers/sdd/*.output
