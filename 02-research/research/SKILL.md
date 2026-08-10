@@ -112,5 +112,5 @@ description: Use when the user asks for deep web research, source-backed investi
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline for every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline for every skill.
 - [references/pressure-scenarios.md](references/pressure-scenarios.md) — failure-mode pressure tests for this skill.

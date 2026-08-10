@@ -44,5 +44,5 @@ The routed skill's `## When to use` matches the task, and the skill activates vi
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill in this collection.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill in this collection.
 - [references/phase-tree.md](references/phase-tree.md) — full ASCII decision tree by phase and task shape.

@@ -88,4 +88,4 @@ until the way to the destination is clear.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode.

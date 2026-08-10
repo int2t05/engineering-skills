@@ -95,7 +95,7 @@ guard. Never fix a bug without a reproduction test.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/test-strategy.md](references/test-strategy.md) — test pyramid, test-double hierarchy (Real > Fake > Stub > Mock), DAMP over DRY
 - [references/testing-anti-patterns.md](references/testing-anti-patterns.md) — mock misuse, test-only methods, partial mocks, gate functions
 - [references/mocking.md](references/mocking.md) — when to mock, designing for mockability

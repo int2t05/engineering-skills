@@ -94,7 +94,7 @@ forbids; drifting to "component"/"service"/"API"/"boundary"; skipping the deleti
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
 - [references/language.md](references/language.md) — glossary: module, interface, implementation, depth, seam, adapter, leverage, locality + principles (deletion test, interface is the test surface, one vs two adapters)
 - [references/deepening.md](references/deepening.md) — dependency categories (in-process, local-substitutable, ports & adapters, mock), seam discipline, replace-don't-layer testing
 - [references/html-report.md](references/html-report.md) — HTML scaffold, Tailwind/Mermaid via CDN, diagram patterns (mass, cross-section, call-graph collapse), tone and glossary usage

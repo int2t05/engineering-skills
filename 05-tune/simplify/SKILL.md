@@ -76,6 +76,6 @@ If the "simplified" version is harder to understand or review than the original,
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
-- [../../references/clean-code.md](../../references/clean-code.md) — meaningful names, small functions, comments, error handling (Uncle Bob)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — meaningful names, small functions, comments, error handling (Uncle Bob)
 - [references/opportunities.md](references/opportunities.md) — full simplification-opportunities tables (structural / naming / redundancy) + language-specific examples (TypeScript, Python, React/JSX)

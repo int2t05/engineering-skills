@@ -33,4 +33,4 @@ Write a handoff brief summarizing the current conversation so a fresh agent can 
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, surgical scope)

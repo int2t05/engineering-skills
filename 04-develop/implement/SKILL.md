@@ -75,7 +75,7 @@ cycle before they stand.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill.
-- [../../references/clean-code.md](../../references/clean-code.md) — code-quality bar for the implementation.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — code-quality bar for the implementation.
 - [references/source-verification.md](references/source-verification.md) — source hierarchy, citation rules, retrieval safety.
 - [references/doubt-cycle.md](references/doubt-cycle.md) — the five-step doubt cycle and cross-model escalation.

@@ -50,7 +50,7 @@ metrics, graph for relationships, search for full-text.
 
 - Load `references/database-selection.md` for the database decision matrix
 - Produce a high-level architecture diagram (Mermaid preferred — see
-  `../../references/mermaid-diagrams.md`)
+  `${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md`)
 - Document failure modes and mitigations for each component
 
 ### 4. Record decisions as ADRs
@@ -83,8 +83,8 @@ considerations; no ADRs for decisions that will be hard to reverse.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [../../references/mermaid-diagrams.md](../../references/mermaid-diagrams.md) — Mermaid syntax for architecture diagrams
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md](${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md) — Mermaid syntax for architecture diagrams
 - [references/nfr-checklist.md](references/nfr-checklist.md) — NFR categories (scalability, performance, availability, security, reliability, cost) with targets
 - [references/architecture-patterns.md](references/architecture-patterns.md) — pattern comparison (monolith, microservices, event-driven, CQRS, serverless)
 - [references/database-selection.md](references/database-selection.md) — database types and decision matrix

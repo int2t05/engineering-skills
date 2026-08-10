@@ -152,6 +152,6 @@ contract drift between deployed behavior and the spec.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/templates/api-test-scaffold.md](references/templates/api-test-scaffold.md) — REST API test scaffold template (Jest/Supertest)
 - [references/schemas/output.json](references/schemas/output.json) — API testing output JSON schema

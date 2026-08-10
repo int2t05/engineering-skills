@@ -126,4 +126,4 @@ the start. "Nobody uses that undocumented behavior" — Hyrum's Law says someone
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)

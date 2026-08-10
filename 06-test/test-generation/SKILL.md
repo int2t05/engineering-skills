@@ -143,5 +143,5 @@ Source: src/auth/login.go
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
-- [../../references/clean-code.md](../../references/clean-code.md) — clean code principles for test quality
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — clean code principles for test quality

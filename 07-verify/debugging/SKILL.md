@@ -77,5 +77,5 @@ Write the regression test **before** the fix — but only if there's a **correct
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/hitl-loop-template.sh](references/hitl-loop-template.sh) — human-in-the-loop reproduction harness (last resort when no automated loop is possible)

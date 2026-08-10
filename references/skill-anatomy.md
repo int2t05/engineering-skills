@@ -19,7 +19,7 @@ Allowed fields: name, description, disable-model-invocation. Nothing else.
 ## When to use    — 2-4 trigger conditions; include Chinese phrases where relevant
 ## Steps          — numbered, each step independently verifiable
 ## Verify         — concrete completion check (evidence, not "looks right")
-## References     — link ../../references/engineering-principles.md + skill-specific docs
+## References     — link ${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md + skill-specific docs
 
 ## Progressive disclosure
 Keep SKILL.md lean (target 15-150 lines, matching function complexity). Move

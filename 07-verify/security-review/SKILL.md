@@ -112,4 +112,4 @@ Map to the OWASP Top 10 for LLM Applications:
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares

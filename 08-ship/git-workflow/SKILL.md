@@ -163,6 +163,6 @@ For every release (anything with consumers):
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
 - [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — PreToolUse hook blocking `git push`, `reset --hard`, `clean -f`, `branch -D`, etc.
 - [references/pre-commit-setup.md](references/pre-commit-setup.md) — Husky + lint-staged + Prettier pre-commit hook setup

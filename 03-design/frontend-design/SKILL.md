@@ -89,7 +89,7 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
 - [references/styles.md](references/styles.md) — 18 UI styles with effect specs (shadows, blur, radius)
 - [references/palettes.md](references/palettes.md) — 12 palette directions by product type
 - [references/font-pairings.md](references/font-pairings.md) — 31 font pairings across 10 personality categories

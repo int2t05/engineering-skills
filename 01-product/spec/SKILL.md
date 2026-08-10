@@ -84,4 +84,4 @@ Planning the implementation FROM this spec uses Claude Code's built-in plan mode
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode for implementation planning.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode for implementation planning.

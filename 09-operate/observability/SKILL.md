@@ -90,5 +90,5 @@ Instrumentation is code; it can be wrong. Trigger the paths and look at the actu
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (verify don't assume, enforce simplicity, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, enforce simplicity, surgical scope)
 - [references/observability-checklist.md](references/observability-checklist.md) — at-a-glance instrumentation checklist + pre-launch gate

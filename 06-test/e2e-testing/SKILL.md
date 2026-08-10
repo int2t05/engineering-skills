@@ -151,5 +151,5 @@ auto-waiting locators and web-first assertions.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/playwright-rules.md](references/playwright-rules.md) — consolidated Playwright rules (locators, auth, assertions, forms, organization, reliability)

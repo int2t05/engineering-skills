@@ -74,5 +74,5 @@ enterprises use open source; 33% are increasing usage.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
 - GitHub README/Topics/About beautification: `08-ship/oss-polish`.

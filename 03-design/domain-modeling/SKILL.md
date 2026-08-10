@@ -79,6 +79,6 @@ filling out sections.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (surface assumptions, manage confusion, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, manage confusion, verify don't assume)
 - [references/context-format.md](references/context-format.md) — CONTEXT.md structure, rules, single vs multi-context repos
 - [references/adr-format.md](references/adr-format.md) — ADR template, numbering, what qualifies as an ADR-worthy decision

@@ -74,6 +74,6 @@ End with a one-line summary: total findings per axis and the worst issue within 
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline every skill shares
-- [../../references/clean-code.md](../../references/clean-code.md) — naming, functions, smells
-- [../../references/mermaid-diagrams.md](../../references/mermaid-diagrams.md) — diagram structure when reviewing architecture
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — naming, functions, smells
+- [${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md](${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md) — diagram structure when reviewing architecture

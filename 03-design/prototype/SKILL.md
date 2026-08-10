@@ -51,6 +51,6 @@ and record the verdict + question settled. Main keeps only the validated decisio
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — shared discipline (enforce simplicity, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, verify don't assume)
 - [references/logic.md](references/logic.md) — single-shareable-HTML logic prototype: pure module, free-play + guided walkthroughs
 - [references/ui.md](references/ui.md) — toggleable UI variants: sub-shape A (existing page) vs B (throwaway route), floating switcher

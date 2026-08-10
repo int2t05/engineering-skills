@@ -83,5 +83,5 @@ sees it, and how it's structured.
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
 - [references/context-strategies.md](references/context-strategies.md) — context packing strategies (brain dump, selective include, hierarchical summary), MCP integration table, anti-patterns.

@@ -119,4 +119,4 @@ Final recommendations must be primarily supported by P0 and P1; use P2 to qualif
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md)

@@ -65,4 +65,4 @@ description: Use when the user wants market sizing, competitor comparisons, inve
 
 ## References
 
-- [../../references/engineering-principles.md](../../references/engineering-principles.md)
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md)
