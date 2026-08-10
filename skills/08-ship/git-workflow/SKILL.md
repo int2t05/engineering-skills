@@ -88,7 +88,51 @@ When a merge or rebase conflicts, never `--abort`. Resolve by tracing each side'
 
 ### 5. Block dangerous git commands
 
-Install a PreToolUse hook that intercepts and blocks destructive git commands before Claude executes them: `git push` (including `--force`), `git reset --hard`, `git clean -f[d]`, `git branch -D`, `git checkout .` / `git restore .`. The hook script is at [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — copy it to `.claude/hooks/` (project) or `~/.claude/hooks/` (global), `chmod +x`, and register it in `settings.json` under `hooks.PreToolUse` with matcher `Bash`. Verify with:
+Install a PreToolUse hook that intercepts and blocks destructive git commands before Claude executes them: `git push` (including `--force`), `git reset --hard`, `git clean -f[d]`, `git branch -D`, `git checkout .` / `git restore .`. The hook script is at [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — copy it to `.claude/hooks/` (project) or `~/.claude/hooks/` (global), `chmod +x`, and register it in `settings.json` under `hooks.PreToolUse` with matcher `Bash`.
+
+**Project** (`.claude/settings.json`):
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-dangerous-git.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Global** (`~/.claude/settings.json`):
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/block-dangerous-git.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+If the settings file already exists, merge the hook into the existing `hooks.PreToolUse` array — don't overwrite other settings.
+
+Verify with:
 
 ```bash
 echo '{"tool_input":{"command":"git push origin main"}}' | <path-to-script>

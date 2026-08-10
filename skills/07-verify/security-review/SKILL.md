@@ -61,6 +61,8 @@ General API rate limit (e.g. 100 req / 15 min). Stricter limit on auth endpoints
 
 ### 6. Dependency + supply-chain hygiene
 
+Find the installation boundary first: use the workspace root that owns the lockfile; corroborate `packageManager` (when present), the lockfile, and CI; stop on disagreement or competing lockfiles.
+
 Triage audit findings by **reachability** and **fix risk**, not just severity:
 
 - Critical/high + reachable in runtime/build/deploy → fix immediately (update, patch, or replace).
@@ -113,3 +115,4 @@ Map to the OWASP Top 10 for LLM Applications:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [references/owasp-patterns.md](references/owasp-patterns.md) — OWASP Top 10 prevention code examples (injection, auth, XSS, access control, SSRF, validation, rate limiting, LLM output).

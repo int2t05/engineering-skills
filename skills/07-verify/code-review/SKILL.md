@@ -28,6 +28,7 @@ Spawn a sub-agent with the full diff, the standards sources, and the smell basel
 - **Documented-standard breaches** — cite the standard (file + rule). Hard violations.
 - **Smell baseline** — name the smell and quote the hunk. Always judgement calls; a documented repo standard overrides the baseline.
 - **Quality axes** — correctness (edge cases, error paths, off-by-one, races, state inconsistency), security (input validation, secrets, injection, auth — defer to `security-review` for depth), performance (N+1, unbounded loops, missing pagination, sync ops that should be async). Skip anything tooling already enforces.
+- **Test quality** — do tests exist for the change, test behavior not implementation, cover edge cases, descriptive names, would catch a regression?
 
 Smell baseline (Fowler, _Refactoring_ ch.3) — what it is → how to fix:
 - **Mysterious Name** — name doesn't reveal intent → rename; if no honest name comes, the design's murky.

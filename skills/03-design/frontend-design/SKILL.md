@@ -50,21 +50,21 @@ emoji as structural icons. Effects (shadows, blur, radius) must align with the c
 Use a dominant-surface-accent distribution, not timid even palettes. Define semantic tokens
 (never raw hex in components), meet WCAG contrast, and design light/dark variants together.
 
-- Load [references/palettes.md](references/palettes.md) for the 60/30/10 formula, semantic token table, contrast ratios, dark-mode rules, and palette selection by product type (see references/palettes.md)
+- Load [references/palettes.md](references/palettes.md) for the 60/30/10 formula, semantic token table, contrast ratios, dark-mode rules, and palette selection by product type
 
 ### 4. Typography pairing
 
 Pair a distinctive display font with a refined body font. Avoid generic defaults. Vary between
 generations — never converge on the same choice every time.
 
-- Load [references/font-pairings.md](references/font-pairings.md) for the type scale, weight hierarchy, line-height/line-length targets, tabular figures, and pairing catalog by personality (see references/font-pairings.md)
+- Load [references/font-pairings.md](references/font-pairings.md) for the type scale, weight hierarchy, line-height/line-length targets, tabular figures, and pairing catalog by personality
 
 ### 5. Specify interaction states and mark specs
 
 Every interactive element needs all states: default, hover, focus, pressed, disabled, loading.
 Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values.
 
-- Load [references/ux-guidelines.md](references/ux-guidelines.md) for touch-target sizes, animation timing, focus rings, reduced-motion, spacing scale, and the pre-delivery checklist (see references/ux-guidelines.md)
+- Load [references/ux-guidelines.md](references/ux-guidelines.md) for touch-target sizes, animation timing, focus rings, reduced-motion, spacing scale, and the pre-delivery checklist
 
 ### 6. Implement and verify
 

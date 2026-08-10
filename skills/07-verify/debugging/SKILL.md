@@ -15,6 +15,8 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 
 **Stop the line.** When anything unexpected happens, stop adding features. Preserve evidence (error output, logs, repro steps). Diagnose the root cause; resume only after verification passes. Don't push past a failing test or broken build — errors compound.
 
+**Redact every secret** in command output, logs, and captured artifacts before showing them — write `<REDACTED>` in its place. Build loops against env vars so credentials stay in the environment. If redacted output isn't enough to diagnose, say so and ask the user.
+
 ### 1. Reproduce (go red)
 
 Build a **tight feedback loop** that goes red on this bug. This is the skill — everything else is mechanical. If you have a tight pass/fail signal for _this_ bug, you will find the cause; if you don't, no amount of staring at code will save you. Try in roughly this order: failing test → curl/HTTP script → CLI invocation with fixture → headless browser script → replay a captured trace → throwaway harness → property/fuzz loop → bisection harness → differential loop → HITL bash script (last resort, via `references/hitl-loop-template.sh`).

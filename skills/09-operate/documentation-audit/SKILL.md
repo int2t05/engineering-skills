@@ -77,7 +77,8 @@ for file in docs/*.md; do [ -f "$file" ] && grep -q "^## " "$file" || echo "WARN
 
 # Completeness: endpoints documented vs endpoints in code
 ENDPOINTS_DOCUMENTED=$(yq '.paths | keys | length' openapi.yaml 2>/dev/null || echo 0)
-ENDPOINTS_IN_CODE=$(extract_endpoints | wc -l)
+# Use the grep matching your detected framework (see Step 2); shown for express/fastify:
+ENDPOINTS_IN_CODE=$(grep -rh "app\.\(get\|post\|put\|delete\|patch\)" --include="*.ts" --include="*.js" | wc -l)
 ```
 
 If `ENDPOINTS_DOCUMENTED < ENDPOINTS_IN_CODE`, some endpoints are still undocumented — loop back to phase 5.

@@ -75,3 +75,27 @@ test("calculateTotal sums line items", () => {
   expect(calculateTotal([{ price: 10 }, { price: 5 }])).toBe(15);
 });
 ```
+
+## Arrange-Act-Assert Pattern
+
+Structure each test in three phases: set up the scenario, perform the action
+under test, verify the outcome. The separation makes failures easy to localize
+— if the Arrange phase is wrong, the test is invalid before the Act even runs.
+Each phase should be visually distinct; a test that blends them hides what it
+is actually checking.
+
+```typescript
+it('marks overdue tasks when deadline has passed', () => {
+  // Arrange: Set up the test scenario
+  const task = createTask({
+    title: 'Test',
+    deadline: new Date('2025-01-01'),
+  });
+
+  // Act: Perform the action being tested
+  const result = checkOverdue(task, new Date('2025-01-02'));
+
+  // Assert: Verify the outcome
+  expect(result.isOverdue).toBe(true);
+});
+```

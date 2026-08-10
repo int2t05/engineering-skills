@@ -26,7 +26,8 @@ guessing.
 
 2. **Ask 3–5 clarifying questions** where the prompt is ambiguous — problem/goal, core
    functionality, scope, success criteria. Offer lettered options (A/B/C/D) so the user
-   can respond "1A, 2C, 3B" for quick iteration. Only ask what's actually ambiguous.
+   can respond "1A, 2C, 3B" for quick iteration. Only ask what's actually ambiguous. If the
+   conversation already resolved the ambiguities, skip questions and synthesize directly.
 
 3. **Write the spec** using the template below. Reframe vague requirements as testable
    success criteria ("make the dashboard faster" → "LCP < 2.5s on 4G; initial load < 500ms").
@@ -47,6 +48,9 @@ guessing.
 ## Objective
 [What we're building and why. User stories with verifiable acceptance criteria.]
 
+## Success Criteria
+[Project-level "how we know it's done" metrics.]
+
 ## Project Structure
 [Directory layout with descriptions — where source, tests, docs live.]
 
@@ -58,6 +62,7 @@ guessing.
 
 ## Testing Strategy
 [Framework, test locations, coverage expectations, which test levels for which concerns.]
+Identify test seams — prefer existing seams, use the highest seam possible (the fewer seams across the codebase, the better).
 
 ## Boundaries
 - Always: [run tests before commits, validate inputs, follow naming conventions]

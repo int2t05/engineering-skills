@@ -1,6 +1,6 @@
 ---
 name: test-generation
-description: Use when asked to generate or write tests for a feature or bugfix. Language-agnostic, works with any test framework. Triggers on "generate tests", "create tests", "write tests for", "生成测试".
+description: Use when generating test files for existing code or from a spec — not for the TDD red-green-refactor loop (use tdd). Language-agnostic, works with any test framework. Triggers on "generate tests", "create tests", "write tests for", "生成测试".
 ---
 
 # Test Generation (Language-Agnostic)
@@ -38,6 +38,8 @@ found, ask which framework to use.
 | PHP | `composer.json`, `phpunit.xml` | PHPUnit, Pest |
 | C/C++ | `CMakeLists.txt`, `*_test.cpp` | GoogleTest, Catch2 |
 | Swift | `Package.swift`, `*Tests.swift` | XCTest, Quick/Nimble |
+
+- Load [references/language-patterns.md](references/language-patterns.md) for the per-language mapping of Test Framework | Assertion Style | Mock Library (testify/gomock, pytest/unittest.mock, jest/jest.fn, etc.)
 
 ### 2. Read inputs
 
@@ -145,3 +147,4 @@ Source: src/auth/login.go
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — clean code principles for test quality
+- [references/language-patterns.md](references/language-patterns.md) — per-language Test Framework | Assertion Style | Mock Library mapping

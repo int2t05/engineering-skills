@@ -17,6 +17,9 @@ course-correction is still cheap.
 - Reading or summarizing existing code.
 - One-line changes with obvious correctness.
 - The user has explicitly asked for speed over verification.
+- Behavioral claims already disproven by a failing TDD test — the red test is
+  the doubt step; don't spawn a separate reviewer. TDD's RED is doubt made
+  concrete.
 
 If you doubt every keystroke, you ship nothing. Apply only to non-trivial
 decisions.

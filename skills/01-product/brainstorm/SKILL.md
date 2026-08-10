@@ -22,8 +22,10 @@ user has explicitly asked for speed over verification.
 
 ## Steps
 
-1. **Hypothesize with a confidence number.** Before asking anything, write your best read
-   of what the user wants in one sentence, plus an honest confidence (0–100%):
+1. **Hypothesize with a confidence number.** If in a codebase, explore project context first
+   (Glob/Grep/Read for architecture, patterns, constraints) before forming the hypothesis.
+   Before asking anything, write your best read of what the user wants in one sentence, plus
+   an honest confidence (0–100%):
    ```
    HYPOTHESIS: You want a way to answer "how are we doing?" in standup, and "dashboard" was the convention that came to mind.
    CONFIDENCE: ~30% — missing: who it's for, what "metrics" means, what success looks like
@@ -81,6 +83,8 @@ user has explicitly asked for speed over verification.
 - Every confidence below ~70% had a one-line reason attached.
 - Questions were asked one at a time, each with a guess attached.
 - Multiple directions were explored, not just the first idea.
+- A want-vs-should-want probe ran when sophistication-signaling answers appeared.
+- A Not-Doing list makes trade-offs explicit.
 - A concrete restate (Outcome / User / Why now / Success / Constraint / Out of scope) was written.
 - The user confirmed with an explicit yes — not delegation, not ambiguity.
 - A spec is writable from the confirmed proposal.

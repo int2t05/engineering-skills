@@ -86,6 +86,31 @@ forever"), audience ("never used a computer"), scale ("1 billion users" vs "just
 
 **Best for:** Cutting through complexity. When the idea is growing too large or too vague.
 
+### Pre-mortem
+
+Imagine the idea has already failed. Work backwards:
+
+1. It's 12 months from now. The project shipped and flopped. What went wrong?
+2. List every plausible reason for failure — technical, market, team, timing.
+3. For each failure mode: Is this preventable? Is it a signal the idea needs to change?
+4. Which failure modes are you willing to accept? Which ones would kill the project?
+
+**Best for:** Stress-testing ideas that feel good but haven't been pressure-tested.
+
+### Analogous Inspiration
+
+Look at how other domains solved similar problems:
+
+- What industry has already solved a version of this problem?
+- What would this look like if [specific company/product] built it?
+- What natural system works this way?
+- What historical precedent exists?
+
+Find *structural* similarities, not surface-level ones. "Uber for X" is surface-level.
+"A two-sided marketplace that solves a trust problem between strangers" is structural.
+
+**Best for:** Generating variations that feel genuinely different from the obvious approach.
+
 ## Decision Techniques
 
 Alternatives to one-question-at-a-time dialogue for specific situations.
@@ -100,6 +125,12 @@ number each question and give your recommended answer. Then wait for answers bef
 Each round of answers reshapes the tree — settled decisions push the frontier outward and unblock
 dependent questions. A question whose answer depends on another still-open question belongs to a
 later round, not this one.
+
+Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the
+environment (filesystem, tools, etc.), dispatch a sub-agent to find it — don't ask the user for
+anything you could look up yourself. Don't block on it: a running exploration is an unsettled
+prerequisite, so only the questions downstream of it wait for the sub-agent to report — ask the
+rest of the frontier now. The _decisions_ are the user's — put each to them and wait.
 
 **Best for:** Complex multi-decision plans where questions have dependencies. Complements
 one-question-at-a-time — use when the decision graph is wide and shallow, not deep and narrow.
@@ -175,6 +206,17 @@ For every direction, list assumptions in three categories:
   Adjust the approach if wrong. Example: "Users prefer self-serve over talking to a person."
 - **Might be true (nice to have):** Secondary features or optimizations. Don't validate until
   core is proven. Example: "Users will share results with teammates."
+
+### Decision Framework
+
+When choosing between directions, rank on this matrix:
+
+|                    | High Feasibility | Low Feasibility |
+|--------------------|------------------|-----------------|
+| **High Value**     | Do this first    | Worth the risk  |
+| **Low Value**      | Only if trivial  | Don't do this   |
+
+Use differentiation as the tiebreaker between options in the same quadrant.
 
 ### MVP Scoping
 

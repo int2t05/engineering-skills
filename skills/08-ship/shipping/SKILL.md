@@ -36,8 +36,12 @@ Before deploying, every section must be green.
 
 **Performance & accessibility**
 - [ ] Core Web Vitals in "Good" thresholds; bundle within budget
+- [ ] Images optimized (compression, responsive sizes, lazy loading)
 - [ ] No N+1 queries on critical paths; indexes and caching in place
+- [ ] Caching configured for static assets and repeated queries
 - [ ] Keyboard navigation, screen reader, WCAG 2.1 AA contrast
+- [ ] Focus management for modals and dynamic content
+- [ ] Descriptive error messages associated with form fields
 - [ ] No axe-core / Lighthouse accessibility warnings
 
 **Infrastructure & docs**
@@ -118,3 +122,4 @@ After deploying:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
+- [references/launch-monitoring.md](references/launch-monitoring.md) — what to monitor at launch (application p50/p95/p99, infrastructure CPU/DB-pool/disk, client Core Web Vitals/JS errors) + ErrorBoundary and error-middleware scaffolding

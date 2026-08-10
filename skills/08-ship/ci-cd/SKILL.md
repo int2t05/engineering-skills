@@ -126,7 +126,7 @@ Fix the issue and verify locally before pushing again."
 
 **Staged rollouts** — PR merged to main → staging deployment (auto) → manual verification → production deployment → monitor 15-min window → roll back on errors or done.
 
-**Rollback plan** — every deployment must be reversible. Provide a manual rollback workflow (`workflow_dispatch` with a version input) that redeploys the specified previous version.
+**Rollback plan** — every deployment must be reversible. Provide a manual rollback workflow (`workflow_dispatch` with a version input) that redeploys the specified previous version. YAML templates for preview deployments and rollback are in `references/ci-templates.md`.
 
 ### 5. Manage environments and secrets
 
@@ -142,13 +142,13 @@ CI should never have production secrets. Use separate secrets for CI testing.
 
 ### 6. Automate beyond CI
 
-- **Dependabot / Renovate** for automated dependency updates (weekly, limited open PRs).
+- **Dependabot / Renovate** for automated dependency updates (weekly, limited open PRs; template in `references/ci-templates.md`).
 - **Build Cop** — designate someone responsible for keeping CI green. When the build breaks, the Build Cop fixes or reverts, not the person whose change caused the break.
 - **PR checks** — required reviews (≥1 approval), required status checks (CI must pass), branch protection (no force-pushes to main), auto-merge (when all checks pass and approved).
 
 ### 7. Optimize when the pipeline exceeds 10 minutes
 
-Apply in order of impact: cache dependencies (`setup-node` cache option) → run jobs in parallel (split lint/typecheck/test/build into separate jobs) → only run what changed (path filters; skip e2e for docs-only PRs) → matrix builds (shard test suites) → optimize the test suite (move slow tests to a schedule) → use larger runners.
+Apply in order of impact: cache dependencies (`setup-node` cache option) → run jobs in parallel (split lint/typecheck/test/build into separate jobs; template in `references/ci-templates.md`) → only run what changed (path filters; skip e2e for docs-only PRs) → matrix builds (shard test suites) → optimize the test suite (move slow tests to a schedule) → use larger runners.
 
 ## Verify
 
@@ -165,3 +165,4 @@ After setting up or modifying CI:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
+- [references/ci-templates.md](references/ci-templates.md) — Dependabot config, caching/parallelism split jobs, preview deployment, rollback workflow_dispatch

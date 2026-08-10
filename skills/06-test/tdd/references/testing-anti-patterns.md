@@ -299,3 +299,12 @@ TDD cycle:
 If TDD reveals you're testing mock behavior, you've gone wrong.
 
 Fix: Test real behavior or question why you're mocking at all.
+
+## General Anti-Patterns
+
+| Anti-Pattern | Fix |
+|---|---|
+| Flaky tests (timing, order-dependent) | Use deterministic assertions, isolate test state |
+| Testing framework code | Only test YOUR code — trust third-party behavior |
+| Snapshot abuse | Use snapshots sparingly and review every change |
+| No test isolation | Each test sets up and tears down its own state |

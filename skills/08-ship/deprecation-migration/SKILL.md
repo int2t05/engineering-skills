@@ -29,6 +29,15 @@ Before deprecating anything, answer:
 4. What's the migration cost for each consumer? Trivially automated → do it; manual and high-effort → weigh against maintenance cost.
 5. What's the ongoing cost of *not* deprecating? Security risk, engineer time, opportunity cost of complexity.
 
+**Zombie-code diagnostic** — if the target shows these signs, it's zombie code: nobody owns it, but everybody depends on it.
+
+- No commits in 6+ months; no assigned maintainer or team
+- Failing tests that nobody fixes
+- Dependencies with known vulnerabilities that nobody updates
+- Documentation referencing systems that no longer exist
+
+Response: assign an owner and maintain it properly, or deprecate it with a concrete migration plan. Zombie code cannot stay in limbo — it either gets investment or removal.
+
 ### 2. Choose advisory vs compulsory
 
 | Type | When | Mechanism |
