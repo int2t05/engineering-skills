@@ -1,0 +1,78 @@
+---
+name: oss-strategy
+description: Use when the user wants open source strategy, OSS commercialization, open core, COSS, open source to paid, GitHub stars strategy, or open source growth/business model. Triggers on "open source strategy", "OSS 策略".
+---
+
+# Open Source Strategy
+
+Guide open source as a commercialization path: build community and trust first, monetize
+later. Many products use open source for early growth (Cursor from VSCode, Llama, Qwen,
+Dify) and later commercialize via managed services or open core.
+
+**Core insight:** Brand is the moat when code is commoditized. Developers won't pay directly;
+they become your marketing force through word-of-mouth, content, and recommendations. 95% of
+enterprises use open source; 33% are increasing usage.
+
+## When to use
+
+- User wants open source strategy, OSS commercialization, or open core / COSS business model.
+- Deciding between open core, managed service, or support-first monetization.
+- Planning open source growth: community building, stars strategy, DevHunt launch.
+- User says "open source strategy", "OSS 策略", "open source to paid", or "open source business model".
+
+**Not for:** GitHub README/topics/About beautification — that's `08-ship/oss-polish`.
+
+## Steps
+
+1. **Choose the business model.** Match the model to the product and audience:
+
+   | Model | Description | Examples |
+   |-------|-------------|----------|
+   | **Open Core** | Core free; enterprise features (SSO, audit, multi-tenancy) paid | GitLab, Elastic, Grafana |
+   | **Managed Services (SaaS)** | Self-host free; cloud/hosted paid | MongoDB Atlas, Confluent, Dify |
+   | **Support-First** | Free software; enterprise support subscriptions | Red Hat |
+   | **Free + Paid Convenience** | 70–80% revenue from cloud; self-host free | Most COSS companies |
+
+   Enterprise users buy risk mitigation — SLAs, indemnification, security patches, support —
+   not just code.
+
+2. **Pick the license.** This determines who can fork and whether cloud giants can exploit
+   your work without contributing:
+
+   | License | Use | Trade-off |
+   |---------|-----|-----------|
+   | **MIT, Apache 2.0** | Permissive; max adoption | Cloud giants can fork without contributing |
+   | **AGPL** | Prevent cloud fork without contribution | May reduce adoption |
+   | **BSL/SSPL** | Source-available; commercial restrictions | Elastic, HashiCorp, Redis Labs shifted to this |
+
+3. **Plan community and trust.** Open source distribution runs on trust, not ad spend:
+   - **Build in public** — share progress, metrics, failures; attracts early adopters.
+   - **CONTRIBUTING.md** — clear contribution path; lowers friction for outside PRs.
+   - **Transparency** — published roadmap and changelog; community involvement in planning.
+   - **Preserve goodwill** — communicate commercialization early; keep investing in the OSS core.
+
+   Community benefits: organic word-of-mouth, user-generated content (SEO), free QA via bug
+   reports, contribution activity signals project health.
+
+4. **Plan the growth launch.** Stars without strategy are vanity metrics. Coordinate a
+   multi-channel launch (HN, Reddit, Dev.to); Tuesday–Wednesday US Pacific morning often
+   outperforms. A quality README and clear value proposition matter more than channel volume.
+   For DevHunt (developer tools directory): prepare product info (name, tagline, description,
+   category, GitHub URL); it's naturally aligned with open source projects.
+
+5. **Sequence commercialization.** Start with community and trust; monetize later through
+   enterprise features, managed services, or support. The community becomes your marketing
+   army — users self-host, contribute, and recommend.
+
+## Verify
+
+- A business model is chosen and justified against the product and audience.
+- A license is selected with its trade-offs acknowledged.
+- A community plan exists (contributing guide, transparency, build-in-public cadence).
+- The growth launch has a concrete channel plan, not just "post on GitHub."
+- Commercialization sequencing is explicit: community first, monetization later.
+
+## References
+
+- [../../references/engineering-principles.md](../../references/engineering-principles.md) — discipline shared by every skill.
+- GitHub README/Topics/About beautification: `08-ship/oss-polish`.
