@@ -1,0 +1,3 @@
+interface:
+  display_name: "API Testing"
+  short_description: "Testing APIs or designing API test strategies — contract testing, REST/GraphQL testing…"

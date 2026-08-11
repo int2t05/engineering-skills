@@ -1,0 +1,3 @@
+interface:
+  display_name: "CI/CD"
+  short_description: "Working on CI/CD pipelines and automation — build, test, and deploy automation, pipeline…"

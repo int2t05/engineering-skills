@@ -1,0 +1,3 @@
+interface:
+  display_name: "Git Workflow"
+  short_description: "Committing, branching, resolving merge or rebase conflicts, or setting up git guardrails…"

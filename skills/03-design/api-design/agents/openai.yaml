@@ -1,0 +1,3 @@
+interface:
+  display_name: "API Design"
+  short_description: "Designing APIs or interfaces — REST/GraphQL contracts, request/response shapes…"

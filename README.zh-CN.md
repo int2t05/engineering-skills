@@ -2,11 +2,13 @@
 
 > **语言：** [English](README.md) | 中文
 
-一个统一的 Claude Code 插件——**33 个工程技能**，按软件开发生命周期组织，每次会话启动时自动注入共享的工程原则。
+一个统一的 agent 技能包——**33 个工程技能**，按软件开发生命周期组织。以 Claude Code 插件形式发布（每次会话启动自动注入共享工程原则），同时兼容 Codex、Cursor、Cline、Continue、OpenCode 等任何读取 `AGENTS.md` 的 agent。
 
 由三个来源集合合并而成（83 → 33）：24 个个人根技能、[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)（24，MIT）、[mattpocock/skills](https://github.com/mattpocock/skills)（35，MIT）。原始仓库本地保留（已 gitignore）作溯源。
 
 ## 安装
+
+**Claude Code（主推——SessionStart 钩子注入环境原则）：**
 
 ```
 /plugin marketplace add https://github.com/int2t05/engineering-skills
@@ -17,12 +19,26 @@
 
 安装后，SessionStart 钩子会把 8 条工程原则（[`references/engineering-principles.md`](references/engineering-principles.md)）作为环境上下文注入——每次会话都自带这套纪律。技能按 `description:` 触发短语自动激活，也可显式按名调用（`/tdd`、`/code-review`、`/brainstorm`）。
 
+**其他 agent 框架（Codex、Cursor、Cline、Continue、OpenCode、Windsurf 等）：**
+
+技能内容是纯 markdown。[`AGENTS.md`](AGENTS.md) 是通用入口——每次会话先读它获取路由 + 原则。两条路线（二选一——Claude Code 插件与文件拷贝互斥）：
+
+```bash
+# skills.sh——覆盖最广（70+ agent）；只装内容文件（不含 SessionStart 钩子）
+npx skills@latest add int2t05/engineering-skills
+
+# 或手动拷贝：把 skills/ + references/ + AGENTS.md 放进 agent 的指令目录
+```
+
+每个技能带一个 `agents/openai.yaml`（Codex 适配器：`display_name`、`short_description`，用户调用型技能还有 `policy.allow_implicit_invocation`），保证两个框架保持同步。规范措辞见 [`.agents/install-block.md`](.agents/install-block.md)。
+
 ## 工作方式
 
+- **通用入口：** `AGENTS.md` 给任何 agent 定向——路由表、调用模型、安装。Claude Code 作为插件读取；其他框架会话启动时读取。
 - **自动触发：** 31 个技能在任务匹配其 `description:` 触发短语时激活（含中文短语如 "技术选型"、"生成测试"、"性能优化"）。
-- **显式调用：** 输入 `/技能名`（如 `/tdd`、`/debugging`）。`brainstorm` 和 `handoff` 仅限显式调用（`disable-model-invocation: true`）。
+- **显式调用：** 输入 `/技能名`（如 `/tdd`、`/debugging`）。`brainstorm` 和 `handoff` 仅限显式调用（`disable-model-invocation: true` ↔ `agents/openai.yaml` 的 `allow_implicit_invocation: false`）。
 - **路由：** 拿不准用哪个技能？调用 `using-skills`——它把任务映射到对应阶段。
-- **规划：** 用 Claude Code 内置 plan mode，不是自定义技能（原则 §7）。
+- **规划：** 用各框架内置的 plan mode（Claude Code：`EnterPlanMode`/`ExitPlanMode`），不是自定义技能（原则 §7）。
 - **渐进式披露：** 每个 `SKILL.md` 是精简核心；百科式数据放在技能内的 `references/` 按需加载。
 
 ## 目录——按阶段分列全部 33 个技能
@@ -173,9 +189,10 @@
 
 - **插件布局：** `.claude-plugin/plugin.json` 用 `skills[]` 数组声明全部 33 个技能（嵌套 `./skills/<阶段>/<技能>` 路径——保留 9 阶段分类）。
 - **每个技能：** 文件夹 + `SKILL.md`（大写）；frontmatter 为 `name` + `description`（+ 可选 `disable-model-invocation`）；正文按 When to use / Steps / Verify / References 四节。
-- **共享参考：** 在插件根 `references/`，技能内用 `${CLAUDE_PLUGIN_ROOT}/references/...` 链接（跨项目可移植）。
-- **环境原则：** SessionStart 钩子（`hooks/session-start`）每次会话注入 `engineering-principles.md`。
-- **校验：** `bash scripts/validate-skills.sh`（schema + 清单同步检查）。
+- **多框架：** `AGENTS.md`（通用入口）+ `.agents/`（调用模型、安装块）+ 每技能 `agents/openai.yaml`（Codex 适配器）。用户调用型技能在 Claude Code（`disable-model-invocation`）和 Codex（`allow_implicit_invocation: false`）两端保持同步——校验器强制这条不变量。
+- **共享参考：** 在插件根 `references/`，技能内用 `${CLAUDE_PLUGIN_ROOT}/references/...` 链接（Claude Code 跨项目可移植；其他框架经 `AGENTS.md` 用仓库相对路径读取）。
+- **环境原则：** SessionStart 钩子（`hooks/session-start`）每次 Claude Code 会话注入 `engineering-principles.md`；其他框架经 `AGENTS.md` 读取。
+- **校验：** `bash scripts/validate-skills.sh`（schema + 清单同步 + Codex 适配器 + 调用同步）。重新生成 Codex 适配器：`python scripts/gen-agents-yaml.py`。
 
 ## 溯源
 

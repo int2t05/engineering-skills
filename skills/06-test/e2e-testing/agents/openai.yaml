@@ -1,0 +1,3 @@
+interface:
+  display_name: "E2E Testing"
+  short_description: "Writing end-to-end or browser tests — Playwright flows, form submission, user journeys…"

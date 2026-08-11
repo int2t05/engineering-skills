@@ -2,8 +2,10 @@
 
 > **Languages:** English | [中文](README.zh-CN.md)
 
-A unified Claude Code plugin — **33 engineering skills** organized by the software
-development lifecycle, with shared engineering principles injected at every session start.
+A unified agent skill pack — **33 engineering skills** organized by the software
+development lifecycle. Ships as a Claude Code plugin (with shared engineering principles
+injected at every session start) and works across Codex, Cursor, Cline, Continue, OpenCode,
+and any agent that reads `AGENTS.md`.
 
 Consolidated from three source collections (83 → 33): 24 personal root skills,
 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) (24, MIT), and
@@ -11,6 +13,8 @@ Consolidated from three source collections (83 → 33): 24 personal root skills,
 locally (gitignored) for provenance.
 
 ## Install
+
+**Claude Code (primary — ambient principles via SessionStart hook):**
 
 ```
 /plugin marketplace add https://github.com/int2t05/engineering-skills
@@ -24,12 +28,30 @@ On install, a SessionStart hook injects the 8 engineering principles
 context — every session starts with the discipline loaded. Skills auto-trigger on their
 description phrases, or invoke explicitly by name (`/tdd`, `/code-review`, `/brainstorm`).
 
+**Other agent frameworks (Codex, Cursor, Cline, Continue, OpenCode, Windsurf…):**
+
+The skill content is plain markdown. [`AGENTS.md`](AGENTS.md) is the universal entry — read
+it first each session for routing + principles. Two routes (pick one — the Claude Code plugin
+and a file-copy route are exclusive):
+
+```bash
+# skills.sh — broadest (70+ agents); installs content files only (no SessionStart hook)
+npx skills@latest add int2t05/engineering-skills
+
+# or manual copy: skills/ + references/ + AGENTS.md into your agent's instructions dir
+```
+
+Each skill carries an `agents/openai.yaml` (Codex adapter: `display_name`, `short_description`,
+and `policy.allow_implicit_invocation` for user-invoked skills) so the two harnesses stay in
+sync. See [`.agents/install-block.md`](.agents/install-block.md) for the canonical wording.
+
 ## How it works
 
+- **Universal entry:** `AGENTS.md` orients any agent — routing table, invocation model, install. Claude Code reads it as part of the plugin; other frameworks read it at session start.
 - **Auto-trigger:** 31 skills activate when a task matches their `description:` triggers (incl. Chinese phrases like "技术选型", "生成测试", "性能优化").
-- **Explicit call:** type `/skill-name` (e.g. `/tdd`, `/debugging`). `brainstorm` and `handoff` are user-typed only (`disable-model-invocation: true`).
+- **Explicit call:** type `/skill-name` (e.g. `/tdd`, `/debugging`). `brainstorm` and `handoff` are user-typed only (`disable-model-invocation: true` ↔ `agents/openai.yaml` `allow_implicit_invocation: false`).
 - **Routing:** unsure which skill fits? invoke `using-skills` — it maps the task to a phase.
-- **Planning:** uses Claude Code's built-in plan mode, not a custom skill (principle §7).
+- **Planning:** uses the harness's built-in plan mode (Claude Code: `EnterPlanMode`/`ExitPlanMode`), not a custom skill (principle §7).
 - **Progressive disclosure:** each `SKILL.md` is a lean core; encyclopedic data lives in per-skill `references/` loaded on demand.
 
 ## Catalog — all 33 skills by phase
@@ -180,9 +202,10 @@ description phrases, or invoke explicitly by name (`/tdd`, `/code-review`, `/bra
 
 - **Plugin layout:** `.claude-plugin/plugin.json` declares all 33 skills in a `skills[]` array (nested `./skills/<phase>/<skill>` paths — preserves the 9-phase taxonomy).
 - **Every skill:** folder with `SKILL.md` (uppercase); frontmatter `name` + `description` (+ optional `disable-model-invocation`); body sections When to use / Steps / Verify / References.
-- **Shared references:** at plugin root `references/`, linked from skills as `${CLAUDE_PLUGIN_ROOT}/references/...` (portable across projects).
-- **Ambient principles:** SessionStart hook (`hooks/session-start`) injects `engineering-principles.md` into every session.
-- **Validate:** `bash scripts/validate-skills.sh` (schema + manifest-sync check).
+- **Multi-framework:** `AGENTS.md` (universal entry) + `.agents/` (invocation model, install block) + per-skill `agents/openai.yaml` (Codex adapter). User-invoked skills keep `disable-model-invocation` (Claude Code) and `allow_implicit_invocation: false` (Codex) in sync — the validator enforces this.
+- **Shared references:** at plugin root `references/`, linked from skills as `${CLAUDE_PLUGIN_ROOT}/references/...` (portable across projects in Claude Code; other frameworks read them via repo-relative paths from `AGENTS.md`).
+- **Ambient principles:** SessionStart hook (`hooks/session-start`) injects `engineering-principles.md` into every Claude Code session; other frameworks read it via `AGENTS.md`.
+- **Validate:** `bash scripts/validate-skills.sh` (schema + manifest-sync + Codex-adapter + invocation-sync). Regenerate Codex adapters: `python scripts/gen-agents-yaml.py`.
 
 ## Provenance
 

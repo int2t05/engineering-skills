@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Validate every SKILL.md against the collection schema. Dependency-free (bash + awk + grep).
+# Validate every SKILL.md against the collection schema, plus the Codex adapter
+# (agents/openai.yaml) and the invocation-sync invariant between the two. Bash + awk + grep.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -27,6 +28,28 @@ for phase in $phases; do
     grep -q '^## Verify' "$skill_md" || { echo "FAIL: $skill_md missing ## Verify"; errors=$((errors+1)); }
     grep -q '^## References' "$skill_md" || { echo "FAIL: $skill_md missing ## References"; errors=$((errors+1)); }
     grep -q 'engineering-principles' "$skill_md" || { echo "FAIL: $skill_md doesn't link engineering-principles"; errors=$((errors+1)); }
+    # --- Codex adapter: agents/openai.yaml must exist and stay in sync with frontmatter ---
+    yaml_file="$skill_dir/agents/openai.yaml"
+    if [ ! -f "$yaml_file" ]; then
+      echo "FAIL: $skill_md missing agents/openai.yaml (run scripts/gen-agents-yaml.py)"
+      errors=$((errors+1))
+    else
+      grep -q '^interface:' "$yaml_file" || { echo "FAIL: $yaml_file missing interface:"; errors=$((errors+1)); }
+      grep -q 'display_name:' "$yaml_file" || { echo "FAIL: $yaml_file missing display_name"; errors=$((errors+1)); }
+      grep -q 'short_description:' "$yaml_file" || { echo "FAIL: $yaml_file missing short_description"; errors=$((errors+1)); }
+      # Invocation-sync: disable-model-invocation (Claude Code) must match
+      # policy.allow_implicit_invocation (Codex) — user-invoked in both or neither.
+      dmi=$(echo "$fm" | grep -ciE '^disable-model-invocation:[[:space:]]*true' || true)
+      aii=$(grep -ciE 'allow_implicit_invocation:[[:space:]]*false' "$yaml_file" || true)
+      if [ "$dmi" -gt 0 ] && [ "$aii" -eq 0 ]; then
+        echo "FAIL: $skill_md is user-invoked (disable-model-invocation: true) but $yaml_file lacks allow_implicit_invocation: false"
+        errors=$((errors+1))
+      fi
+      if [ "$dmi" -eq 0 ] && [ "$aii" -gt 0 ]; then
+        echo "FAIL: $skill_md is model-invoked but $yaml_file sets allow_implicit_invocation: false (drift)"
+        errors=$((errors+1))
+      fi
+    fi
   done
 done
 

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Documentation Audit"
+  short_description: "Documentation drift is detected"

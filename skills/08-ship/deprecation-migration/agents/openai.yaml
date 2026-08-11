@@ -1,0 +1,3 @@
+interface:
+  display_name: "Deprecation Migration"
+  short_description: "Deprecating old code or APIs, or migrating to a new system"
