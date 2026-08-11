@@ -103,6 +103,8 @@ Map to the OWASP Top 10 for LLM Applications:
 - LLM/model output passed into a query, the DOM, a shell, or `eval`
 - Secrets, PII, or the full system prompt placed inside an LLM context window
 
+**Output:** `docs/security-report.md` — findings by severity, with runtime/build/deploy reachability and the fix or accept rationale per finding.
+
 ## Verify
 
 - [ ] Native audit has no unmitigated reachable critical/high findings; CI preserves the authoritative lockfile and blocks unreviewed dependency scripts

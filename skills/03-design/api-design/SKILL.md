@@ -107,6 +107,8 @@ Separate input types (what the caller provides) from output types (what the syst
 including server-generated fields). Use branded types for IDs to prevent accidentally passing a
 `UserId` where a `TaskId` is expected.
 
+**Output:** `docs/API/*.md` — one file per endpoint group, with full request/response shapes, parameters, errors, and examples.
+
 ## Verify
 
 - [ ] Every endpoint has typed input and output schemas

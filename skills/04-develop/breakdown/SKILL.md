@@ -48,10 +48,9 @@ until the way to the destination is clear.
    by, what it delivers. Ask: granularity right? Blocking edges correct? Any
    tickets to merge or split? Iterate until approved.
 
-6. **Publish the tickets.** One ticket per file under
-   `.scratch/<feature-slug>/issues/<NN>-<slug>.md` (blockers first), or one
-   issue per ticket on the tracker using native blocking links. Work the
-   **frontier**: any ticket whose blockers are all done.
+6. **Publish.** Write the plan to `docs/PLAN.md` (project-level plan). Tickets are
+   sections within the plan — title, blocked by, what it delivers — ordered blockers
+   first. Work the **frontier**: any ticket whose blockers are all done.
 
 ### Mode 2 — Decision map (work too large for one session)
 

@@ -43,7 +43,8 @@ description: Use when choosing or comparing a technology stack, library, framewo
    - Give a practical validation plan: prototype scope, success metrics, tests/benchmarks, migration spike, or production trial.
 
 7. **Write the cited Markdown report.**
-   - Default path: `tech-selection/YYYY-MM-DD-<requirement-slug>-tech-selection.md` in the workspace. Create the directory if needed. If the file exists, append `-2` or `-HHmmss`; overwrite only with explicit permission. Slug: lowercase ASCII letters/digits/hyphens, transliterate non-ASCII, collapse repeated hyphens.
+   - Default path: `docs/competitor.md` in the workspace. If the file exists, append `-2` or
+     `-HHmmss`; overwrite only with explicit permission.
    - Inline-cite where claims appear, plus a source appendix.
    - Use the template below (trim to fit, keep section order):
 

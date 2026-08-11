@@ -3,11 +3,10 @@
 Reference for the `breakdown` skill. Templates, the staleness rule, and the
 ticket-type routing used when publishing tracer-bullet tickets.
 
-## Local-ticket template
+## Ticket template
 
-One file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`,
-numbered from `01` in dependency order (blockers first). Never combine tickets
-into one file.
+Tickets are sections within `docs/PLAN.md`, numbered from `01` in dependency
+order (blockers first). Each ticket is a section, not a separate file.
 
 ```markdown
 # <NN> — <Ticket title>

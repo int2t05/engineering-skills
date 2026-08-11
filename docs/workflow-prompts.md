@@ -54,6 +54,13 @@
 
 辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/design.md`（UIUX 审计）、`docs/FRONT.md`（前端审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（market.md/competitor.md/prdv2.md）是 PRD 输入，上线前清理。
 
+## 命名规则
+
+- **全大写 = 项目级正式文档**（单文件）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。
+- **全大写目录 = 多文件集合**：`docs/API/`、`docs/FLOW/`、`docs/adr/`。
+- **小写 = 中间产物 / 子需求 / 审计报告**：`docs/competitor.md`、`docs/market.md`、`docs/design.md`、`docs/security-report.md`。
+- 文档产物默认在 `docs/` 下。每个文档型 skill 的产物路径已固化在其 SKILL.md 的 `**Output:**` 声明里。
+
 ---
 
 # 一、产品与调研 — 想清楚做什么

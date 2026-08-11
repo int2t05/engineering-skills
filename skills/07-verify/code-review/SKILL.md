@@ -70,6 +70,8 @@ Label every finding's severity: **Critical** (blocks merge — security, data lo
 
 End with a one-line summary: total findings per axis and the worst issue within each. Don't pick a single winner across axes.
 
+**Output:** `docs/TODO.md` — findings consolidated as a project-level todo list, grouped by business area, with code↔TODO.md bidirectional sync.
+
 ## Verify
 
 - Findings checked adversarially: for each Required/Critical, re-read the hunk and confirm the problem is real (not a misread of the diff). Drop any that don't survive scrutiny.

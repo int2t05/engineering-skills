@@ -69,7 +69,8 @@ Use consistent scales for spacing, radius, elevation, and icons — not arbitrar
 ### 6. Implement and verify
 
 Implement working code (HTML/CSS/JS, React, Vue, etc.) that is production-grade, functional,
-visually striking, and meticulously refined. Then run the verification below.
+visually striking, and meticulously refined. When auditing an existing frontend, write the
+audit to `docs/design.md`. Then run the verification below.
 
 ## Verify
 

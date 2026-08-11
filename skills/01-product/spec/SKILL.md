@@ -32,9 +32,9 @@ guessing.
 3. **Write the spec** using the template below. Reframe vague requirements as testable
    success criteria ("make the dashboard faster" → "LCP < 2.5s on 4G; initial load < 500ms").
 
-4. **Publish.** Save to `tasks/spec-[feature-name].md` (or a user-specified path). If the
-   project has an issue tracker, publish there with a `ready-for-agent` label. Commit the
-   spec — it's a living document, not a one-time artifact. Update it when decisions or
+4. **Publish.** Save to `docs/PRD.md` (project-level requirements, the shared source of
+   truth). For a feature-scoped spec, append the feature slug: `docs/PRD-<feature>.md`.
+   Commit it — it's a living document, not a one-time artifact. Update it when decisions or
    scope change; reference it in PRs.
 
 5. **User review gate.** Ask the user to review the written spec before any implementation.
