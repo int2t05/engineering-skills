@@ -69,8 +69,13 @@ Use consistent scales for spacing, radius, elevation, and icons — not arbitrar
 ### 6. Implement and verify
 
 Implement working code (HTML/CSS/JS, React, Vue, etc.) that is production-grade, functional,
-visually striking, and meticulously refined. When auditing an existing frontend, write the
-audit to `docs/design.md`. Then run the verification below.
+visually striking, and meticulously refined.
+
+**Output:**
+- Designing UI from scratch → `docs/DESIGN.md` — the project-level UIUX design report: design system, information architecture, interaction patterns, component plan.
+- Auditing an existing frontend → `docs/frontend-audit.md` — findings and optimization suggestions for current layout/components/typography/styles.
+
+Then run the verification below.
 
 ## Verify
 
