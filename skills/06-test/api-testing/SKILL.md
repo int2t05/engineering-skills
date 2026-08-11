@@ -1,6 +1,6 @@
 ---
 name: api-testing
-description: Use when testing APIs or designing API test strategies — contract testing, REST/GraphQL testing, and integration testing.
+description: Use when testing APIs or designing API test strategies — contract testing, REST/GraphQL testing, and integration testing. Triggers on "test API", "contract testing", "integration test", "API 测试", "接口测试", "契约测试".
 ---
 
 # API Testing Patterns
@@ -15,7 +15,9 @@ matters to consumers, not implementation details.
 - Validating microservice contracts
 - Designing API test strategies
 - Preventing breaking API changes
-- Triggers on "api test", "contract test", "接口测试"
+- Triggers on "test API", "contract testing", "integration test", "API 测试", "接口测试", "契约测试"
+
+**Not for:** generating test scaffolds for non-API code (use `test-generation`); browser/E2E flows (use `e2e-testing`); the TDD loop itself (use `tdd`).
 
 ## Steps
 

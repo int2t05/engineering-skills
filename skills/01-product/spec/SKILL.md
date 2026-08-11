@@ -1,6 +1,6 @@
 ---
 name: spec
-description: Use when starting a new project, feature, or significant change. Writes a spec/PRD covering objectives, commands, structure, code style, testing, and boundaries before any code. Triggers on "write spec", "create prd", "spec out", "to spec".
+description: Use when starting a new project, feature, or significant change — writes a spec/PRD covering objectives, structure, commands, code style, testing, and boundaries before any code. Triggers on "write spec", "create prd", "spec out", "写需求文档", "写规格", "需求文档".
 ---
 
 # Spec
@@ -16,7 +16,7 @@ guessing.
 - The change touches multiple files or modules.
 - User says "write spec", "create prd", "spec out", "to spec", or 写规格.
 
-**Not for:** single-line fixes, typos, or changes where requirements are unambiguous.
+**Not for:** single-line fixes, typos, or changes where requirements are unambiguous; changes needing design decisions only — use `architecture` for system design.
 
 ## Steps
 

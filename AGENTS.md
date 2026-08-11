@@ -33,38 +33,51 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 
 | Phase | Skill | Triggers on |
 |---|---|---|
-| product | `brainstorm` | underspecified ask, "refine this idea" (*user-typed*) |
-| product | `spec` | new project/feature/change, "write spec", "create prd" |
-| product | `oss-strategy` | OSS business model, COSS, commercialization |
-| research | `research` | deep web research, cited report |
-| research | `market-research` | market sizing, competitor analysis, due diligence |
+| product | `brainstorm` | underspecified ask, "refine this idea", "头脑风暴" (*user-typed*) |
+| product | `spec` | new project/feature/change, "write spec", "create prd", "写需求文档" |
+| product | `oss-strategy` | OSS business model, COSS, "开源策略", "开源商业模式" |
+| research | `research` | deep web research, cited report, "深度检索", "调研报告" |
+| research | `market-research` | market sizing, competitor analysis, "市场调研", "竞品分析" |
 | research | `tech-selection` | "技术选型", "方案对比", tech stack comparison |
-| design | `architecture` | system design, "架构设计", ADR, scalability |
-| design | `domain-modeling` | domain model, ubiquitous language, CONTEXT.md |
-| design | `api-design` | REST/GraphQL contracts, interface ergonomics |
-| design | `codebase-design` | deep modules, refactoring/deepening |
-| design | `frontend-design` | UI, "界面设计", production-grade frontend |
-| design | `prototype` | throwaway prototype, compare layouts |
-| develop | `implement` | implement spec/tickets, TDD at seams |
-| develop | `breakdown` | break work into tickets, decision map |
-| develop | `context-engineering` | agent needs better context |
-| tune | `performance` | "性能优化", profile, bottlenecks |
-| tune | `simplify` | "too complex", refactor for clarity |
-| test | `tdd` | "测试驱动开发", red-green-refactor |
-| test | `test-generation` | "生成测试", generate test files |
-| test | `api-testing` | contract testing, REST/GraphQL |
-| test | `e2e-testing` | Playwright, e2e, browser test |
-| verify | `code-review` | review before merge |
-| verify | `debugging` | bug, test failure, unexpected behavior |
-| verify | `security-review` | security review, secrets, injection |
-| ship | `shipping` | deploy, launch, go live |
-| ship | `git-workflow` | commit, merge conflict, pre-commit |
-| ship | `ci-cd` | CI pipeline, GitHub Actions |
-| ship | `deprecation-migration` | deprecate, migrate, sunset API |
-| ship | `oss-polish` | "开源项目美化", README/topics polish |
-| operate | `observability` | logs, metrics, alerts, instrumentation |
-| operate | `documentation-audit` | docs drift, sync docs to code |
-| operate | `handoff` | hand off to another session (*user-typed*) |
+| design | `architecture` | system design, "架构设计", "系统设计", ADR |
+| design | `domain-modeling` | domain model, ubiquitous language, "领域模型", CONTEXT.md |
+| design | `api-design` | REST/GraphQL contracts, "接口设计", "API 契约" |
+| design | `codebase-design` | deep modules, "深化模块", "重构架构" |
+| design | `frontend-design` | UI, "界面设计", "前端设计", production-grade frontend |
+| design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |
+| develop | `implement` | implement spec/tickets, "实现", "编码", "改这个配置", "搭项目骨架" |
+| develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
+| develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
+| tune | `performance` | "性能优化", "性能调优", profile, bottlenecks |
+| tune | `simplify` | "too complex", "简化", "重构求清晰", refactor for clarity |
+| test | `tdd` | "测试驱动开发", "红绿重构", red-green-refactor |
+| test | `test-generation` | "生成测试", "补测试", generate test files |
+| test | `api-testing` | contract testing, "API 测试", "接口测试", REST/GraphQL |
+| test | `e2e-testing` | e2e, browser test, "端到端测试", "浏览器测试" |
+| verify | `code-review` | review before merge, "代码审查", "合并前审查" |
+| verify | `debugging` | bug, "调试", "排查 bug", "读日志", "排查错误日志" |
+| verify | `security-review` | security review, "安全审查", "安全审计", secrets, injection |
+| ship | `shipping` | deploy, launch, "上线", "发布", "部署到生产" |
+| ship | `git-workflow` | commit, merge conflict, "提交", "合并冲突", pre-commit |
+| ship | `ci-cd` | CI pipeline, GitHub Actions, "流水线", "持续集成" |
+| ship | `deprecation-migration` | deprecate, migrate, "迁移", "升级依赖", "更新这个库" |
+| ship | `oss-polish` | "开源项目美化", "优化项目展示", README/topics polish |
+| operate | `observability` | logs, metrics, "可观测性", "监控告警", instrumentation |
+| operate | `documentation-audit` | docs drift, "写文档", "写 README", "文档化这个功能", sync docs |
+| operate | `handoff` | hand off to another session, "交接" (*user-typed*) |
+
+Several skills carry **sub-task references** for focused scenarios — the main
+`SKILL.md` links a `references/` file for depth:
+
+- `context-engineering` → explains existing code / codebase tours (`references/code-explanation.md`)
+- `debugging` → log triage without full reproduction (`references/log-triage.md`)
+- `implement` → lightweight changes: small edits, renames, scaffolding (`references/lightweight-changes.md`)
+- `documentation-audit` → writing new docs from scratch (`references/writing-docs.md`)
+- `deprecation-migration` → dependency upgrades (`references/dependency-upgrade.md`)
+
+Every skill's `## When to use` states a **negative boundary** (`NOT for` → the
+adjacent skill it isn't), so adjacent tasks route to the right skill instead of
+two firing at once.
 
 ## Invocation model — user-invoked vs model-invoked
 

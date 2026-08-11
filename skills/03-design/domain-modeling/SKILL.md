@@ -1,14 +1,13 @@
 ---
 name: domain-modeling
-description: Use when building or sharpening a project's domain model — challenging terms, stress-testing with scenarios, and updating CONTEXT.md and ADRs inline to establish a shared ubiquitous language.
+description: Use when building or sharpening a project's domain model — challenging terms, stress-testing with scenarios, and updating CONTEXT.md and ADRs to establish a shared ubiquitous language. Triggers on "domain model", "ubiquitous language", "CONTEXT.md", "领域模型", "统一语言", "领域建模".
 ---
 
 # Domain Modeling
 
 Actively build and sharpen the project's domain model as you design. This is the *active* discipline
 — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the
-moment they crystallise. Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a
-habit any skill can do. This skill is for when you're **changing** the model.
+moment they crystallise. This skill is for when you're **changing** the model.
 
 ## When to use
 
@@ -17,7 +16,11 @@ habit any skill can do. This skill is for when you're **changing** the model.
 - Stress-testing domain relationships against concrete edge-case scenarios
 - Recording an architectural decision that is hard to reverse, surprising, or a real trade-off
 - Another skill needs to maintain or update the domain model
-- Triggers on "domain model", "ubiquitous language", "CONTEXT.md", "ADR", "领域模型", "统一语言"
+- Triggers on "domain model", "ubiquitous language", "CONTEXT.md", "ADR", "领域模型", "统一语言", "领域建模"
+
+**Not for:** merely *reading* `CONTEXT.md` for vocabulary — that's a habit any skill can do; this
+skill is for when you're **changing** the model. NOT for greenfield system architecture (use
+`architecture`).
 
 ## Steps
 

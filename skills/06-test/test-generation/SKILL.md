@@ -1,6 +1,6 @@
 ---
 name: test-generation
-description: Use when generating test files for existing code or from a spec — not for the TDD red-green-refactor loop (use tdd). Language-agnostic, works with any test framework. Triggers on "generate tests", "create tests", "write tests for", "生成测试".
+description: Use when generating test files for existing code or from a spec — language-agnostic, works with any test framework. Triggers on "generate tests", "write tests for", "生成测试", "生成测试代码", "补测试".
 ---
 
 # Test Generation (Language-Agnostic)
@@ -16,7 +16,9 @@ modifications.
 
 - Generating tests for a feature or bugfix
 - Creating tests from a PRD, API contract, or existing source
-- Triggers on "generate tests", "create tests", "write tests for", "生成测试"
+- Triggers on "generate tests", "write tests for", "生成测试", "生成测试代码", "补测试"
+
+**Not for:** the TDD red-green-refactor loop (use `tdd`); API contract testing (use `api-testing`); browser E2E flows (use `e2e-testing`).
 
 ## Steps
 

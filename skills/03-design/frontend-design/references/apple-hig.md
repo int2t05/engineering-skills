@@ -12,7 +12,7 @@ scrape the official page on the fly — never guess.
 |-----------|----------|
 | Default (no verbosity keyword) | 1 sentence answer + official URL |
 | "详细" / "展开" / "detail" / "多说点" | Key specs as table + cross-platform comparison + official URL |
-| "完整" / "full" / "全部" / "所有细节" / "爬取" | Use Firecrawl to scrape the official page, then provide comprehensive guidance |
+| "完整" / "full" / "全部" / "所有细节" / "爬取" | Use a web-scraping tool (e.g. Firecrawl) to fetch the official page, then provide comprehensive guidance |
 
 Never dump a wall of text by default. The full docs live on Apple's site. Your job is routing and
 synthesis, not duplication.
@@ -178,7 +178,7 @@ link, then scrape the target page.
 ```
 
 ### Full level
-Use Firecrawl to scrape the relevant official page(s), then synthesize into a structured answer:
+Use a web-scraping tool (e.g. Firecrawl) to fetch the relevant official page(s), then synthesize into a structured answer:
 ```
 ## [Topic]
 > Source: [official URL]

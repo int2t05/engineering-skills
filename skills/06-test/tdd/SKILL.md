@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Use when implementing any feature or bugfix, before writing implementation code. Red-green-refactor loop, one vertical slice at a time. Triggers on "tdd", "test-driven", "red green refactor".
+description: Use when implementing any feature or bugfix, before writing implementation code — red-green-refactor loop, one vertical slice at a time. Triggers on "tdd", "test-driven", "red green refactor", "测试驱动开发", "红绿重构", "测试驱动".
 ---
 
 # Test-Driven Development
@@ -17,7 +17,10 @@ in disguise — delete means delete.
 - Implementing any new feature or behavior
 - Fixing a bug (reproduce it with a test first — the Prove-It Pattern)
 - Refactoring or changing existing behavior
-- Triggers on "tdd", "测试驱动开发", "red green refactor", "红绿重构"
+- Triggers on "tdd", "test-driven", "red green refactor", "测试驱动开发", "红绿重构", "测试驱动"
+
+**Not for:** generating tests for already-written code (use `test-generation`);
+throwaway prototypes or pure config (just implement directly).
 
 **Exceptions (confirm with the user):** throwaway prototypes, generated code,
 pure configuration changes with no behavioral impact.

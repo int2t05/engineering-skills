@@ -1,6 +1,6 @@
 ---
 name: documentation-audit
-description: Use when documentation drift is detected. Comprehensively audits the codebase and syncs Swagger, feature docs, and general documentation to match the code.
+description: Use when documentation drift is detected, or when writing new documentation from scratch — syncs Swagger, feature docs, and general docs to the code, or drafts them when none exist. Triggers on "docs out of date", "documentation drift", "sync docs", "写文档", "写 README", "文档化这个功能", "文档同步".
 ---
 
 # Documentation Audit
@@ -13,6 +13,9 @@ Comprehensive documentation sync when drift is detected. Analyzes the codebase a
 - Features documentation drift detected (shipped features missing from features docs).
 - Documentation files are missing, stale, or contradict the current code.
 - Manual request to synchronize all documentation with the codebase.
+- Writing new documentation from scratch — README, feature docs, API docs (see `references/writing-docs.md`).
+
+**Not for:** open source GitHub presence polishing (use `oss-polish`); designing API contracts (use `api-design`).
 
 ## Steps
 

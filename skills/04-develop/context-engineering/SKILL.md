@@ -1,6 +1,6 @@
 ---
 name: context-engineering
-description: Use when the agent needs better context — assembling the right files, definitions, and prior decisions to feed into the working context before implementing.
+description: Use when the agent needs better context — assembling the right files, definitions, and prior decisions before implementing, or explaining existing code to a user. Triggers on "agent lacks context", "what files matter", "解释这段代码", "这个模块怎么工作", "带我过一遍代码库".
 ---
 
 # Context Engineering
@@ -17,6 +17,9 @@ sees it, and how it's structured.
   ignoring conventions).
 - Setting up a new project for AI-assisted development.
 - The agent is not following project conventions.
+- Explaining existing code to a user, or giving a codebase tour (see `references/code-explanation.md`).
+
+**Not for:** Session-start routing when the task is clear (use `using-skills`); implementing from a spec (use `implement`).
 
 ## Steps
 
@@ -66,11 +69,12 @@ sees it, and how it's structured.
    ```
    This catches wrong directions before you've built on them.
 
-6. **Use MCP servers for richer context** when the task warrants it: Context7
-   for library docs, Chrome DevTools for live browser state, PostgreSQL for
-   schema/query results, GitHub for issue/PR context. See
-   [references/context-strategies.md](references/context-strategies.md) for the
-   full integration table and packing strategies.
+6. **Use available context sources for richer context** when the task warrants
+   it — e.g. a library-docs server, a browser-inspection server, a database
+   server, a Git-host server. Use whatever is installed in this environment;
+   the method matters more than the specific tool. See
+   [references/context-strategies.md](references/context-strategies.md) for
+   packing strategies and the integration table.
 
 ## Verify
 

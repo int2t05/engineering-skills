@@ -1,6 +1,6 @@
 ---
 name: observability
-description: Use when adding logs, metrics, alerts, or instrumentation to a system — making runtime behavior observable and debuggable in production.
+description: Use when adding logs, metrics, alerts, or instrumentation to a system — making runtime behavior observable and debuggable in production. Triggers on "add logging", "metrics", "alerting", "instrumentation", "加日志", "可观测性", "监控告警".
 ---
 
 # Observability and Instrumentation
@@ -14,7 +14,7 @@ Code you can't observe is code you can't operate. Instrumentation is written alo
 - Adding or reviewing alerting rules.
 - Reviewing a PR that adds I/O, retries, queues, or cross-service calls.
 
-**When NOT to use:** Diagnosing a live failure (use debugging) or profiling measured slowness (use performance optimization). Observability is what makes those skills fast next time.
+**When NOT to use:** Diagnosing a live failure (use `debugging`) or profiling measured slowness (use `performance`). Observability is what makes those skills fast next time.
 
 ## Steps
 

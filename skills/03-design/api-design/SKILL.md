@@ -1,6 +1,6 @@
 ---
 name: api-design
-description: Use when designing APIs or interfaces — REST/GraphQL contracts, request/response shapes, versioning, error models, and interface ergonomics.
+description: Use when designing APIs or interfaces — REST/GraphQL contracts, request/response shapes, versioning, error models, and interface ergonomics. Triggers on "design API", "REST contract", "GraphQL schema", "接口设计", "API 契约", "API 设计".
 ---
 
 # API and Interface Design
@@ -16,7 +16,10 @@ component props, and any surface where one piece of code talks to another.
 - Creating component prop interfaces or type contracts
 - Establishing database schema that informs API shape
 - Changing existing public interfaces
-- Triggers on "API design", "interface design", "REST", "GraphQL", "contract", "API设计", "接口设计"
+- Triggers on "API design", "interface design", "REST", "GraphQL", "contract", "接口设计", "API 契约", "API 设计"
+
+**Not for:** system-level architecture decisions (use `architecture`); deep-module or codebase
+structure (use `codebase-design`).
 
 ## Steps
 

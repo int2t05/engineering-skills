@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Use when reviewing code before merge. Two-axis review: Standards (repo conventions + smell baseline) and Spec (faithful to the originating issue/spec). Run as parallel sub-agents for thoroughness.
+description: Use when reviewing code before merge — two-axis review: Standards (repo conventions + smell baseline) and Spec (faithful to the originating issue/spec). Triggers on "review this", "code review", "before merge", "代码审查", "代码评审", "合并前审查".
 ---
 
 # Code Review
@@ -11,6 +11,9 @@ description: Use when reviewing code before merge. Two-axis review: Standards (r
 - After completing a feature, bug fix, or refactor
 - When another agent or model produced code you need to evaluate
 - Reviewing a branch, a PR, or work-in-progress changes ("review since X")
+- Triggers on "review this", "code review", "before merge", "代码审查", "代码评审", "合并前审查"
+
+**Not for:** deep security review (use `security-review`).
 
 ## Steps
 

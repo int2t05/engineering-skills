@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Use when committing, branching, resolving merge or rebase conflicts, or setting up git guardrails and pre-commit hooks. Resolves conflicts by intent traced to each side's source — never --abort.
+description: Use when committing, branching, resolving merge or rebase conflicts, or setting up git guardrails and pre-commit hooks — resolves conflicts by intent traced to each side's source, never --abort. Triggers on "commit", "merge conflict", "rebase", "pre-commit", "提交", "合并冲突", "分支管理".
 ---
 
 # Git Workflow and Versioning
@@ -13,6 +13,8 @@ Git is your safety net: commits are save points, branches are sandboxes, history
 - Resolving an in-progress merge or rebase conflict.
 - Cutting a release, choosing a semantic version bump, tagging, or writing a changelog.
 - Setting up git guardrails (blocking dangerous commands) or pre-commit hooks.
+
+**Not for:** a simple commit of finished work with no conflicts (just commit it); designing CI pipelines (use `ci-cd`); production deployment strategy (use `shipping`).
 
 ## Steps
 

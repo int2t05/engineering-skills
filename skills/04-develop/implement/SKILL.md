@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Use when implementing the work described by a spec or tickets. Drives TDD at pre-agreed seams, runs typechecks and tests regularly, and closes with code-review before committing. Incremental, source-driven, doubt-driven.
+description: Use when implementing the work described by a spec or tickets — drives TDD at pre-agreed seams, runs typechecks and tests regularly, and closes with code-review before committing. Also covers lightweight changes (small edits, mechanical renames, project scaffolding) that don't need a full spec. Triggers on "implement", "build this", "code the feature", "实现", "编码", "改这个配置", "重命名", "搭项目骨架".
 ---
 
 # Implement
@@ -17,6 +17,9 @@ cycle before they stand.
 - Multi-file changes that should land one vertical slice at a time.
 - Framework-specific code where current docs determine correct patterns.
 - High-stakes or unfamiliar code where correctness matters more than speed.
+- Lightweight changes that don't need a spec — small config edits, mechanical renames/moves, project scaffolding (see `references/lightweight-changes.md`).
+
+**Not for:** Changes needing design decisions (use `spec`); system architecture (use `architecture`).
 
 ## Steps
 

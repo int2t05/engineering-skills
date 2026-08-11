@@ -1,6 +1,6 @@
 ---
 name: performance
-description: Use when optimizing performance. Measure before you optimize — profile, identify bottlenecks, then improve. Triggers on "webperf", "performance regression", "慢", "性能优化".
+description: Use when optimizing performance — measure before you optimize: profile, identify bottlenecks, then improve. Triggers on "webperf", "performance regression", "慢", "性能优化", "性能调优".
 ---
 
 # Performance Optimization
@@ -15,7 +15,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 - Building features that handle large datasets or high traffic
 - Triggers on "webperf", "performance regression", "慢", "性能优化"
 
-**When NOT to use:** Don't optimize before you have evidence of a problem. Premature optimization adds complexity that costs more than the performance it gains.
+**When NOT to use:** Don't optimize before you have evidence of a problem. Premature optimization adds complexity that costs more than the performance it gains. Diagnosing a bug (use `debugging`).
 
 ## Steps
 

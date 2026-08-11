@@ -1,6 +1,6 @@
 ---
 name: tech-selection
-description: Use when choosing or comparing a technology stack, library, framework, open-source project, or repository for a concrete requirement. Triggers on "技术选型", "方案对比", "选哪个", "tech stack", "library comparison".
+description: Use when choosing or comparing a technology stack, library, framework, open-source project, or repository for a concrete requirement. Triggers on "技术选型", "方案对比", "选哪个", "tech stack", "library comparison", "技术对比".
 ---
 
 ## When to use
@@ -8,6 +8,8 @@ description: Use when choosing or comparing a technology stack, library, framewo
 - Choosing or comparing a technology stack, library, framework, open-source project, or GitHub repository for a concrete requirement.
 - User says "技术选型", "方案对比", "选哪个", "tech stack", "library comparison".
 - Need a defensible selection backed by GitHub evidence and official docs, not a popularity contest.
+
+**Not for:** market sizing or competitor business analysis (use `market-research`); cited deep research report (use `research`).
 
 ## Steps
 

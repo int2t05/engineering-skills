@@ -1,5 +1,5 @@
 interface:
   display_name: "Brainstorm"
-  short_description: "Any creative work, or when the ask is underspecified"
+  short_description: "Creative work, or when the ask is underspecified — one-question-at-a-time dialogue that…"
 policy:
   allow_implicit_invocation: false

@@ -1,6 +1,6 @@
 ---
 name: market-research
-description: Use when the user wants market sizing, competitor comparisons, investor due diligence, industry intelligence, fund research, or technology scans that inform business decisions.
+description: Use when the user wants market sizing, competitor comparisons, investor due diligence, industry intelligence, fund research, or technology scans that inform business decisions. Triggers on "market sizing", "competitor analysis", "due diligence", "市场调研", "市场规模", "竞品分析".
 ---
 
 ## When to use
@@ -10,6 +10,8 @@ description: Use when the user wants market sizing, competitor comparisons, inve
 - Comparing competitors or adjacent products.
 - Preparing investor dossiers before outreach.
 - Pressure-testing a thesis before building, funding, or entering a market.
+
+**Not for:** deep technical investigation with citations (use `research`); choosing/comparing a specific tool or library for a concrete requirement (use `tech-selection`).
 
 ## Steps
 

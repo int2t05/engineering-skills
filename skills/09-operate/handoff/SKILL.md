@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Use when handing off work to another session or agent. Produces a structured handoff brief capturing context, decisions, and next steps. Triggers on "handoff".
+description: Use when handing off work to another session or agent — produces a structured handoff brief capturing context, decisions, and next steps. Triggers on "handoff", "hand over", "交接", "移交工作".
 disable-model-invocation: true
 ---
 
@@ -13,6 +13,8 @@ Write a handoff brief summarizing the current conversation so a fresh agent can 
 - The current session is ending and another agent (or a future you) will continue the work.
 - Switching between foreground and background agents mid-task.
 - Triggers on "handoff".
+
+**Not for:** continuing work in the same session — just keep going; summarizing work that's already captured in specs/plans/ADRs — reference those by path instead.
 
 ## Steps
 

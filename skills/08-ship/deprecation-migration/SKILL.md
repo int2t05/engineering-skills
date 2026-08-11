@@ -1,6 +1,6 @@
 ---
 name: deprecation-migration
-description: Use when deprecating old code or APIs, or migrating to a new system. Staged deprecation paths and migration strategies that preserve behavior across the transition.
+description: Use when deprecating old code or APIs, migrating to a new system, or upgrading dependencies — staged deprecation paths and migration strategies that preserve behavior across the transition. Triggers on "deprecate", "migrate", "sunset API", "弃用", "迁移", "升级依赖", "更新这个库", "upgrade dependency".
 ---
 
 # Deprecation and Migration
@@ -16,6 +16,9 @@ Hyrum's Law makes removal hard: with enough users, every observable behavior bec
 - Removing dead code that nobody owns but everybody depends on.
 - Planning the lifecycle of a new system (deprecation planning starts at design time).
 - Deciding whether to maintain a legacy system or invest in migration.
+- Upgrading a dependency or framework version, including major/breaking upgrades (see `references/dependency-upgrade.md`).
+
+**Not for:** patching a security vulnerability in place (use `security-review`); routine commits (use `git-workflow`).
 
 ## Steps
 

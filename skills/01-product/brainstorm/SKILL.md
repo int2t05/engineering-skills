@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Use before any creative work, or when the ask is underspecified. One-question-at-a-time dialogue that sharpens a vague idea into a concrete proposal. Triggers on "brainstorm", "grill me", "interview me", "refine this idea".
+description: Use before creative work, or when the ask is underspecified — one-question-at-a-time dialogue that sharpens a vague idea into a concrete proposal. Triggers on "brainstorm", "grill me", "interview me", "refine this idea", "头脑风暴", "帮我打磨想法", "盘问我".
 disable-model-invocation: true
 ---
 

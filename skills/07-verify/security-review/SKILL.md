@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Use when reviewing changes for security — secrets, auth, injection, access control, and hardening. Complete security review of pending changes.
+description: Use when reviewing changes for security — secrets, auth, injection, access control, and hardening. Triggers on "security review", "check for vulnerabilities", "安全审查", "安全审计", "漏洞检查".
 ---
 
 ## When to use
@@ -9,6 +9,9 @@ description: Use when reviewing changes for security — secrets, auth, injectio
 - A feature accepts untrusted data, manages sessions, or integrates with external services
 - Adding file uploads, webhooks, callbacks, or payment/PII handling
 - Before merge on any security-sensitive change
+- Triggers on "security review", "check for vulnerabilities", "安全审查", "安全审计", "漏洞检查"
+
+**Not for:** general code quality review (use `code-review`); performance profiling (use `performance`).
 
 ## Steps
 

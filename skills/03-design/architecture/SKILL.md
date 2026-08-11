@@ -1,6 +1,6 @@
 ---
 name: architecture
-description: Use when designing high-level system architecture, reviewing existing designs, or making architectural decisions. Produces ADRs, architecture diagrams, and evaluates scalability/NFR trade-offs.
+description: Use when designing high-level system architecture, reviewing existing designs, or making architectural decisions — produces ADRs, architecture diagrams, and evaluates scalability/NFR trade-offs. Triggers on "system design", "架构设计", "ADR", "scalability", "系统设计", "架构决策".
 ---
 
 # Architecture
@@ -18,8 +18,7 @@ rejected, and why.
 - Writing Architecture Decision Records (ADRs)
 - Triggers on "system design", "architecture review", "scalability", "ADR", "架构设计"
 
-**When NOT to use:** Code-level design patterns (use clean-code), database-only design without
-system context, or feature-level API contracts (use api-design).
+**When NOT to use:** Code-level design patterns (use `simplify` or `codebase-design`), database-only design without system context, or feature-level API contracts (use `api-design`).
 
 ## Steps
 

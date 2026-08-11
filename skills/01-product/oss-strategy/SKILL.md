@@ -1,6 +1,6 @@
 ---
 name: oss-strategy
-description: Use when the user wants open source strategy, OSS commercialization, open core, COSS, open source to paid, GitHub stars strategy, or open source growth/business model. Triggers on "open source strategy", "OSS 策略", "DevHunt", "developer tools directory".
+description: Use when deciding open source strategy — business model, COSS, open core, commercialization, or growth. Triggers on "open source strategy", "OSS 策略", "DevHunt", "开源策略", "开源商业模式".
 ---
 
 # Open Source Strategy

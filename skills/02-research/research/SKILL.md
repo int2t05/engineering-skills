@@ -1,6 +1,6 @@
 ---
 name: research
-description: Use when the user asks for deep web research, source-backed investigation, current technical/tool comparison, or a cited Markdown research artifact.
+description: Use when the user asks for deep web research, source-backed investigation, current technical/tool comparison, or a cited Markdown research artifact. Triggers on "deep research", "source-backed investigation", "cited report", "深度调研", "深度检索", "调研报告", "调研转文档".
 ---
 
 ## When to use
@@ -9,6 +9,7 @@ description: Use when the user asks for deep web research, source-backed investi
 - Source-backed investigation or current technical/tool comparison.
 - User asks for a cited Markdown research artifact (深度调研, 调研转文档).
 - NOT for short queries, quick answers, single-source lookups, or pure local-file analysis. Does not build embeddings, vector stores, crawl archives, or persistent knowledge indexes.
+- NOT for market sizing or competitor business analysis (use `market-research`); concrete tool/library selection (use `tech-selection`).
 
 ## Steps
 

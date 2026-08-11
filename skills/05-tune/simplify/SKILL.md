@@ -1,6 +1,6 @@
 ---
 name: simplify
-description: Use when the code is too complex. Clarity over cleverness — removes speculative abstractions, dead complexity, and earns-its-cost structures. Triggers on "simplify", "too complex", "refactor for clarity".
+description: Use when the code is too complex — clarity over cleverness, removes speculative abstractions, dead complexity, and earns-its-cost structures. Triggers on "simplify", "too complex", "refactor for clarity", "简化", "太复杂", "重构求清晰".
 ---
 
 # Code Simplification

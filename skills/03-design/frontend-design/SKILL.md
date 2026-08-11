@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Use when building web components, pages, or applications with distinctive, production-grade design quality. Covers color, typography, layout, interaction states, and platform conventions. Triggers on "frontend", "UI", "design", "界面设计".
+description: Use when building web components, pages, or applications with distinctive, production-grade design quality — color, typography, layout, interaction states, and platform conventions. Triggers on "frontend", "UI", "design", "界面设计", "前端设计".
 ---
 
 # Frontend Design
@@ -16,7 +16,7 @@ work — the key is intentionality, not intensity.
 - Choosing a design direction, color palette, or typography system for a project
 - Reviewing UI for visual quality, accessibility, or interaction polish
 - Implementing responsive layouts, dark mode, or platform-specific conventions (Apple HIG, Material)
-- Triggers on "frontend", "UI design", "组件设计", "界面设计", "视觉风格"
+- Triggers on "frontend", "UI design", "组件设计", "界面设计", "前端设计", "视觉风格"
 
 **When NOT to use:** pure data visualization (use dataviz); backend logic with no visual surface;
 API contract design (use api-design).

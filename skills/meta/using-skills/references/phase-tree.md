@@ -38,8 +38,10 @@ Task arrives
     │
     ├── 04 DEVELOP — writing the code
     │   ├── Slice-by-slice implementation? ─────────────→ implement
+    │   ├── Small change / rename / scaffold (no spec)? → implement (lightweight-changes ref)
     │   ├── Break a spec into verifiable tasks? ────────→ breakdown
-    │   └── Load the right context first? ──────────────→ context-engineering
+    │   ├── Load the right context first? ──────────────→ context-engineering
+    │   └── Explain code / codebase tour? ─────────────→ context-engineering (code-explanation ref)
     │
     ├── 05 TUNE — improving working code
     │   ├── Measure then optimize hot paths? ───────────→ performance
@@ -54,6 +56,7 @@ Task arrives
     ├── 07 VERIFY — checking the diff
     │   ├── Review the diff for bugs / cleanups? ───────→ code-review
     │   ├── Bug resists a first glance? ────────────────→ debugging
+    │   ├── Just read an error log / triage? ───────────→ debugging (log-triage ref)
     │   └── Security review of pending changes? ────────→ security-review
     │
     ├── 08 SHIP — getting it out
@@ -61,11 +64,13 @@ Task arrives
     │   ├── Atomic commits / branch hygiene? ───────────→ git-workflow
     │   ├── Automated quality gates? ───────────────────→ ci-cd
     │   ├── Retire old systems safely? ─────────────────→ deprecation-migration
+    │   ├── Upgrade a dependency / framework version? ──→ deprecation-migration (dependency-upgrade ref)
     │   └── Polish OSS GitHub presence? ────────────────→ oss-polish
     │
     └── 09 OPERATE — running it
         ├── Logs / metrics / traces / alerts? ──────────→ observability
         ├── Docs drifted from code? ────────────────────→ documentation-audit
+        ├── Write new docs from scratch? ───────────────→ documentation-audit (writing-docs ref)
         └── Hand a session off to a colleague? ─────────→ handoff
 ```
 

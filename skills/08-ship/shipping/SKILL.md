@@ -1,6 +1,6 @@
 ---
 name: shipping
-description: Use when deploying or launching to production. Faster is safer — checklist-driven launch with rollback readiness and launch-day verification.
+description: Use when deploying or launching to production — checklist-driven launch with rollback readiness and launch-day verification. Triggers on "ship", "deploy", "launch", "go live", "上线", "发布", "部署到生产".
 ---
 
 # Shipping and Launch
@@ -13,6 +13,8 @@ Ship with confidence: deploy safely, with monitoring in place, a rollback plan r
 - Migrating data or infrastructure.
 - Opening a beta or early access program.
 - Any deployment that carries risk (all of them).
+
+**Not for:** setting up CI/CD pipelines (use `ci-cd`); routine commits, branching, or conflict resolution (use `git-workflow`); rolling back a live failure (use `debugging` first, then ship the fix).
 
 ## Steps
 

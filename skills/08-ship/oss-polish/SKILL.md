@@ -17,6 +17,8 @@ positioning.
 - Researching trending repos in a domain for positioning benchmarking
 - Triggers: "polish my repo", "beautify open source project", "开源项目美化", "优化项目展示"
 
+**Not for:** open source business model or commercialization strategy (use `oss-strategy`), or general project documentation (use `documentation-audit`).
+
 ## Steps
 
 ### Step 1: Analyze project
@@ -113,9 +115,10 @@ Output a single report:
 ## Next Steps          — apply checklist (README, topics, About, LICENSE)
 ```
 
-After user approval, apply changes via GitHub MCP tools (`create_or_update_file` for
-README/LICENSE; GitHub API `PUT /repos/:owner/:repo/topics` for topics; repo settings for
-the About description).
+After user approval, apply changes via your available GitHub tooling — the `gh`
+CLI or GitHub MCP (`create_or_update_file` for README/LICENSE; GitHub API
+`PUT /repos/:owner/:repo/topics` for topics; repo settings for the About
+description).
 
 ## Verify
 

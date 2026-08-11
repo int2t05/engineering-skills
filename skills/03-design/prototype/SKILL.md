@@ -1,6 +1,6 @@
 ---
 name: prototype
-description: Use when a design question is best answered by a throwaway prototype — a single shareable HTML file for state/logic, or several toggleable UI variations to compare.
+description: Use when a design question is best answered by a throwaway prototype — a single shareable HTML file for state/logic, or several toggleable UI variations to compare. Triggers on "prototype", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".
 ---
 
 # Prototype
@@ -12,7 +12,9 @@ A prototype is **throwaway code that answers a question**. The question decides 
 - "Does this logic / state model feel right?" → logic prototype
 - "What should this look like?" → UI prototype
 - Sanity-check a state machine or data model before committing; explore UI directions before picking one
-- Triggers on "prototype", "throwaway", "mockup", "原型", "试做"
+- Triggers on "prototype", "throwaway", "mockup", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo"
+
+**Not for:** production UI implementation (use `frontend-design`); production code (use `implement`).
 
 ## Steps
 

@@ -23,7 +23,12 @@ for phase in $phases; do
     fm=$(awk 'NR==1{next} /^---$/{exit} {print}' "$skill_md")
     bad=$(echo "$fm" | grep -iE '^(license|metadata|category|priority|agents|dependencies|tags|validation|origin|allowed-tools|model|user-invocable|argument-hint):' || true)
     [ -z "$bad" ] || { echo "FAIL: $skill_md disallowed frontmatter: $bad"; errors=$((errors+1)); }
+    # Description must carry trigger phrasing so auto-invocation can fire.
+    echo "$fm" | grep -qiE 'Triggers on|触发' || { echo "FAIL: $skill_md description lacks trigger phrasing (Triggers on / 触发)"; errors=$((errors+1)); }
     grep -q '^## When to use' "$skill_md" || { echo "FAIL: $skill_md missing ## When to use"; errors=$((errors+1)); }
+    # When-to-use must state a negative boundary so adjacent tasks don't mis-route.
+    wtu=$(awk '/^## When to use/{f=1;next} /^## /{f=0} f' "$skill_md")
+    echo "$wtu" | grep -qiE 'NOT for|When NOT to use|不用于|Not for' || { echo "FAIL: $skill_md When-to-use lacks negative boundary (NOT for / When NOT to use)"; errors=$((errors+1)); }
     grep -q '^## Steps' "$skill_md" || { echo "FAIL: $skill_md missing ## Steps"; errors=$((errors+1)); }
     grep -q '^## Verify' "$skill_md" || { echo "FAIL: $skill_md missing ## Verify"; errors=$((errors+1)); }
     grep -q '^## References' "$skill_md" || { echo "FAIL: $skill_md missing ## References"; errors=$((errors+1)); }

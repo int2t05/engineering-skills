@@ -1,6 +1,6 @@
 ---
 name: ci-cd
-description: Use when working on CI/CD pipelines and automation — build, test, and deploy automation, pipeline design, and deployment strategies.
+description: Use when working on CI/CD pipelines and automation — build, test, and deploy automation, pipeline design, and deployment strategies. Triggers on "CI pipeline", "GitHub Actions", "deployment strategy", "CI/CD", "流水线", "持续集成", "部署策略".
 ---
 
 # CI/CD and Automation
@@ -16,6 +16,8 @@ Automate quality gates so no change reaches production without passing tests, li
 - Configuring deployment pipelines or deployment strategies.
 - Debugging CI failures.
 - When a change should trigger automated verification.
+
+**Not for:** debugging runtime bugs (use `debugging`); production launch strategy and rollback (use `shipping`); routine commits (use `git-workflow`).
 
 ## Steps
 
@@ -101,7 +103,7 @@ With database integration tests — use the `services:` block and GitHub Secrets
           DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
 ```
 
-E2E (Playwright) — same shape: install (`npx playwright install --with-deps chromium`), build, `npx playwright test`. Upload `playwright-report/` as an artifact `if: failure()` so the run isn't a black box.
+E2E (Playwright, or your framework's equivalent) — same shape: install browser deps, build, run the E2E suite. Upload the report directory as an artifact `if: failure()` so the run isn't a black box.
 
 ### 3. Feed CI failures back to the agent
 

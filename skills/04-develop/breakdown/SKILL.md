@@ -1,6 +1,6 @@
 ---
 name: breakdown
-description: Use when breaking a plan, spec, or conversation into tracer-bullet tickets, each declaring its blocking edges. For work too large for one session, builds a shared map of decision tickets resolved one at a time.
+description: Use when breaking a plan, spec, or conversation into tracer-bullet tickets, each declaring its blocking edges — for work too large for one session, builds a shared map of decision tickets resolved one at a time. Triggers on "break into tickets", "decompose", "wayfinder", "拆解任务", "拆票", "任务分解".
 ---
 
 # Breakdown
@@ -18,6 +18,8 @@ until the way to the destination is clear.
 - You have an approved plan, spec, or conversation result to break into tickets.
 - The work spans multiple sessions and needs a shared decision map.
 - You need to sequence work by blocking edges before implementation starts.
+
+**Not for:** Work that fits one session (just `implement` it); writing the spec itself (use `spec`).
 
 ## Steps
 

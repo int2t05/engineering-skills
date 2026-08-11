@@ -1,6 +1,6 @@
 ---
 name: using-skills
-description: Use when starting a session or deciding which skill applies. Maps incoming work to the right skill across the 9 SDLC phases (product → research → design → develop → tune → test → verify → ship → operate).
+description: Use when starting a session or deciding which skill applies — maps incoming work to the right skill across the 9 SDLC phases. Triggers on "which skill should I use", "route this task", "用哪个技能", "路由".
 ---
 
 # Using Skills
@@ -13,6 +13,8 @@ skill. Every skill in this collection lives under one of nine phases.
 - Start of a session, before any response or action.
 - Unsure which skill fits the task at hand.
 - A task spans multiple phases and you need to sequence them.
+
+**Not for:** tasks where the right skill is already obvious — invoke that skill directly instead of routing.
 
 ## Steps
 

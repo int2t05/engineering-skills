@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Disciplined diagnosis loop: build a red feedback loop → minimise → hypothesise → instrument → fix → regression-test.
+description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes — disciplined diagnosis: build a red loop, minimise, hypothesise, instrument, fix, regression-test. Also covers log triage when full reproduction isn't needed yet. Triggers on "debug", "bug", "test failure", "unexpected behavior", "调试", "排查 bug", "读日志", "排查错误日志".
 ---
 
 ## When to use
@@ -10,6 +10,10 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 - Something worked before and stopped
 - A performance regression needs diagnosing
 - Before proposing a fix — discipline beats guessing
+- Reading error output or logs to triage before building a full reproduction loop (see `references/log-triage.md`)
+- Triggers on "debug", "bug", "test failure", "unexpected behavior", "调试", "排查 bug", "读日志", "排查错误日志"
+
+**Not for:** performance optimization (use `performance`); profiling measured slowness (use `performance`).
 
 ## Steps
 
@@ -80,4 +84,5 @@ Write the regression test **before** the fix — but only if there's a **correct
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [references/log-triage.md](references/log-triage.md) — reading error output and logs when full reproduction isn't needed yet
 - [references/hitl-loop-template.sh](references/hitl-loop-template.sh) — human-in-the-loop reproduction harness (last resort when no automated loop is possible)

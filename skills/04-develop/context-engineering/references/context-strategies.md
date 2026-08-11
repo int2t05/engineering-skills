@@ -99,15 +99,18 @@ Load only the relevant section when working on a specific area.
 (Cursor), `.windsurfrules` (Windsurf), `.github/copilot-instructions.md`
 (GitHub Copilot), `AGENTS.md` (OpenAI Codex).
 
-## MCP Integrations
+## Context Sources (examples, not requirements)
 
-| MCP Server | What It Provides |
-|-----------|-----------------|
-| **Context7** | Auto-fetches relevant documentation for libraries |
-| **Chrome DevTools** | Live browser state, DOM, console, network |
-| **PostgreSQL** | Direct database schema and query results |
-| **Filesystem** | Project file access and search |
-| **GitHub** | Issue, PR, and repository context |
+Any tool that provides these capabilities works — the method matters more than
+the specific server. Use what is installed in your environment.
+
+| Capability | What it provides | Example tools |
+|-----------|-----------------|---------------|
+| **Library docs** | Auto-fetches relevant documentation for libraries | Context7, or any docs-fetching tool |
+| **Browser state** | Live browser state, DOM, console, network | Chrome DevTools MCP, or any browser-inspection tool |
+| **Database** | Direct database schema and query results | PostgreSQL MCP, or any DB client |
+| **Filesystem** | Project file access and search | Built-in file tools, Filesystem MCP |
+| **Git host** | Issue, PR, and repository context | GitHub MCP, `gh` CLI |
 
 ## Anti-Patterns
 

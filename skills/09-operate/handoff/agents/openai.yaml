@@ -1,5 +1,5 @@
 interface:
   display_name: "Handoff"
-  short_description: "Handing off work to another session or agent"
+  short_description: "Handing off work to another session or agent — produces a structured handoff brief…"
 policy:
   allow_implicit_invocation: false

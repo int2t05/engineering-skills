@@ -1,6 +1,6 @@
 ---
 name: codebase-design
-description: Use when designing deep modules, finding refactoring or deepening opportunities, or making a codebase more testable and AI-navigable. Presents deepening opportunities and works through the one you pick.
+description: Use when designing deep modules, finding refactoring or deepening opportunities, or making a codebase more testable and AI-navigable. Presents deepening opportunities and works through the one you pick. Triggers on "deep modules", "refactor architecture", "deepening", "深化模块", "重构架构", "代码库设计".
 ---
 
 # Codebase Design
@@ -17,11 +17,11 @@ through the one the user picks.
 - Finding refactoring or deepening opportunities across a codebase
 - Making a codebase more testable or AI-navigable
 - Consolidating tightly-coupled shallow modules into one deep module
-- Triggers on "deep module", "seam", "refactoring opportunity", "架构改进", "模块设计", "deepening"
+- Triggers on "deep module", "seam", "refactoring opportunity", "架构改进", "模块设计", "deepening", "深化模块", "重构架构", "代码库设计"
 
 **When NOT to use:** code-level naming or function-extraction without architectural intent (use
-clean-code); greenfield system architecture (use architecture); feature-level API contracts (use
-api-design).
+`simplify`); greenfield system architecture (use `architecture`); feature-level API contracts (use
+`api-design`).
 
 ## Steps
 
