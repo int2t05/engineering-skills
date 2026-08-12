@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This is a **Claude Code plugin** (`engineering-skills`) — a curated pack of 33 agent
+This is a **Claude Code plugin** (`engineering-skills`) — a curated pack of 37 agent
 skills organized by the software development lifecycle. See README.md for the full
 catalog and install instructions.
 
@@ -11,7 +11,7 @@ catalog and install instructions.
 > discipline via `AGENTS.md` at session start.
 
 ## Conventions
-- Plugin manifest: `.claude-plugin/plugin.json` declares all 33 skills in a `skills[]` array (nested `./<phase>/<skill>` paths — preserves the 9-phase taxonomy).
+- Plugin manifest: `.claude-plugin/plugin.json` declares all 37 skills in a `skills[]` array (nested `./<phase>/<skill>` paths — preserves the 9-phase taxonomy).
 - Skills live under `skills/` — `skills/meta/` plus 9 numbered phase dirs (`skills/01-product/` through `skills/09-operate/`).
 - Every skill is a folder with SKILL.md (uppercase). See references/skill-anatomy.md.
 - Every skill links `${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` — the distilled discipline.

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Image To Code"
+  short_description: "Image-first frontend pipeline — generate design reference images, analyze them deeply…"

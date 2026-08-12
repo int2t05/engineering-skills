@@ -2,7 +2,7 @@
 
 > **语言：** [English](README.md) | 中文
 
-一个 Claude Code 插件——**33 个工程技能**，按软件开发生命周期组织。从打磨模糊想法到上线运行，每个阶段一个技能。
+一个 Claude Code 插件——**37 个工程技能**，按软件开发生命周期组织。从打磨模糊想法到上线运行，每个阶段一个技能。
 
 共享工程原则在每次会话启动时注入，纪律是环境性的——不必刻意加载。
 
@@ -33,7 +33,7 @@ npx skills@latest add int2t05/engineering-skills
 - **拿不准用哪个技能？** `/using-skills` 把任务路由到对应阶段。
 - **规划：** 用框架内置的 plan mode，不是自定义技能。
 
-## 目录——按阶段分列全部 33 个技能
+## 目录——按阶段分列全部 37 个技能
 
 ### meta
 **`using-skills`** —— 路由器。把任务映射到 9 个阶段的对应技能。
@@ -74,6 +74,18 @@ npx skills@latest add int2t05/engineering-skills
 
 **`frontend-design`** —— 有辨识度的生产级 UI：色彩、字体、布局、交互状态。
 - 触发："frontend", "UI", "design", "界面设计", "前端设计".
+
+**`image-to-code`** —— 图片优先的前端管线——先生成设计参考图，深度分析，再实现代码忠实还原。
+- 触发："image to code", "设计图转代码", "图片实现", "从设计图实现".
+
+**`brandkit`** —— 品牌识别图生成——logo 概念、身份板、配色、字体、mockup，面向高端品牌系统。
+- 触发："brand kit", "品牌识别", "logo 设计", "品牌系统".
+
+**`imagegen-web`** —— 网站设计参考图生成——每个 section 一张横向图，面向落地页和营销站的高端艺术方向。只出图，不写代码。
+- 触发："web design image", "website mockup", "landing page image", "section image", "网站设计图", "网页参考图", "落地页配图".
+
+**`imagegen-mobile`** —— 移动端 app 屏幕与流程图生成——iOS/Android/跨平台概念，带手机 mockup 框。只出图，不写代码。
+- 触发："mobile design image", "app screen image", "mobile mockup", "app flow", "移动端设计图", "app 屏幕图", "手机界面图", "移动端流程图".
 
 **`prototype`** —— 一次性原型验证设计问题（逻辑用单 HTML，或可切换 UI 变体对比）。
 - 触发："prototype", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".

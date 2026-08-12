@@ -2,7 +2,7 @@
 
 > **Languages:** English | [中文](README.zh-CN.md)
 
-A Claude Code plugin — **33 engineering skills** organized by the software
+A Claude Code plugin — **37 engineering skills** organized by the software
 development lifecycle. One skill per phase of real work, from shaping a
 vague idea to shipping it and running it.
 
@@ -38,7 +38,7 @@ npx skills@latest add int2t05/engineering-skills
 - **Not sure which skill?** `/using-skills` routes the task to a phase.
 - **Planning:** uses the harness's built-in plan mode, not a custom skill.
 
-## Catalog — 33 skills by phase
+## Catalog — 37 skills by phase
 
 ### meta
 **`using-skills`** — Router. Maps incoming work to the right skill across the 9 phases.
@@ -79,6 +79,18 @@ npx skills@latest add int2t05/engineering-skills
 
 **`frontend-design`** — Distinctive, production-grade UI: color, typography, layout, interaction states.
 - Triggers: "frontend", "UI", "design", "界面设计", "前端设计".
+
+**`image-to-code`** — Image-first frontend pipeline — generate design reference images, analyze them deeply, then implement code to match.
+- Triggers: "image to code", "设计图转代码", "图片实现", "从设计图实现".
+
+**`brandkit`** — Brand identity image generation — logo concepts, identity boards, color palettes, typography, mockups for premium brand systems.
+- Triggers: "brand kit", "品牌识别", "logo 设计", "品牌系统".
+
+**`imagegen-web`** — Website design reference image generation — one horizontal image per section, premium art direction for landing pages and marketing sites. Images only, never code.
+- Triggers: "web design image", "website mockup", "landing page image", "section image", "网站设计图", "网页参考图", "落地页配图".
+
+**`imagegen-mobile`** — Mobile app screen and flow image generation — iOS/Android/cross-platform concepts with phone mockup framing. Images only, never code.
+- Triggers: "mobile design image", "app screen image", "mobile mockup", "app flow", "移动端设计图", "app 屏幕图", "手机界面图", "移动端流程图".
 
 **`prototype`** — Throwaway prototype to answer a design question (single HTML for logic, or toggleable UI variants).
 - Triggers: "prototype", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".

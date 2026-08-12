@@ -5,12 +5,12 @@ Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
 `AGENTS.md`. Adapted from the mattpocock invocation model.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
-> assets are the 33 skills under `skills/`; this file routes work to them and loads the
+> assets are the 37 skills under `skills/`; this file routes work to them and loads the
 > shared discipline.
 
 ## What this pack is
 
-33 engineering skills organized by the software development lifecycle, plus a meta router.
+37 skills organized by the software development lifecycle, including a meta router.
 Each skill is a folder `skills/<phase>/<name>/SKILL.md` with YAML frontmatter (`name`,
 `description`, optional `disable-model-invocation`) and four sections: When to use / Steps /
 Verify / References. Encyclopedic data lives in per-skill `references/` (progressive
@@ -44,6 +44,10 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | design | `api-design` | REST/GraphQL contracts, "接口设计", "API 契约" |
 | design | `codebase-design` | deep modules, "深化模块", "重构架构" |
 | design | `frontend-design` | UI, "界面设计", "前端设计", production-grade frontend |
+| design | `image-to-code` | "设计图转代码", "图片实现", image-first frontend pipeline |
+| design | `brandkit` | "品牌识别", "logo 设计", brand identity images |
+| design | `imagegen-web` | "网站设计图", "网页参考图", web section images |
+| design | `imagegen-mobile` | "移动端设计图", "app 屏幕图", mobile screen/flow images |
 | design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |
 | develop | `implement` | implement spec/tickets, "实现", "编码", "改这个配置", "搭项目骨架" |
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |

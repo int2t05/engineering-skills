@@ -34,6 +34,10 @@ Task arrives
     │   ├── API contracts / interface design? ──────────→ api-design
     │   ├── Module shape / seams / depth? ──────────────→ codebase-design
     │   ├── UI / component design? ─────────────────────→ frontend-design
+    │   ├── Design ref images, then implement to match? → image-to-code
+    │   ├── Brand identity / logo / identity board? ────→ brandkit
+    │   ├── Web design reference images (per section)? ─→ imagegen-web
+    │   ├── Mobile screen / flow images? ───────────────→ imagegen-mobile
     │   └── Throwaway code to answer a design question? → prototype
     │
     ├── 04 DEVELOP — writing the code

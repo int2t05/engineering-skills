@@ -4,12 +4,12 @@
     "name": "int2t05",
     "url": "https://github.com/int2t05"
   },
-  "description": "int2t05's engineering-skills plugin — 33 unified SDLC skills with shared engineering principles injected at session start.",
+  "description": "int2t05's engineering-skills plugin — 37 unified SDLC skills with shared engineering principles injected at session start.",
   "plugins": [
     {
       "name": "engineering-skills",
       "source": "./",
-      "description": "Unified engineering skills pack — 33 skills across the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start.",
+      "description": "Unified engineering skills pack — 37 skills across the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start.",
       "category": "engineering",
       "keywords": [
         "engineering",

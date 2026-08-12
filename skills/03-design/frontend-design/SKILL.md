@@ -36,6 +36,8 @@ Match implementation complexity to the vision: maximalist designs need elaborate
 designs need restraint and precision. NEVER use generic AI aesthetics — overused fonts (Inter,
 Roboto, Arial), purple gradients on white, rounded-2xl everything, stock card grids, lorem ipsum.
 
+- Load [references/brief-inference.md](references/brief-inference.md) for the design-read protocol (infer page kind, audience, vibe, constraints before coding) and the three dials (DESIGN_VARIANCE, MOTION_INTENSITY, VISUAL_DENSITY) that gate layout, motion, and density
+
 ### 2. Pick a style
 
 Choose a concrete visual style that fits the product type and tone. Consistency across all pages is
@@ -65,6 +67,9 @@ Every interactive element needs all states: default, hover, focus, pressed, disa
 Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values.
 
 - Load [references/ux-guidelines.md](references/ux-guidelines.md) for touch-target sizes, animation timing, focus rings, reduced-motion, spacing scale, and the pre-delivery checklist
+- Load [references/motion-system.md](references/motion-system.md) for the motion token scale (duration, easing, distance), choreography patterns (stagger, shared-element, cross-fade), and canonical scroll-animation skeletons (sticky-stack, horizontal-pan, scroll-reveal)
+- Load [references/design-tokens.md](references/design-tokens.md) for token tiers (global → semantic → component), naming convention, and scales (spacing, radius, elevation, z-index, typography)
+- Load [references/component-anatomy.md](references/component-anatomy.md) for part-based design (compound components, slots), variant architecture (orthogonal axes mapped to tokens), and composition patterns
 
 ### 6. Implement and verify
 
@@ -93,11 +98,18 @@ Then run the verification below.
 ipsum copy; oversized uniform padding; stock card grids; shadow-heavy layering; hardcoded hex in
 components; text under 12px; gray-on-gray; color as sole state indicator.
 
+- Load [references/anti-tells.md](references/anti-tells.md) for the full forbidden-patterns list and the pre-flight check matrix — run every box before delivering
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [references/styles.md](references/styles.md) — 18 UI styles with effect specs (shadows, blur, radius)
+- [references/styles.md](references/styles.md) — 21 UI styles with effect specs (shadows, blur, radius)
 - [references/palettes.md](references/palettes.md) — 12 palette directions by product type
 - [references/font-pairings.md](references/font-pairings.md) — 31 font pairings across 10 personality categories
 - [references/ux-guidelines.md](references/ux-guidelines.md) — 232 UX guidelines across 10 priority categories + pre-delivery checklist
 - [references/apple-hig.md](references/apple-hig.md) — Apple HIG routing table + quick-reference specs
+- [references/brief-inference.md](references/brief-inference.md) — design-read protocol + 3 dials (variance, motion, density) + design-system selection map
+- [references/anti-tells.md](references/anti-tells.md) — forbidden AI patterns + pre-flight check matrix
+- [references/motion-system.md](references/motion-system.md) — motion token scale, easing catalog, choreography patterns, scroll-animation skeletons
+- [references/design-tokens.md](references/design-tokens.md) — token tiers, naming convention, scales (spacing, radius, elevation, z-index)
+- [references/component-anatomy.md](references/component-anatomy.md) — compound components, slot architecture, variant axes, composition patterns

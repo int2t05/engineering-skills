@@ -53,10 +53,18 @@
 | AI 上下文指令 | `CLAUDE.md` | `/init` 或 workflow-prompts 的 CLAUDE.md 生成提示词 |
 | 忽略规则 | `.gitignore` | 按 workflow-prompts 的 .gitignore 提示词 |
 
+## 图片型 skill（产图片，不写代码）
+
+| skill | 阶段 | 产物 | 作用 |
+|---|---|---|---|
+| `brandkit` | 03-design | 品牌识别图 | logo 概念/身份板/配色/字体/mockup |
+| `imagegen-web` | 03-design | 网站设计参考图 | 每 section 一张横向图，落地页/营销站艺术方向 |
+| `imagegen-mobile` | 03-design | 移动端屏幕/流程图 | iOS/Android 屏幕图 + 流程，带手机 mockup 框 |
+
 ## 不产 md 的 skill（产物是代码/行为）
 
 `implement` · `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `debugging` ·
 `simplify` · `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` ·
-`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype`
+`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code`
 
 这些 skill 的产物是代码、测试、提交、配置或行为变更，不强行加 md 产物。

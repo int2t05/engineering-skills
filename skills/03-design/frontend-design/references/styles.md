@@ -131,6 +131,31 @@ Pick one style per project and apply it consistently — don't mix flat and skeu
 - **Effects**: Layered shadows · gradient meshes · noise textures · overlap and diagonal flow.
 - **Radius**: Mixed, intentionally varied.
 
+### Soft / Agency
+- **Characteristics**: Haptic depth, cinematic spatial rhythm, obsessive micro-interactions, premium "expensive" feel. Double-Bezel nested card architecture (outer shell + inner core with concentric radius). Fluid island navigation (floating glass pill). Massive whitespace (`py-24` to `py-40`). Spring-physics motion.
+- **When to use**: Premium consumer brands, lifestyle/real estate, high-end agency portfolios, Awwwards-tier landing pages.
+- **Effects**: `backdrop-blur-2xl` · hairline borders (`ring-1 ring-white/10`) · inset highlights (`shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]`) · diffused ambient shadows · `ease-[cubic-bezier(0.32,0.72,0,1)]` motion.
+- **Radius**: Large and nested — outer `rounded-[2rem]`, inner `rounded-[calc(2rem-0.375rem)]` for concentric curves.
+- **Fonts**: Geist, Clash Display, PP Editorial New, Plus Jakarta Sans (never Inter/Roboto/Arial).
+- **Icons**: Phosphor Light, Remix Line (ultra-thin strokes only).
+
+### Editorial Minimalist
+- **Characteristics**: Clean document-style interfaces, warm monochrome palette, typographic contrast, flat bento grids, muted pastel accents. No gradients, no heavy shadows. Notion/Linear-tier workspace aesthetic.
+- **When to use**: Workspace tools, documentation, SaaS dashboards, developer tools, editorial blogs.
+- **Effects**: No shadows (or ultra-diffuse < 0.05 opacity) · thin borders (`1px solid #EAEAEA`) · subtle navbar blur only.
+- **Radius**: Crisp — 8px or 12px maximum. No `rounded-full` for containers.
+- **Palette**: Warm bone/off-white canvas (`#F7F6F3`), off-black text (`#111111`), spot pastels for semantic accents (pale red/blue/green/yellow).
+- **Fonts**: 3-tier — sans-serif body (SF Pro Display, Geist Sans, Switzer), editorial serif headings (Lyon Text, Newsreader, Instrument Serif), monospace metadata (Geist Mono, JetBrains Mono).
+- **Icons**: Phosphor Bold/Fill, Radix UI Icons.
+
+### Industrial Brutalist
+- **Characteristics**: Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects (halftone, CRT scanlines, dithering).
+- **When to use**: Data-heavy dashboards, portfolios, editorial sites that need to feel like declassified blueprints or tactical telemetry.
+- **Effects**: Halftone filters · CRT scanlines · bitmap dithering · visible grid compartments · zero border-radius · ASCII framing (brackets, crosshairs, registration marks).
+- **Radius**: 0 — zero border-radius, uncompromising.
+- **Two modes** (pick one, never mix): Swiss Industrial Print (light mode, heavy sans-serif, newsprint substrate, aviation red accent) or Tactical Telemetry (dark mode, monospace dominance, phosphor glow, terminal green).
+- **Fonts**: Macro — Neue Haas Grotesk Black, Archivo Black (massive scale, tight tracking, uppercase). Micro — JetBrains Mono, IBM Plex Mono (small, generous tracking, uppercase). Textural — Playfair Display/EB Garamond sparingly, degraded.
+
 ## Anti-patterns (all styles)
 
 - Mixing flat and skeuomorphic randomly within one product
