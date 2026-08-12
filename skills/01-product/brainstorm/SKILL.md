@@ -14,7 +14,7 @@ building starts, switching costs lock in the wrong thing.
 
 - The ask is underspecified — missing who, why, what success looks like, or the binding constraint.
 - New feature, project, or "refine this idea" / "stress-test my thinking."
-- User says "brainstorm", "grill me", "interview me", or 头脑风暴.
+- User says "brainstorm", "grill me", "interview me", "refine this idea", "头脑风暴", "帮我打磨想法", or "盘问我".
 - You're tempted to silently fill ambiguous requirements before a spec exists.
 
 **Not for:** unambiguous asks ("rename this variable"), pure info requests, or when the
@@ -81,9 +81,11 @@ user has explicitly asked for speed over verification.
    confirmation, then hand off to the `spec` skill.
 
 **Output:** `ROADMAP.md` — product positioning, target users, core features, multi-version plan with
-per-version acceptance items. When discovery interviews ran (Step 3, `references/discovery-methods.md`),
-also produce `docs/research/interview.md` — consolidated user-interview findings (past behavior,
-workarounds, willingness to pay) that justify the roadmap.
+per-version acceptance items. Concise (mermaid-heavy); it is the project-wide view on main.
+Each version's detailed PRD/TECH/PLAN live under `docs/vX.Y/` on the version branch (see spec /
+architecture / breakdown Output). When discovery interviews ran (Step 3,
+`references/discovery-methods.md`), also produce `docs/research/interview.md` — consolidated
+user-interview findings (past behavior, workarounds, willingness to pay) that justify the roadmap.
 
 ## Verify
 

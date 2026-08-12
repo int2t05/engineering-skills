@@ -63,9 +63,13 @@ path. Skip ADRs for reversible or obvious decisions.
 - Each ADR: Context, Decision, Consequences (positive/negative/neutral), Alternatives Considered
 - Number sequentially: `docs/design/adr/0001-slug.md`
 
-**Output:** `docs/TECH.md` (architecture overview — diagram, components, NFRs, data layer)
-plus `docs/design/adr/NNNN-slug.md` for each significant decision. TECH.md is the overview;
-ADRs are the decision records — TECH.md references the ADRs it depends on.
+**Output:** Two layers:
+- `docs/TECH.md` — project-level architecture overview (diagram, components, NFRs, data layer),
+  concise (mermaid-heavy), on main.
+- `docs/vX.Y/tech.md` — the current version's detailed architecture, on the version branch.
+  Falls back to `docs/TECH.md` alone for single-version projects.
+Plus `docs/design/adr/NNNN-slug.md` for each significant decision (shared across versions).
+TECH.md is the overview; ADRs are the decision records — TECH.md references the ADRs it depends on.
 
 ### 5. Review with stakeholders
 

@@ -14,7 +14,7 @@ guessing.
 - Starting a new project, feature, or significant change.
 - Requirements are ambiguous or only exist as a vague idea.
 - The change touches multiple files or modules.
-- User says "write spec", "create prd", "spec out", "to spec", or 写规格.
+- User says "write spec", "create prd", "spec out", "to spec", "写需求文档", "写规格", or "需求文档".
 
 **Not for:** single-line fixes, typos, or changes where requirements are unambiguous; changes needing design decisions only — use `architecture` for system design.
 
@@ -36,10 +36,13 @@ guessing.
    retention, A/B testing) — load `references/metrics-frameworks.md`. For feature
    prioritization (RICE, Kano, MoSCoW) — load `references/prioritization.md`.
 
-4. **Publish.** Save to `docs/PRD.md` (project-level requirements, the shared source of
-   truth). For a feature-scoped spec, append the feature slug: `docs/PRD-<feature>.md`.
-   Commit it — it's a living document, not a one-time artifact. Update it when decisions or
-   scope change; reference it in PRs.
+4. **Publish.** Two layers:
+   - `docs/PRD.md` — project-level requirements, concise (mermaid-heavy), on main. The shared
+     source of truth for the whole project.
+   - `docs/vX.Y/prd.md` — the current version's detailed PRD (user stories, full acceptance
+     criteria, rules, boundaries), on the version branch. Falls back to `docs/PRD.md` alone for
+     single-version projects.
+   Commit both — they are living documents. Update when decisions or scope change; reference in PRs.
 
 5. **User review gate.** Ask the user to review the written spec before any implementation.
    If they request changes, make them and re-verify. Only proceed once approved.

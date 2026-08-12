@@ -1,6 +1,6 @@
 ---
 name: brandkit
-description: brand identity image generation — logo concepts, identity boards, color palettes, typography, mockups for premium brand systems. Triggers on "brand kit", "品牌识别", "logo 设计", "品牌系统".
+description: brand identity image generation — logo concepts, identity boards, color palettes, typography, mockups for premium brand systems. Triggers on "brand kit", "品牌识别", "logo 设计", "品牌系统", "品牌设计".
 ---
 
 # Brand Kit

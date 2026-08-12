@@ -59,22 +59,23 @@ flowchart LR
 
 ## 正式文档结构（docs/ 只保留这 5 类，其他合并或删除）
 
-| 文档               | 职责           | 风格                          |
-| ------------------ | -------------- | ----------------------------- |
-| `docs/PRD.md`    | 需求           | mermaid 为主，文字简洁        |
-| `docs/TECH.md`   | 架构           | mermaid 为主，文字简洁        |
-| `docs/API/*.md`  | API 契约       | 详细请求/响应                 |
-| `docs/FLOW/*.md` | 业务流程       | mermaid 流程 + 详细数据流描述 |
-| `docs/TODO.md`   | 不足与未来方向 | 按业务合并                    |
+| 文档 | 职责 | 风格 |
+|---|---|---|
+| `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | 需求 | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | 架构 | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/API/*.md` | API 契约 | 详细请求/响应（跨版本共享） |
+| `docs/FLOW/*.md` | 业务流程 | mermaid 流程 + 详细数据流描述（跨版本共享） |
+| `docs/TODO.md` | 不足与未来方向 | 按业务合并（项目级） |
 
-辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/strategy.md`、`docs/research/interview.md`）是 PRD 输入，上线前清理。
+辅助文档：`ROADMAP.md`（产品定位/多版本/验收项，简洁全局视图）、`docs/PLAN.md`（+ `docs/vX.Y/plan.md`，实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/strategy.md`、`docs/research/interview.md`）是 PRD 输入，上线前清理。
 
 ## 命名规则
 
-- **全大写 = 项目级正式文档**（docs/ 根，单文件）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。
-- **全大写目录 = 多文件集合**（docs/ 根）：`docs/API/`、`docs/FLOW/`。
-- **阶段目录 = 中间产物按阶段归类**：`docs/research/`（调研类）、`docs/design/`（设计类）。阶段目录内的文件沿用大小写规则——全大写表示该阶段主文档（如 `docs/design/DESIGN.md`），小写表示中间产物（如 `docs/research/competitor.md`）。
-- `docs/design/adr/` = 架构/领域决策记录（ADR），architecture 与 domain-modeling 共享。
+- **全大写 = 项目级正式文档**（docs/ 根，单文件，main 分支）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。简洁、多 mermaid，是整个项目的视图。
+- **全大写目录 = 多文件集合**（docs/ 根，跨版本共享）：`docs/API/`、`docs/FLOW/`。
+- **版本目录 = 该版本的详细规格**（`docs/vX.Y/`，版本分支）：`docs/vX.Y/prd.md`、`docs/vX.Y/tech.md`、`docs/vX.Y/plan.md`（小写=详细）。以版本号为开发基准。单版本项目自动回退 `docs/` 根，不建版本目录。
+- **阶段目录 = 中间产物按阶段归类**（项目级，跨版本共享）：`docs/research/`（调研类）、`docs/design/`（设计类）。阶段目录内的文件沿用大小写规则——全大写表示该阶段主文档（如 `docs/design/DESIGN.md`），小写表示中间产物（如 `docs/research/competitor.md`）。
+- `docs/design/adr/` = 架构/领域决策记录（ADR），architecture 与 domain-modeling 共享，跨版本。
 - `docs/security-report.md` 暂留 docs/ 根（verify 类未开阶段目录）。
 - 每个文档型 skill 的产物路径已固化在其 SKILL.md 的 `**Output:**` 声明里。
 
@@ -88,12 +89,12 @@ flowchart LR
 ### 用户访谈验证 — docs/research/interview.md（ROADMAP/PRD 参考）
 
 ```
-/brainstorm
 用 Mom Test 方法访谈目标用户：问过去行为不问未来意见，听<20%。5 步：分群→问近期具体经历→问目标与障碍→问替代方案→验证付费意愿。
 汇总发现到 docs/research/interview.md（用户原话、行为、痛点、付费意愿），作 ROADMAP/PRD 输入。
+访谈法参考 brainstorm 技能的 references/discovery-methods.md（Mom Test 5 步、JTBD switching interview）。
 ```
 
-### 深度调研（带引用）— docs/research/YYYY-MM-DD-<slug></slug>.md（粗需求参考）
+### 深度调研（带引用）— docs/research/YYYY-MM-DD-`<slug>`.md（粗需求参考）
 
 ```
 /research
@@ -125,13 +126,13 @@ flowchart LR
 
 ```
 /brainstorm
-我想做一个【一句话想法】。请一次问一个问题，盘问我，把模糊想法打磨成具体提案，直到可以写 spec。
+基于上方用户访谈、市场调研、技术选型、深度调研、开源策略的发现，盘问我，把一句话想法打磨成具体产品提案，产出 ROADMAP.md。
 ```
 
 ```
-输出 ROADMAP.md：产品定位、目标用户、主要功能、icon。
-设置多个版本，每个版本列出产品侧的验收项。每个版本可有一组 prd/tech 等，用分支管理。遵循纯净原则。
-综合上方用户访谈、市场调研、技术选型、深度调研、开源策略的发现，形成可执行的产品定位。
+输出 ROADMAP.md：产品定位、目标用户、主要功能、icon。简洁、多 mermaid，是整个项目的全局视图，进 main 分支。
+设置多个版本，每个版本列出产品侧的验收项。每个版本的详细 prd/tech/plan 放 docs/vX.Y/（小写，版本分支），以版本号为开发基准。
+遵循纯净原则。
 ```
 
 ---
@@ -234,23 +235,24 @@ flowchart LR
 先生成设计参考图，深度分析每张图的布局/配色/字体/交互，再实现代码忠实还原。图片优先管线，非纯代码实现（纯代码用 /frontend-design）。
 ```
 
-### 需求文档 PRD — docs/PRD.md（本阶段最重要产物之一）
+### 需求文档 PRD — docs/PRD.md（项目级，简洁）+ docs/vX.Y/prd.md（版本级，详细）
 
 ```
 /spec
-输出 docs/PRD.md，中文。直接问我详细的问题，直到需求具备一致性和明确性。
-尽量使用 mermaid 图。不需要版本号。成熟风格，明确简洁。
+项目级 docs/PRD.md：简洁、多 mermaid，整个项目的需求视图，进 main 分支。
+当前版本 docs/vX.Y/prd.md：详细（用户故事、完整验收准则、规则、边界），进版本分支。
+单版本项目回退到 docs/PRD.md 一份即可。中文。直接问我详细的问题，直到需求具备一致性和明确性。
 ```
 
 定稿流程：初稿 PRD → 阶段 0 的市场/技术/深度调研 → 人+AI 审计完善不明确需求 → `/spec` 输出最终 PRD。
 
-### 架构文档 TECH — docs/TECH.md（本阶段最重要产物，最后）
+### 架构文档 TECH — docs/TECH.md（项目级，简洁）+ docs/vX.Y/tech.md（版本级，详细）
 
 ```
 /architecture
-输出 docs/TECH.md，中文。直接问我详细的问题，直到一致性和明确性。
-尽量使用 mermaid 图。不需要版本号。成熟风格。包含 ADR 与架构图。
-综合上方领域模型、数据模型、API、代码库审计等设计产物，形成最终架构。
+项目级 docs/TECH.md：简洁、多 mermaid，整个项目的架构视图，进 main 分支。
+当前版本 docs/vX.Y/tech.md：详细架构，进版本分支。单版本项目回退到 docs/TECH.md 一份即可。
+包含 ADR 与架构图。综合上方领域模型、数据模型、API、代码库审计等设计产物，形成最终架构。
 ```
 
 ---
@@ -281,12 +283,13 @@ flowchart LR
 审计并更新所有文档，确保与 PRD/TECH 一致。明确简洁，不需要版本号，不需要审计报告，确保明确性和一致性。
 ```
 
-### 实现计划 PLAN — docs/PLAN.md（本阶段最重要产物，最后）
+### 实现计划 PLAN — docs/PLAN.md（项目级，简洁）+ docs/vX.Y/plan.md（版本级，详细）
 
 ```
 /breakdown
-输出 docs/PLAN.md，中文。直接问我详细的问题，直到一致性和明确性。
-不需要包含实际代码，只说明要编写的代码文件和对应的单元测试代码。
+项目级 docs/PLAN.md：简洁、多 mermaid，整个项目的计划视图，进 main 分支。
+当前版本 docs/vX.Y/plan.md：详细 ticket 拆解（标题、blocked by、交付物、按阻塞排序），进版本分支。
+单版本项目回退到 docs/PLAN.md 一份即可。中文。直接问我详细的问题，直到一致性和明确性。
 第一版优先搭好模板职责和项目架构，不追求细节完成，追求整体系统结构。
 综合 PRD/TECH 及上方就绪的项目环境，形成可执行的开发计划。
 ```
@@ -524,7 +527,7 @@ flowchart LR
 把当前工作交接给下一个会话/agent：上下文、决策、下一步。输出交接简报。
 ```
 
-### 事故响应 — docs/postmortem/YYYY-MM-DD-<slug></slug>.md（本阶段最重要产物，最后）
+### 事故响应 — docs/postmortem/YYYY-MM-DD-`<slug>`.md（本阶段最重要产物，最后）
 
 ```
 /incident-response
@@ -660,7 +663,7 @@ GitHub About + Topics 用 gh 配置。
 要有示例；要有实践项（不能编造，在网上找相应实践项，必须有好的对照组建立评判标准）；要有充分参考资料。
 ```
 
-### 调研报告 — docs/research/YYYY-MM-DD-<slug></slug>.md
+### 调研报告 — docs/research/YYYY-MM-DD-`<slug>`.md
 
 ```
 /research

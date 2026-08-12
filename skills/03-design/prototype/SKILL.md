@@ -1,6 +1,6 @@
 ---
 name: prototype
-description: Use when a design question is best answered by a throwaway prototype — a single shareable HTML file for state/logic, or several toggleable UI variations to compare. Triggers on "prototype", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".
+description: Use when a design question is best answered by a throwaway prototype — a single shareable HTML file for state/logic, or several toggleable UI variations to compare. Triggers on "prototype", "throwaway", "mockup", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".
 ---
 
 # Prototype

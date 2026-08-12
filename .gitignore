@@ -1,6 +1,3 @@
 # Archive: upstream source repos kept locally for provenance, not published.
 # Browse them via the upstream GitHub links in README.md instead.
 archive/
-
-# SDD process scratch — ledger, dispatch briefs, review packages. Not plugin content.
-.superpowers/

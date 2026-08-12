@@ -48,9 +48,12 @@ until the way to the destination is clear.
    by, what it delivers. Ask: granularity right? Blocking edges correct? Any
    tickets to merge or split? Iterate until approved.
 
-6. **Publish.** Write the plan to `docs/PLAN.md` (project-level plan). Tickets are
-   sections within the plan — title, blocked by, what it delivers — ordered blockers
-   first. Work the **frontier**: any ticket whose blockers are all done.
+6. **Publish.** Two layers:
+   - `docs/PLAN.md` — project-level plan, concise (mermaid-heavy), on main.
+   - `docs/vX.Y/plan.md` — the current version's detailed ticket breakdown (title, blocked by,
+     what it delivers, ordered blockers first), on the version branch. Falls back to
+     `docs/PLAN.md` alone for single-version projects.
+   Work the **frontier**: any ticket whose blockers are all done.
 
 ### Mode 2 — Decision map (work too large for one session)
 

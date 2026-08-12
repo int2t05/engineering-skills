@@ -131,3 +131,4 @@ After a database schema migration:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
+- [references/dependency-upgrade.md](references/dependency-upgrade.md) — changelog/migration-guide reading, breaking-change triage, branch-based upgrade, root-cause fix per break

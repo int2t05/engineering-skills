@@ -1,6 +1,6 @@
 ---
 name: oss-strategy
-description: Use when deciding open source strategy — business model, COSS, open core, commercialization, or growth. Triggers on "open source strategy", "OSS 策略", "DevHunt", "开源策略", "开源商业模式".
+description: Use when deciding open source strategy — business model, COSS, open core, commercialization, or growth. Triggers on "open source strategy", "open source to paid", "open source business model", "OSS 策略", "DevHunt", "开源策略", "开源商业模式".
 ---
 
 # Open Source Strategy
@@ -18,7 +18,7 @@ enterprises use open source; 33% are increasing usage.
 - User wants open source strategy, OSS commercialization, or open core / COSS business model.
 - Deciding between open core, managed service, or support-first monetization.
 - Planning open source growth: community building, stars strategy, DevHunt launch.
-- User says "open source strategy", "OSS 策略", "open source to paid", or "open source business model".
+- User says "open source strategy", "open source to paid", "open source business model", "OSS 策略", "DevHunt", "开源策略", or "开源商业模式".
 
 **Not for:** GitHub README/topics/About beautification — that's `08-ship/oss-polish`.
 

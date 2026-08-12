@@ -134,6 +134,6 @@ description).
 
 ## References
 
-- [engineering-principles](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares.
-- [Badge reference](references/badges.md) — shields.io templates by category (languages, hosting, license, status, custom).
-- [Scripts](references/scripts/) — `collect-site-metrics.py` (README metrics), `validate-readme.py` (README linter, scores 0–100), `github_fetcher.py` + `readme_fetcher.py` + `config.py` (trending-repo research via GitHub API).
+- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares.
+- [references/badges.md](references/badges.md) — shields.io templates by category (languages, hosting, license, status, custom).
+- [references/scripts/](references/scripts/) — `collect-site-metrics.py` (README metrics), `validate-readme.py` (README linter, scores 0–100), `github_fetcher.py` + `readme_fetcher.py` + `config.py` (trending-repo research via GitHub API).

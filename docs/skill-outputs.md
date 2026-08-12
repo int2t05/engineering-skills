@@ -11,9 +11,9 @@
 
 | skill | 阶段 | 产物 | 路径 | 命名 | 作用 |
 |---|---|---|---|---|---|
-| `spec` | 01-product | 需求文档 | `docs/PRD.md` | 大写 | 项目级需求，shared source of truth |
-| `architecture` | 03-design | 架构总览 | `docs/TECH.md` | 大写 | 系统架构图、组件、NFR、数据层 |
-| `architecture` | 03-design | 决策记录 | `docs/design/adr/NNNN-slug.md` | 阶段目录 | 每项重大架构决策的 ADR |
+| `spec` | 01-product | 需求文档 | `docs/PRD.md`（项目级，简洁，main）+ `docs/vX.Y/prd.md`（版本级，详细，版本分支） | 大写+小写 | 项目级 shared source of truth；版本级详细 PRD |
+| `architecture` | 03-design | 架构总览 | `docs/TECH.md`（项目级，简洁，main）+ `docs/vX.Y/tech.md`（版本级，详细，版本分支） | 大写+小写 | 系统架构图、组件、NFR、数据层 |
+| `architecture` | 03-design | 决策记录 | `docs/design/adr/NNNN-slug.md` | 阶段目录 | 每项重大架构决策的 ADR（跨版本共享） |
 | `domain-modeling` | 03-design | 统一语言 | `CONTEXT.md` | 大写 | 项目术语表（根目录） |
 | `domain-modeling` | 03-design | 决策记录 | `docs/design/adr/NNNN-slug.md` | 阶段目录 | 领域建模产生的 ADR（共享 design/adr/） |
 | `api-design` | 03-design | API 契约 | `docs/API/*.md` | 大写目录 | 每端点组一份，请求/响应/错误/示例 |
@@ -21,7 +21,7 @@
 | `frontend-design` | 03-design | 前端审计 | `docs/design/frontend-audit.md` | 阶段目录 | 审计现有前端的优化建议 |
 | `schema-design` | 03-design | 数据模型文档 | `docs/design/SCHEMA.md` | 阶段目录 | ER 图 + 实体/索引/约束/分区规划 |
 | `prompt-engineering` | 03-design | 提示词设计文档 | `docs/design/PROMPT.md` | 阶段目录 | prompt 架构 + 模型选型 + eval + guardrails |
-| `breakdown` | 04-develop | 实现计划 | `docs/PLAN.md` | 大写 | ticket 拆解作章节，blocking edges |
+| `breakdown` | 04-develop | 实现计划 | `docs/PLAN.md`（项目级，简洁，main）+ `docs/vX.Y/plan.md`（版本级，详细，版本分支） | 大写+小写 | ticket 拆解作章节，blocking edges |
 | `code-review` | 07-verify | 待办清单 | `docs/TODO.md` | 大写 | 代码↔TODO 双向校验的项目级待办 |
 | `security-review` | 07-verify | 安全报告 | `docs/security-report.md` | 小写 | 按严重度的安全发现 + 修复/接受理由 |
 | `incident-response` | 09-operate | 复盘报告 | `docs/postmortem/YYYY-MM-DD-<slug>.md` | 阶段目录 | 无指责复盘：时间线/影响/根因/行动项 |
@@ -46,11 +46,16 @@
 
 | 文档 | 产出 skill | 风格 |
 |---|---|---|
-| `docs/PRD.md` | spec | mermaid 为主，文字简洁 |
-| `docs/TECH.md` | architecture | mermaid 为主，文字简洁 |
-| `docs/API/*.md` | api-design | 详细请求/响应 |
-| `docs/FLOW/*.md` | 跨任务产物 | mermaid 流程 + 详细数据流描述 |
-| `docs/TODO.md` | code-review | 按业务合并 |
+| `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | spec | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | architecture | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/API/*.md` | api-design | 详细请求/响应（跨版本共享） |
+| `docs/FLOW/*.md` | 跨任务产物 | mermaid 流程 + 详细数据流描述（跨版本共享） |
+| `docs/TODO.md` | code-review | 按业务合并（项目级） |
+
+> **版本分层规则**：ROADMAP.md 是项目全局视图（简洁，多版本+验收项，main）。
+> PRD/TECH/PLAN 分两层——大写项目级（`docs/PRD.md` 等，简洁多 mermaid，main 分支）+
+> 小写版本级（`docs/vX.Y/prd.md` 等，详细，版本分支）。单版本项目自动回退 `docs/` 根，
+> 不建版本目录。API/FLOW/TODO/research 跨版本共享，不重复。
 
 ## 跨任务产物（非 skill 直接产出，工作流约定）
 

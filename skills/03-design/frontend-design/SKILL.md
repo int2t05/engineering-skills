@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Use when building web components, pages, or applications with distinctive, production-grade design quality — color, typography, layout, interaction states, and platform conventions. Triggers on "frontend", "UI", "design", "界面设计", "前端设计".
+description: Use when building web components, pages, or applications with distinctive, production-grade design quality — color, typography, layout, interaction states, and platform conventions. Triggers on "frontend", "UI design", "design", "组件设计", "界面设计", "前端设计", "视觉风格".
 ---
 
 # Frontend Design
