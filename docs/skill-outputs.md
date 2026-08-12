@@ -1,7 +1,7 @@
 # Skill 产物矩阵
 
-> 每个产出 markdown 文档的 skill 的固定产物路径。产物路径已固化在各 skill 的 SKILL.md
-> `**Output:**` 声明里；本表是速查视图。
+> 每个产出 markdown 文档的 skill 的固定产物路径。产物路径在各 skill 的 SKILL.md 里声明
+>（`**Output:**` 标记或 Steps 散文）；本表是速查视图。
 >
 > 命名规则：**全大写** = 项目级正式文档（docs/ 根，单文件）；**全大写目录** = 多文件集合
 >（docs/ 根）；**阶段目录** = 中间产物按阶段归类（`docs/research/`、`docs/design/`），
@@ -32,6 +32,7 @@
 | `oss-polish` | 08-ship | 仓库摘要 | `REPOSITORY_SUMMARY.md` | 大写 | 架构/组件/技术/数据流 |
 | `oss-polish` | 08-ship | 叙事史 | `THE_STORY_OF_THIS_REPO.md` | 大写 | commit 历史叙事 |
 | `performance` | 05-tune | 性能台账 | `PERF.md`（可选） | 大写 | 尝试记录（kept + reverted），防重复踩坑 |
+| `load-testing` | 06-test | 容量报告 | `docs/CAPACITY.md`（可选） | 大写 | 容量上限/瓶颈/自动伸缩验证/行动项 |
 | `documentation-audit` | 09-operate | 同步现有 5 类 | 不产新文件 | — | 把 prd/tech/todo/api/flow 同步到代码 |
 | `handoff` | 09-operate | 交接简报 | OS 临时目录 | — | 给下一会话的 context/决策/下一步 |
 
@@ -68,6 +69,6 @@
 
 `implement` · `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `debugging` ·
 `simplify` · `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` ·
-`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code` · `i18n` · `load-testing`
+`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code` · `i18n` · `oss-strategy` · `codebase-design`
 
 这些 skill 的产物是代码、测试、提交、配置或行为变更，不强行加 md 产物。

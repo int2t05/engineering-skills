@@ -2,7 +2,7 @@
 
 Universal entry point for AI coding agents working with this skill pack — Claude Code,
 Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
-`AGENTS.md`. Adapted from the mattpocock invocation model.
+`AGENTS.md`.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
 > assets are the 42 skills under `skills/`; this file routes work to them and loads the

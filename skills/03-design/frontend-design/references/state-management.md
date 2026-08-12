@@ -27,7 +27,7 @@ copy server data into a global store "for convenience" — it immediately goes s
 ## 2. Server-state caching
 
 Use a dedicated cache library (React Query / SWR / TanStack Query / Apollo) for anything fetched
-from the backend. They solve problems手-builders always get wrong:
+from the backend. They solve problems hand-builders always get wrong:
 
 - **Deduplication:** multiple components requesting the same key get one fetch
 - **Invalidation:** `invalidateQueries` after a mutation, not manual refetch orchestration

@@ -16,7 +16,7 @@ liability that is expensive to fix later.
 - Designing entities and relationships for a new feature or bounded context
 - Choosing normalization level, indexing strategy, or partitioning for a new model
 - Reviewing a proposed schema for correctness, performance, or future evolution
-- Triggers on "data model", "schema design", "database design", "ER model", "数据模型", "表结构设计"
+- Triggers on "data model", "schema design", "database design", "ER model", "数据模型", "表结构设计", "数据库设计"
 
 **Not for:** choosing the datastore type (use `architecture`); ubiquitous-language glossary (use
 `domain-modeling`); API request/response shapes (use `api-design`); changing an existing schema

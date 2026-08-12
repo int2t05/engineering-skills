@@ -16,7 +16,7 @@ validation, a distinct discipline from reactive optimization.
 - After a major change: new endpoint, architecture shift, dependency swap, data growth
 - Setting or validating SLOs (p99 latency, error rate under load)
 - Validating autoscaling rules and capacity headroom
-- Triggers on "load test", "stress test", "capacity", "k6", "Locust", "wrk", "压测", "压力测试"
+- Triggers on "load test", "stress test", "capacity", "k6", "Locust", "wrk", "压测", "压力测试", "容量测试"
 
 **Not for:** fixing a known performance bottleneck (use `performance`); unit/integration/e2e
 correctness tests (use `tdd` / `api-testing` / `e2e-testing`). Load testing answers "how much can
@@ -99,9 +99,9 @@ Record the capacity ceiling, the bottleneck, and the validated autoscaling behav
 action items for bottlenecks found (optimize, scale, or add backpressure). Set or adjust alert
 thresholds based on the measured saturation point — alert before the break, not at it.
 
-**Output:** load-test scripts under `test/` (committed, re-runnable) plus a capacity report
-documenting the ceiling, bottleneck, autoscaling validation, and action items. Pair with
-`observability` for the alert thresholds.
+**Output:** load-test scripts under `test/` (committed, re-runnable) plus `docs/CAPACITY.md`
+(optional) — the capacity ceiling, bottleneck, autoscaling validation, and action items. Pair
+with `observability` for the alert thresholds.
 
 ## Verify
 

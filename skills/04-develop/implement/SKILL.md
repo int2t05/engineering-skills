@@ -82,3 +82,4 @@ cycle before they stand.
 - [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — code-quality bar for the implementation.
 - [references/source-verification.md](references/source-verification.md) — source hierarchy, citation rules, retrieval safety.
 - [references/doubt-cycle.md](references/doubt-cycle.md) — the five-step doubt cycle and cross-model escalation.
+- [references/lightweight-changes.md](references/lightweight-changes.md) — small edits, renames, scaffolding that don't need a spec

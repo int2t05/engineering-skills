@@ -103,3 +103,4 @@ If `ENDPOINTS_DOCUMENTED < ENDPOINTS_IN_CODE`, some endpoints are still undocume
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, goal-driven execution)
 - [references/templates.md](references/templates.md) — OpenAPI skeleton, features-doc template, audit-report template
+- [references/writing-docs.md](references/writing-docs.md) — writing new documentation from scratch (README, feature docs, API docs)
