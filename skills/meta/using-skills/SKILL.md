@@ -21,13 +21,13 @@ skill. Every skill in this collection lives under one of nine phases.
 1. Pick the phase, then activate the entry-point skill it lists.
    - **01-product** — `brainstorm` · `spec` · `oss-strategy`
    - **02-research** — `research` · `market-research` · `tech-selection`
-   - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `prototype`
-   - **04-develop** — `implement` · `breakdown` · `context-engineering`
+   - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `brandkit` · `imagegen-web` · `imagegen-mobile` · `schema-design` · `prompt-engineering` · `prototype`
+   - **04-develop** — `implement` · `breakdown` · `context-engineering` · `i18n`
    - **05-tune** — `performance` · `simplify`
-   - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing`
+   - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `load-testing`
    - **07-verify** — `code-review` · `debugging` · `security-review`
    - **08-ship** — `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` · `oss-polish`
-   - **09-operate** — `observability` · `documentation-audit` · `handoff`
+   - **09-operate** — `observability` · `documentation-audit` · `handoff` · `incident-response`
 
 2. Disambiguate with three questions:
    - *Building new, or fixing what exists?* New → start at `01-product` (`brainstorm` / `spec`), not `04-develop`. Fixing → `07-verify` (`debugging`), then `06-test` (`tdd`) to lock the fix.
@@ -49,4 +49,4 @@ The routed skill's `## When to use` matches the task, and the skill activates vi
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill in this collection.
 - [references/phase-tree.md](references/phase-tree.md) — full ASCII decision tree by phase and task shape.
 
-External skill discovery (`npx skills find/add`) is out of scope — this router maps tasks to this collection's 33 internal skills only.
+External skill discovery (`npx skills find/add`) is out of scope — this router maps tasks to this collection's 42 internal skills only.

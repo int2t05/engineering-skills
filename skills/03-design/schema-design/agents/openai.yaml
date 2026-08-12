@@ -1,0 +1,3 @@
+interface:
+  display_name: "Schema Design"
+  short_description: "Designing a data model for a new feature or bounded context — entities, relationships…"

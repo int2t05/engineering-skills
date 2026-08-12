@@ -48,6 +48,7 @@ relational for transactions, document for flexible schemas, key-value for cachin
 metrics, graph for relationships, search for full-text.
 
 - Load `references/database-selection.md` for the database decision matrix
+- Load `references/error-resilience.md` for the cross-cutting error-handling strategy — throw-vs-return conventions, error propagation across layers, retry/circuit-breaker/backoff, idempotency under retry, fallback UX, error-to-user-message mapping
 - Produce a high-level architecture diagram (Mermaid preferred — see
   `${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md`)
 - Document failure modes and mitigations for each component
@@ -93,3 +94,4 @@ considerations; no ADRs for decisions that will be hard to reverse.
 - [references/database-selection.md](references/database-selection.md) — database types and decision matrix
 - [references/system-design.md](references/system-design.md) — full system design template
 - [references/adr-template.md](references/adr-template.md) — ADR format, example, and naming convention
+- [references/error-resilience.md](references/error-resilience.md) — throw-vs-return, error propagation, retry/circuit-breaker, idempotency, fallback UX, error-to-message mapping

@@ -1,7 +1,7 @@
 {
   "name": "engineering-skills",
-  "version": "1.2.0",
-  "description": "Unified engineering skills pack for Claude Code — 37 skills organized by the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start.",
+  "version": "1.3.0",
+  "description": "Unified engineering skills pack for Claude Code — 42 skills organized by the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start.",
   "author": {
     "name": "int2t"
   },
@@ -33,16 +33,20 @@
     "./skills/03-design/brandkit",
     "./skills/03-design/imagegen-web",
     "./skills/03-design/imagegen-mobile",
+    "./skills/03-design/schema-design",
+    "./skills/03-design/prompt-engineering",
     "./skills/03-design/prototype",
     "./skills/04-develop/implement",
     "./skills/04-develop/breakdown",
     "./skills/04-develop/context-engineering",
+    "./skills/04-develop/i18n",
     "./skills/05-tune/performance",
     "./skills/05-tune/simplify",
     "./skills/06-test/tdd",
     "./skills/06-test/test-generation",
     "./skills/06-test/api-testing",
     "./skills/06-test/e2e-testing",
+    "./skills/06-test/load-testing",
     "./skills/07-verify/code-review",
     "./skills/07-verify/debugging",
     "./skills/07-verify/security-review",
@@ -53,6 +57,7 @@
     "./skills/08-ship/oss-polish",
     "./skills/09-operate/observability",
     "./skills/09-operate/documentation-audit",
-    "./skills/09-operate/handoff"
+    "./skills/09-operate/handoff",
+    "./skills/09-operate/incident-response"
   ]
 }

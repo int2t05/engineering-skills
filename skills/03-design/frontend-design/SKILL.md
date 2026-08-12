@@ -70,6 +70,7 @@ Use consistent scales for spacing, radius, elevation, and icons — not arbitrar
 - Load [references/motion-system.md](references/motion-system.md) for the motion token scale (duration, easing, distance), choreography patterns (stagger, shared-element, cross-fade), and canonical scroll-animation skeletons (sticky-stack, horizontal-pan, scroll-reveal)
 - Load [references/design-tokens.md](references/design-tokens.md) for token tiers (global → semantic → component), naming convention, and scales (spacing, radius, elevation, z-index, typography)
 - Load [references/component-anatomy.md](references/component-anatomy.md) for part-based design (compound components, slots), variant architecture (orthogonal axes mapped to tokens), and composition patterns
+- Load [references/state-management.md](references/state-management.md) for the data-flow architecture beneath the UI — client vs server state, store selection, cache/query strategy, state machines, optimistic updates, derived state, normalization
 
 ### 6. Implement and verify
 
@@ -113,3 +114,4 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 - [references/motion-system.md](references/motion-system.md) — motion token scale, easing catalog, choreography patterns, scroll-animation skeletons
 - [references/design-tokens.md](references/design-tokens.md) — token tiers, naming convention, scales (spacing, radius, elevation, z-index)
 - [references/component-anatomy.md](references/component-anatomy.md) — compound components, slot architecture, variant axes, composition patterns
+- [references/state-management.md](references/state-management.md) — client vs server state, store/cache selection, state machines, optimistic updates, derived state, normalization

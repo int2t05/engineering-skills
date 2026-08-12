@@ -1,0 +1,3 @@
+interface:
+  display_name: "I18n"
+  short_description: "Internationalizing an application — message extraction, ICU/MessageFormat, locale…"

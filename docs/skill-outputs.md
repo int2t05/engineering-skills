@@ -19,9 +19,12 @@
 | `api-design` | 03-design | API 契约 | `docs/API/*.md` | 大写目录 | 每端点组一份，请求/响应/错误/示例 |
 | `frontend-design` | 03-design | UIUX 设计报告 | `docs/design/DESIGN.md` | 阶段目录 | 从零设计：设计系统/信息架构/交互/组件规划 |
 | `frontend-design` | 03-design | 前端审计 | `docs/design/frontend-audit.md` | 阶段目录 | 审计现有前端的优化建议 |
+| `schema-design` | 03-design | 数据模型文档 | `docs/design/SCHEMA.md` | 阶段目录 | ER 图 + 实体/索引/约束/分区规划 |
+| `prompt-engineering` | 03-design | 提示词设计文档 | `docs/design/PROMPT.md` | 阶段目录 | prompt 架构 + 模型选型 + eval + guardrails |
 | `breakdown` | 04-develop | 实现计划 | `docs/PLAN.md` | 大写 | ticket 拆解作章节，blocking edges |
 | `code-review` | 07-verify | 待办清单 | `docs/TODO.md` | 大写 | 代码↔TODO 双向校验的项目级待办 |
 | `security-review` | 07-verify | 安全报告 | `docs/security-report.md` | 小写 | 按严重度的安全发现 + 修复/接受理由 |
+| `incident-response` | 09-operate | 复盘报告 | `docs/postmortem/YYYY-MM-DD-<slug>.md` | 阶段目录 | 无指责复盘：时间线/影响/根因/行动项 |
 | `tech-selection` | 02-research | 技术对比 | `docs/research/competitor.md` | 阶段目录 | 技术选型对比矩阵 + 推荐（PRD 输入） |
 | `market-research` | 02-research | 市场调研 | `docs/research/market.md` | 阶段目录 | 用户原话/竞品/行业情报（PRD 输入） |
 | `research` | 02-research | 调研档案 | `docs/research/YYYY-MM-DD-<slug>.md` | 阶段目录 | 带引用的深度调研，累积存档 |
@@ -65,6 +68,6 @@
 
 `implement` · `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `debugging` ·
 `simplify` · `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` ·
-`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code`
+`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code` · `i18n` · `load-testing`
 
 这些 skill 的产物是代码、测试、提交、配置或行为变更，不强行加 md 产物。

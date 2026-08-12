@@ -1,0 +1,3 @@
+interface:
+  display_name: "Incident Response"
+  short_description: "A production incident is live or just resolved — severity classification, containment…"

@@ -38,6 +38,8 @@ Task arrives
     │   ├── Brand identity / logo / identity board? ────→ brandkit
     │   ├── Web design reference images (per section)? ─→ imagegen-web
     │   ├── Mobile screen / flow images? ───────────────→ imagegen-mobile
+    │   ├── Data model / schema / entities / indexes? ─→ schema-design
+    │   ├── Prompt / eval / LLM feature design? ────────→ prompt-engineering
     │   └── Throwaway code to answer a design question? → prototype
     │
     ├── 04 DEVELOP — writing the code
@@ -45,7 +47,8 @@ Task arrives
     │   ├── Small change / rename / scaffold (no spec)? → implement (lightweight-changes ref)
     │   ├── Break a spec into verifiable tasks? ────────→ breakdown
     │   ├── Load the right context first? ──────────────→ context-engineering
-    │   └── Explain code / codebase tour? ─────────────→ context-engineering (code-explanation ref)
+    │   ├── Explain code / codebase tour? ─────────────→ context-engineering (code-explanation ref)
+    │   └── Internationalize / multi-locale / RTL? ─────→ i18n
     │
     ├── 05 TUNE — improving working code
     │   ├── Measure then optimize hot paths? ───────────→ performance
@@ -55,7 +58,8 @@ Task arrives
     │   ├── Red-green, test first? ─────────────────────→ tdd
     │   ├── Generate tests for a feature? ──────────────→ test-generation
     │   ├── API / contract / integration tests? ────────→ api-testing
-    │   └── Browser / end-to-end flows? ────────────────→ e2e-testing
+    │   ├── Browser / end-to-end flows? ───────────────→ e2e-testing
+    │   └── Capacity / load / breaking point? ─────────→ load-testing
     │
     ├── 07 VERIFY — checking the diff
     │   ├── Review the diff for bugs / cleanups? ───────→ code-review
@@ -75,6 +79,7 @@ Task arrives
         ├── Logs / metrics / traces / alerts? ──────────→ observability
         ├── Docs drifted from code? ────────────────────→ documentation-audit
         ├── Write new docs from scratch? ───────────────→ documentation-audit (writing-docs ref)
+        ├── Production incident / on-call / postmortem? → incident-response
         └── Hand a session off to a colleague? ─────────→ handoff
 ```
 

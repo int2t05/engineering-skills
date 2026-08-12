@@ -5,12 +5,12 @@ Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
 `AGENTS.md`. Adapted from the mattpocock invocation model.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
-> assets are the 37 skills under `skills/`; this file routes work to them and loads the
+> assets are the 42 skills under `skills/`; this file routes work to them and loads the
 > shared discipline.
 
 ## What this pack is
 
-37 skills organized by the software development lifecycle, including a meta router.
+42 skills organized by the software development lifecycle, including a meta router.
 Each skill is a folder `skills/<phase>/<name>/SKILL.md` with YAML frontmatter (`name`,
 `description`, optional `disable-model-invocation`) and four sections: When to use / Steps /
 Verify / References. Encyclopedic data lives in per-skill `references/` (progressive
@@ -48,16 +48,20 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | design | `brandkit` | "品牌识别", "logo 设计", brand identity images |
 | design | `imagegen-web` | "网站设计图", "网页参考图", web section images |
 | design | `imagegen-mobile` | "移动端设计图", "app 屏幕图", mobile screen/flow images |
+| design | `schema-design` | "数据模型", "表结构设计", data model, schema design |
+| design | `prompt-engineering` | "提示词工程", "LLM 特性", prompt design, eval harness |
 | design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |
 | develop | `implement` | implement spec/tickets, "实现", "编码", "改这个配置", "搭项目骨架" |
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
 | develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
+| develop | `i18n` | "国际化", "本地化", "多语言", i18n, RTL, localization |
 | tune | `performance` | "性能优化", "性能调优", profile, bottlenecks |
 | tune | `simplify` | "too complex", "简化", "重构求清晰", refactor for clarity |
 | test | `tdd` | "测试驱动开发", "红绿重构", red-green-refactor |
 | test | `test-generation` | "生成测试", "补测试", generate test files |
 | test | `api-testing` | contract testing, "API 测试", "接口测试", REST/GraphQL |
 | test | `e2e-testing` | e2e, browser test, "端到端测试", "浏览器测试" |
+| test | `load-testing` | "压测", "压力测试", "容量测试", load/stress test, capacity |
 | verify | `code-review` | review before merge, "代码审查", "合并前审查" |
 | verify | `debugging` | bug, "调试", "排查 bug", "读日志", "排查错误日志" |
 | verify | `security-review` | security review, "安全审查", "安全审计", secrets, injection |
@@ -69,6 +73,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | operate | `observability` | logs, metrics, "可观测性", "监控告警", instrumentation |
 | operate | `documentation-audit` | docs drift, "写文档", "写 README", "文档化这个功能", sync docs |
 | operate | `handoff` | hand off to another session, "交接" (*user-typed*) |
+| operate | `incident-response` | "事故响应", "线上故障", "复盘", incident, on-call, postmortem |
 
 Several skills carry **sub-task references** for focused scenarios — the main
 `SKILL.md` links a `references/` file for depth:

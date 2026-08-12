@@ -1,0 +1,3 @@
+interface:
+  display_name: "Prompt Engineering"
+  short_description: "Designing prompts, evals, or LLM-powered features — prompt architecture, model selection…"

@@ -2,7 +2,7 @@
 
 > **Languages:** English | [中文](README.zh-CN.md)
 
-A Claude Code plugin — **37 engineering skills** organized by the software
+A Claude Code plugin — **42 engineering skills** organized by the software
 development lifecycle. One skill per phase of real work, from shaping a
 vague idea to shipping it and running it.
 
@@ -38,7 +38,7 @@ npx skills@latest add int2t05/engineering-skills
 - **Not sure which skill?** `/using-skills` routes the task to a phase.
 - **Planning:** uses the harness's built-in plan mode, not a custom skill.
 
-## Catalog — 37 skills by phase
+## Catalog — 42 skills by phase
 
 ### meta
 **`using-skills`** — Router. Maps incoming work to the right skill across the 9 phases.
@@ -92,6 +92,12 @@ npx skills@latest add int2t05/engineering-skills
 **`imagegen-mobile`** — Mobile app screen and flow image generation — iOS/Android/cross-platform concepts with phone mockup framing. Images only, never code.
 - Triggers: "mobile design image", "app screen image", "mobile mockup", "app flow", "移动端设计图", "app 屏幕图", "手机界面图", "移动端流程图".
 
+**`schema-design`** — Data model design for a new feature or bounded context — entities, relationships, normalization, indexing, constraints, partitioning.
+- Triggers: "data model", "schema design", "database design", "ER model", "数据模型", "表结构设计", "数据库设计".
+
+**`prompt-engineering`** — Designing prompts, evals, or LLM-powered features — prompt architecture, model selection, guardrails, eval harnesses.
+- Triggers: "prompt engineering", "LLM feature", "eval harness", "prompt design", "提示词工程", "LLM 特性", "prompt 设计".
+
 **`prototype`** — Throwaway prototype to answer a design question (single HTML for logic, or toggleable UI variants).
 - Triggers: "prototype", "compare layouts", "validate the interaction", "sketch out", "try this quickly", "build a demo", "原型", "试做", "试这个方案", "搭个快速 demo".
 
@@ -104,6 +110,9 @@ npx skills@latest add int2t05/engineering-skills
 
 **`context-engineering`** — Assemble the right files, definitions, and prior decisions before implementing, or explain existing code.
 - Triggers: "agent lacks context", "what files matter", "解释这段代码", "这个模块怎么工作", "带我过一遍代码库".
+
+**`i18n`** — Internationalizing an application — message extraction, ICU/MessageFormat, locale routing, RTL layout, pluralization, locale-aware formatting.
+- Triggers: "i18n", "localization", "l10n", "RTL", "国际化", "本地化", "多语言".
 
 ### 05-tune — optimize
 **`performance`** — Measure before optimizing: profile, identify bottlenecks, improve.
@@ -124,6 +133,9 @@ npx skills@latest add int2t05/engineering-skills
 
 **`e2e-testing`** — End-to-end/browser tests: user journeys, form submission, runtime UI verification (Playwright by default, or equivalent).
 - Triggers: "playwright", "e2e test", "browser test", "end-to-end", "端到端测试", "浏览器测试".
+
+**`load-testing`** — Capacity validation under load — generate realistic/adversarial traffic, find breaking points, characterize saturation, validate autoscaling.
+- Triggers: "load test", "stress test", "capacity", "k6", "Locust", "压测", "压力测试", "容量测试".
 
 ### 07-verify — review before merge
 **`code-review`** — Two-axis review: Standards (conventions + smell baseline) and Spec (faithful to issue), as parallel sub-agents.
@@ -160,6 +172,9 @@ npx skills@latest add int2t05/engineering-skills
 
 **`handoff`** — Hand off work to another session/agent: structured brief (context, decisions, next steps).
 - Triggers: "handoff", "hand over", "交接", "移交工作". *User-typed only.*
+
+**`incident-response`** — Production incident response — severity classification, containment, comms, rollback-vs-fix decisions, blameless postmortem.
+- Triggers: "incident", "on-call", "page", "postmortem", "事故响应", "线上故障", "复盘".
 
 ## Validate
 

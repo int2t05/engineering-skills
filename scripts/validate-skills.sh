@@ -58,8 +58,8 @@ for phase in $phases; do
   done
 done
 
-echo "Skills found: $count (expected 37)"
-[ "$count" -eq 37 ] || { echo "FAIL: expected 37 skills, found $count"; errors=$((errors+1)); }
+echo "Skills found: $count (expected 42)"
+[ "$count" -eq 42 ] || { echo "FAIL: expected 42 skills, found $count"; errors=$((errors+1)); }
 
 # --- Plugin manifest sync: skills[] array must match actual skills on disk ---
 manifest=".claude-plugin/plugin.json"
