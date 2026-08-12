@@ -59,13 +59,13 @@ flowchart LR
 
 ## 正式文档结构（docs/ 只保留这 5 类，其他合并或删除）
 
-| 文档 | 职责 | 风格 |
-|---|---|---|
-| `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | 需求 | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
-| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | 架构 | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
-| `docs/API/*.md` | API 契约 | 详细请求/响应（跨版本共享） |
-| `docs/FLOW/*.md` | 业务流程 | mermaid 流程 + 详细数据流描述（跨版本共享） |
-| `docs/TODO.md` | 不足与未来方向 | 按业务合并（项目级） |
+| 文档                                        | 职责           | 风格                                                 |
+| ------------------------------------------- | -------------- | ---------------------------------------------------- |
+| `docs/PRD.md`（+ `docs/vX.Y/prd.md`）   | 需求           | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | 架构           | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/API/*.md`                           | API 契约       | 详细请求/响应（跨版本共享）                          |
+| `docs/FLOW/*.md`                          | 业务流程       | mermaid 流程 + 详细数据流描述（跨版本共享）          |
+| `docs/TODO.md`                            | 不足与未来方向 | 按业务合并（项目级）                                 |
 
 辅助文档：`ROADMAP.md`（产品定位/多版本/验收项，简洁全局视图）、`docs/PLAN.md`（+ `docs/vX.Y/plan.md`，实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/strategy.md`、`docs/research/interview.md`）是 PRD 输入，上线前清理。
 
@@ -268,13 +268,13 @@ flowchart LR
 请完善 .gitignore，添加需要忽略的文件，确保仓库简洁。不要完全覆盖现有配置，从文件末尾追加。
 ```
 
-### CLAUDE.md — AI 上下文指令（PLAN 前置：AI 上下文）
+### CLAUDE.md — 项目专属上下文（PLAN 前置：AI 上下文，开发前生成）
 
 ```
 /init
 ```
 
-或用文末【CLAUDE.md 生成提示词】。
+或用文末【CLAUDE.md 生成提示词】——只产项目强相关部分（Role / Project / Stack / Structure / Commands / 项目约定 / 项目边界 / 5 类正式文档），追加到通用模板之后；通用模板只含工程原则，不重复。
 
 ### 文档一致性审计 — 同步所有文档（PLAN 前置：文档就绪）
 
@@ -680,46 +680,44 @@ GitHub About + Topics 用 gh 配置。
 
 ---
 
-# CLAUDE.md 生成提示词
+# CLAUDE.md 生成提示词（开发前生成 · 仅项目强相关）
+
+> 产出项目根目录 CLAUDE.md 的**项目专属内容**，追加到通用模板之后。
+> 通用模板只含工程原则（纯净原则 / 全局约定），项目无关，**此处不重复**。
+> 文档结构 / 版本分层 / 技能包路由是 pack 约定，不写入项目 CLAUDE.md。
+> 时机：PRD/TECH 就绪后、写代码前（阶段 2 起手）。
 
 ```
-你是一位精通 {项目技术栈} 的资深开发者。
-请为当前项目生成一份根目录 CLAUDE.md，作为 AI 助手的上下文指令。根据 PRD/TECH 等文档生成。
-简洁通用，体现项目实际技术栈，不用泛泛表述。
+为当前项目生成 CLAUDE.md 的**项目专属内容**，追加到通用模板之后。通用模板只含工程原则（纯净原则、全局约定），禁止重复。文档结构 / 版本分层 / 技能包路由是 pack 约定，不写入项目 CLAUDE.md。只根据 PRD/TECH/代码库现状提炼本项目强相关上下文。体现实际技术栈，不用泛泛表述。简洁，英文。
 
-## 结构要求（必须包含以下章节，顺序可微调）
-1. 角色：AI 在本项目中的身份（如：你是一名 {React + Node.js} 全栈开发者…）
-2. 纯净原则：最高行为准则——抓根因不打补丁、代码自解释、不留残留、部署一致
-3. 全局约定：文档先行 / 提问优先 / 简洁优先 / 外科手术式改动 / 验证不假设 / 目标驱动
-   + 中文注释（每文件头注释 + 每关键函数注释）/ 测试写在 test/ 禁止 mock / TODO 完成立即删除
-   / 绝不自动 git push 需人工确认 / 不向后兼容 / 审计不输出报告
-4. 文档结构：docs/ 只保留 5 类正式文档（PRD/TECH/API/FLOW/TODO），多版本用 docs/vX.Y/ 分层
-5. 技能包路由：路由不确定用 /using-skills，按阶段（0 产品调研 → 9 开源）调用 42 skill，规划用内置 plan 模式
-6. 项目信息：名称/技术栈/运行时/目录/命令/前置 Skill/特殊约定
-7. 开发边界：始终要做 / 绝不要做（必须含「绝不自动 git push」「禁止 mock」「不向后兼容」）
+## 必含章节（仅项目强相关，顺序如下）
+1. **Role** — AI 在本项目的身份，绑定实际技术栈（如 "You are a senior {React + FastAPI} engineer on this project"）
+2. **Project** — 项目名 + 一句话描述（是什么、给谁用）
+3. **Stack** — 语言 / 框架 / 核心库 / 运行时 / 包管理器（实际版本）
+4. **Structure** — 关键目录及职责（如 src/engine, src/cli, docs/, test/）
+5. **Commands** — dev / build / test / lint 实际命令
+6. **Project conventions** — 本项目特有约定（从 PRD/TECH 提炼：架构决策、API 风格、状态管理、数据层规则等；通用约定已在模板不写）
+7. **Project boundaries** — 本项目级「始终要做 / 绝不要做」（如「禁止改 generated/」「迁移走 make migrate」；通用约定已在模板不写）
+8. **Formal docs** — 指向 docs/ 下 5 类正式定稿文档：PRD / TECH / API / FLOW / TODO（收尾工作，不提开发阶段产物 PLAN / research / design / vX.Y）
 
-## 内容约束（必须严格遵守）
-- 纯净原则为最高准则，冲突时优先；4 条：抓根因、自解释、不留残留、部署一致。
-- 禁止自动 Push：在"绝不要做"中必须包含「绝不自动执行 git push，所有推送操作必须人工确认」。
-- 注释全部中文，重点解释功能：每个文件有文件头注释，每个关键函数有函数注释，尽量简洁。
-- 不要完全覆盖 .gitignore，从文件末尾追加。
-- 体现项目实际技术栈，角色声明/命令/目录结构根据下方具体技术栈定制，不能用泛泛表述。
-- 测试代码写在 test/ 目录下，禁止 mock 测试（需要真实测试数据）。
-- 代码有待完善处显式加 TODO 注释；已完成的 TODO 立即删除。
-- 文档先行：先 spec/PRD 后代码，先 PLAN 后实现。
-- 多版本项目以 docs/vX.Y/ 为开发基准（版本分支），项目级大写三件套进 main（简洁多 mermaid）。
-- 单版本项目回退 docs/ 根，不建版本目录。
+## 约束
+- 禁止重复通用模板的工程原则（纯净原则、全局约定）。
+- 不写文档结构表 / 版本分层 / 技能包路由——pack 约定，非项目 CLAUDE.md 内容。
+- docs/ 只提 5 类正式文档，不提开发阶段产物。
+- 通用提示词，适用任意项目；输出仅含项目强相关原则。
+- 体现实际技术栈，命令 / 目录据实定制，禁止泛泛表述。
+- 简洁，英文，与通用模板一致。
 
-## 项目信息（请根据此生成）
-- 项目名称及一句话描述：{你的项目描述}
-- 核心技术栈：{如 TypeScript, React, FastAPI...}
-- 运行时/环境要求：{如 Node.js >=22.13.0}
-- 主要目录：{如 src/engine, src/cli, docs/, test/...}
-- 常用命令：{如 npm run dev, pytest...}
-- 是否有必须前置加载的 Skill：{名字和触发条件}
-- 其他特殊约定：{如必须使用某个库、不能使用某种模式、分支策略}
+## 输入（请据实填写）
+- 项目名称及一句话描述：{...}
+- 核心技术栈：{如 TypeScript, React, FastAPI, PostgreSQL}
+- 运行时 / 环境：{如 Node.js >=22.13.0, Python 3.12}
+- 主要目录：{如 src/engine, src/cli, docs/, test/}
+- 常用命令：{如 npm run dev, npm test}
+- 项目特有约定：{如事件溯源、API 前缀 /api/v1、状态用 Zustand}
+- 项目级边界：{如禁止改 generated/、迁移走 make migrate}
 
-请直接输出完整的根目录 CLAUDE.md。
+请直接输出项目专属 CLAUDE.md 内容（仅上述章节，英文，简洁），追加到通用模板之后。
 ```
 
 ---
