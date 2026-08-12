@@ -33,3 +33,13 @@ directly by name.
   `.claude-plugin/plugin.json` AND run `python scripts/gen-agents-yaml.py` (generates the
   new skill's `agents/openai.yaml`) AND run the validator (it checks the array stays in sync
   and the Codex adapters stay in sync with frontmatter).
+- Versioning (semver, in `.claude-plugin/plugin.json`): bump after every publishable change.
+  - **Patch (third digit)** — small fixes: typo, wording, trigger-phrase tweak, single-skill
+    description edit. `1.1.0 → 1.1.1`.
+  - **Minor (second digit)** — additions/changes that don't break existing usage: new skill,
+    new reference file, output-path change, new validator check. Reset patch to 0.
+    `1.1.1 → 1.2.0`.
+  - **Major (first digit)** — large refactor or breaking change: skill removed/renamed,
+    manifest schema change, plugin restructure. Reset minor+patch to 0. `1.x.x → 2.0.0`.
+  - Tag the release (`git tag vX.Y.Z`) and push the tag — the marketplace compares version
+    strings, not commit SHAs, so an untagged bump won't reach installed users.
