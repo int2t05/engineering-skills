@@ -1,31 +1,45 @@
 # 开发任务提示词手册（文档先行）
 
-> 按**开发任务 / 目标产物**组织的显式调用提示词。每条：标题是你要产出的东西或要做的任务，
-> 下面 `/技能名` + 粘贴即用的提示词。技能名对齐 engineering-skills 最新 42 个。
+> 按**「从用户的一句话到最终产品」的生命周期**线性编排。每个阶段产出一个具体文档/产物，
+> 前一阶段的产物是后一阶段的输入。每条：标题标注产物，下面 `/技能名` + 粘贴即用的提示词。
+> 技能名对齐 engineering-skills 最新 42 个。
 >
 > 理念：**文档先行，代码后行**——先写清楚要做什么，再动手写代码。
 
 ## 用法
 
-1. 先看【任务总览】找到任务所在分组，再钻到具体任务。
+1. 从【生命周期流程图】定位当前所处阶段，找到该阶段的任务与产物。
 2. `/skill-name` 是显式调用；不确定用哪个技能时先 `/using-skills` 路由。
 3. 规划用内置 plan 模式（`EnterPlanMode`/`ExitPlanMode`），不是某个技能。
 4. 所有提示词默认遵循下方【全局约定】，无需每次重复。
 
-## 任务总览
+## 生命周期流程
 
-| 分组 | 任务 |
-|---|---|
-| 一、产品与调研 | 产品定位 / 开源策略 / 市场调研 / 技术选型 / 深度调研 |
-| 二、需求与设计文档 | PRD / TECH / 领域模型 / API 契约 / FEATURES / UIUX / 数据模型 / 提示词设计 / 设计参考图生成 / 设计图转代码 / 原型 / 代码库深化 |
-| 三、实现 | PLAN / 文档审计 / CLAUDE.md / .gitignore / TDD / 上下文打包 / 解释代码 / 轻量变更 / 国际化 |
-| 四、优化与重构 | 性能优化 / 简化代码 / 深度重构架构 |
-| 五、测试 | 生成测试 / API 集成 / 前端 E2E / 压测 / 验收测试 |
-| 六、审查与调试 | 代码审查 / 调试 / 读错误日志 / 安全审查 |
-| 七、上线与发布 | 提交与分支 / CI/CD / 上线发布 / 依赖升级 |
-| 八、运行维护 | 文档同步 / 可观测性 / 事故响应 / 交接 |
-| 九、开源上线 | 展示面美化 / 文档重构 |
-| 十、跨任务产物 | FLOW / FRONT / TODO 审计 / 修复 TODO / 重构闭环 / Wiki / 教程 / 调研报告 / 博客 |
+```mermaid
+flowchart LR
+    S0["阶段0 一句话<br/>ROADMAP.md"] --> S1["阶段1 需求与设计<br/>PRD/TECH/API/DESIGN"]
+    S1 --> S2["阶段2 实现计划<br/>PLAN.md"]
+    S2 --> S3["阶段3 写代码<br/>test/ + 源码"]
+    S3 --> S4["阶段4 优化重构<br/>PERF.md"]
+    S3 --> S5["阶段5 测试<br/>test/ 验证"]
+    S5 --> S6["阶段6 审查调试<br/>TODO.md + 安全报告"]
+    S6 --> S7["阶段7 上线发布<br/>CI/CD + 生产"]
+    S7 --> S8["阶段8 运行维护<br/>postmortem/"]
+    S8 --> S9["阶段9 开源上线<br/>README + 5类文档定稿"]
+```
+
+| 阶段 | 从 → 到 | 核心产物 |
+|---|---|---|
+| 0 | 一句话 → 产品定位 | `ROADMAP.md`、`docs/research/*.md` |
+| 1 | 定位 → 需求与设计 | `docs/PRD.md`、`docs/TECH.md`、`docs/API/*.md`、`docs/design/*.md` |
+| 2 | 设计 → 实现计划 | `docs/PLAN.md`、`CLAUDE.md` |
+| 3 | 计划 → 代码 | 源码 + `test/` |
+| 4 | 代码 → 优化 | `PERF.md`（可选）、重构后代码 |
+| 5 | 代码 → 测试 | `test/` 测试与验收数据 |
+| 6 | 测试 → 审查 | `docs/TODO.md`、`docs/security-report.md` |
+| 7 | 审查 → 上线 | 流水线配置、生产部署 |
+| 8 | 上线 → 运维 | `docs/postmortem/*.md`、交接简报 |
+| 9 | 产品 → 开源 | `README.md`、5 类文档定稿 |
 
 ---
 
@@ -52,7 +66,7 @@
 | `docs/FLOW/*.md` | 业务流程 | mermaid 流程 + 详细数据流描述 |
 | `docs/TODO.md` | 不足与未来方向 | 按业务合并 |
 
-辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/prdv2.md`）是 PRD 输入，上线前清理。
+辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/strategy.md`、`docs/research/interview.md`）是 PRD 输入，上线前清理。
 
 ## 命名规则
 
@@ -65,9 +79,11 @@
 
 ---
 
-# 一、产品与调研 — 想清楚做什么
+# 阶段 0：一句话 → 产品定位
 
-### 产品定位与路线图 — 产出 ROADMAP.md
+> 把模糊想法打磨成可执行的产品定位，并用调研验证问题真假。
+
+### 产品定位与路线图 — ROADMAP.md
 
 ```
 /brainstorm
@@ -80,39 +96,49 @@
 若做了用户访谈验证问题，另产 docs/research/interview.md（访谈发现汇总，作 PRD 输入）。
 ```
 
-### 开源策略 — 产出 docs/research/strategy.md
+### 用户访谈验证 — docs/research/interview.md（PRD 输入）
 
 ```
-/oss-strategy
-为这个项目制定开源策略：商业模式、open core/COSS、增长路径。输出 docs/research/strategy.md。
+/brainstorm
+用 Mom Test 方法访谈目标用户：问过去行为不问未来意见，听<20%。5 步：分群→问近期具体经历→问目标与障碍→问替代方案→验证付费意愿。
+汇总发现到 docs/research/interview.md（用户原话、行为、痛点、付费意愿），作 PRD 输入。
 ```
 
-### 市场调研 — 产出 docs/research/market.md（PRD 输入）
+### 市场调研 — docs/research/market.md（PRD 输入）
 
 ```
 /market-research
 针对【产品方向】做市场调研：用户原话、竞品、行业情报。通过深度检索相关中文社区（LINUX DO、豆瓣、小红书、V2EX 等）收集真实用户原话、行为描述和情绪表达。输出 docs/research/market.md。
 ```
 
-### 技术选型 / 竞品对比 — 产出 docs/research/competitor.md（PRD 输入）
+### 技术选型 / 竞品对比 — docs/research/competitor.md（PRD 输入）
 
 ```
 /tech-selection
 针对【具体需求】对比可选技术栈/库/框架，输出对比矩阵 + 推荐。输出 docs/research/competitor.md。
 ```
 
-### 深度调研（带引用）— 产出 docs/prdv2.md（粗需求）
+### 深度调研（带引用）— docs/research/YYYY-MM-DD-<slug>.md（粗需求）
 
 ```
 /research
-针对【主题】做深度调研，必须有来源引用，输出带引用的 Markdown（docs/prdv2.md，作为粗需求）。
+针对【主题】做深度调研，必须有来源引用，输出带引用的 Markdown（docs/research/YYYY-MM-DD-<slug>.md，作为粗需求）。
+```
+
+### 开源策略 — docs/research/strategy.md（PRD 输入）
+
+```
+/oss-strategy
+为这个项目制定开源策略：商业模式、open core/COSS、增长路径。输出 docs/research/strategy.md。
 ```
 
 ---
 
-# 二、需求与设计文档 — 写清楚要做什么
+# 阶段 1：定位 → 需求与设计文档
 
-### 需求文档 PRD — 产出 docs/PRD.md
+> 把定位转化为可实现的规格：需求、架构、契约、数据模型、UIUX 设计。
+
+### 需求文档 PRD — docs/PRD.md
 
 ```
 /spec
@@ -120,9 +146,9 @@
 尽量使用 mermaid 图。不需要版本号。成熟风格，明确简洁。
 ```
 
-定稿流程：初稿 PRD → 上方市场/技术/深度调研 → 人+AI 审计完善不明确需求 → `/spec` 输出最终 PRD。
+定稿流程：初稿 PRD → 阶段 0 的市场/技术/深度调研 → 人+AI 审计完善不明确需求 → `/spec` 输出最终 PRD。
 
-### 架构文档 TECH — 产出 docs/TECH.md
+### 架构文档 TECH — docs/TECH.md
 
 ```
 /architecture
@@ -130,27 +156,35 @@
 尽量使用 mermaid 图。不需要版本号。成熟风格。包含 ADR 与架构图。
 ```
 
-### 领域模型 — 产出 CONTEXT.md + ADR（复杂业务才用）
+### 领域模型 — CONTEXT.md + docs/design/adr/（复杂业务才用）
 
 ```
 /domain-modeling
 挑战术语、用场景压测领域模型，输出 CONTEXT.md（统一语言）+ 相关 ADR。
 ```
 
-### API 契约 — 产出 docs/API/*.md
+### API 契约 — docs/API/*.md
 
 ```
 /api-design
 根据 PRD/TECH 设计 API 契约：REST/GraphQL、请求响应、版本、错误模型。输出 docs/API/*.md，详细请求/响应。
 ```
 
-### FEATURES.md — 用户可见功能（便于 e2e 测试）
+### 数据模型设计 — docs/design/SCHEMA.md
 
 ```
-根据 PRD 输出 FEATURES.md，描述用户可见功能，便于 e2e 测试覆盖。成熟风格，明确简洁。
+/schema-design
+为新功能/限界上下文设计数据模型：实体、关系、范化、索引、约束、分区。输出 docs/design/SCHEMA.md（ER 图 + 实体/索引/约束规划）。
 ```
 
-### UIUX 设计报告 — 产出 docs/design/DESIGN.md（从零设计）
+### 提示词设计 — docs/design/PROMPT.md
+
+```
+/prompt-engineering
+设计 LLM 驱动特性的 prompt：prompt 架构、模型选型、guardrails、eval 体系。输出 docs/design/PROMPT.md。
+```
+
+### UIUX 设计报告 — docs/design/DESIGN.md（从零设计）
 
 ```
 /frontend-design
@@ -159,42 +193,42 @@
 需要在线样稿时配合 Figma/Penpot，设计软件与 agent 交互，人工介入审计。根据预先最终产品的版本搭建成熟风格的设计图。
 ```
 
-### 前端审计 — 产出 docs/design/frontend-audit.md（审计现有前端）
+### 前端审计 — docs/design/frontend-audit.md（审计现有前端）
 
 ```
 /frontend-design
 参考 Apple HIG 设计原则，深度审计当前前端布局/组件/字体/样式，给出优化建议。输出 docs/design/frontend-audit.md（审计报告）。
 ```
 
-### 网站设计参考图 — 产出 section 设计图（每段一张）
+### 网站设计参考图 — section 设计图（每段一张）
 
 ```
 /imagegen-web
 为【网站/落地页】生成设计参考图，每个 section 一张横向图：hero 构图、布局、CTA、叙事主线。高端艺术方向，只出图不写代码。
 ```
 
-### 移动端设计图 — 产出 app 屏幕/流程图
+### 移动端设计图 — app 屏幕/流程图
 
 ```
 /imagegen-mobile
 为【移动端 app】生成屏幕图与流程图：iOS/Android 平台规范、导航、安全区，带手机 mockup 框。只出图不写代码。
 ```
 
-### 品牌识别图 — 产出品牌系统图
+### 品牌识别图 — 品牌系统图
 
 ```
 /brandkit
 为【品牌】生成品牌识别图：logo 概念、身份板、配色、字体、mockup。高端品牌系统，只出图不写代码。
 ```
 
-### 设计图转代码 — 图片优先前端管线（产出代码）
+### 设计图转代码 — 前端代码（图片优先管线）
 
 ```
 /image-to-code
 先生成设计参考图，深度分析每张图的布局/配色/字体/交互，再实现代码忠实还原。图片优先管线，非纯代码实现（纯代码用 /frontend-design）。
 ```
 
-### 原型验证 — 产出 HTML 原型 + docs/design/prototype-findings.md
+### 原型验证 — docs/design/prototype-findings.md + HTML 原型
 
 ```
 /prototype
@@ -202,32 +236,26 @@
 原型丢弃，验证结论写入 docs/design/prototype-findings.md。
 ```
 
-### 代码库深化 — 产出 docs/design/codebase-audit.md
+### 代码库深化 — docs/design/codebase-audit.md
 
 ```
 /codebase-design
 审计代码库，找出深化模块/重构/可测试性机会，输出 docs/design/codebase-audit.md，逐个推进我选定的那个。
 ```
 
-### 数据模型设计 — 产出 docs/design/SCHEMA.md
+### FEATURES.md — 用户可见功能（便于 e2e 测试）
 
 ```
-/schema-design
-为新功能/限界上下文设计数据模型：实体、关系、范化、索引、约束、分区。输出 docs/design/SCHEMA.md（ER 图 + 实体/索引/约束规划）。
-```
-
-### 提示词设计 — 产出 docs/design/PROMPT.md
-
-```
-/prompt-engineering
-设计 LLM 驱动特性的 prompt：prompt 架构、模型选型、guardrails、eval 体系。输出 docs/design/PROMPT.md。
+根据 PRD 输出 FEATURES.md，描述用户可见功能，便于 e2e 测试覆盖。成熟风格，明确简洁。
 ```
 
 ---
 
-# 三、实现 — 写代码
+# 阶段 2：设计 → 实现计划
 
-### 实现计划 PLAN — 产出 docs/PLAN.md
+> 把设计文档拆解为可执行的开发计划与项目脚手架。
+
+### 实现计划 PLAN — docs/PLAN.md
 
 ```
 /breakdown
@@ -243,7 +271,7 @@
 审计并更新所有文档，确保与 PRD/TECH/PLAN 一致。明确简洁，不需要版本号，不需要审计报告，确保明确性和一致性。
 ```
 
-### CLAUDE.md — 产出 AI 上下文指令
+### CLAUDE.md — AI 上下文指令
 
 ```
 /init
@@ -251,13 +279,19 @@
 
 或用文末【CLAUDE.md 生成提示词】。
 
-### .gitignore — 完善忽略规则
+### .gitignore — 忽略规则
 
 ```
 请完善 .gitignore，添加需要忽略的文件，确保仓库简洁。不要完全覆盖现有配置，从文件末尾追加。
 ```
 
-### 逐小步实现（TDD）— 按计划写代码
+---
+
+# 阶段 3：计划 → 代码
+
+> 按计划逐文件实现，TDD 驱动。
+
+### 逐小步实现（TDD）— 源码 + test/
 
 ```
 /tdd
@@ -265,7 +299,7 @@
 有依赖要提前配置。代码有待完善处加 TODO 注释。禁止 mock 测试。
 ```
 
-### 缺上下文时打包 — 组装工作上下文
+### 缺上下文时打包 — 工作上下文
 
 ```
 /context-engineering
@@ -279,7 +313,7 @@
 解释【这段代码/模块】怎么工作，或带我过一遍整个代码库。面向人讲解，不只是给 agent 打包上下文。
 ```
 
-### 轻量变更（小改动/重命名/脚手架）— 不需要 spec 的小任务
+### 轻量变更 — 源码（不需要 spec 的小任务）
 
 ```
 /implement
@@ -287,7 +321,7 @@
 直接做：读相关文件 → 改 → 跑 typecheck + 受影响测试。若开始触及 3+ 文件或跨模块边界，升级到 /spec。
 ```
 
-### 国际化 — 让应用支持多语言
+### 国际化 — 代码 + locale 配置
 
 ```
 /i18n
@@ -297,9 +331,11 @@
 
 ---
 
-# 四、优化与重构
+# 阶段 4：代码 → 优化与重构
 
-### 性能优化 — 先量后优
+> 先量后优；修复 TODO；必要时深度重构架构。
+
+### 性能优化 — PERF.md（可选）+ 定点修复
 
 ```
 /performance
@@ -314,7 +350,7 @@
 不要向后兼容，尽量简洁，架构明确。更新文档一致性。
 ```
 
-### 深度重构架构 — 完善后端架构
+### 深度重构架构 — 重构后代码
 
 ```
 /codebase-design
@@ -328,16 +364,18 @@
 
 ---
 
-# 五、测试 — 证明它能跑
+# 阶段 5：代码 → 测试
 
-### 生成测试 — 产出 test/ 测试文件
+> 证明它能跑：单元、集成、E2E、压测、验收。
+
+### 生成测试 — test/ 测试文件
 
 ```
 /test-generation
 为【功能/文件】生成测试，覆盖用例矩阵。测试写在 test/ 下，禁止 mock，确保真实调用。
 ```
 
-### API 集成测试 — 完善后端集成测试
+### API 集成测试 — test/ 集成测试
 
 ```
 /api-testing
@@ -348,7 +386,7 @@
 优先检查测试代码，最后修改后端代码，测试完恢复原有状态。
 ```
 
-### 前端 E2E + API 集成测试 — 完善前端测试
+### 前端 E2E + API 集成测试 — test/ E2E 测试
 
 ```
 /e2e-testing
@@ -359,7 +397,7 @@
 优先检查测试代码，最后修改前端代码，测试完恢复原有状态。
 ```
 
-### 压测 / 容量验证 — 找到系统破坏点
+### 压测 / 容量验证 — test/ 脚本 + docs/CAPACITY.md（可选）
 
 ```
 /load-testing
@@ -367,7 +405,7 @@
 找到破坏点和饱和资源，验证自动伸缩，产出测试脚本(test/) + 容量报告。
 ```
 
-### 验收测试 — 产出 test/ 验收数据与步骤
+### 验收测试 — test/ 验收数据与步骤
 
 ```
 生成验收测试步骤，输出到根目录 test/ 目录，包含验收所需测试数据、用例和描述测试步骤的文档。
@@ -376,9 +414,11 @@
 
 ---
 
-# 六、审查与调试 — 合并前
+# 阶段 6：测试 → 审查与调试
 
-### 代码审查 — 产出 docs/TODO.md（每个大里程碑）
+> 合并前：代码审查产出 TODO，调试找根因，安全审查。
+
+### 代码审查 — docs/TODO.md（每个大里程碑）
 
 ```
 /code-review
@@ -394,7 +434,7 @@
 【bug 现象】。走红循环 → 最小复现 → 假设 → 插桩 → 修复 → 回归测试。找根因，不贴补丁。
 ```
 
-### 读错误日志 / 日志排查 — 不需要完整复现的 triage
+### 读错误日志 / 日志排查 — triage 结论
 
 ```
 /debugging
@@ -402,16 +442,18 @@
 若属逻辑/运行时 bug，再升级到完整复现循环；若是配置/资源/权限类，直接修。
 ```
 
-### 安全审查 — 产出安全发现报告
+### 安全审查 — docs/security-report.md
 
 ```
 /security-review
-审查本次改动：密钥、鉴权、注入、访问控制、加固。输出安全发现报告。
+审查本次改动：密钥、鉴权、注入、访问控制、加固。输出安全发现报告（docs/security-report.md）。
 ```
 
 ---
 
-# 七、上线与发布
+# 阶段 7：审查 → 上线与发布
+
+> 干净提交、流水线、灰度上线、依赖升级。
 
 ### 提交与分支 — 干净提交
 
@@ -420,21 +462,21 @@
 提交本次改动，按意图解决冲突，绝不 --abort。干净提交。
 ```
 
-### CI/CD — 产出流水线配置 + 策略
+### CI/CD — 流水线配置 + 策略
 
 ```
 /ci-cd
 设计构建/测试/部署流水线与部署策略。输出流水线配置 + 策略。
 ```
 
-### 上线发布 — 上线到生产
+### 上线发布 — 生产部署
 
 ```
 /shipping
 上线到生产：清单、特性开关、灰度、回滚预案、上线首小时验证。越快越安全。
 ```
 
-### 依赖升级 — 升级库/框架版本
+### 依赖升级 — 升级后代码
 
 ```
 /deprecation-migration
@@ -445,9 +487,11 @@
 
 ---
 
-# 八、运行维护
+# 阶段 8：上线 → 运行维护
 
-### 文档同步 — 保持 5 类文档一致
+> 文档同步、可观测性、事故响应、交接。
+
+### 文档同步 — 5 类文档一致
 
 ```
 /documentation-audit
@@ -455,14 +499,14 @@
 不需要审计报告，确保明确性和一致性，语言干练简洁，成熟风格。
 ```
 
-### 可观测性 — 加日志/指标/告警
+### 可观测性 — 插桩 + 上线前清单
 
 ```
 /observability
 为系统加日志/指标/告警/插桩，让运行时行为可观测。输出插桩 + 上线前清单。
 ```
 
-### 事故响应 — 产出 docs/postmortem/ 复盘报告
+### 事故响应 — docs/postmortem/YYYY-MM-DD-<slug>.md
 
 ```
 /incident-response
@@ -470,7 +514,7 @@
 修复后验证指标回基线，48 小时内写无指责复盘（docs/postmortem/YYYY-MM-DD-<slug>.md）。
 ```
 
-### 交接 — 产出交接简报
+### 交接 — 交接简报
 
 ```
 /handoff
@@ -479,9 +523,11 @@
 
 ---
 
-# 九、开源上线
+# 阶段 9：产品 → 开源上线
 
-### 开源项目上线准备 — 美化 GitHub 展示面
+> 美化展示面、5 类文档定稿、最终代码审查。
+
+### 开源项目上线准备 — README.md + REPOSITORY_SUMMARY.md + THE_STORY_OF_THIS_REPO.md
 
 ```
 /oss-polish
@@ -513,9 +559,11 @@ GitHub About + Topics 用 gh 配置。
 
 ---
 
-# 十、跨任务产物
+# 横切任务（任意阶段可用，不在线性主线）
 
-### 业务流程文档 — 产出 docs/FLOW/*.md
+> 这些任务不绑定特定阶段，按需在任意时点执行。
+
+### 业务流程文档 — docs/FLOW/*.md
 
 针对系统每个业务流程写一份文档，含 mermaid 图 + 详细数据流描述。
 
@@ -532,7 +580,7 @@ GitHub About + Topics 用 gh 配置。
 分层架构在步骤中自然体现；分支/异步按主路径描述并注明关键分支；避免抽象概括，细化到每个有业务意义的函数调用。
 ```
 
-### 前端审计 — 产出 docs/FRONT.md
+### 前端结构审计 — docs/FRONT.md
 
 ```
 阅读整个前端项目，输出 docs/FRONT.md，明确每个步骤调用的具体组件名对应文件：
@@ -544,7 +592,7 @@ GitHub About + Topics 用 gh 配置。
 约束：清晰简洁越详细越好；每步写出实际函数名；分层架构自然体现；分支按主路径描述并注明。
 ```
 
-### 全量 TODO 审计 — 汇总 docs/TODO.md
+### 全量 TODO 审计 — docs/TODO.md
 
 ```
 /code-review
@@ -586,13 +634,13 @@ GitHub About + Topics 用 gh 配置。
 更新所有 api 文档和所有文档，成熟风格，无关版本。
 ```
 
-### GitHub Wiki — 创建仓库 wiki
+### GitHub Wiki — 仓库 wiki
 
 ```
 全面审计仓库，创建详细的 GitHub 仓库 wiki。
 ```
 
-### 教程文档
+### 教程文档 — 多文件教程
 
 ```
 每个主题一个文件夹下多个 md，每个 md 体量尽量小。多 mermaid，多一小段话，少大段话和专业术语；
@@ -600,7 +648,7 @@ GitHub About + Topics 用 gh 配置。
 要有示例；要有实践项（不能编造，在网上找相应实践项，必须有好的对照组建立评判标准）；要有充分参考资料。
 ```
 
-### 调研报告
+### 调研报告 — docs/research/YYYY-MM-DD-<slug>.md
 
 ```
 /research
@@ -609,7 +657,7 @@ GitHub About + Topics 用 gh 配置。
 解析性问题以使用者角度展开，先讲清"能拿它满足什么需求、能不能用"，再展开实现。
 ```
 
-### 博客
+### 博客 — 博客文章
 
 ```
 清晰主线，多 mermaid 图，多短语，术语通俗易懂解释，要有真实参考资料。
