@@ -72,8 +72,8 @@ Implement working code (HTML/CSS/JS, React, Vue, etc.) that is production-grade,
 visually striking, and meticulously refined.
 
 **Output:**
-- Designing UI from scratch → `docs/DESIGN.md` — the project-level UIUX design report: design system, information architecture, interaction patterns, component plan.
-- Auditing an existing frontend → `docs/frontend-audit.md` — findings and optimization suggestions for current layout/components/typography/styles.
+- Designing UI from scratch → `docs/design/DESIGN.md` — the UIUX design report: design system, information architecture, interaction patterns, component plan.
+- Auditing an existing frontend → `docs/design/frontend-audit.md` — findings and optimization suggestions for current layout/components/typography/styles.
 
 Then run the verification below.
 

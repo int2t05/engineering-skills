@@ -15,7 +15,7 @@ description: Use when the user asks for deep web research, source-backed investi
 
 1. **Frame the question.**
    - Restate the goal, scope, output language, and output path with the user.
-   - Default output: `research/YYYY-MM-DD-<slug>.md` in the workspace. Slug: 2-4 words, lowercase ASCII letters/digits/hyphens; transliterate or summarize non-ASCII; no redundant context prefixes. Accumulative docs (indexes, decision logs) skip the date prefix and use semantic names.
+   - Default output: `docs/research/YYYY-MM-DD-<slug>.md` in the workspace. Slug: 2-4 words, lowercase ASCII letters/digits/hyphens; transliterate or summarize non-ASCII; no redundant context prefixes. Accumulative docs (indexes, decision logs) skip the date prefix and use semantic names.
    - If the file exists, append `-2` or `-HHmmss`; overwrite only with explicit permission. Do not silently overwrite an existing research file.
    - If the topic is too broad to search usefully, ask one concise scoping question; otherwise state assumptions and proceed.
    - Consider delegating to a background agent so you keep working while it reads.

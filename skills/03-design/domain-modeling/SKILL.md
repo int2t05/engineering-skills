@@ -28,8 +28,8 @@ skill is for when you're **changing** the model. NOT for greenfield system archi
 
 Most repos have a single `CONTEXT.md` at the root. If a `CONTEXT-MAP.md` exists, the repo has
 multiple contexts — read it to find which context the current topic relates to. If neither exists,
-create a root `CONTEXT.md` lazily when the first term is resolved. Create `docs/adr/` lazily when
-the first ADR is needed.
+create a root `CONTEXT.md` lazily when the first term is resolved. Create `docs/design/adr/`
+lazily when the first ADR is needed.
 
 ### 2. Challenge terms against the glossary
 

@@ -57,7 +57,7 @@ description: Use when the user wants market sizing, competitor comparisons, inve
    5. Recommendation
    6. Sources
 
-**Output:** `docs/market.md` — a decision-oriented research summary with source attribution.
+**Output:** `docs/research/market.md` — a decision-oriented research summary with source attribution.
 
 ## Verify
 

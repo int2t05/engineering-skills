@@ -43,7 +43,7 @@ description: Use when choosing or comparing a technology stack, library, framewo
    - Give a practical validation plan: prototype scope, success metrics, tests/benchmarks, migration spike, or production trial.
 
 7. **Write the cited Markdown report.**
-   - Default path: `docs/competitor.md` in the workspace. If the file exists, append `-2` or
+   - Default path: `docs/research/competitor.md` in the workspace. If the file exists, append `-2` or
      `-HHmmss`; overwrite only with explicit permission.
    - Inline-cite where claims appear, plus a source appendix.
    - Use the template below (trim to fit, keep section order):

@@ -60,11 +60,11 @@ path. Skip ADRs for reversible or obvious decisions.
 
 - Load `references/adr-template.md` for the ADR format and example
 - Each ADR: Context, Decision, Consequences (positive/negative/neutral), Alternatives Considered
-- Number sequentially: `docs/adr/0001-slug.md`
+- Number sequentially: `docs/design/adr/0001-slug.md`
 
 **Output:** `docs/TECH.md` (architecture overview — diagram, components, NFRs, data layer)
-plus `docs/adr/NNNN-slug.md` for each significant decision. TECH.md is the overview; ADRs
-are the decision records — TECH.md references the ADRs it depends on.
+plus `docs/design/adr/NNNN-slug.md` for each significant decision. TECH.md is the overview;
+ADRs are the decision records — TECH.md references the ADRs it depends on.
 
 ### 5. Review with stakeholders
 

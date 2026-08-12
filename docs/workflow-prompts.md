@@ -52,14 +52,16 @@
 | `docs/FLOW/*.md` | 业务流程 | mermaid 流程 + 详细数据流描述 |
 | `docs/TODO.md` | 不足与未来方向 | 按业务合并 |
 
-辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/DESIGN.md`（UIUX 设计报告）、`docs/frontend-audit.md`（前端审计）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（market.md/competitor.md/prdv2.md）是 PRD 输入，上线前清理。
+辅助文档：`ROADMAP.md`（产品定位/多版本/验收项）、`docs/PLAN.md`（实现计划）、`docs/FRONT.md`（前端结构审计）、`CLAUDE.md`（AI 上下文）、`README.md`（使用/架构/方向）。调研类中间产物（`docs/research/market.md`、`docs/research/competitor.md`、`docs/research/prdv2.md`）是 PRD 输入，上线前清理。
 
 ## 命名规则
 
-- **全大写 = 项目级正式文档**（单文件）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`、`docs/DESIGN.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。
-- **全大写目录 = 多文件集合**：`docs/API/`、`docs/FLOW/`、`docs/adr/`。
-- **小写 = 中间产物 / 子需求 / 审计报告**：`docs/competitor.md`、`docs/market.md`、`docs/frontend-audit.md`、`docs/security-report.md`。
-- 文档产物默认在 `docs/` 下。每个文档型 skill 的产物路径已固化在其 SKILL.md 的 `**Output:**` 声明里。
+- **全大写 = 项目级正式文档**（docs/ 根，单文件）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。
+- **全大写目录 = 多文件集合**（docs/ 根）：`docs/API/`、`docs/FLOW/`。
+- **阶段目录 = 中间产物按阶段归类**：`docs/research/`（调研类）、`docs/design/`（设计类）。阶段目录内的文件沿用大小写规则——全大写表示该阶段主文档（如 `docs/design/DESIGN.md`），小写表示中间产物（如 `docs/research/competitor.md`）。
+- `docs/design/adr/` = 架构/领域决策记录（ADR），architecture 与 domain-modeling 共享。
+- `docs/security-report.md` 暂留 docs/ 根（verify 类未开阶段目录）。
+- 每个文档型 skill 的产物路径已固化在其 SKILL.md 的 `**Output:**` 声明里。
 
 ---
 
@@ -84,18 +86,18 @@
 为这个项目制定开源策略：商业模式、open core/COSS、增长路径。
 ```
 
-### 市场调研 — 产出 docs/market.md（PRD 输入）
+### 市场调研 — 产出 docs/research/market.md（PRD 输入）
 
 ```
 /market-research
-针对【产品方向】做市场调研：用户原话、竞品、行业情报。通过深度检索相关中文社区（LINUX DO、豆瓣、小红书、V2EX 等）收集真实用户原话、行为描述和情绪表达。输出 docs/market.md。
+针对【产品方向】做市场调研：用户原话、竞品、行业情报。通过深度检索相关中文社区（LINUX DO、豆瓣、小红书、V2EX 等）收集真实用户原话、行为描述和情绪表达。输出 docs/research/market.md。
 ```
 
-### 技术选型 / 竞品对比 — 产出 docs/competitor.md（PRD 输入）
+### 技术选型 / 竞品对比 — 产出 docs/research/competitor.md（PRD 输入）
 
 ```
 /tech-selection
-针对【具体需求】对比可选技术栈/库/框架，输出对比矩阵 + 推荐。输出 docs/competitor.md。
+针对【具体需求】对比可选技术栈/库/框架，输出对比矩阵 + 推荐。输出 docs/research/competitor.md。
 ```
 
 ### 深度调研（带引用）— 产出 docs/prdv2.md（粗需求）
@@ -147,19 +149,19 @@
 根据 PRD 输出 FEATURES.md，描述用户可见功能，便于 e2e 测试覆盖。成熟风格，明确简洁。
 ```
 
-### UIUX 设计报告 — 产出 docs/DESIGN.md（从零设计）
+### UIUX 设计报告 — 产出 docs/design/DESIGN.md（从零设计）
 
 ```
 /frontend-design
-为项目设计 UIUX：设计系统（色彩/字体/间距）、信息架构、交互规范、组件规划。输出 docs/DESIGN.md（项目级设计报告）。
+为项目设计 UIUX：设计系统（色彩/字体/间距）、信息架构、交互规范、组件规划。输出 docs/design/DESIGN.md（设计报告）。
 需要在线样稿时配合 Figma/Penpot，设计软件与 agent 交互，人工介入审计。根据预先最终产品的版本搭建成熟风格的设计图。
 ```
 
-### 前端审计 — 产出 docs/frontend-audit.md（审计现有前端）
+### 前端审计 — 产出 docs/design/frontend-audit.md（审计现有前端）
 
 ```
 /frontend-design
-参考 Apple HIG 设计原则，深度审计当前前端布局/组件/字体/样式，给出优化建议。输出 docs/frontend-audit.md（审计报告）。
+参考 Apple HIG 设计原则，深度审计当前前端布局/组件/字体/样式，给出优化建议。输出 docs/design/frontend-audit.md（审计报告）。
 ```
 
 ### 原型验证 — 产出一次性 HTML 原型
