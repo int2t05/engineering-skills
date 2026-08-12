@@ -114,5 +114,6 @@ commands (Claude Code plugin, Codex, and other agents).
 - Frontmatter: `name` + `description` (+ optional `disable-model-invocation`). Nothing else.
 - Every skill's `## References` links the shared engineering principles
   (`${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` in Claude Code; other
-  frameworks use the repo-relative path above).
+  frameworks use the repo-relative path above). PM-side skills also link
+  `references/product-principles.md`; UIUX skills also link `references/design-principles.md`.
 - Validate: `bash scripts/validate-skills.sh`.

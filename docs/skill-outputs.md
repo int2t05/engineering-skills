@@ -35,6 +35,12 @@
 | `load-testing` | 06-test | 容量报告 | `docs/CAPACITY.md`（可选） | 大写 | 容量上限/瓶颈/自动伸缩验证/行动项 |
 | `documentation-audit` | 09-operate | 同步现有 5 类 | 不产新文件 | — | 把 prd/tech/todo/api/flow 同步到代码 |
 | `handoff` | 09-operate | 交接简报 | OS 临时目录 | — | 给下一会话的 context/决策/下一步 |
+| `brainstorm` | 01-product | 产品路线图 | `ROADMAP.md` | 大写 | 产品定位/多版本/验收项 |
+| `brainstorm` | 01-product | 用户访谈记录 | `docs/research/interview.md` | 阶段目录 | discovery 访谈发现（PRD 输入） |
+| `oss-strategy` | 01-product | 商业策略 | `docs/research/strategy.md` | 阶段目录 | 商业模式/定价/GTM（PRD 输入） |
+| `frontend-design` | 03-design | 用户研究 | `docs/research/ux-research.md` | 阶段目录 | persona/journey/可用性测试（DESIGN 输入） |
+| `prototype` | 03-design | 原型验证结论 | `docs/design/prototype-findings.md` | 阶段目录 | 测试问题/结论/验证决策 |
+| `codebase-design` | 03-design | 代码库审计 | `docs/design/codebase-audit.md` | 阶段目录 | 深化机会/选定候选/grill 结论 |
 
 ## 正式文档（docs/ 只保留这 5 类）
 
@@ -50,7 +56,6 @@
 
 | 产物 | 路径 | 产出方式 |
 |---|---|---|
-| 产品路线图 | `ROADMAP.md` | brainstorm + 手动 |
 | 业务流程文档 | `docs/FLOW/*.md` | 按 workflow-prompts 的 FLOW 提示词 |
 | 前端结构审计 | `docs/FRONT.md` | 按 workflow-prompts 的 FRONT 提示词 |
 | 用户可见功能 | `FEATURES.md` | 按 workflow-prompts 的 FEATURES 提示词 |
@@ -69,6 +74,6 @@
 
 `implement` · `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `debugging` ·
 `simplify` · `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` ·
-`observability` · `context-engineering` · `brainstorm` · `using-skills` · `prototype` · `image-to-code` · `i18n` · `oss-strategy` · `codebase-design`
+`observability` · `context-engineering` · `using-skills` · `image-to-code` · `i18n`
 
 这些 skill 的产物是代码、测试、提交、配置或行为变更，不强行加 md 产物。

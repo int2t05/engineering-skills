@@ -43,6 +43,10 @@ Fold validated decisions into the real code. Capture the prototype itself as a *
 commit to a throwaway branch (out of main), leave a context pointer on the implementation issue,
 and record the verdict + question settled. Main keeps only the validated decision.
 
+**Output:** `docs/design/prototype-findings.md` — the question tested, the verdict, and the validated
+decision. The prototype code itself stays on a throwaway branch; only the finding is promoted to main
+as a durable record.
+
 ## Verify
 
 - [ ] Question being answered stated explicitly at the top of the prototype
@@ -54,5 +58,6 @@ and record the verdict + question settled. Main keeps only the validated decisio
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (hierarchy before decoration, design every state, recognize rather than recall).
 - [references/logic.md](references/logic.md) — single-shareable-HTML logic prototype: pure module, free-play + guided walkthroughs
 - [references/ui.md](references/ui.md) — toggleable UI variants: sub-shape A (existing page) vs B (throwaway route), floating switcher

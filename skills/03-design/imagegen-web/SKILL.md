@@ -34,87 +34,39 @@ one collage. This overrides any model default that collapses output.
 
 ### 2. Map the brief to a direction
 
-Read the brief and bias the picks to match — never force a recipe that contradicts it. Then pick
-one **Hero Scale** for the whole site and execute it decisively.
+Read the brief and bias the picks to match — never force a recipe that contradicts it. Pick one
+Hero Scale (Giant Statement / Mid Editorial / Mini Minimalist) for the whole site and execute it
+decisively.
 
-- **Minimalist / clean / swiss / typography-only** → Mini Minimalist hero; solid surfaces; stacked center; skip full-bleed.
-- **Editorial / magazine / art-directed** → Mid or Giant hero; editorial side-image; off-grid offset; strong type contrast.
-- **Cinematic / atmospheric / luxury / bold** → Giant hero; full-bleed image with tonal overlay; bottom-left or centered-low composition.
-- **SaaS / product / dashboard / fintech / infra** → Mid Editorial hero; solid + inline asset; clear product framing; higher implementation clarity.
-- **Agency / creative studio / portfolio** → Giant or Mini (decisive, not in-between); vary backgrounds boldly; off-grid poster-like.
-- **E-commerce / shop** → Mid Editorial, product-led; full-bleed product photo; unmistakable CTAs.
-- **Silent brief** → use defaults with confident background variety; pick one hero scale decisively.
-
-Hero Scale: **Giant Statement** (massive type, dominant first viewport) / **Mid Editorial** (balanced
-type/image, cinematic but not screen-filling) / **Mini Minimalist** (tiny logo + short statement +
-thin CTA, lots of negative space — confident restraint, not weak).
+- Load [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) §2 for the brief→hero-scale mapping and the axis picks that match each brief signal. Subsequent steps reference sections of this file.
 
 ### 3. Run the combinatorial variation engine
 
-Pick one option from each category and commit to it consistently — don't mash everything into
-chaos. These are visual-direction cues the generated image should imply, not code instructions.
+Pick one option from each axis and commit to it consistently — don't mash everything into chaos.
+These are visual-direction cues the generated image should imply, not code instructions.
 
-- **Theme paradigm**: pristine light / deep dark / bold studio solid / quiet premium neutral
-- **Background character**: subtle grid / pure solid with ambient gradient / full-bleed cinematic imagery / quiet textured material
-- **Typography character**: clean grotesk / refined grotesk / expressive display / compressed statement / editorial serif+sans / Swiss rational sans
-- **Hero architecture**: cinematic centered minimalist / asymmetric split / floating polaroid scatter / inline typography behemoth / editorial offset / massive image-first
-- **Section system**: strict bento / alternating editorial / poster stacked / gallery cadence / Swiss grid / asymmetric marketing flow
-- **Signature components** (pick exactly 4): diagonal masonry / cascading card deck / hover-accordion slice / gapless bento / brand marquee / polaroid arc / vertical rhythm lines / off-grid editorial / product UI panel stack / split testimonial wall / oversized metrics strip / layered crop frames
-- **Motion-implied** (pick exactly 2): scrubbing text reveal / pinned narrative / staggered float-up / parallax drift / accordion expansion / cinematic fade-through
-- **Narrative spine** (pick 1): artifact / journey / precision instrument / living system / stage spotlight / archive dossier
-- **Second-read moment** (pick exactly 1): asymmetric bleed / oversized punctuation or numeral / single material switch / vertical side-rail note / macro brand-color crop
+- Load visual-direction §1 for the 9-axis engine (theme paradigm, background, typography, hero architecture, section system, signature components, motion-implied, narrative spine, second-read moment).
 
 ### 4. Vary composition per section — break the hero default
 
 **The left-text / right-image hero is the most overused AI pattern.** It is allowed, but must not
-be the first instinct. Before reaching for it, prefer: centered statement, bottom-left over image,
-bottom-right CTA cluster, top-left lead, stacked center, image-as-canvas, off-grid editorial,
-right-text / left-image (inverted), or mini minimalist.
+be the first instinct. Per section, pick a composition anchor and a background mode; vary them
+across the site.
 
-Per section, pick a **composition anchor** and a **background mode**. Across the site:
-- At least 3 different anchors must appear; same anchor must not repeat more than 2 sections in a row.
-- Same background mode must not repeat more than 3 sections in a row.
-- For non-minimalist briefs: include at least one full-bleed (or duotone / atmospheric) background and at least one mini minimalist section.
-
-Background mode menu (per section): solid + inline asset / subtle texture / full-bleed image with
-tonal overlay / editorial side-image / image-as-canvas / flat color block + detail crop / cinematic
-tonal gradient / atmospheric photo grade / duotone / soft radial vignette + product / micro-noise
-gradient / color-blocked diptych.
-
-CTA variation: classic pill / outline ghost / underlined inline link / banner full-width / oversized
-headline + tiny CTA hint / CTA as caption. Vary CTA style at least once; the primary action stays
-unmistakable.
+- Load visual-direction §3 for the composition-anchor menu, background-mode menu, and CTA variation rules (≥3 distinct anchors; no anchor repeats >2 in a row; no background mode repeats >3 in a row; at least one full-bleed for non-minimalist briefs).
 
 ### 5. Apply hero minimalism and graphic restraint
 
-- Strong opening scene; clean composition; do not overcrowd the first viewport.
-- Headline reads like 5-10 strong words, not a paragraph — short and powerful.
-- Prefer medium/light elegance, tight tracking, controlled line count, strong scale contrast.
-- Avoid: random extra-bold shouting, gradient text as a lazy premium effect, 6-line startup headings.
-- No giant meaningless outline numbers, cheap SVG filler, generic AI blobs, or random orb clutter.
-- Use typography, image crops, real layout tension, premium materials, and strong framing instead.
+Strong opening scene; clean composition; headline reads like 5-10 strong words, not a paragraph.
+
+- Load visual-direction §5 for the restraint rules and forbidden hero patterns (no gradient text as a lazy premium effect, no giant outline numbers, no AI blob clutter).
 
 ### 6. Enforce continuity, creativity, and anti-slop
 
-**Continuity across all per-section images** (one brand world): same palette and accent logic, same
-type family and scale, same CTA family, same radius language, same image treatment, same tonal voice.
-A viewer scrolling through all frames must read them as one site. Variation is allowed only in
-composition anchor, background mode, section size, and which second-read moment appears.
+All per-section images must read as one site (one palette, type, CTA, radius, image treatment).
+Push beyond generic SaaS. Ban the anti-slop list.
 
-**Creativity escalation**: push beyond generic SaaS. Actively increase at least 3 of: composition,
-typography distinctiveness, scale contrast, hero concept memorability, image treatment, section
-rhythm, framing/cropping, visual tension, layout structure. Creativity must feel intentional, not
-chaotic.
-
-**Section rhythm**: mix large art-directed sections, mini minimalist sections, and medium editorial
-blocks deliberately. Keep spacing generous and fairly even — the page must breathe. Separate denser
-sections with calmer ones.
-
-**Anti-slop** (ban unless explicitly requested):
-- Layout: endless centered sections, cloned left-text/right-image blocks, identical card rows, lifeless symmetry.
-- Visual: default purple/blue AI gradients, floating spheres/blobs, glassmorphism without reason, glowing edges.
-- Content: "unleash / elevate / revolutionize / next-gen / seamless / transformative platform"; fake brands (Acme, Nexus, Flowbit, Quantumly, NovaCore).
-- Data: three identical stat columns, fake dashboards with pointless charts, infinity logo marquees.
+- Load visual-direction §4 (continuity — one brand world), §5 (creativity escalation + section rhythm), §6 (anti-slop ban list).
 
 ## Verify
 
@@ -133,3 +85,5 @@ sections with calmer ones.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional)
+- [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) — shared web variation engine (9 axes, hero scale, composition anchors, continuity, creativity, anti-slop)

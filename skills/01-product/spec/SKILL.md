@@ -31,6 +31,10 @@ guessing.
 
 3. **Write the spec** using the template below. Reframe vague requirements as testable
    success criteria ("make the dashboard faster" → "LCP < 2.5s on 4G; initial load < 500ms").
+   For PRD structure, user-story format, Given/When/Then acceptance criteria, and INVEST —
+   load `references/prd-patterns.md`. For success-criteria frameworks (North Star, AARRR,
+   retention, A/B testing) — load `references/metrics-frameworks.md`. For feature
+   prioritization (RICE, Kano, MoSCoW) — load `references/prioritization.md`.
 
 4. **Publish.** Save to `docs/PRD.md` (project-level requirements, the shared source of
    truth). For a feature-scoped spec, append the feature slug: `docs/PRD-<feature>.md`.
@@ -90,3 +94,7 @@ Planning the implementation FROM this spec uses Claude Code's built-in plan mode
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode for implementation planning.
+- [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (need≠feature, outcomes over outputs, say no to good ideas, the real competitor is the workaround).
+- [references/prd-patterns.md](references/prd-patterns.md) — PRD structure, user stories, Given/When/Then acceptance criteria, INVEST, Non-Goals, success-criteria reframing, anti-patterns.
+- [references/prioritization.md](references/prioritization.md) — RICE, ICE, Kano, MoSCoW, Value×Feasibility matrix, true-need vs false-need filter.
+- [references/metrics-frameworks.md](references/metrics-frameworks.md) — North Star metric, AARRR funnel, retention curves, cohort analysis, Hook Model, A/B testing discipline, data-driven loop.

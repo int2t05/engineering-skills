@@ -49,6 +49,9 @@ description: Use when the user wants market sizing, competitor comparisons, inve
    - Integration complexity.
    - Lock-in, security, compliance, and operational risk.
 
+   For structured analysis frameworks — TAM/SAM/SOM, SWOT, PEST, Porter's Five Forces,
+   competitive feature matrix, positioning quadrant — load `references/market-frameworks.md`.
+
 3. **Structure the output.**
    1. Executive summary
    2. Key findings
@@ -70,3 +73,5 @@ description: Use when the user wants market sizing, competitor comparisons, inve
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md)
+- [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (the real competitor is the current workaround, opportunity = demand × blind spot ÷ difficulty).
+- [references/market-frameworks.md](references/market-frameworks.md) — TAM/SAM/SOM, SWOT, PEST, Porter's Five Forces, competitive analysis 6-step, feature matrix, positioning quadrant.

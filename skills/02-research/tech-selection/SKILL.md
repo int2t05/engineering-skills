@@ -36,6 +36,8 @@ description: Use when choosing or comparing a technology stack, library, framewo
    - Build a short matrix comparing the recommended option against meaningful alternatives.
    - Explain why the winner fits this requirement better, not just why it is popular.
    - Separate evidence from inference; mark uncertain claims as inference.
+   For weighted scoring, build-vs-buy, TCO, migration-cost estimation, and the long-term-bet
+   vs commodity distinction — load `references/selection-rubric.md`.
 
 6. **Assess expected effect.**
    - State what the selected technology should improve: delivery speed, reliability, UX, performance, maintainability, cost, ecosystem leverage.
@@ -123,3 +125,5 @@ Final recommendations must be primarily supported by P0 and P1; use P2 to qualif
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md)
+- [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (the real competitor is the current workaround).
+- [references/selection-rubric.md](references/selection-rubric.md) — weighted scoring model, build-vs-buy decision tree, TCO, migration-cost estimation, long-term bet vs commodity technology.

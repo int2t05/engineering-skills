@@ -35,6 +35,8 @@ enterprises use open source; 33% are increasing usage.
 
    Enterprise users buy risk mitigation — SLAs, indemnification, security patches, support —
    not just code.
+   For general pricing models, value-based pricing, GTM motions, and the indie-developer
+   revenue ladder beyond OSS — load `references/commercialization-models.md`.
 
 2. **Pick the license.** This determines who can fork and whether cloud giants can exploit
    your work without contributing:
@@ -64,6 +66,10 @@ enterprises use open source; 33% are increasing usage.
    enterprise features, managed services, or support. The community becomes your marketing
    army — users self-host, contribute, and recommend.
 
+**Output:** `docs/research/strategy.md` — the commercialization decision: business model, license,
+community plan, growth-launch channel plan, and monetization sequencing. A PRD input when
+commercialization shapes product scope.
+
 ## Verify
 
 - A business model is chosen and justified against the product and audience.
@@ -75,4 +81,6 @@ enterprises use open source; 33% are increasing usage.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (opportunity = demand × giant blind spot ÷ difficulty, the real competitor is the current workaround).
+- [references/commercialization-models.md](references/commercialization-models.md) — general pricing (subscription/freemium/usage/per-seat), value-based pricing, AI-product pricing trap, GTM motions (PLG/sales-led/product-led sales), indie-developer revenue ladder.
 - GitHub README/Topics/About beautification: `08-ship/oss-polish`.

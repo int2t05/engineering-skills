@@ -27,15 +27,10 @@ image generation is available.
 ### 1. Plan sections and visual direction
 
 Infer the section count from the request. Pick a coherent visual combination and commit to it
-consistently — do not mash everything into chaos. Choose one from each axis:
+consistently — do not mash everything into chaos.
 
-- **Theme paradigm:** pristine light / deep dark / bold studio solid / quiet premium neutral
-- **Background character:** subtle grid / solid with ambient gradient / full-bleed imagery / tactile texture
-- **Typography character:** clean grotesk / refined grotesk / expressive display / compressed statement / editorial serif+sans / Swiss rational
-- **Hero architecture:** cinematic centered minimalist / asymmetric split / floating polaroid scatter / inline typography behemoth / editorial offset / massive image-first with restrained text
-- **Section system:** modular bento / alternating editorial blocks / poster-stacked storytelling / gallery-led / Swiss grid / asymmetric premium marketing flow
-- **Signature components:** pick exactly 4 (diagonal masonry, 3D card deck, hover-accordion slice, gapless bento, infinite marquee, turning polaroid arc, vertical rhythm lines, off-grid editorial, product UI panel stack, split testimonial wall, layered crop frames)
-- **Motion-implied cues:** pick exactly 2 (scrubbing text reveal / pinned narrative / staggered float-up / parallax drift / accordion expansion / cinematic fade-through)
+- Load [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) for the combinatorial variation engine (9 axes: theme paradigm, background, typography, hero architecture, section system, signature components, motion-implied, narrative spine, second-read moment), hero-scale mapping, and the anti-slop ban list. The narrative-spine and second-read axes are optional for image-to-code.
+- Default section packs if unspecified: 4-section (hero, features, social proof, CTA); 8-section (hero, trust bar, features, product showcase, benefits, testimonials, pricing, CTA); 12-section (adds workflow, metrics, FAQ, footer).
 
 ### 2. Generate one large image per section
 
@@ -100,3 +95,5 @@ feel like the same website as the generated references.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, surgical changes)
+- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional)
+- [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) — shared web variation engine (9 axes, hero scale, composition anchors, anti-slop)

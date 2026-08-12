@@ -80,6 +80,11 @@ decisions crystallize:
 - Load [references/interface-design.md](references/interface-design.md) for interface design criteria: depth, testability rules, seam placement
 - Load [references/design-it-twice.md](references/design-it-twice.md) for the parallel sub-agent pattern when exploring alternative interfaces
 
+**Output:** `docs/design/codebase-audit.md` — the deepening opportunities found (candidates with
+problem/solution/benefit/strength), the one chosen, and the grilled result (defined interface, seam
+placement, testing strategy). The HTML report (Step 2) is the visual presentation; this md is the
+durable record that survives the temp file.
+
 ## Verify
 
 - [ ] HTML report written to temp dir and opened for the user; absolute path communicated

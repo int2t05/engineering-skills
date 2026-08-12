@@ -77,13 +77,14 @@
 ```
 输出 ROADMAP.md：产品定位、目标用户、主要功能、icon。
 设置多个版本，每个版本列出产品侧的验收项。每个版本可有一组 prd/tech 等，用分支管理。遵循纯净原则。
+若做了用户访谈验证问题，另产 docs/research/interview.md（访谈发现汇总，作 PRD 输入）。
 ```
 
-### 开源策略 — 产出策略决策
+### 开源策略 — 产出 docs/research/strategy.md
 
 ```
 /oss-strategy
-为这个项目制定开源策略：商业模式、open core/COSS、增长路径。
+为这个项目制定开源策略：商业模式、open core/COSS、增长路径。输出 docs/research/strategy.md。
 ```
 
 ### 市场调研 — 产出 docs/research/market.md（PRD 输入）
@@ -154,6 +155,7 @@
 ```
 /frontend-design
 为项目设计 UIUX：设计系统（色彩/字体/间距）、信息架构、交互规范、组件规划。输出 docs/design/DESIGN.md（设计报告）。
+若用户/上下文未知，先做用户研究（访谈/persona/旅程图/可用性测试），产 docs/research/ux-research.md 作 DESIGN 输入。
 需要在线样稿时配合 Figma/Penpot，设计软件与 agent 交互，人工介入审计。根据预先最终产品的版本搭建成熟风格的设计图。
 ```
 
@@ -192,18 +194,19 @@
 先生成设计参考图，深度分析每张图的布局/配色/字体/交互，再实现代码忠实还原。图片优先管线，非纯代码实现（纯代码用 /frontend-design）。
 ```
 
-### 原型验证 — 产出一次性 HTML 原型
+### 原型验证 — 产出 HTML 原型 + docs/design/prototype-findings.md
 
 ```
 /prototype
 针对【设计问题】做一个一次性 HTML 原型（单一文件验证逻辑，或多套可切换 UI 对比）。
+原型丢弃，验证结论写入 docs/design/prototype-findings.md。
 ```
 
-### 代码库深化 — 产出重构报告
+### 代码库深化 — 产出 docs/design/codebase-audit.md
 
 ```
 /codebase-design
-审计代码库，找出深化模块/重构/可测试性机会，列出报告，逐个推进我选定的那个。
+审计代码库，找出深化模块/重构/可测试性机会，输出 docs/design/codebase-audit.md，逐个推进我选定的那个。
 ```
 
 ### 数据模型设计 — 产出 docs/design/SCHEMA.md

@@ -46,6 +46,9 @@ user has explicitly asked for speed over verification.
    best-practice talk ("scalable", "clean architecture", "the standard approach") without
    specifics. When you hear these, ask: *"If you didn't have to justify this to anyone,
    what would you actually want?"* That question often does more work than the previous five.
+   For structured problem-validation methods — the Mom Test interview (past behavior, not
+   future opinion), JTBD switching interview, opportunity-solution tree, working backwards
+   / PR-FAQ — load `references/discovery-methods.md`.
 
 4. **Diverge then converge.** Once intent is clear, generate 3–8 idea variations using
    lenses from `references/techniques.md` (inversion, constraint removal, simplification,
@@ -77,6 +80,11 @@ user has explicitly asked for speed over verification.
    **not** yes — re-ask with two concrete options framed as a choice. Loop until explicit
    confirmation, then hand off to the `spec` skill.
 
+**Output:** `ROADMAP.md` — product positioning, target users, core features, multi-version plan with
+per-version acceptance items. When discovery interviews ran (Step 3, `references/discovery-methods.md`),
+also produce `docs/research/interview.md` — consolidated user-interview findings (past behavior,
+workarounds, willingness to pay) that justify the roadmap.
+
 ## Verify
 
 - An explicit hypothesis with a confidence number was stated in the first turn.
@@ -92,4 +100,6 @@ user has explicitly asked for speed over verification.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
+- [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (need≠feature, behavior is data, validate before building, say no to good ideas, discovery precedes delivery).
 - [references/techniques.md](references/techniques.md) — ideation frameworks (SCAMPER, HMW, first principles, JTBD), decision techniques (design tree, questionnaire handoff), evaluation rubric, and worked examples.
+- [references/discovery-methods.md](references/discovery-methods.md) — problem-validation methods (Mom Test interview, JTBD switching interview, opportunity-solution tree, working backwards / PR-FAQ, Lean Canvas, MVP validation loop).
