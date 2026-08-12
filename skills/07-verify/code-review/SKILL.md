@@ -77,9 +77,11 @@ End with a one-line summary: total findings per axis and the worst issue within 
 - Findings checked adversarially: for each Required/Critical, re-read the hunk and confirm the problem is real (not a misread of the diff). Drop any that don't survive scrutiny.
 - The two axes are reported separately — neither masks the other.
 - Report delivered to the caller with severity labels so required vs optional is unambiguous.
+- `docs/TODO.md` exists on disk, with findings grouped by business area and code↔TODO.md bidirectional sync (the output artifact, not just the review process).
 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — naming, functions, smells
 - [${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md](${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md) — diagram structure when reviewing architecture
+- [references/tech-debt-register.md](references/tech-debt-register.md) — upgrade TODO.md to a prioritized register: interest/principal/risk/effort, paydown cadence, accepted-debt decisions

@@ -13,7 +13,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 - Reading error output or logs to triage before building a full reproduction loop (see `references/log-triage.md`)
 - Triggers on "debug", "bug", "test failure", "unexpected behavior", "调试", "排查 bug", "读日志", "排查错误日志"
 
-**Not for:** performance optimization (use `performance`); profiling measured slowness (use `performance`).
+**Not for:** performance optimization (use `performance`); profiling measured slowness (use `performance`). Production incidents where containment must precede diagnosis (use `incident-response`).
 
 ## Steps
 

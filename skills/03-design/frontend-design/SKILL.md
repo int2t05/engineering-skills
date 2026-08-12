@@ -19,7 +19,8 @@ work — the key is intentionality, not intensity.
 - Triggers on "frontend", "UI design", "组件设计", "界面设计", "前端设计", "视觉风格"
 
 **When NOT to use:** pure data visualization (use dataviz); backend logic with no visual surface;
-API contract design (use api-design).
+API contract design (use api-design). Visually important web work where image-first is preferred
+(use `image-to-code`).
 
 ## Steps
 

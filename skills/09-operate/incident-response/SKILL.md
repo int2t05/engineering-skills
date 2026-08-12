@@ -115,3 +115,4 @@ individuals instead of system gaps; action items with no owner or date.
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surface assumptions)
 - [references/runbook-template.md](references/runbook-template.md) — runbook format for alert-linked playbooks
 - [references/postmortem-template.md](references/postmortem-template.md) — blameless postmortem template + action-item tracking
+- [references/dr-planning.md](references/dr-planning.md) — proactive disaster recovery: backup strategy, restore testing, DR drills, failover orchestration

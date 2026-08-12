@@ -132,3 +132,4 @@ the start. "Nobody uses that undocumented behavior" — Hyrum's Law says someone
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
+- [references/versioning-strategy.md](references/versioning-strategy.md) — when breaking change is unavoidable: URI/header versioning, sunset/deprecation headers (RFC 8594), dual-version coexistence, sunset timeline

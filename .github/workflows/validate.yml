@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+      - '.claude-plugin/plugin.json'
+      - '.claude-plugin/marketplace.json'
+      - 'references/**'
+      - 'scripts/**'
+      - 'AGENTS.md'
+      - '.agents/**'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - '.claude-plugin/plugin.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Regenerate Codex adapters
+        run: python scripts/gen-agents-yaml.py
+      - name: Check adapters are in sync
+        run: |
+          if [ -n "$(git status --porcelain skills/*/agents/openai.yaml)" ]; then
+            echo "::error::agents/openai.yaml files are out of sync with SKILL.md frontmatter. Run 'python scripts/gen-agents-yaml.py' locally and commit."
+            git diff --stat skills/*/agents/openai.yaml
+            exit 1
+          fi
+      - name: Validate skills
+        run: bash scripts/validate-skills.sh

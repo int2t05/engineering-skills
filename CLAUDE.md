@@ -13,7 +13,7 @@ catalog and install instructions.
 ## Conventions
 - Plugin manifest: `.claude-plugin/plugin.json` declares all 42 skills in a `skills[]` array (nested `./<phase>/<skill>` paths — preserves the 9-phase taxonomy).
 - Skills live under `skills/` — `skills/meta/` plus 9 numbered phase dirs (`skills/01-product/` through `skills/09-operate/`).
-- Every skill is a folder with SKILL.md (uppercase). See references/skill-anatomy.md.
+- Every skill is a folder with SKILL.md (uppercase). See references/skill-anatomy.md — including the `**Output:**` declaration convention and the two-layer (project-level + version-level) output pattern for PRD/TECH/PLAN.
 - Every skill links `${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` — the distilled discipline. PM-side skills (brainstorm, spec, oss-strategy, market-research, tech-selection) also link `references/product-principles.md`; UIUX skills (frontend-design, image-to-code, imagegen-web, imagegen-mobile, brandkit, prototype) also link `references/design-principles.md` — domain discipline layers atop the shared engineering base.
 - Shared references use `${CLAUDE_PLUGIN_ROOT}/...` (portable); in-skill refs use plain `references/...`.
 - Multi-framework: `AGENTS.md` (universal entry) + `.agents/` (`invocation.md`, `install-block.md`) + per-skill `agents/openai.yaml` (Codex adapter). The invocation-sync invariant — `disable-model-invocation` (Claude Code) ↔ `policy.allow_implicit_invocation` (Codex) — is enforced by the validator.

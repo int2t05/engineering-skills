@@ -163,3 +163,4 @@ auto-waiting locators and web-first assertions.
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/playwright-rules.md](references/playwright-rules.md) — consolidated Playwright rules (locators, auth, assertions, forms, organization, reliability)
+- [references/a11y-automation.md](references/a11y-automation.md) — axe-core, Lighthouse CI, Storybook a11y addon: automated accessibility testing in CI

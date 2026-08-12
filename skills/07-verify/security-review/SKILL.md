@@ -121,3 +121,4 @@ Map to the OWASP Top 10 for LLM Applications:
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
 - [references/owasp-patterns.md](references/owasp-patterns.md) — OWASP Top 10 prevention code examples (injection, auth, XSS, access control, SSRF, validation, rate limiting, LLM output).
+- [references/compliance-process.md](references/compliance-process.md) — GDPR/CCPA process layer: data inventory, DSR fulfillment, retention, right-to-erasure, privacy-by-design, audit readiness

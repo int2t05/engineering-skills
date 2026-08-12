@@ -99,5 +99,72 @@ PYEOF
   fi
 fi
 
+# --- Dead reference links: every in-skill references/x.md link must resolve ---
+for phase in $phases; do
+  for skill_dir in "skills/$phase"/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill_md="$skill_dir/SKILL.md"
+    refs=$(grep -oE '\]\(references/[a-z0-9./_-]+\.md\)' "$skill_md" 2>/dev/null | sed 's/](//;s/)//' | sort -u || true)
+    for ref in $refs; do
+      [ -f "${skill_dir}${ref}" ] || { echo "FAIL: $skill_md links $ref but file does not exist"; errors=$((errors+1)); }
+    done
+  done
+done
+
+# --- Domain principles linking: PM skills link product-principles, UIUX skills link design-principles ---
+pm_skills="skills/01-product/brainstorm skills/01-product/spec skills/01-product/oss-strategy skills/02-research/market-research skills/02-research/tech-selection"
+uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen-web skills/03-design/imagegen-mobile skills/03-design/brandkit skills/03-design/prototype"
+for s in $pm_skills; do
+  [ -f "$s/SKILL.md" ] && { grep -q 'product-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (PM skill) does not link product-principles.md"; errors=$((errors+1)); }; }
+done
+for s in $uiux_skills; do
+  [ -f "$s/SKILL.md" ] && { grep -q 'design-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (UIUX skill) does not link design-principles.md"; errors=$((errors+1)); }; }
+done
+
+# --- Output declaration vs skill-outputs.md sync (doc-producing skills) ---
+if [ -f docs/skill-outputs.md ] && { command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; }; then
+  PY=$(command -v python || command -v python3)
+  out_errors=$("$PY" - <<'PYEOF'
+import re, os, glob
+matrix = open("docs/skill-outputs.md", encoding="utf-8").read()
+errs = []
+# Output declaration paths to check: the canonical doc-producing skills' declared outputs
+declared = {
+    "skills/01-product/brainstorm/SKILL.md": ["ROADMAP.md", "docs/research/interview.md"],
+    "skills/01-product/spec/SKILL.md": ["docs/PRD.md", "docs/vX.Y/prd.md"],
+    "skills/03-design/architecture/SKILL.md": ["docs/TECH.md", "docs/vX.Y/tech.md"],
+    "skills/03-design/domain-modeling/SKILL.md": ["CONTEXT.md"],
+    "skills/03-design/api-design/SKILL.md": ["docs/API/"],
+    "skills/03-design/frontend-design/SKILL.md": ["docs/design/DESIGN.md", "docs/design/frontend-audit.md", "docs/research/ux-research.md"],
+    "skills/03-design/schema-design/SKILL.md": ["docs/design/SCHEMA.md"],
+    "skills/03-design/prompt-engineering/SKILL.md": ["docs/design/PROMPT.md"],
+    "skills/03-design/prototype/SKILL.md": ["docs/design/prototype-findings.md"],
+    "skills/03-design/codebase-design/SKILL.md": ["docs/design/codebase-audit.md"],
+    "skills/04-develop/breakdown/SKILL.md": ["docs/PLAN.md", "docs/vX.Y/plan.md"],
+    "skills/07-verify/code-review/SKILL.md": ["docs/TODO.md"],
+    "skills/07-verify/security-review/SKILL.md": ["docs/security-report.md"],
+    "skills/09-operate/incident-response/SKILL.md": ["docs/postmortem/"],
+    "skills/02-research/tech-selection/SKILL.md": ["docs/research/competitor.md"],
+    "skills/02-research/market-research/SKILL.md": ["docs/research/market.md"],
+    "skills/02-research/research/SKILL.md": ["docs/research/"],
+    "skills/08-ship/oss-polish/SKILL.md": ["README.md", "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"],
+    "skills/05-tune/performance/SKILL.md": ["PERF.md"],
+    "skills/06-test/load-testing/SKILL.md": ["docs/CAPACITY.md"],
+}
+for skill_md, outputs in declared.items():
+    if not os.path.isfile(skill_md):
+        continue
+    for out in outputs:
+        canon = re.sub(r'docs/vX\.Y/', 'docs/', out)
+        if canon not in matrix and out not in matrix:
+            errs.append(f"{skill_md} declares Output `{out}` but it's not in docs/skill-outputs.md")
+for e in errs: print("FAIL: " + e)
+import sys; sys.exit(1 if errs else 0)
+PYEOF
+)
+  rc=$?
+  [ $rc -eq 0 ] || { echo "$out_errors"; errors=$((errors+1)); }
+fi
+
 echo "Total errors: $errors"
 exit $errors

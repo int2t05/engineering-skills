@@ -116,4 +116,7 @@ commands (Claude Code plugin, Codex, and other agents).
   (`${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` in Claude Code; other
   frameworks use the repo-relative path above). PM-side skills also link
   `references/product-principles.md`; UIUX skills also link `references/design-principles.md`.
+- Doc-producing skills declare `**Output:**` (see `references/skill-anatomy.md`). Project-level
+  formal docs (PRD/TECH/PLAN) split into project-level (`docs/PRD.md`, concise, main) + version-level
+  (`docs/vX.Y/prd.md`, detailed, version branch). Single-version projects fall back to `docs/` root.
 - Validate: `bash scripts/validate-skills.sh`.

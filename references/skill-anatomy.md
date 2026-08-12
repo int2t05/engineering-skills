@@ -20,7 +20,23 @@ Allowed fields: name, description, disable-model-invocation. Nothing else.
 ## When to use    — 2-4 trigger conditions; include Chinese phrases where relevant
 ## Steps          — numbered, each step independently verifiable
 ## Verify         — concrete completion check (evidence, not "looks right")
+## Output         — (doc-producing skills only) the artifact path(s) this skill produces
 ## References     — link ${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md + skill-specific docs
+
+## Output declaration (doc-producing skills)
+
+Skills that produce a markdown document declare `**Output:**` (bolded, exact marker) in Steps or
+after them, stating the artifact path(s). Non-doc skills (code/behavior producers) omit it.
+
+Two-layer convention for project-level formal docs (PRD/TECH/PLAN):
+- **Project-level** (uppercase, `docs/PRD.md` etc., concise, mermaid-heavy, main branch) — the
+  whole-project view.
+- **Version-level** (lowercase, `docs/vX.Y/prd.md` etc., detailed, version branch) — the
+  per-version spec. Falls back to `docs/` root alone for single-version projects.
+- Cross-version artifacts (API/FLOW/TODO/research/design) stay project-level, not versioned.
+
+Every `**Output:**` path must match `docs/skill-outputs.md` (the product matrix). The validator
+checks this sync.
 
 ## Progressive disclosure
 Keep SKILL.md lean (target 15-150 lines, matching function complexity). Move

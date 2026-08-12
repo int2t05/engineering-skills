@@ -17,6 +17,7 @@ Hyrum's Law makes removal hard: with enough users, every observable behavior bec
 - Planning the lifecycle of a new system (deprecation planning starts at design time).
 - Deciding whether to maintain a legacy system or invest in migration.
 - Upgrading a dependency or framework version, including major/breaking upgrades (see `references/dependency-upgrade.md`).
+- Moving data between systems (dual-write, backfill, CDC, cutover) — see `references/data-migration.md`.
 
 **Not for:** patching a security vulnerability in place (use `security-review`); routine commits (use `git-workflow`).
 
@@ -132,3 +133,4 @@ After a database schema migration:
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
 - [references/dependency-upgrade.md](references/dependency-upgrade.md) — changelog/migration-guide reading, breaking-change triage, branch-based upgrade, root-cause fix per break
+- [references/data-migration.md](references/data-migration.md) — moving data between systems: dual-write + backfill, CDC, cutover, verification, failure modes

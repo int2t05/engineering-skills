@@ -28,7 +28,7 @@ positioning.
 3. Check existing `README.md` and repo metadata.
 4. If `README.md` exists, ask: update in place or back up to `README-backup.md` first?
 
-Output: a one-paragraph summary of what the project does, who it's for, and what's special.
+**Output:** a one-paragraph summary of what the project does, who it's for, and what's special.
 
 ### Step 2: Generate README
 

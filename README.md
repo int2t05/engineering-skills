@@ -7,7 +7,12 @@ development lifecycle. One skill per phase of real work, from shaping a
 vague idea to shipping it and running it.
 
 Shared engineering principles are injected at every session start, so the
-discipline is ambient — not something you have to remember to load.
+discipline is ambient — not something you have to remember to load. PM-side and UIUX skills
+additionally link `product-principles.md` / `design-principles.md` as domain discipline layers.
+
+Doc-producing skills split output into two layers: project-level (`docs/PRD.md` etc., concise,
+on main) and version-level (`docs/vX.Y/prd.md` etc., detailed, on version branches). Single-version
+projects fall back to `docs/` root. See `docs/skill-outputs.md` for the full product matrix.
 
 ## Install
 
