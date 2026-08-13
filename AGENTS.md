@@ -5,12 +5,12 @@ Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
 `AGENTS.md`.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
-> assets are the 42 skills under `skills/`; this file routes work to them and loads the
+> assets are the 43 skills under `skills/`; this file routes work to them and loads the
 > shared discipline.
 
 ## What this pack is
 
-42 skills organized by the software development lifecycle, including a meta router.
+43 skills organized by the software development lifecycle, including a meta router.
 Each skill is a folder `skills/<phase>/<name>/SKILL.md` with YAML frontmatter (`name`,
 `description`, optional `disable-model-invocation`) and four sections: When to use / Steps /
 Verify / References. Encyclopedic data lives in per-skill `references/` (progressive
@@ -19,9 +19,10 @@ disclosure).
 ## Read the engineering principles first
 
 Before any task, load [`references/engineering-principles.md`](references/engineering-principles.md)
-(repo-relative path — resolves in every framework). It holds the 8 shared principles every
+(repo-relative path — resolves in every framework). It holds the 9 shared principles every
 skill assumes: surface assumptions, manage confusion, push back, enforce simplicity, surgical
-scope, verify don't assume, plan with built-in plan mode, goal-driven execution.
+scope, verify don't assume, plan with built-in plan mode, goal-driven execution, behavior-preserving
+change discipline.
 
 > **Claude Code** gets these injected automatically at session start (SessionStart hook).
 > **Other frameworks** — read the file above once per session.

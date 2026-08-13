@@ -28,7 +28,7 @@ harnesses or neither.
 - `skills/01-product/brainstorm` — `disable-model-invocation: true` + `policy.allow_implicit_invocation: false`. A multi-turn grilling dialogue; auto-firing on fuzzy triggers would cause false positives.
 - `skills/09-operate/handoff` — same. An explicit handoff action; should only fire when the user asks to hand off.
 
-The other 40 skills are model-invoked.
+The other 41 skills are model-invoked.
 
 ## Dependencies between skills
 

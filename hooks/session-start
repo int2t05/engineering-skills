@@ -2,7 +2,7 @@
 # SessionStart hook for engineering-skills plugin.
 # Injects the shared engineering principles + a skill-pack bootstrap as
 # additionalContext, so every session starts with the discipline loaded
-# and the awareness that 42 lifecycle skills are available.
+# and the awareness that 43 lifecycle skills are available.
 
 set -euo pipefail
 
@@ -25,7 +25,7 @@ escape_for_json() {
 
 principles_escaped=$(escape_for_json "$principles_content")
 
-session_context="<EXTREMELY_IMPORTANT>\nYou have the engineering-skills pack — 42 skills organized by the software development lifecycle (product, research, design, develop, tune, test, verify, ship, operate) plus a meta router.\n\nTo route a task to the right skill, invoke the \`using-skills\` skill via the Skill tool, or invoke any skill directly by name (e.g. tdd, code-review, debugging, brainstorm, spec).\n\nPlanning uses your built-in plan mode (EnterPlanMode/ExitPlanMode), not a custom skill.\n\nBelow are the shared engineering principles every skill in this pack assumes. Apply them at all times:\n\n${principles_escaped}\n</EXTREMELY_IMPORTANT>"
+session_context="<EXTREMELY_IMPORTANT>\nYou have the engineering-skills pack — 43 skills organized by the software development lifecycle (product, research, design, develop, tune, test, verify, ship, operate) plus a meta router.\n\nTo route a task to the right skill, invoke the \`using-skills\` skill via the Skill tool, or invoke any skill directly by name (e.g. tdd, code-review, debugging, brainstorm, spec).\n\nPlanning uses your built-in plan mode (EnterPlanMode/ExitPlanMode), not a custom skill.\n\nBelow are the shared engineering principles every skill in this pack assumes. Apply them at all times:\n\n${principles_escaped}\n</EXTREMELY_IMPORTANT>"
 
 # Emit context injection as JSON.
 # Cursor hooks expect additional_context (snake_case).

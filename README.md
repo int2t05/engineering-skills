@@ -8,7 +8,7 @@
 [![version](https://img.shields.io/badge/version-2.2.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-A Claude Code plugin — **42 engineering skills** organized by the software development
+A Claude Code plugin — **43 engineering skills** organized by the software development
 lifecycle. Shared engineering principles are injected at every session start, so the
 discipline is ambient — not something you have to remember to load. PM and UIUX skills
 additionally layer `product-principles.md` / `design-principles.md` as domain discipline.
@@ -89,11 +89,3 @@ MIT — see [LICENSE](LICENSE).
 ## Provenance
 
 Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills). This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.
-
-## v2.0.0 migration
-
-Breaking: the three image skills merged into one — `/brandkit`, `/imagegen-web`, `/imagegen-mobile` → `/imagegen` (pass mode: brand / web / mobile). Added: `/refactoring` (structural, behavior-preserving) and `/linting` (machine-detectable static issues). Skill count stays 42.
-
-## v2.2.0 migration
-
-Breaking: `/market-research` and `/tech-selection` merged into `/research` (pass mode: general / market / tech-selection). Added: `/skill-authoring` (meta — author + eval skills) and `/multi-agent-orchestration` (04-develop — parallel/sequenced subagents). `code-review` expanded to 4 modes (pre-merge default + in-flight doubt + evidence-gate + receiving). Skill count stays 43.

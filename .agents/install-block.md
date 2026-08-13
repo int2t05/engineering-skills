@@ -3,7 +3,7 @@
 ## Claude Code — the plugin (primary, with ambient principles)
 
 `engineering-skills` ships as a Claude Code plugin. On install, a SessionStart hook injects
-the 8 engineering principles into every session as ambient context.
+the 9 engineering principles into every session as ambient context.
 
 ```bash
 /plugin marketplace add https://github.com/int2t05/engineering-skills

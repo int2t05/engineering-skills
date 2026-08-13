@@ -85,11 +85,3 @@ MIT —— 见 [LICENSE](LICENSE)。
 ## 来源
 
 原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。
-
-## v2.0.0 迁移
-
-破坏性变更：三个图片技能合并为一个 —— `/brandkit`、`/imagegen-web`、`/imagegen-mobile` → `/imagegen`（传 mode：brand / web / mobile）。新增：`/refactoring`（结构重构，保留行为）与 `/linting`（机器可检测的静态问题）。技能数仍为 42。
-
-## v2.2.0 迁移
-
-破坏性变更：`/market-research` 与 `/tech-selection` 合并入 `/research`（传 mode：general / market / tech-selection）。新增：`/skill-authoring`（meta —— 写 + 评估技能）与 `/multi-agent-orchestration`（04-develop —— 并行/顺序子代理）。`code-review` 扩展为 4 模式（pre-merge 默认 + in-flight 对抗 + evidence-gate 证据门 + receiving 接收评审）。技能数仍为 43。
