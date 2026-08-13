@@ -15,7 +15,7 @@ Simplify code by reducing complexity while preserving exact behavior. The goal i
 - After merging changes that introduced duplication or inconsistency
 - Triggers on "simplify", "too complex", "refactor for clarity"
 
-**When NOT to use:** Code you don't fully understand yet — comprehend before you simplify. Performance-critical code where the "simpler" version would be measurably slower. Throwaway code about to be rewritten entirely. Refactoring that involves architectural intent (seam placement, module deepening) — use `codebase-design`.
+**Not for:** Code you don't fully understand yet — comprehend before you simplify. Performance-critical code where the "simpler" version would be measurably slower. Throwaway code about to be rewritten entirely. Refactoring that involves architectural intent (seam placement, module deepening) — use `codebase-design`.
 
 ## Steps
 

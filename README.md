@@ -3,7 +3,7 @@
 > **Languages:** English | [中文](README.zh-CN.md)
 
 A Claude Code plugin — **42 engineering skills** organized by the software
-development lifecycle. One skill per phase of real work, from shaping a
+development lifecycle. Skills organized by phase of real work, from shaping a
 vague idea to shipping it and running it.
 
 Shared engineering principles are injected at every session start, so the
@@ -189,3 +189,7 @@ python scripts/gen-agents-yaml.py        # regenerate Codex adapters after editi
 ```
 
 MIT.
+
+## Provenance
+
+Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills), kept locally under `archive/` (gitignored) for reference. This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.

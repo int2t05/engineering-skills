@@ -18,7 +18,7 @@ rejected, and why.
 - Writing Architecture Decision Records (ADRs)
 - Triggers on "system design", "architecture review", "scalability", "ADR", "架构设计"
 
-**When NOT to use:** Code-level design patterns (use `simplify` or `codebase-design`), database-only design without system context, or feature-level API contracts (use `api-design`). Requirements/product-spec writing without system design (use `spec` — architecture takes the spec as input).
+**Not for:** Code-level design patterns (use `simplify` or `codebase-design`), database-only design without system context, or feature-level API contracts (use `api-design`). Requirements/product-spec writing without system design (use `spec` — architecture takes the spec as input).
 
 ## Steps
 

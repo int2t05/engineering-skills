@@ -25,8 +25,8 @@ Allowed fields: name, description, disable-model-invocation. Nothing else.
 
 ## Output declaration (doc-producing skills)
 
-Skills that produce a markdown document declare `**Output:**` (bolded, exact marker) in Steps or
-after them, stating the artifact path(s). Non-doc skills (code/behavior producers) omit it.
+Skills that produce a doc, image, or other discrete artifact declare `**Output:**` (bolded, exact marker) in Steps or
+after them, stating the artifact path(s). Skills whose output is only behavior (e.g. `implement`, `tdd`, `debugging`) omit it.
 
 Two-layer convention for project-level formal docs (PRD/TECH/PLAN):
 - **Project-level** (uppercase, `docs/PRD.md` etc., concise, mermaid-heavy, main branch) — the

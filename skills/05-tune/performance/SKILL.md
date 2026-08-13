@@ -15,7 +15,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 - Building features that handle large datasets or high traffic
 - Triggers on "webperf", "performance regression", "慢", "性能优化"
 
-**When NOT to use:** Don't optimize before you have evidence of a problem. Premature optimization adds complexity that costs more than the performance it gains. Diagnosing a bug (use `debugging`).
+**Not for:** Don't optimize before you have evidence of a problem. Premature optimization adds complexity that costs more than the performance it gains. Diagnosing a bug (use `debugging`).
 
 ## Steps
 

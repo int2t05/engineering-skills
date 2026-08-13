@@ -45,8 +45,8 @@ found, ask which framework to use.
 
 ### 2. Read inputs
 
-Ask for or discover: PRD path (default `tasks/prd-*.md`), architecture docs
-(default `docs/architecture/`), source code to test (default `src/`), and the
+Ask for or discover: PRD path (default `docs/PRD.md` or `docs/vX.Y/prd.md`), architecture docs
+(default `docs/TECH.md` or `docs/vX.Y/tech.md`), source code to test (default `src/`), and the
 auto-detected language/framework. Ask only critical questions before proceeding.
 
 ### 3. Extract testable conditions
@@ -75,7 +75,7 @@ Write anti-pattern-free test code to the correct test directories. Every file
 starts with a comment linking to requirements:
 
 ```
-// Generated from: tasks/prd-auth.md, US-001: User login
+// Generated from: docs/PRD.md, US-001: User login
 // Acceptance criteria: valid login, invalid credentials, empty fields
 ```
 

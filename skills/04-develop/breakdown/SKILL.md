@@ -90,6 +90,8 @@ until the way to the destination is clear.
 - Wide refactors sequenced as expand–contract, not forced into tracer bullets.
 - Out-of-scope work ruled out explicitly, not left on the frontier.
 
+**Output:** `docs/PLAN.md` (project-level, concise, main) + `docs/vX.Y/plan.md` (version-level, detailed, version branch). Single-version projects fall back to `docs/PLAN.md` alone.
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode.

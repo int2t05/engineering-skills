@@ -33,10 +33,10 @@
 | `oss-polish` | 08-ship | 叙事史 | `THE_STORY_OF_THIS_REPO.md` | 大写 | commit 历史叙事 |
 | `performance` | 05-tune | 性能台账 | `PERF.md`（可选） | 大写 | 尝试记录（kept + reverted），防重复踩坑 |
 | `load-testing` | 06-test | 容量报告 | `docs/CAPACITY.md`（可选） | 大写 | 容量上限/瓶颈/自动伸缩验证/行动项 |
-| `documentation-audit` | 09-operate | 同步现有 5 类 | 不产新文件 | — | 把 prd/tech/todo/api/flow 同步到代码 |
+| `documentation-audit` | 09-operate | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告（before/after/已修复/需人工跟进） |
 | `handoff` | 09-operate | 交接简报 | OS 临时目录 | — | 给下一会话的 context/决策/下一步 |
 | `brainstorm` | 01-product | 产品路线图 | `ROADMAP.md` | 大写 | 产品定位/多版本/验收项 |
-| `brainstorm` | 01-product | 用户访谈记录 | `docs/research/interview.md` | 阶段目录 | discovery 访谈发现（PRD 输入） |
+| `brainstorm` | 01-product | 用户访谈记录 | `docs/research/interview.md` | 阶段目录 | discovery 访谈发现（PRD 输入）；可由 workflow-prompts 用户访谈提示词独立产出 |
 | `oss-strategy` | 01-product | 商业策略 | `docs/research/strategy.md` | 阶段目录 | 商业模式/定价/GTM（PRD 输入） |
 | `frontend-design` | 03-design | 用户研究 | `docs/research/ux-research.md` | 阶段目录 | persona/journey/可用性测试（DESIGN 输入） |
 | `prototype` | 03-design | 原型验证结论 | `docs/design/prototype-findings.md` | 阶段目录 | 测试问题/结论/验证决策 |

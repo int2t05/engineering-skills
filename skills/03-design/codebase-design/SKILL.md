@@ -19,7 +19,7 @@ through the one the user picks.
 - Consolidating tightly-coupled shallow modules into one deep module
 - Triggers on "deep module", "seam", "refactoring opportunity", "架构改进", "模块设计", "deepening", "深化模块", "重构架构", "代码库设计"
 
-**When NOT to use:** code-level naming or function-extraction without architectural intent (use
+**Not for:** code-level naming or function-extraction without architectural intent (use
 `simplify`); greenfield system architecture (use `architecture`); feature-level API contracts (use
 `api-design`).
 

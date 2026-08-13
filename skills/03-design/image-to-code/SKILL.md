@@ -39,7 +39,6 @@ board — text becomes too small to analyze, spacing collapses, extraction quali
 
 - One section requested → one image. N sections → N section images.
 - It is better to generate too many clear images than too few compressed ones.
-- Default section packs if unspecified: 4-section (hero, features, social proof, CTA); 8-section (hero, trust bar, features, product showcase, benefits, testimonials, pricing, CTA); 12-section (adds workflow, metrics, FAQ, footer).
 - Keep the hero especially clean: 1-3 line headline, single strong focal point, generous negative space. No pills, badges, tiny logos, or pseudo-system labels cluttering the first viewport. The first screen must stay readable on a small laptop.
 
 ### 3. Regenerate unclear sections as fresh standalone images

@@ -8,8 +8,8 @@ description: Use when the user asks for deep web research, source-backed investi
 - Deep, multi-source research that needs inline citations and a source appendix.
 - Source-backed investigation or current technical/tool comparison.
 - User asks for a cited Markdown research artifact (深度调研, 调研转文档).
-- NOT for short queries, quick answers, single-source lookups, or pure local-file analysis. Does not build embeddings, vector stores, crawl archives, or persistent knowledge indexes.
-- NOT for market sizing or competitor business analysis (use `market-research`); concrete tool/library selection (use `tech-selection`).
+
+**Not for:** short queries, quick answers, single-source lookups, or pure local-file analysis; market sizing or competitor business analysis (use `market-research`); concrete tool/library selection (use `tech-selection`). Does not build embeddings, vector stores, crawl archives, or persistent knowledge indexes.
 
 ## Steps
 
@@ -110,6 +110,8 @@ description: Use when the user asks for deep web research, source-backed investi
 - ≥3 mermaid diagrams present, mixing `flowchart` and `sequenceDiagram`.
 - Tables dense; terms explained inline and aggregated in glossary.
 - Final reply states: file path, source count, access limitations.
+
+**Output:** `docs/research/YYYY-MM-DD-<slug>.md` — cited deep-research artifact, archived cumulatively.
 
 ## References
 

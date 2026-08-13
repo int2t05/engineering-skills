@@ -1,6 +1,6 @@
 ---
 name: oss-polish
-description: Use when polishing an open source project's GitHub presence — README, topics/About description, commit-history narrative story, and trending-repo positioning. Triggers on "polish my repo", "开源项目美化", "优化项目展示".
+description: Use when polishing an open source project's GitHub presence — README, topics/About description, commit-history narrative story, and trending-repo positioning. Triggers on "polish my repo", "beautify open source project", "开源项目美化", "优化项目展示".
 ---
 
 # Open Source Project Polish
@@ -15,7 +15,7 @@ positioning.
 - Repo has working code but a bare README, missing topics, or no About description
 - Want a commit-history narrative (`REPOSITORY_SUMMARY.md` + `THE_STORY_OF_THIS_REPO.md`)
 - Researching trending repos in a domain for positioning benchmarking
-- Triggers: "polish my repo", "beautify open source project", "开源项目美化", "优化项目展示"
+- Triggers on "polish my repo", "beautify open source project", "开源项目美化", "优化项目展示"
 
 **Not for:** open source business model or commercialization strategy (use `oss-strategy`), or general project documentation (use `documentation-audit`).
 

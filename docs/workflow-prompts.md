@@ -55,7 +55,7 @@ flowchart LR
 - **TODO**：代码有待完善处显式加 `TODO` 注释；已完成的 TODO 立即删除。
 - **Git**：**绝不自动 `git push`**，所有推送必须人工确认，确保每次 push 的版本可运行。
 - **不向后兼容**：尽量简洁，架构明确，不为兼容旧实现留过渡逻辑。
-- **审计不输出报告**：`/documentation-audit` 只同步文档，不产审计报告，确保一致性和明确性即可。
+- **审计产报告**：`/documentation-audit` 同步五类正式文档到代码，并产审计报告到 `docs/audit/YYYY-MM-DD-<scope>.md`（范围/before-after/已修复/需人工跟进）。
 
 ## 正式文档结构（docs/ 只保留这 5 类，其他合并或删除）
 
@@ -74,9 +74,10 @@ flowchart LR
 - **全大写 = 项目级正式文档**（docs/ 根，单文件，main 分支）：`docs/PRD.md`、`docs/TECH.md`、`docs/PLAN.md`、`docs/TODO.md`；根目录 `CONTEXT.md`、`README.md`、`ROADMAP.md`、`CLAUDE.md`。简洁、多 mermaid，是整个项目的视图。
 - **全大写目录 = 多文件集合**（docs/ 根，跨版本共享）：`docs/API/`、`docs/FLOW/`。
 - **版本目录 = 该版本的详细规格**（`docs/vX.Y/`，版本分支）：`docs/vX.Y/prd.md`、`docs/vX.Y/tech.md`、`docs/vX.Y/plan.md`（小写=详细）。以版本号为开发基准。单版本项目自动回退 `docs/` 根，不建版本目录。
-- **阶段目录 = 中间产物按阶段归类**（项目级，跨版本共享）：`docs/research/`（调研类）、`docs/design/`（设计类）。阶段目录内的文件沿用大小写规则——全大写表示该阶段主文档（如 `docs/design/DESIGN.md`），小写表示中间产物（如 `docs/research/competitor.md`）。
+- **阶段目录 = 中间产物按阶段归类**（项目级，跨版本共享）：`docs/research/`（调研类）、`docs/design/`（设计类）、`docs/audit/`（审计报告）、`docs/postmortem/`（事故复盘）。阶段目录内的文件沿用大小写规则——全大写表示该阶段主文档（如 `docs/design/DESIGN.md`），小写表示中间产物（如 `docs/research/competitor.md`）。
+- **审计报告 = `docs/audit/YYYY-MM-DD-<scope>.md`**（scope 如 documentation/security/code）：documentation-audit 产物，记录 before/after + 已修复 + 需人工跟进。
 - `docs/design/adr/` = 架构/领域决策记录（ADR），architecture 与 domain-modeling 共享，跨版本。
-- `docs/security-report.md` 暂留 docs/ 根（verify 类未开阶段目录）。
+- `docs/security-report.md` = 安全审查报告（docs/ 根小写单文件，verify 类审查产物，非阶段归类）。
 - 每个文档型 skill 的产物路径已固化在其 SKILL.md 的 `**Output:**` 声明里。
 
 ---
@@ -280,7 +281,7 @@ flowchart LR
 
 ```
 /documentation-audit
-审计并更新所有文档，确保与 PRD/TECH 一致。明确简洁，不需要版本号，不需要审计报告，确保明确性和一致性。
+审计并同步五类正式文档（PRD/TECH/API/FLOW/TODO）到代码，产审计报告到 docs/audit/YYYY-MM-DD-documentation.md。明确简洁，不需要版本号。
 ```
 
 ### 实现计划 PLAN — docs/PLAN.md（项目级，简洁）+ docs/vX.Y/plan.md（版本级，详细）
@@ -509,8 +510,7 @@ flowchart LR
 
 ```
 /documentation-audit
-根据当前代码同步所有文档：prd/tech/todo/api/flow 五类保持一致。
-不需要审计报告，确保明确性和一致性，语言干练简洁，成熟风格。
+根据当前代码同步五类正式文档：prd/tech/todo/api/flow 保持一致。产审计报告到 docs/audit/YYYY-MM-DD-documentation.md。语言干练简洁，成熟风格。
 ```
 
 ### 可观测性 — 插桩 + 上线前清单（事故响应前置：可观测）

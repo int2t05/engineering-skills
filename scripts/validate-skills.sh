@@ -144,6 +144,7 @@ declared = {
     "skills/07-verify/code-review/SKILL.md": ["docs/TODO.md"],
     "skills/07-verify/security-review/SKILL.md": ["docs/security-report.md"],
     "skills/09-operate/incident-response/SKILL.md": ["docs/postmortem/"],
+    "skills/09-operate/documentation-audit/SKILL.md": ["docs/audit/YYYY-MM-DD-documentation.md"],
     "skills/02-research/tech-selection/SKILL.md": ["docs/research/competitor.md"],
     "skills/02-research/market-research/SKILL.md": ["docs/research/market.md"],
     "skills/02-research/research/SKILL.md": ["docs/research/"],

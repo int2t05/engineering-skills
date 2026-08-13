@@ -14,7 +14,7 @@ Code you can't observe is code you can't operate. Instrumentation is written alo
 - Adding or reviewing alerting rules.
 - Reviewing a PR that adds I/O, retries, queues, or cross-service calls.
 
-**When NOT to use:** Diagnosing a live failure (use `debugging`) or profiling measured slowness (use `performance`). Observability is what makes those skills fast next time.
+**Not for:** Diagnosing a live failure (use `debugging`) or profiling measured slowness (use `performance`). Observability is what makes those skills fast next time.
 
 ## Steps
 

@@ -80,6 +80,8 @@ filling out sections.
 - [ ] ADRs record the decision and why, not boilerplate sections
 - [ ] Contradictions between user's language and code surfaced, not papered over
 
+**Output:** `CONTEXT.md` (root, ubiquitous language) + `docs/design/adr/NNNN-slug.md` (decision records, cross-version).
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, manage confusion, verify don't assume)

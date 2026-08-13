@@ -20,7 +20,7 @@ enterprises use open source; 33% are increasing usage.
 - Planning open source growth: community building, stars strategy, DevHunt launch.
 - User says "open source strategy", "open source to paid", "open source business model", "OSS 策略", "DevHunt", "开源策略", or "开源商业模式".
 
-**Not for:** GitHub README/topics/About beautification — that's `08-ship/oss-polish`.
+**Not for:** GitHub README/topics/About beautification — that's `oss-polish`.
 
 ## Steps
 

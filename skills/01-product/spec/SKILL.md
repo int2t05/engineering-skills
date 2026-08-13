@@ -94,6 +94,8 @@ Planning the implementation FROM this spec uses Claude Code's built-in plan mode
 - Boundaries (Always / Ask first / Never) are defined.
 - The user has reviewed and approved the spec.
 
+**Output:** `docs/PRD.md` (project-level, concise, main) + `docs/vX.Y/prd.md` (version-level, detailed, version branch). Single-version projects fall back to `docs/PRD.md` alone.
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode for implementation planning.

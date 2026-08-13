@@ -122,6 +122,8 @@ Final recommendations must be primarily supported by P0 and P1; use P2 to qualif
 - No old blog post is treated as current capability evidence.
 - Live sources were actually fetched; no "researched" claim is made when browsing was unavailable or forbidden.
 
+**Output:** `docs/research/competitor.md` — comparison matrix + recommendation (PRD input).
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md)

@@ -2,7 +2,7 @@
 
 > **语言：** [English](README.md) | 中文
 
-一个 Claude Code 插件——**42 个工程技能**，按软件开发生命周期组织。从打磨模糊想法到上线运行，每个阶段一个技能。
+一个 Claude Code 插件——**42 个工程技能**，按软件开发生命周期组织。从打磨模糊想法到上线运行，技能按阶段归类。
 
 共享工程原则在每次会话启动时注入，纪律是环境性的——不必刻意加载。PM 侧与 UIUX 技能额外链接 `product-principles.md` / `design-principles.md` 作为领域纪律层。
 
@@ -233,3 +233,7 @@ python scripts/gen-agents-yaml.py        # 重新生成 Codex 适配器（编辑
 ```
 
 MIT.
+
+## 来源
+
+原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)，本地保留于 `archive/`（已 gitignore）供查阅。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。

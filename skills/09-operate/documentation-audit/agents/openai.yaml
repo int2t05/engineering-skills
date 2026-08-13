@@ -1,3 +1,3 @@
 interface:
   display_name: "Documentation Audit"
-  short_description: "Documentation drift is detected, or when writing new documentation from scratch — syncs…"
+  short_description: "Documentation drifts from code — syncs PRD/TECH/API/FLOW/TODO to the codebase and…"
