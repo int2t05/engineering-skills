@@ -44,6 +44,8 @@ Roboto, Arial), purple gradients on white, rounded-2xl everything, stock card gr
 
 ### 2. Pick a style
 
+If `docs/design/references.md` exists (produced by `design-research`), load it first — ground the
+style choice in what real market references actually ship, not internal catalogs alone.
 Choose a concrete visual style that fits the product type and tone. Consistency across all pages is
 non-negotiable — don't mix flat and skeuomorphic randomly. Use SVG icons (Lucide, Heroicons), never
 emoji as structural icons. Effects (shadows, blur, radius) must align with the chosen style.

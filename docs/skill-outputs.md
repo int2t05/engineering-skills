@@ -76,6 +76,7 @@
 | 阶段 | skill | 产物 | 作用 |
 |---|---|---|---|
 | 1 需求与设计 | `imagegen` | 设计参考图（品牌/网站/移动端） | brand 模式：logo/身份板/配色；web 模式：每 section 横向图；mobile 模式：屏幕/流程图带 mockup |
+| 1 需求与设计 | `design-research` | 设计引用板 `docs/design/references.md` | 从免费公开灵感库（Lapa Ninja/Pageflows/Craftwork/Godly/Land-book）检索真实设计参考，策展成引用板喂 imagegen/frontend-design |
 
 ## 不产 md 的 skill（产物是代码/行为）
 

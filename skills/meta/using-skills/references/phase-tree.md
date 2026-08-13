@@ -36,6 +36,7 @@ Task arrives
     │   ├── UI / component design? ─────────────────────→ frontend-design
     │   ├── Design ref images, then implement to match? → image-to-code
     │   ├── Brand / web / mobile design reference images? → imagegen
+    │   ├── Retrieve real design refs (free public galleries)? → design-research
     │   ├── Data model / schema / entities / indexes? ─→ schema-design
     │   ├── Prompt / eval / LLM feature design? ────────→ prompt-engineering
     │   └── Throwaway code to answer a design question? → prototype

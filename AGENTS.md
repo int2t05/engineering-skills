@@ -46,6 +46,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | design | `frontend-design` | UI, "界面设计", "前端设计", production-grade frontend |
 | design | `image-to-code` | "设计图转代码", "图片实现", image-first frontend pipeline |
 | design | `imagegen` | "品牌识别", "logo 设计", "网站设计图", "移动端设计图", brand/web/mobile design reference images |
+| design | `design-research` | "设计参考", "真实设计参考", "找设计灵感", free public design galleries |
 | design | `schema-design` | "数据模型", "表结构设计", data model, schema design |
 | design | `prompt-engineering` | "提示词工程", "LLM 特性", prompt design, eval harness |
 | design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |

@@ -26,6 +26,8 @@ image generation is available.
 
 ### 1. Plan sections and visual direction
 
+If `docs/design/references.md` exists (produced by `design-research`), load it first — real
+references inform the section count and visual-direction picks before images are generated.
 Infer the section count from the request. Pick a coherent visual combination and commit to it
 consistently — do not mash everything into chaos.
 

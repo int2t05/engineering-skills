@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.0.0-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.1.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 一个 Claude Code 插件——**42 个工程技能**，按软件开发生命周期组织。工程原则在每次会话
@@ -61,7 +61,7 @@ engineering-skills/
 | meta | using-skills |
 | 01-product | brainstorm, spec, oss-strategy |
 | 02-research | research, market-research, tech-selection |
-| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen |
+| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen, design-research |
 | 04-develop | implement, breakdown, context-engineering, i18n |
 | 05-tune | performance, simplify, refactoring |
 | 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |

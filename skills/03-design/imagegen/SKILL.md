@@ -50,7 +50,9 @@ clutter, inconsistent framing — regenerate it. Do not settle for the first med
 
 ### 4. Match references without copying
 
-If the user provides reference images, extract their layout rhythm, grid, spacing, type scale,
+If `docs/design/references.md` exists (produced by `design-research`), load it as the primary
+reference source — it pairs real published designs with pre-extracted layout/grid/spacing/type/
+density/accent analysis. If the user provides reference images directly, extract their layout rhythm, grid, spacing, type scale,
 visual density, and accent-color logic. Do NOT copy exact logos, brand names, compositions,
 slogans, or unique visual assets. References are quality training, not templates.
 

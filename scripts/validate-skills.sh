@@ -58,8 +58,8 @@ for phase in $phases; do
   done
 done
 
-echo "Skills found: $count (expected 42)"
-[ "$count" -eq 42 ] || { echo "FAIL: expected 42 skills, found $count"; errors=$((errors+1)); }
+echo "Skills found: $count (expected 43)"
+[ "$count" -eq 43 ] || { echo "FAIL: expected 43 skills, found $count"; errors=$((errors+1)); }
 
 # --- Plugin manifest sync: skills[] array must match actual skills on disk ---
 manifest=".claude-plugin/plugin.json"
@@ -113,7 +113,7 @@ done
 
 # --- Domain principles linking: PM skills link product-principles, UIUX skills link design-principles ---
 pm_skills="skills/01-product/brainstorm skills/01-product/spec skills/01-product/oss-strategy skills/02-research/market-research skills/02-research/tech-selection"
-uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen skills/03-design/prototype"
+uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen skills/03-design/design-research skills/03-design/prototype"
 for s in $pm_skills; do
   [ -f "$s/SKILL.md" ] && { grep -q 'product-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (PM skill) does not link product-principles.md"; errors=$((errors+1)); }; }
 done
@@ -176,6 +176,7 @@ declared = {
     "skills/08-ship/oss-polish/SKILL.md": ["README.md", "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"],
     "skills/05-tune/performance/SKILL.md": ["PERF.md"],
     "skills/06-test/load-testing/SKILL.md": ["docs/CAPACITY.md"],
+    "skills/03-design/design-research/SKILL.md": ["docs/design/references.md"],
 }
 for skill_md, outputs in declared.items():
     if not os.path.isfile(skill_md):
