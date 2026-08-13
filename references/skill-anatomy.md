@@ -43,6 +43,23 @@ Keep SKILL.md lean (target 15-150 lines, matching function complexity). Move
 encyclopedic data, long examples, and platform-specific detail into references/
 subfiles the skill loads only when needed.
 
+## README.md
+The repo README is the shop window — lean, scannable in one screen. Keep to:
+badges + elevator pitch + install (primary agent only) + how-to + structure tree
++ compact catalog (skill **names** by phase, no triggers) + reporting issues +
+license + provenance.
+
+Link out, don't inline what lives elsewhere:
+- Triggers + routing → `AGENTS.md` (single source — never duplicate the per-skill
+  trigger list in README).
+- Product matrix → `docs/skill-outputs.md`.
+- Install variants for other agents → `.agents/install-block.md`.
+- Shared principles → `references/engineering-principles.md`.
+
+No length cap (unlike SKILL.md's 15-150), but the test is: if a section duplicates
+content already in AGENTS.md / docs/ / references/, replace it with a link. The
+catalog table lists names only — triggers belong in AGENTS.md.
+
 ## User-invoked vs model-invoked
 - Model-invoked (default): rich trigger phrasing so the model reaches for it.
 - User-invoked: set disable-model-invocation: true. Must be typed (e.g. /brainstorm, /handoff).
