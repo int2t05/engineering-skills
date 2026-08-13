@@ -105,15 +105,15 @@ flowchart LR
 ### 市场调研 — docs/research/market.md（ROADMAP/PRD 参考）
 
 ```
-/market-research
-针对【产品方向】做市场调研：用户原话、竞品、行业情报。通过深度检索相关中文社区（LINUX DO、豆瓣、小红书、V2EX 等）收集真实用户原话、行为描述和情绪表达。输出 docs/research/market.md。
+/research
+[market 模式] 针对产品方向做市场调研：用户原话、竞品、行业情报。通过深度检索相关中文社区（LINUX DO、豆瓣、小红书、V2EX 等）收集真实用户原话、行为描述和情绪表达。输出 docs/research/market.md。
 ```
 
 ### 技术选型 / 竞品对比 — docs/research/competitor.md（ROADMAP/PRD 参考）
 
 ```
-/tech-selection
-针对【具体需求】对比可选技术栈/库/框架，输出对比矩阵 + 推荐。输出 docs/research/competitor.md。
+/research
+[tech-selection 模式] 针对具体需求对比可选技术栈/库/框架，输出对比矩阵 + 推荐。输出 docs/research/competitor.md。
 ```
 
 ### 开源策略 — docs/research/strategy.md（ROADMAP/PRD 参考）
@@ -324,6 +324,13 @@ flowchart LR
 /tdd
 @docs/PLAN.md 按计划逐文件实现。严格按照计划完成代码文件编写，测试代码写在 test/ 下。
 有依赖要提前配置。代码有待完善处加 TODO 注释。禁止 mock 测试。
+```
+
+### 多 agent 编排 — 并行/顺序子代理执行（大计划超单 context 时）
+
+```
+/multi-agent-orchestration
+@docs/PLAN.md 任务集过大或需隔离 context 时，派发子代理执行：独立任务并行、有序任务顺序+审查检查点。每个子代理构造完整 context（目标/输入/边界/验证），返回后验证再推进。
 ```
 
 ---

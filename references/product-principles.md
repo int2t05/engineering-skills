@@ -1,7 +1,7 @@
 # Product Principles
 
 Recurring discipline for every product-management skill in this collection (brainstorm, spec,
-market-research, tech-selection, oss-strategy). Each skill links this file rather than repeating
+research market/tech-selection modes, oss-strategy). Each skill links this file rather than repeating
 these rules. Apply them at all times — they sit alongside engineering-principles.md, not instead of it.
 
 ## 1. Need ≠ feature

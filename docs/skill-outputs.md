@@ -15,9 +15,9 @@
 | 阶段 | skill | 产物 | 路径 | 命名 | 作用 |
 |---|---|---|---|---|---|
 | **0 产品调研** | `brainstorm` | 用户访谈记录 | `docs/research/interview.md` | 阶段目录 | discovery 访谈发现（PRD 输入）；可由 workflow-prompts 用户访谈提示词独立产出 |
-| | `research` | 调研档案 | `docs/research/YYYY-MM-DD-<slug>.md` | 阶段目录 | 带引用的深度调研，累积存档 |
-| | `market-research` | 市场调研 | `docs/research/market.md` | 阶段目录 | 用户原话/竞品/行业情报（PRD 输入） |
-| | `tech-selection` | 技术对比 | `docs/research/competitor.md` | 阶段目录 | 技术选型对比矩阵 + 推荐（PRD 输入） |
+| | `research` (general) | 调研档案 | `docs/research/YYYY-MM-DD-<slug>.md` | 阶段目录 | 带引用的深度调研，累积存档 |
+| | `research` (market) | 市场调研 | `docs/research/market.md` | 阶段目录 | 用户原话/竞品/行业情报（PRD 输入） |
+| | `research` (tech-selection) | 技术对比 | `docs/research/competitor.md` | 阶段目录 | 技术选型对比矩阵 + 推荐（PRD 输入） |
 | | `oss-strategy` | 商业策略 | `docs/research/strategy.md` | 阶段目录 | 商业模式/定价/GTM（PRD 输入） |
 | | `brainstorm` | **产品路线图** | `ROADMAP.md` | 大写 | 产品定位/多版本/验收项（本阶段最重要产物） |
 | **1 需求与设计** | `frontend-design` | 用户研究 | `docs/research/ux-research.md` | 阶段目录 | persona/journey/可用性测试（DESIGN 输入） |
@@ -82,7 +82,7 @@
 
 | 阶段 | skill | 产物 |
 |---|---|---|
-| 3 写代码 | `implement` · `tdd` · `context-engineering` · `i18n` | 源码 / test/ |
+| 3 写代码 | `implement` · `multi-agent-orchestration` · `tdd` · `context-engineering` · `i18n` | 源码 / test/ |
 | 3 写代码 | `image-to-code` | 前端代码 |
 | 4 优化重构 | `simplify` · `refactoring` | 重构后代码（simplify 清晰化 / refactoring 结构重构） |
 | 5 测试 | `test-generation` · `api-testing` · `e2e-testing` | 测试代码 |

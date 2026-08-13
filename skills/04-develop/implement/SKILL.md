@@ -55,7 +55,7 @@ cycle before they stand.
 
 5. **Commit the slice** with a descriptive message. Each slice is independently
    revertable. Don't mix concerns — feature, refactor, and config changes go in
-   separate commits.
+   separate commits (see §9, behavior-preserving change discipline, in engineering-principles.md).
 
 6. **After all slices: run the full test suite once.** Not per slice — once, at
    the end. If it fails, localize with the debugging skill; don't re-run blind.

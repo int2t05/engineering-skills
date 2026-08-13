@@ -37,8 +37,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | product | `spec` | new project/feature/change, "write spec", "create prd", "写需求文档", "要做什么", "需求是什么" |
 | product | `oss-strategy` | OSS business model, COSS, "开源策略", "开源商业模式" |
 | research | `research` | deep web research, cited report, "深度检索", "调研报告" |
-| research | `market-research` | market sizing, competitor analysis, "市场调研", "竞品分析" |
-| research | `tech-selection` | "技术选型", "方案对比", tech stack comparison |
+| research | `research` | "deep research", "市场调研", "竞品分析", "技术选型", "选哪个" (general/market/tech-selection modes) |
 | design | `architecture` | system design, "架构设计", "系统设计", ADR |
 | design | `domain-modeling` | domain model, ubiquitous language, "领域模型", CONTEXT.md |
 | design | `api-design` | REST/GraphQL contracts, "接口设计", "API 契约" |
@@ -51,6 +50,8 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | design | `prompt-engineering` | "提示词工程", "LLM 特性", prompt design, eval harness |
 | design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |
 | develop | `implement` | implement spec/tickets, "实现", "编码", "改这个配置", "搭项目骨架", "改一下这个", "加个功能" |
+| develop | `multi-agent-orchestration` | "并行 agent", "子代理执行", "派发任务", parallel/sequenced subagents |
+| meta | `skill-authoring` | "写技能", "改技能", "技能评估", write/edit/eval a skill |
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
 | develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
 | develop | `i18n` | "国际化", "本地化", "多语言", i18n, RTL, localization |

@@ -49,8 +49,7 @@ Decompose the move into steps small enough that each one leaves the codebase gre
 is not one step — it's: create the empty module → move one responsibility → update callers → run
 tests → move the next. Large structural moves done in one pass are where regressions hide.
 
-- At scale (touching >500 lines), prefer automation — codemods, AST transforms, IDE refactors — over manual edits. Manual structural edits at scale are error-prone and exhausting to review.
-- Keep each step independently revertible. If step 4 breaks, you revert to step 3, not to the start.
+- At scale or for the separate-PR/incremental rules, follow §9 (behavior-preserving change discipline) in engineering-principles.md.
 
 ### 4. Execute incrementally — test after every step
 
@@ -58,7 +57,7 @@ One step, then the full suite, then the next step. Never batch structural change
 commit.
 
 - Make the move → run the suite → pass: continue; fail: revert the step and reconsider.
-- Submit refactoring changes separately from feature or bug-fix changes. A PR that refactors *and* changes behavior is two PRs — split them. Reviewers cannot judge behavior preservation against a diff that also changes behavior.
+- The separate-PR and Rule-of-500 rules are in §9 (behavior-preserving change discipline) of engineering-principles.md.
 
 ### 5. Verify the structure improved
 
@@ -76,8 +75,7 @@ If the "refactored" structure is not clearly better, or the diff entangles behav
 - [ ] Each step is an independently revertible, behavior-preserving change; the diff is purely structural
 - [ ] The structural move is named (extract / move / split / merge / change-dependency) and the result concentrates complexity rather than relocating it
 - [ ] No behavior change mixed in — bugs observed during the refactor are filed, not silently fixed
-- [ ] Refactoring submitted separately from feature/bug-fix work
-- [ ] At scale (>500 lines), automation used instead of manual edits
+- [ ] Behavior-preserving change discipline followed (§9: incremental, separate-PR, Rule-of-500)
 
 **Red flags:** tests modified to pass after the move (behavior shifted); a "refactor" PR that also fixes a bug or adds a feature; large structural change in one untested pass; moving code without pinning behavior first; a refactor that leaves complexity merely relocated, not reduced.
 

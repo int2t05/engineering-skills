@@ -1,6 +1,6 @@
 # Market Frameworks
 
-Depth reference for the `market-research` skill. Structured frameworks for sizing a market, analyzing
+Depth reference for the `research` skill, **market** mode. Structured frameworks for sizing a market, analyzing
 competition, and positioning — the analysis layer that turns raw research into decisions. Complements
 the skill's four research modes (investor/competitive/market-sizing/technology), which define *how* to
 gather; this defines *how to structure the analysis*.

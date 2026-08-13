@@ -112,7 +112,7 @@ for phase in $phases; do
 done
 
 # --- Domain principles linking: PM skills link product-principles, UIUX skills link design-principles ---
-pm_skills="skills/01-product/brainstorm skills/01-product/spec skills/01-product/oss-strategy skills/02-research/market-research skills/02-research/tech-selection"
+pm_skills="skills/01-product/brainstorm skills/01-product/spec skills/01-product/oss-strategy skills/02-research/research"
 uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen skills/03-design/design-research skills/03-design/prototype"
 for s in $pm_skills; do
   [ -f "$s/SKILL.md" ] && { grep -q 'product-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (PM skill) does not link product-principles.md"; errors=$((errors+1)); }; }
@@ -170,9 +170,7 @@ declared = {
     "skills/07-verify/security-review/SKILL.md": ["docs/security-report.md"],
     "skills/09-operate/incident-response/SKILL.md": ["docs/postmortem/"],
     "skills/09-operate/documentation-audit/SKILL.md": ["docs/audit/YYYY-MM-DD-documentation.md"],
-    "skills/02-research/tech-selection/SKILL.md": ["docs/research/competitor.md"],
-    "skills/02-research/market-research/SKILL.md": ["docs/research/market.md"],
-    "skills/02-research/research/SKILL.md": ["docs/research/"],
+    "skills/02-research/research/SKILL.md": ["docs/research/", "docs/research/market.md", "docs/research/competitor.md"],
     "skills/08-ship/oss-polish/SKILL.md": ["README.md", "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"],
     "skills/05-tune/performance/SKILL.md": ["PERF.md"],
     "skills/06-test/load-testing/SKILL.md": ["docs/CAPACITY.md"],

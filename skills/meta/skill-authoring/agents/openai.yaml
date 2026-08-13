@@ -1,0 +1,3 @@
+interface:
+  display_name: "Skill Authoring"
+  short_description: "Creating, editing, or evaluating a skill in this collection — writes SKILL.md frontmatter…"

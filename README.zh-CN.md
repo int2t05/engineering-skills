@@ -5,10 +5,10 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.1.0-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-3.0.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-一个 Claude Code 插件——**42 个工程技能**，按软件开发生命周期组织。工程原则在每次会话
+一个 Claude Code 插件——**43 个工程技能**，按软件开发生命周期组织。工程原则在每次会话
 启动时注入，纪律成为环境上下文而非需要记住加载的东西。PM 与 UIUX 技能额外叠加
 `product-principles.md` / `design-principles.md` 作为领域纪律层。
 
@@ -43,8 +43,9 @@ engineering-skills/
 │   ├── workflows/validate.yml   # CI：schema + adapter-sync + invocation-sync
 │   ├── ISSUE_TEMPLATE/          # bug-report.md
 │   └── PULL_REQUEST_TEMPLATE.md
-├── skills/                   # 42 个技能，9 个 SDLC 阶段 + meta
+├── skills/                   # 43 个技能，9 个 SDLC 阶段 + meta
 │   ├── meta/using-skills/       # 路由
+│   ├── meta/skill-authoring/    # 写 + 评估技能
 │   ├── 01-product/ … 09-operate/
 │   └── <skill>/SKILL.md + references/ + agents/openai.yaml
 ├── references/               # engineering / product / design 原则（共享）
@@ -54,15 +55,15 @@ engineering-skills/
 └── LICENSE                   # MIT
 ```
 
-## 目录——按阶段分列全部 42 个技能
+## 目录——按阶段分列全部 43 个技能
 
 | 阶段 | 技能 |
 |---|---|
-| meta | using-skills |
+| meta | using-skills, skill-authoring |
 | 01-product | brainstorm, spec, oss-strategy |
-| 02-research | research, market-research, tech-selection |
+| 02-research | research（general/market/tech-selection 模式） |
 | 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen, design-research |
-| 04-develop | implement, breakdown, context-engineering, i18n |
+| 04-develop | implement, multi-agent-orchestration, breakdown, context-engineering, i18n |
 | 05-tune | performance, simplify, refactoring |
 | 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
 | 07-verify | code-review, debugging, security-review, linting |
@@ -88,3 +89,7 @@ MIT —— 见 [LICENSE](LICENSE)。
 ## v2.0.0 迁移
 
 破坏性变更：三个图片技能合并为一个 —— `/brandkit`、`/imagegen-web`、`/imagegen-mobile` → `/imagegen`（传 mode：brand / web / mobile）。新增：`/refactoring`（结构重构，保留行为）与 `/linting`（机器可检测的静态问题）。技能数仍为 42。
+
+## v3.0.0 迁移
+
+破坏性变更：`/market-research` 与 `/tech-selection` 合并入 `/research`（传 mode：general / market / tech-selection）。新增：`/skill-authoring`（meta —— 写 + 评估技能）与 `/multi-agent-orchestration`（04-develop —— 并行/顺序子代理）。`code-review` 扩展为 4 模式（pre-merge 默认 + in-flight 对抗 + evidence-gate 证据门 + receiving 接收评审）。技能数仍为 43。

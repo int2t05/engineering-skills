@@ -47,11 +47,12 @@ Scan for concrete signals — each is a specific pattern, not a vague smell. The
 
 ### 4. Apply changes incrementally
 
-One simplification at a time. Run the test suite after each change. **Submit refactoring changes separately from feature or bug fix changes** — a PR that refactors and adds a feature is two PRs; split them.
+One simplification at a time. Run the test suite after each change. The incremental-test,
+separate-PR, and Rule-of-500 rules are in §9 (behavior-preserving change discipline) of
+engineering-principles.md — apply them here.
 
 - Make the change → run the suite → pass: continue to the next; fail: revert and reconsider.
 - Avoid batching multiple simplifications into one untested change. If something breaks, you need to know which simplification caused it.
-- **Rule of 500:** if a refactoring would touch more than 500 lines, invest in automation (codemods, sed scripts, AST transforms) rather than manual edits. Manual edits at that scale are error-prone and exhausting to review.
 
 ### 5. Verify the result
 

@@ -1,6 +1,6 @@
 # Selection Rubric
 
-Depth reference for the `tech-selection` skill. The decision layer on top of the 10 evaluation
+Depth reference for the `research` skill, **tech-selection** mode. The decision layer on top of the 10 evaluation
 dimensions: weighted scoring, build-vs-buy, total cost of ownership (TCO), migration-cost estimation,
 and the long-term-bet vs commodity distinction. The skill gathers evidence; this rubric turns it into a
 defensible choice.

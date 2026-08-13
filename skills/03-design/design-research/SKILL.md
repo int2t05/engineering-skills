@@ -17,7 +17,7 @@ screenshots.
 - Grounding a style direction in what the market already ships, not internal catalogs alone
 - Triggers on "design references", "real UI references", "find design inspiration", "设计参考", "真实设计参考", "找设计灵感", "设计灵感"
 
-**Not for:** generating design images (use `imagegen`); writing frontend code (use `frontend-design`); image-first code pipeline (use `image-to-code`); cited-text market/tech research (use `research`/`market-research`/`tech-selection`).
+**Not for:** generating design images (use `imagegen`); writing frontend code (use `frontend-design`); image-first code pipeline (use `image-to-code`); cited-text market/tech research (use `research` market/tech-selection modes).
 
 ## Steps
 

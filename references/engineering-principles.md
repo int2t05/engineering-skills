@@ -34,3 +34,18 @@ The spec is its input. For work breakdown into tickets, use the `breakdown` skil
 ## 8. Goal-driven execution
 Transform tasks into verifiable goals ("write a test that reproduces it, then make it
 pass"). Loop until the goal is verified, not until it "looks done."
+
+## 9. Behavior-preserving change discipline
+When refactoring, simplifying, or restructuring code (the `refactoring`, `simplify`, and
+`implement` skills all do this):
+
+- **Incremental, test-pinned steps.** One change → run the suite → pass: continue; fail: revert
+  and reconsider. Never batch multiple changes into one untested commit — if something breaks you
+  must know which change caused it.
+- **Separate refactoring from feature/bug work.** A PR that refactors *and* changes behavior is two
+  PRs; split them. Reviewers cannot judge behavior preservation against a diff that also changes
+  behavior. (Feature, refactor, and config changes go in separate commits.)
+- **Rule of 500.** If a change would touch more than 500 lines, invest in automation (codemods, AST
+  transforms, IDE refactors, sed scripts) rather than manual edits. Manual edits at that scale are
+  error-prone and exhausting to review.
+- **Each step independently revertible.** If step 4 breaks, you revert to step 3, not to the start.

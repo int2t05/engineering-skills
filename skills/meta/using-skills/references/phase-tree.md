@@ -21,12 +21,11 @@ Task arrives
     ├── 01 PRODUCT — shaping what to build
     │   ├── Vague idea, need to explore intent? ────────→ brainstorm
     │   ├── Need a spec / acceptance criteria? ─────────→ spec
+    │   ├── Author/edit/evaluate a skill? ─────────────→ skill-authoring (meta)
     │   └── Open-source strategy / growth / COSS? ──────→ oss-strategy
     │
     ├── 02 RESEARCH — learning before deciding
-    │   ├── Deep multi-source investigation? ───────────→ research
-    │   ├── Market / competitor / sizing? ──────────────→ market-research
-    │   └── Compare libraries / stacks / repos? ────────→ tech-selection
+    │   ├── Deep multi-source / market / tech-selection? → research (3 modes)
     │
     ├── 03 DESIGN — shaping the system
     │   ├── High-level system architecture? ────────────→ architecture
@@ -43,6 +42,7 @@ Task arrives
     │
     ├── 04 DEVELOP — writing the code
     │   ├── Slice-by-slice implementation? ─────────────→ implement
+    │   ├── Execute via parallel/sequenced subagents? ──→ multi-agent-orchestration
     │   ├── Small change / rename / scaffold (no spec)? → implement (lightweight-changes ref)
     │   ├── Break a spec into verifiable tasks? ────────→ breakdown
     │   ├── Load the right context first? ──────────────→ context-engineering
