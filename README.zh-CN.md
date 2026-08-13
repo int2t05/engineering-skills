@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-3.0.0-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.2.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 一个 Claude Code 插件——**43 个工程技能**，按软件开发生命周期组织。工程原则在每次会话
@@ -90,6 +90,6 @@ MIT —— 见 [LICENSE](LICENSE)。
 
 破坏性变更：三个图片技能合并为一个 —— `/brandkit`、`/imagegen-web`、`/imagegen-mobile` → `/imagegen`（传 mode：brand / web / mobile）。新增：`/refactoring`（结构重构，保留行为）与 `/linting`（机器可检测的静态问题）。技能数仍为 42。
 
-## v3.0.0 迁移
+## v2.2.0 迁移
 
 破坏性变更：`/market-research` 与 `/tech-selection` 合并入 `/research`（传 mode：general / market / tech-selection）。新增：`/skill-authoring`（meta —— 写 + 评估技能）与 `/multi-agent-orchestration`（04-develop —— 并行/顺序子代理）。`code-review` 扩展为 4 模式（pre-merge 默认 + in-flight 对抗 + evidence-gate 证据门 + receiving 接收评审）。技能数仍为 43。

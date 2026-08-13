@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-3.0.0-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.2.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 A Claude Code plugin — **42 engineering skills** organized by the software development
@@ -94,6 +94,6 @@ Original skill concepts adapted from [addyosmani/agent-skills](https://github.co
 
 Breaking: the three image skills merged into one — `/brandkit`, `/imagegen-web`, `/imagegen-mobile` → `/imagegen` (pass mode: brand / web / mobile). Added: `/refactoring` (structural, behavior-preserving) and `/linting` (machine-detectable static issues). Skill count stays 42.
 
-## v3.0.0 migration
+## v2.2.0 migration
 
 Breaking: `/market-research` and `/tech-selection` merged into `/research` (pass mode: general / market / tech-selection). Added: `/skill-authoring` (meta — author + eval skills) and `/multi-agent-orchestration` (04-develop — parallel/sequenced subagents). `code-review` expanded to 4 modes (pre-merge default + in-flight doubt + evidence-gate + receiving). Skill count stays 43.
