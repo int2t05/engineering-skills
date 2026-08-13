@@ -1,10 +1,10 @@
 # Visual Direction
 
-Shared depth reference for the `imagegen-web` and `image-to-code` skills. The combinatorial
+Shared depth reference for the `imagegen` (web mode) and `image-to-code` skills. The combinatorial
 variation engine, hero-scale mapping, composition anchors, background-mode menu, CTA variation,
 continuity rules, creativity escalation, and the anti-slop ban list. Both skills load this file
 instead of maintaining separate inline copies of the same engine — eliminating the duplication where
-`imagegen-web` carried 9 axes and `image-to-code` carried a 7-axis subset.
+`imagegen` web mode carried 9 axes and `image-to-code` carried a 7-axis subset.
 
 ## 1. The combinatorial variation engine
 
@@ -119,12 +119,12 @@ load `anti-tells.md` from the `frontend-design` skill.
 
 ## 7. How the two skills use this file
 
-- **`imagegen-web`**: generates images only. Steps lock section count (1 image/section), then pick from
+- **`imagegen` (web mode)**: generates images only. Steps lock section count (1 image/section), then pick from
   this engine (§1-§3), then enforce continuity + creativity + anti-slop (§4-§6). No code output.
 - **`image-to-code`**: generates images, deeply analyzes each (text, typography, spacing, components,
   colors, layout), then implements code faithfully. Uses §1 axes for planning; narrative-spine and
   second-read axes optional. Delegates color formula, typography pairing, and interaction states to
   the `frontend-design` skill.
 
-Both skills' SKILL.md files link this reference rather than inlining the engine — the single source of
-truth for the web visual-direction system.
+Both `imagegen` (web mode) and `image-to-code` link this reference rather than inlining the engine —
+the single source of truth for the web visual-direction system.

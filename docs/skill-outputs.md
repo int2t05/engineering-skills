@@ -75,9 +75,7 @@
 
 | 阶段 | skill | 产物 | 作用 |
 |---|---|---|---|
-| 1 需求与设计 | `brandkit` | 品牌识别图 | logo 概念/身份板/配色/字体/mockup |
-| 1 需求与设计 | `imagegen-web` | 网站设计参考图 | 每 section 一张横向图，落地页/营销站艺术方向 |
-| 1 需求与设计 | `imagegen-mobile` | 移动端屏幕/流程图 | iOS/Android 屏幕图 + 流程，带手机 mockup 框 |
+| 1 需求与设计 | `imagegen` | 设计参考图（品牌/网站/移动端） | brand 模式：logo/身份板/配色；web 模式：每 section 横向图；mobile 模式：屏幕/流程图带 mockup |
 
 ## 不产 md 的 skill（产物是代码/行为）
 
@@ -85,9 +83,9 @@
 |---|---|---|
 | 3 写代码 | `implement` · `tdd` · `context-engineering` · `i18n` | 源码 / test/ |
 | 3 写代码 | `image-to-code` | 前端代码 |
-| 4 优化重构 | `simplify` | 重构后代码 |
+| 4 优化重构 | `simplify` · `refactoring` | 重构后代码（simplify 清晰化 / refactoring 结构重构） |
 | 5 测试 | `test-generation` · `api-testing` · `e2e-testing` | 测试代码 |
-| 6 审查调试 | `debugging` | 修复 + 回归测试 |
+| 6 审查调试 | `debugging` · `linting` | 修复 + 回归测试（debugging 运行时 bug / linting 机器可检测问题） |
 | 7 上线发布 | `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` | 提交 / 流水线 / 部署 |
 | 8 运行维护 | `observability` | 插桩代码 |
 | meta | `using-skills` | 路由（无产物） |

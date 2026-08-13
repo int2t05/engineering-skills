@@ -208,25 +208,11 @@ flowchart LR
 参考 Apple HIG 设计原则，深度审计当前前端布局/组件/字体/样式，给出优化建议。输出 docs/design/frontend-audit.md（审计报告），作 PRD 参考。
 ```
 
-### 网站设计参考图 — section 设计图（每段一张，PRD/DESIGN 参考）
+### 设计参考图 — 品牌/网站/移动端（PRD/DESIGN 参考）
 
 ```
-/imagegen-web
-为【网站/落地页】生成设计参考图，每个 section 一张横向图：hero 构图、布局、CTA、叙事主线。高端艺术方向，只出图不写代码。
-```
-
-### 移动端设计图 — app 屏幕/流程图（PRD/DESIGN 参考）
-
-```
-/imagegen-mobile
-为【移动端 app】生成屏幕图与流程图：iOS/Android 平台规范、导航、安全区，带手机 mockup 框。只出图不写代码。
-```
-
-### 品牌识别图 — 品牌系统图（PRD/DESIGN 参考）
-
-```
-/brandkit
-为【品牌】生成品牌识别图：logo 概念、身份板、配色、字体、mockup。高端品牌系统，只出图不写代码。
+/imagegen
+为【品牌/网站/移动端】生成设计参考图（mode：brand=logo/身份板/配色；web=每 section 横向图；mobile=屏幕/流程图带 mockup）。高端艺术方向，只出图不写代码。
 ```
 
 ### 设计图转代码 — 前端代码（图片优先管线，DESIGN 参考）
@@ -365,12 +351,12 @@ flowchart LR
 
 ```
 /codebase-design
-深度审计后端架构，优化使架构完善，禁止硬编码。
+深度审计架构，产出深化机会与选定候选（docs/design/codebase-audit.md）。
 ```
 
 ```
-/simplify
-根据上方 /codebase-design 的报告完全重构。不要向后兼容，架构明确。
+/refactoring
+根据上方 /codebase-design 的审计，执行结构重构（提取/移动/拆合并/改依赖），保留行为。不要向后兼容，架构明确。
 ```
 
 ---
@@ -451,6 +437,13 @@ flowchart LR
 ```
 /security-review
 审查本次改动：密钥、鉴权、注入、访问控制、加固。输出安全发现报告（docs/security-report.md）。
+```
+
+### Lint / 静态分析 — lint 修复 + 配置收紧（代码审查前置：机器门禁）
+
+```
+/linting
+跑项目 linter/静态分析，按规则分类修复真实问题，误报窄域抑制并写理由，反复出现的噪音收紧配置。本地命令须与 CI 一致。
 ```
 
 ### 代码审查 — docs/TODO.md（本阶段最重要产物，最后，每个大里程碑）

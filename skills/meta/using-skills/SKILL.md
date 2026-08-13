@@ -21,11 +21,11 @@ skill. Every skill in this collection lives under one of nine phases.
 1. Pick the phase, then activate the entry-point skill it lists.
    - **01-product** — `brainstorm` · `spec` · `oss-strategy`
    - **02-research** — `research` · `market-research` · `tech-selection`
-   - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `brandkit` · `imagegen-web` · `imagegen-mobile` · `schema-design` · `prompt-engineering` · `prototype`
+   - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `imagegen` · `schema-design` · `prompt-engineering` · `prototype`
    - **04-develop** — `implement` · `breakdown` · `context-engineering` · `i18n`
-   - **05-tune** — `performance` · `simplify`
+   - **05-tune** — `performance` · `simplify` · `refactoring`
    - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `load-testing`
-   - **07-verify** — `code-review` · `debugging` · `security-review`
+   - **07-verify** — `code-review` · `debugging` · `security-review` · `linting`
    - **08-ship** — `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` · `oss-polish`
    - **09-operate** — `observability` · `documentation-audit` · `handoff` · `incident-response`
 

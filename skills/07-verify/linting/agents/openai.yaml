@@ -1,0 +1,3 @@
+interface:
+  display_name: "Linting"
+  short_description: "Fixing machine-detectable code issues — run linters and static analyzers (ESLint, Ruff…"

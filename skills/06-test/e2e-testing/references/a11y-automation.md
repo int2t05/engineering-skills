@@ -2,7 +2,7 @@
 
 Depth reference for the `e2e-testing` skill. How to automate a11y testing in CI — axe-core,
 Lighthouse CI, Storybook a11y addon. Design-time a11y rules are in `frontend-design`'s
-`ux-guidelines.md` (the 15-rule checklist) and `usability-heuristics.md` (Nielsen #1, #4, #6); the
+`ux-guidelines.md` (the 15-rule checklist) and `design-foundations.md` §Usability Heuristics (Nielsen #1, #4, #6); the
 `shipping` skill's pre-launch checklist checks for "no axe-core / Lighthouse a11y warnings." This
 reference teaches how to install and configure those tools so the checklist can pass.
 
@@ -148,7 +148,7 @@ state changes.
 ## 7. How this connects
 
 - **Design rules**: `frontend-design`/`ux-guidelines.md` (15 a11y rules) and
-  `usability-heuristics.md` (Nielsen heuristics) — what to build.
+  `design-foundations.md` §Usability Heuristics (Nielsen heuristics) — what to build.
 - **Pre-launch check**: `shipping` skill checks for "no axe-core / Lighthouse a11y warnings."
 - **This reference**: how to install/configure axe-core, Lighthouse CI, Storybook a11y so the
   pre-launch check can pass — and so regressions are caught per-PR, not at launch.

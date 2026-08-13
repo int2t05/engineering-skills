@@ -1,13 +1,13 @@
 ---
 name: implement
-description: Use when implementing the work described by a spec or tickets — drives TDD at pre-agreed seams, runs typechecks and tests regularly, and closes with code-review before committing. Also covers lightweight changes (small edits, mechanical renames, project scaffolding) that don't need a full spec. Triggers on "implement", "build this", "code the feature", "实现", "编码", "改这个配置", "重命名", "搭项目骨架".
+description: Use when implementing the work described by a spec or tickets — drives TDD within each slice, runs typechecks and tests regularly, and closes with code-review before committing. Also covers lightweight changes (small edits, mechanical renames, project scaffolding) that don't need a full spec. Triggers on "implement", "build this", "code the feature", "实现", "编码", "改这个配置", "重命名", "搭项目骨架" — also when user says "改一下这个" / "加个功能". Not for pure test-driven exploration with no spec (use tdd).
 ---
 
 # Implement
 
 Execute the work described by a spec or tickets in thin vertical slices. Each
 slice cuts a complete path through every layer (schema, API, UI, tests) and
-lands green. Drive TDD at pre-agreed seams; verify framework-specific patterns
+lands green. Drive TDD within each slice; verify framework-specific patterns
 against official docs; subject non-trivial decisions to a fresh-context doubt
 cycle before they stand.
 
@@ -19,7 +19,7 @@ cycle before they stand.
 - High-stakes or unfamiliar code where correctness matters more than speed.
 - Lightweight changes that don't need a spec — small config edits, mechanical renames/moves, project scaffolding (see `references/lightweight-changes.md`).
 
-**Not for:** Changes needing design decisions (use `spec`); system architecture (use `architecture`).
+**Not for:** changes needing design decisions (use `spec`); system architecture (use `architecture`); pure test-driven exploration or bugfix-via-test with no spec — red-green-refactor as the whole task (use `tdd`). Have a spec and want slice-by-slice implementation? That stays here, with TDD driven within each slice.
 
 ## Steps
 

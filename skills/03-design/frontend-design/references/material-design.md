@@ -82,7 +82,7 @@ Elevation in M3 is layered surfaces with tonal + shadow differences:
 | **5** | 12dp | Scrolled FAB, popover |
 
 In dark mode, elevation uses *tonal overlay* (lighter surface tones) instead of shadows — shadows
-don't read on dark backgrounds (same as `color-theory.md` §8).
+don't read on dark backgrounds (same as `design-foundations.md` §Color).
 
 ## 6. M3 state layers
 
@@ -128,7 +128,7 @@ signals Apple platforms.
 
 - **M3 color roles** ↔ `palettes.md` semantic tokens (role pairs guarantee contrast).
 - **M3 type roles** ↔ `font-pairings.md` type scale (role-based vs scale-based naming, same intent).
-- **M3 elevation** ↔ `design-tokens.md` elevation/shadow scale + `color-theory.md` dark-mode rules.
+- **M3 elevation** ↔ `design-tokens.md` elevation/shadow scale + `design-foundations.md` §Color dark-mode rules.
 - **M3 state layers** ↔ `component-anatomy.md` variant axes (state as a systematic axis, not ad-hoc).
 - **M3 shape variety** ↔ `design-tokens.md` radius scale (varied, not one global radius).
 

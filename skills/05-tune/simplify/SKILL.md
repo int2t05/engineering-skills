@@ -1,6 +1,6 @@
 ---
 name: simplify
-description: Use when the code is too complex — clarity over cleverness, removes speculative abstractions, dead complexity, and earns-its-cost structures. Triggers on "simplify", "too complex", "refactor for clarity", "简化", "太复杂", "重构求清晰".
+description: Use when the code is too complex — clarity over cleverness, removes speculative abstractions, dead complexity, and earns-its-cost structures. Triggers on "simplify", "too complex", "refactor for clarity", "简化", "太复杂", "重构求清晰". Not for cross-module structural changes (use refactoring) or architecture audit (use codebase-design) — single-file clarity stays here.
 ---
 
 # Code Simplification
@@ -15,7 +15,7 @@ Simplify code by reducing complexity while preserving exact behavior. The goal i
 - After merging changes that introduced duplication or inconsistency
 - Triggers on "simplify", "too complex", "refactor for clarity"
 
-**Not for:** Code you don't fully understand yet — comprehend before you simplify. Performance-critical code where the "simpler" version would be measurably slower. Throwaway code about to be rewritten entirely. Refactoring that involves architectural intent (seam placement, module deepening) — use `codebase-design`.
+**Not for:** code you don't fully understand yet — comprehend before you simplify. Performance-critical code where the "simpler" version would be measurably slower. Throwaway code about to be rewritten entirely. Cross-module structural changes — extracting/moving modules, redrawing dependency boundaries, splitting or merging files → use `refactoring`. Designing where a seam or deep module should go (producing an audit, not executing) → use `codebase-design`. Single-file clarity stays here: naming, nesting, dead code.
 
 ## Steps
 

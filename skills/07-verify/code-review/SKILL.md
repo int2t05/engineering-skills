@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Use when reviewing code before merge — two-axis review: Standards (repo conventions + smell baseline) and Spec (faithful to the originating issue/spec). Triggers on "review this", "code review", "before merge", "代码审查", "代码评审", "合并前审查".
+description: Use when reviewing code before merge — two-axis review: Standards (repo conventions + smell baseline) and Spec (faithful to the originating issue/spec). Triggers on "review this", "code review", "before merge", "代码审查", "代码评审", "合并前审查" — also when user says "帮我看看这代码" / "能合并吗". Not for machine-detectable lint issues (use linting) or runtime bugs (use debugging).
 ---
 
 # Code Review
@@ -13,7 +13,7 @@ description: Use when reviewing code before merge — two-axis review: Standards
 - Reviewing a branch, a PR, or work-in-progress changes ("review since X")
 - Triggers on "review this", "code review", "before merge", "代码审查", "代码评审", "合并前审查"
 
-**Not for:** deep security review (use `security-review`).
+**Not for:** deep security review (use `security-review`); machine-detectable lint/style issues — run the linter first (use `linting`); runtime behavior bugs (use `debugging`).
 
 ## Steps
 

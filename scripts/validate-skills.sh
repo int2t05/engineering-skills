@@ -113,13 +113,38 @@ done
 
 # --- Domain principles linking: PM skills link product-principles, UIUX skills link design-principles ---
 pm_skills="skills/01-product/brainstorm skills/01-product/spec skills/01-product/oss-strategy skills/02-research/market-research skills/02-research/tech-selection"
-uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen-web skills/03-design/imagegen-mobile skills/03-design/brandkit skills/03-design/prototype"
+uiux_skills="skills/03-design/frontend-design skills/03-design/image-to-code skills/03-design/imagegen skills/03-design/prototype"
 for s in $pm_skills; do
   [ -f "$s/SKILL.md" ] && { grep -q 'product-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (PM skill) does not link product-principles.md"; errors=$((errors+1)); }; }
 done
 for s in $uiux_skills; do
   [ -f "$s/SKILL.md" ] && { grep -q 'design-principles' "$s/SKILL.md" || { echo "FAIL: $s/SKILL.md (UIUX skill) does not link design-principles.md"; errors=$((errors+1)); }; }
 done
+
+# --- Trigger-collision check: no two skills share a quoted trigger phrase ---
+# A shared trigger phrase is a routing collision — the model can't decide which
+# skill fires. Deterministic CI guard adapted from addyosmani's eval Tier 2.
+collision_tmp=$(mktemp)
+for phase in $phases; do
+  for skill_dir in "skills/$phase"/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill_md="$skill_dir/SKILL.md"
+    [ -f "$skill_md" ] || continue
+    skill_name=$(basename "$skill_dir")
+    desc_line=$(grep '^description:' "$skill_md" | head -1)
+    # Extract every quoted phrase from the description (Triggers-on list + natural-language cues)
+    echo "$desc_line" | grep -oE '"[^"]+"' | tr -d '"' | while IFS= read -r p; do
+      [ -n "$p" ] && printf '%s|%s\n' "$p" "$skill_name"
+    done >> "$collision_tmp" || true
+  done
+done
+collisions=$(awk -F'|' '{k=tolower($1); if(k in seen){print "FAIL: trigger phrase \"" $1 "\" shared by " seen[k] " and " $2} else {seen[k]=$2}}' "$collision_tmp")
+rm -f "$collision_tmp"
+if [ -n "$collisions" ]; then
+  printf '%s\n' "$collisions"
+  collision_count=$(printf '%s\n' "$collisions" | grep -c '^FAIL:')
+  errors=$((errors+collision_count))
+fi
 
 # --- Output declaration vs skill-outputs.md sync (doc-producing skills) ---
 if [ -f docs/skill-outputs.md ] && { command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; }; then

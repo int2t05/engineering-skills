@@ -1,6 +1,6 @@
 ---
 name: spec
-description: Use when starting a new project, feature, or significant change — writes a spec/PRD covering objectives, structure, commands, code style, testing, and boundaries before any code. Triggers on "write spec", "create prd", "spec out", "写需求文档", "写规格", "需求文档".
+description: Use when starting a new project, feature, or significant change — writes a spec/PRD covering objectives, structure, commands, code style, testing, and boundaries before any code. Triggers on "write spec", "create prd", "spec out", "写需求文档", "写规格", "需求文档" — also when user says "要做什么" / "需求是什么".
 ---
 
 # Spec

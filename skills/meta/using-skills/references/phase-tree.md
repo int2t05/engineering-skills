@@ -35,9 +35,7 @@ Task arrives
     │   ├── Module shape / seams / depth? ──────────────→ codebase-design
     │   ├── UI / component design? ─────────────────────→ frontend-design
     │   ├── Design ref images, then implement to match? → image-to-code
-    │   ├── Brand identity / logo / identity board? ────→ brandkit
-    │   ├── Web design reference images (per section)? ─→ imagegen-web
-    │   ├── Mobile screen / flow images? ───────────────→ imagegen-mobile
+    │   ├── Brand / web / mobile design reference images? → imagegen
     │   ├── Data model / schema / entities / indexes? ─→ schema-design
     │   ├── Prompt / eval / LLM feature design? ────────→ prompt-engineering
     │   └── Throwaway code to answer a design question? → prototype
@@ -52,7 +50,8 @@ Task arrives
     │
     ├── 05 TUNE — improving working code
     │   ├── Measure then optimize hot paths? ───────────→ performance
-    │   └── Reduce complexity, preserve behavior? ──────→ simplify
+    │   ├── Reduce complexity, preserve behavior? ──────→ simplify
+    │   └── Restructure without changing behavior? ────→ refactoring
     │
     ├── 06 TEST — proving correctness
     │   ├── Red-green, test first? ─────────────────────→ tdd
@@ -65,7 +64,8 @@ Task arrives
     │   ├── Review the diff for bugs / cleanups? ───────→ code-review
     │   ├── Bug resists a first glance? ────────────────→ debugging
     │   ├── Just read an error log / triage? ───────────→ debugging (log-triage ref)
-    │   └── Security review of pending changes? ────────→ security-review
+    │   ├── Security review of pending changes? ────────→ security-review
+    │   └── Machine-detectable lint / static-analysis? → linting
     │
     ├── 08 SHIP — getting it out
     │   ├── Pre-launch checklist + rollback plan? ──────→ shipping

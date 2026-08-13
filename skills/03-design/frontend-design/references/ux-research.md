@@ -61,7 +61,7 @@ Rules:
 ## 4. Journey maps
 
 The user's experience across time — stages, actions, emotions, pain points, opportunities (see
-`information-architecture.md` §6 for the IA-journey connection):
+`design-foundations.md` §Information Architecture for the IA-journey connection):
 
 | Stage | Action | Touchpoint | Emotion | Pain | Opportunity |
 |---|---|---|---|---|---|
@@ -142,7 +142,7 @@ Rules:
 
 ## 9. Heuristic evaluation (pre-test)
 
-Before user testing, run a heuristic evaluation (`usability-heuristics.md` §2) — expert walkthrough
+Before user testing, run a heuristic evaluation (`design-foundations.md` §Usability Heuristics) — expert walkthrough
 catches structural issues cheaply. Heuristic eval → fix obvious problems → then spend user-testing
 budget on the subtle issues experts missed.
 

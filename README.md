@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-1.6.2-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.0.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 A Claude Code plugin — **42 engineering skills** organized by the software development
@@ -65,11 +65,11 @@ engineering-skills/
 | meta | using-skills |
 | 01-product | brainstorm, spec, oss-strategy |
 | 02-research | research, market-research, tech-selection |
-| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, brandkit, imagegen-web, imagegen-mobile |
+| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen |
 | 04-develop | implement, breakdown, context-engineering, i18n |
-| 05-tune | performance, simplify |
+| 05-tune | performance, simplify, refactoring |
 | 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
-| 07-verify | code-review, debugging, security-review |
+| 07-verify | code-review, debugging, security-review, linting |
 | 08-ship | shipping, git-workflow, ci-cd, deprecation-migration, oss-polish |
 | 09-operate | observability, documentation-audit, incident-response, handoff |
 
@@ -88,3 +88,7 @@ MIT — see [LICENSE](LICENSE).
 ## Provenance
 
 Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills). This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.
+
+## v2.0.0 migration
+
+Breaking: the three image skills merged into one — `/brandkit`, `/imagegen-web`, `/imagegen-mobile` → `/imagegen` (pass mode: brand / web / mobile). Added: `/refactoring` (structural, behavior-preserving) and `/linting` (machine-detectable static issues). Skill count stays 42.

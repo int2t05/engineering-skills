@@ -1,3 +1,6 @@
 # Archive: upstream source repos kept locally for provenance, not published.
 # Browse them via the upstream GitHub links in README.md instead.
 archive/
+
+# Audit reports: local session trails (docs/audit/YYYY-MM-DD-<scope>.md), not published.
+docs/audit/

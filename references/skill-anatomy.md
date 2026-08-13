@@ -16,6 +16,31 @@ disable-model-invocation: true   # OPTIONAL — only for skills that must be typ
 ---
 Allowed fields: name, description, disable-model-invocation. Nothing else.
 
+## Description writing
+
+The `description` is the auto-invocation signal — the model reads it to decide whether this skill
+fits the task. Write it for routing, not as a feature list.
+
+- **Name actions, not tools.** Lead with the user's intent or action ("Use when generating...",
+  "Use when reviewing code before merge"), not the tool or technique the skill happens to use.
+  "Runs ESLint" is a tool description; "Use when fixing machine-detectable code issues" is a
+  routing description. The model routes on *what the user wants done*, not *what the skill runs*.
+- **Hard limit: 1024 characters.** Claude Code's `description` field caps at 1024 chars. The
+  hybrid format below stays well under, but watch the count when adding trigger phrases.
+- **Hybrid format.** Combine semantic intent, literal trigger phrasing, and explicit exclusions:
+  `Use when [intent scenario]. [One sentence: what it does]. Triggers on "phrase1", "phrase2",
+  "中文1", "中文2" — also when user says "[natural-language cue]". Not for [excluded scenario] →
+  use [other-skill].`
+  - `Use when...` carries the semantic intent — the model matches on meaning, not keywords.
+  - `Triggers on...` is required literal text (the validator enforces it) and feeds the Codex
+    adapter's short-description parsing (`gen-agents-yaml.py` cuts the description at this clause).
+  - Natural-language cues ("为什么返回 null", "能合并吗") catch how users actually phrase the task.
+  - `Not for → use [other-skill]` in the description pre-empts routing collisions for
+    boundary-adjacent skills; the fuller boundary lives in `## When to use > **Not for:**`.
+- **No duplicate trigger phrases across skills.** The validator's collision check flags any quoted
+  trigger phrase shared by two skills — a shared phrase is a routing collision. Make each skill's
+  triggers distinctive.
+
 ## Body sections (in order)
 ## When to use    — 2-4 trigger conditions; include Chinese phrases where relevant
 ## Steps          — numbered, each step independently verifiable
@@ -74,3 +99,12 @@ Use sparingly — only when auto-activation would cause false positives.
 ## Language
 English-primary bodies. Preserve and add Chinese trigger phrases in ## When to use
 where a skill serves a Chinese-speaking workflow.
+
+## Relationship to the official Agent Skills spec
+
+The official Agent Skills contract is minimal: a folder with `SKILL.md` carrying `name` +
+`description`. This anatomy is a **strict superset** — it adds the four-section body (When to use
+/ Steps / Verify / References), the `**Output:**` declaration, the engineering-principles link,
+and the validator. These additions are what make the pack coherent across 42 skills; do not strip
+them to "align" with the minimal spec. A skill meeting only the official minimum would fail this
+collection's validator by design.

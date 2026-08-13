@@ -1,6 +1,6 @@
 ---
 name: codebase-design
-description: Use when designing deep modules, finding refactoring or deepening opportunities, or making a codebase more testable and AI-navigable. Presents deepening opportunities and works through the one you pick. Triggers on "deep modules", "refactor architecture", "deepening", "深化模块", "重构架构", "代码库设计".
+description: Use when designing deep modules, finding refactoring or deepening opportunities, or making a codebase more testable and AI-navigable. Presents deepening opportunities and works through the one you pick. Triggers on "deep modules", "refactor architecture", "deepening", "深化模块", "重构架构", "代码库设计". Not for executing the change (use refactoring), single-file clarity (use simplify), or greenfield architecture (use architecture) — this skill designs and audits, it does not edit code.
 ---
 
 # Codebase Design
@@ -19,9 +19,7 @@ through the one the user picks.
 - Consolidating tightly-coupled shallow modules into one deep module
 - Triggers on "deep module", "seam", "refactoring opportunity", "架构改进", "模块设计", "deepening", "深化模块", "重构架构", "代码库设计"
 
-**Not for:** code-level naming or function-extraction without architectural intent (use
-`simplify`); greenfield system architecture (use `architecture`); feature-level API contracts (use
-`api-design`).
+**Not for:** executing the structural change once the design is settled (use `refactoring`); single-file clarity cleanup — naming, nesting, dead code (use `simplify`); greenfield system architecture (use `architecture`); feature-level API contracts (use `api-design`). This skill designs and audits; it does not edit code.
 
 ## Steps
 

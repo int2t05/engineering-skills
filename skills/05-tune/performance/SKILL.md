@@ -1,6 +1,6 @@
 ---
 name: performance
-description: Use when optimizing performance — measure before you optimize: profile, identify bottlenecks, then improve. Triggers on "webperf", "performance regression", "慢", "性能优化", "性能调优".
+description: Use when optimizing performance — measure before you optimize: profile, identify bottlenecks, then improve. Triggers on "webperf", "performance regression", "慢", "性能优化", "性能调优" — also when user says "太慢了" / "卡顿".
 ---
 
 # Performance Optimization

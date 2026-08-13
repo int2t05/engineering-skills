@@ -1,26 +1,10 @@
----
-name: imagegen-web
-description: Website design reference image generation — one horizontal image per section, premium art direction for landing pages and marketing sites that developers or coding models can recreate. Triggers on "web design image", "website mockup", "landing page image", "section image", "网站设计图", "网页参考图", "落地页配图".
----
+# Web mode
 
-# Imagegen Web
+Reference for the `imagegen` skill, **web** mode. Generate premium website design reference images —
+one horizontal image per section — that feel art-directed, premium, and implementation-friendly,
+not generic AI slop.
 
-Generate premium website design reference images — one horizontal image per section — that feel
-art-directed, premium, and implementation-friendly, not generic AI slop. Output is images only,
-never code.
-
-## When to use
-
-- Generating website design reference images for developers or coding models to recreate
-- Landing pages, marketing sites, product comps, portfolio concepts
-- Need premium art direction: composition variety, hero scale control, narrative spine
-- Triggers on "web design image", "website mockup", "landing page image", "section image", "网站设计图", "网页参考图", "落地页配图"
-
-**Not for:** frontend code (use `frontend-design`); mobile screens (use `imagegen-mobile`); brand identity (use `brandkit`); image-to-code pipeline (use `image-to-code`).
-
-## Steps
-
-### 1. Lock the section count — one image per section
+## 1. Lock the section count — one image per section
 
 The hard rule: **one horizontal image per section, always.** Never combine multiple sections into
 one frame; never return a single tall slice of the whole page; never replace several sections with
@@ -32,7 +16,7 @@ one collage. This overrides any model default that collapses output.
 - Format: horizontal — 16:9 or 21:9 for heroes, 16:10 for narrower content sections.
 - If only one image can render per call, generate them sequentially in the same response, labeled "Section X of N: <name>", until the full set is delivered. Do not stop early.
 
-### 2. Map the brief to a direction
+## 2. Map the brief to a direction
 
 Read the brief and bias the picks to match — never force a recipe that contradicts it. Pick one
 Hero Scale (Giant Statement / Mid Editorial / Mini Minimalist) for the whole site and execute it
@@ -40,14 +24,14 @@ decisively.
 
 - Load [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) §2 for the brief→hero-scale mapping and the axis picks that match each brief signal. Subsequent steps reference sections of this file.
 
-### 3. Run the combinatorial variation engine
+## 3. Run the combinatorial variation engine
 
 Pick one option from each axis and commit to it consistently — don't mash everything into chaos.
 These are visual-direction cues the generated image should imply, not code instructions.
 
 - Load visual-direction §1 for the 9-axis engine (theme paradigm, background, typography, hero architecture, section system, signature components, motion-implied, narrative spine, second-read moment).
 
-### 4. Vary composition per section — break the hero default
+## 4. Vary composition per section — break the hero default
 
 **The left-text / right-image hero is the most overused AI pattern.** It is allowed, but must not
 be the first instinct. Per section, pick a composition anchor and a background mode; vary them
@@ -55,20 +39,20 @@ across the site.
 
 - Load visual-direction §3 for the composition-anchor menu, background-mode menu, and CTA variation rules (≥3 distinct anchors; no anchor repeats >2 in a row; no background mode repeats >3 in a row; at least one full-bleed for non-minimalist briefs).
 
-### 5. Apply hero minimalism and graphic restraint
+## 5. Apply hero minimalism and graphic restraint
 
 Strong opening scene; clean composition; headline reads like 5-10 strong words, not a paragraph.
 
 - Load visual-direction §5 for the restraint rules and forbidden hero patterns (no gradient text as a lazy premium effect, no giant outline numbers, no AI blob clutter).
 
-### 6. Enforce continuity, creativity, and anti-slop
+## 6. Enforce continuity, creativity, and anti-slop
 
 All per-section images must read as one site (one palette, type, CTA, radius, image treatment).
 Push beyond generic SaaS. Ban the anti-slop list.
 
 - Load visual-direction §4 (continuity — one brand world), §5 (creativity escalation + section rhythm), §6 (anti-slop ban list).
 
-## Verify
+## Verify (web mode)
 
 - [ ] **Image count equals section count** — one horizontal image per section, never fewer, never combined
 - [ ] Hero composition is not a reflexive left-text / right-image default (or there is a clear reason it is the strongest fit)
@@ -81,9 +65,3 @@ Push beyond generic SaaS. Ban the anti-slop list.
 - [ ] Section rhythm mixes large / mini / medium; spacing is generous and fairly even
 - [ ] No AI slop: no purple-blue gradients, no floating blobs, no cloned blocks, no fake KPI columns, no generic copy or fake brands
 - [ ] Each image is horizontal and clearly one section only; a developer could code from it
-
-## References
-
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional)
-- [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) — shared web variation engine (9 axes, hero scale, composition anchors, continuity, creativity, anti-slop)

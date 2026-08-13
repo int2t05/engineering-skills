@@ -1,6 +1,6 @@
 ---
 name: image-to-code
-description: image-first frontend pipeline — generate design reference images, analyze them deeply, then implement code to match. Triggers on "image to code", "设计图转代码", "图片实现", "从设计图实现".
+description: Use when turning a design image into frontend code — image-first pipeline: generate reference images, analyze each deeply, then implement to match. Triggers on "image to code", "设计图转代码", "图片实现", "从设计图实现". Not for pure code without image reference (use frontend-design) or image generation only (use imagegen).
 ---
 
 # Image to Code
@@ -18,7 +18,7 @@ image generation is available.
 - Requests described mainly in visual terms ("beautiful hero", "premium landing page", "creative website")
 - Triggers on "image to code", "设计图转代码", "图片实现", "从设计图实现"
 
-**Not for:** pure code implementation without image reference (use `frontend-design`); brand identity image generation (use `brandkit`); web/mobile screen reference images only, without code (use `imagegen-web`/`imagegen-mobile`).
+**Not for:** pure code implementation without image reference (use `frontend-design`); brand/web/mobile design reference images only, without code (use `imagegen`).
 
 **Tool note:** use an available image-generation tool — do not bind to a specific product.
 

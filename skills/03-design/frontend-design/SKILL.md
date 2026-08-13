@@ -38,8 +38,8 @@ designs need restraint and precision. NEVER use generic AI aesthetics — overus
 Roboto, Arial), purple gradients on white, rounded-2xl everything, stock card grids, lorem ipsum.
 
 - Load [references/brief-inference.md](references/brief-inference.md) for the design-read protocol (infer page kind, audience, vibe, constraints before coding) and the three dials (DESIGN_VARIANCE, MOTION_INTENSITY, VISUAL_DENSITY) that gate layout, motion, and density
-- Load [references/gestalt-and-hierarchy.md](references/gestalt-and-hierarchy.md) for the visual-organization principles beneath layout — Gestalt laws, the four hierarchy techniques, F/Z reading patterns, the squint and 5-second tests, CRAP expanded
-- Load [references/cognitive-laws.md](references/cognitive-laws.md) for the psychology laws that constrain layout — Hick's, Fitts's, Miller's 7±2, Tesler, Von Restorff, cognitive load types, progressive disclosure
+- Load [references/design-foundations.md](references/design-foundations.md) §Perception & Gestalt and §Hierarchy & Layout for the visual-organization principles beneath layout — Gestalt laws, the four hierarchy techniques, F/Z reading patterns, the squint and 5-second tests, CRAP expanded
+- Load [references/design-foundations.md](references/design-foundations.md) §Cognitive Laws for the psychology laws that constrain layout — Hick's, Fitts's, Miller's 7±2, Tesler, Von Restorff, cognitive load types, progressive disclosure
 - Load [references/ux-research.md](references/ux-research.md) when the user or context is unknown — interviews, personas, journey maps, empathy maps, usability testing (run discovery before visual design)
 
 ### 2. Pick a style
@@ -58,7 +58,7 @@ Use a dominant-surface-accent distribution, not timid even palettes. Define sema
 (never raw hex in components), meet WCAG contrast, and design light/dark variants together.
 
 - Load [references/palettes.md](references/palettes.md) for the 60/30/10 formula, semantic token table, contrast ratios, dark-mode rules, and palette selection by product type
-- Load [references/color-theory.md](references/color-theory.md) for the theory beneath the formula — HSB model, five color schemes, 70:25:5 proportion, color psychology, cultural variance, the gray-test
+- Load [references/design-foundations.md](references/design-foundations.md) §Color for the theory beneath the formula — HSB model, five color schemes, 70:25:5 proportion, color psychology, cultural variance, the gray-test
 
 ### 4. Typography pairing
 
@@ -66,7 +66,7 @@ Pair a distinctive display font with a refined body font. Avoid generic defaults
 generations — never converge on the same choice every time.
 
 - Load [references/font-pairings.md](references/font-pairings.md) for the type scale, weight hierarchy, line-height/line-length targets, tabular figures, and pairing catalog by personality
-- Load [references/typography-fundamentals.md](references/typography-fundamentals.md) for the theory — font anatomy (x-height, counters, contrast), optical sizing, vertical rhythm, modular scale ratios, rendering
+- Load [references/design-foundations.md](references/design-foundations.md) §Typography for the theory — font anatomy (x-height, counters, contrast), optical sizing, vertical rhythm, modular scale ratios, rendering
 
 ### 5. Specify interaction states and mark specs
 
@@ -79,8 +79,8 @@ Use consistent scales for spacing, radius, elevation, and icons — not arbitrar
 - Load [references/component-anatomy.md](references/component-anatomy.md) for part-based design (compound components, slots), variant architecture (orthogonal axes mapped to tokens), and composition patterns
 - Load [references/state-management.md](references/state-management.md) for the data-flow architecture beneath the UI — client vs server state, store selection, cache/query strategy, state machines, optimistic updates, derived state, normalization
 - Load [references/state-design.md](references/state-design.md) for the four user-side states every view must handle — loading, error, empty, partial — with skeleton screens, empty-state guidance, and error-recovery patterns
-- Load [references/usability-heuristics.md](references/usability-heuristics.md) for the evaluation framework — Nielsen's 10 heuristics, Heuristic Evaluation method, Norman's emotional-design levels, Dieter Rams' principles
-- Load [references/information-architecture.md](references/information-architecture.md) when organizing content — the four IA elements, tree vs network, card sorting, navigation depth, labeling systems, journey maps
+- Load [references/design-foundations.md](references/design-foundations.md) §Usability Heuristics for the evaluation framework — Nielsen's 10 heuristics, Heuristic Evaluation method, Norman's emotional-design levels, Dieter Rams' principles
+- Load [references/design-foundations.md](references/design-foundations.md) §Information Architecture when organizing content — the four IA elements, tree vs network, card sorting, navigation depth, labeling systems, journey maps
 
 ### 6. Implement and verify
 
@@ -127,13 +127,8 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 - [references/design-tokens.md](references/design-tokens.md) — token tiers, naming convention, scales (spacing, radius, elevation, z-index)
 - [references/component-anatomy.md](references/component-anatomy.md) — compound components, slot architecture, variant axes, composition patterns
 - [references/state-management.md](references/state-management.md) — client vs server state, store/cache selection, state machines, optimistic updates, derived state, normalization
-- [references/gestalt-and-hierarchy.md](references/gestalt-and-hierarchy.md) — Gestalt 6 laws, hierarchy techniques, F/Z patterns, squint + 5-second tests, CRAP expanded
-- [references/cognitive-laws.md](references/cognitive-laws.md) — Hick's, Fitts's, Miller, Tesler, Von Restorff, serial position, cognitive load types, progressive disclosure
-- [references/information-architecture.md](references/information-architecture.md) — IA four elements, tree vs network, card sorting, navigation depth, labeling, journey maps
-- [references/usability-heuristics.md](references/usability-heuristics.md) — Nielsen 10 heuristics, Heuristic Evaluation, Norman emotional design, Rams 10 principles
+- [references/design-foundations.md](references/design-foundations.md) — design theory in one place: Perception & Gestalt, Cognitive Laws (Hick's, Fitts's, Miller, Tesler, Von Restorff), Color (HSB, schemes, 70:25:5), Typography (anatomy, rhythm, scale), Hierarchy & Layout (F/Z patterns, squint/5-second tests, CRAP), Usability Heuristics (Nielsen 10, Norman, Rams), Information Architecture (4 elements, card sorting, labeling)
 - [references/state-design.md](references/state-design.md) — four states (loading/error/empty/partial), skeleton screens, empty-state design, error recovery
-- [references/color-theory.md](references/color-theory.md) — HSB model, five color schemes, 70:25:5, color psychology, cultural variance, gray-test
-- [references/typography-fundamentals.md](references/typography-fundamentals.md) — font anatomy, optical sizing, vertical rhythm, modular scale ratios, rendering
 - [references/material-design.md](references/material-design.md) — Material 3 color/type/elevation/state-layer roles, M3 vs M2, when Material vs HIG vs custom
 - [references/ux-research.md](references/ux-research.md) — user interviews, personas, journey maps, empathy maps, usability testing (5-user rule, think-aloud)
-- [references/visual-direction.md](references/visual-direction.md) — shared web visual-direction engine for imagegen-web and image-to-code (variation axes, hero scale, composition anchors, anti-slop)
+- [references/visual-direction.md](references/visual-direction.md) — shared web visual-direction engine for imagegen (web mode) and image-to-code (variation axes, hero scale, composition anchors, anti-slop)

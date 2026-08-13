@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-1.6.2-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.0.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 一个 Claude Code 插件——**42 个工程技能**，按软件开发生命周期组织。工程原则在每次会话
@@ -61,11 +61,11 @@ engineering-skills/
 | meta | using-skills |
 | 01-product | brainstorm, spec, oss-strategy |
 | 02-research | research, market-research, tech-selection |
-| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, brandkit, imagegen-web, imagegen-mobile |
+| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen |
 | 04-develop | implement, breakdown, context-engineering, i18n |
-| 05-tune | performance, simplify |
+| 05-tune | performance, simplify, refactoring |
 | 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
-| 07-verify | code-review, debugging, security-review |
+| 07-verify | code-review, debugging, security-review, linting |
 | 08-ship | shipping, git-workflow, ci-cd, deprecation-migration, oss-polish |
 | 09-operate | observability, documentation-audit, incident-response, handoff |
 
@@ -84,3 +84,7 @@ MIT —— 见 [LICENSE](LICENSE)。
 ## 来源
 
 原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。
+
+## v2.0.0 迁移
+
+破坏性变更：三个图片技能合并为一个 —— `/brandkit`、`/imagegen-web`、`/imagegen-mobile` → `/imagegen`（传 mode：brand / web / mobile）。新增：`/refactoring`（结构重构，保留行为）与 `/linting`（机器可检测的静态问题）。技能数仍为 42。

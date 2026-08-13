@@ -1,25 +1,9 @@
----
-name: imagegen-mobile
-description: Mobile app screen and flow image generation — iOS/Android/cross-platform concepts with phone mockup framing, clean hierarchy, and strong multi-screen consistency. Triggers on "mobile design image", "app screen image", "mobile mockup", "app flow", "移动端设计图", "app 屏幕图", "手机界面图", "移动端流程图".
----
+# Mobile mode
 
-# Imagegen Mobile
+Reference for the `imagegen` skill, **mobile** mode. Generate premium mobile app screen concepts and
+flow images — app-native, readable, art-directed — not generic AI mockups or phone-shaped websites.
 
-Generate premium mobile app screen concepts and flow images — app-native, readable, art-directed —
-not generic AI mockups or phone-shaped websites. Output is images only, never code.
-
-## When to use
-
-- Generating mobile app screen concepts and multi-screen flow images
-- iOS-native, Android-native, or cross-platform mobile products
-- Onboarding, auth, home, profile, settings, chat, commerce, fintech, health, productivity, social apps
-- Triggers on "mobile design image", "app screen image", "mobile mockup", "app flow", "移动端设计图", "app 屏幕图", "手机界面图", "移动端流程图"
-
-**Not for:** web design references (use `imagegen-web`); frontend code (use `frontend-design`); brand identity (use `brandkit`).
-
-## Steps
-
-### 1. Set platform mode and screen count
+## 1. Set platform mode and screen count
 
 Decide platform mode first — never mix patterns carelessly:
 - **iOS-native premium** — clean top areas, tab-bar clarity, safe-area awareness, elegant spacing, restrained chrome, calm hierarchy.
@@ -32,7 +16,7 @@ never answer with only text or describe the app without generating it.
 - Generate enough screens to make the flow feel real. Better to produce multiple clean readable screens than one compressed collage with tiny text. Never reduce count for convenience.
 - Announce the count out loud.
 
-### 2. Lock the design bible for multi-screen consistency
+## 2. Lock the design bible for multi-screen consistency
 
 Before generating, lock an internal design bible and keep it consistent across the whole set:
 platform mode, device frame style and scale, palette logic, typography mood and scale, spacing
@@ -45,7 +29,7 @@ design system, mockup quality, core spacing logic. Screen 3, 4, or 5 must not dr
 app. When a detail is unclear, generate a fresh standalone screen or detail render — never crop or
 zoom a previously generated image.
 
-### 3. Frame in a clean phone mockup
+## 3. Frame in a clean phone mockup
 
 By default, present the UI inside a clean phone mockup with a visible device border:
 - iPhone-style for iOS or neutral premium concepts; Android-style for Android-native; subtle generic premium phone for cross-platform.
@@ -55,7 +39,7 @@ By default, present the UI inside a clean phone mockup with a visible device bor
 - Multiple devices in one composition: same scale, equal gutter spacing, clean alignment, no random overlap.
 - Only drop the visible frame if the user explicitly asks for raw screen-only output or UI sheets.
 
-### 4. Respect safe areas and design clean first screens
+## 4. Respect safe areas and design clean first screens
 
 **Safe-area awareness**: always account for status bar, top bar, bottom navigation, home indicator,
 sheet docking zone, and gesture space. Never cram critical UI into unsafe regions; screens must feel
@@ -74,7 +58,7 @@ prompts.
 **Navigation**: believable tab bar / stack drill-down / sheets / segmented controls. Don't overload
 bottom navigation or make every action equally important.
 
-### 5. Apply art direction, readability, and anti-AI-tells
+## 5. Apply art direction, readability, and anti-AI-tells
 
 **Imagery and texture** — do not default to sterile flat backgrounds. When the category supports it
 (social, commerce, travel, wellness, editorial, food, fashion), use art-directed photography,
@@ -103,7 +87,7 @@ decorative small type.
 layout, clutter, inconsistent framing, or lost consistency — regenerate it. Do not settle for the
 first mediocre render.
 
-## Verify
+## Verify (mobile mode)
 
 - [ ] Platform mode chosen and held coherently (iOS / Android / cross-platform — no careless mixing)
 - [ ] Screen count matches the request; enough screens generated for a believable flow (not lazily collapsed)
@@ -120,8 +104,3 @@ first mediocre render.
 - [ ] Layout is clean without box-in-box-in-box clutter; richer layering only where it stays readable
 - [ ] No AI tells: no purple-blue gradients, no fake chart spam, no cloned screens, no generic icon-library defaults, no phone-shaped websites
 - [ ] Flow is logical screen-to-screen (onboarding → auth → home, or cart → checkout → confirmation)
-
-## References
-
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional, consistency from systems). The design bible in Step 2 operationalizes §6.

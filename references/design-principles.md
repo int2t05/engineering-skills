@@ -1,7 +1,7 @@
 # Design Principles
 
 Recurring discipline for every UIUX skill in this collection (frontend-design, image-to-code,
-imagegen-web, imagegen-mobile, brandkit, prototype). Each skill links this file rather than repeating
+imagegen, prototype). Each skill links this file rather than repeating
 these rules. Apply them at all times — they sit alongside engineering-principles.md, not instead of it.
 
 ## 1. CRAP: Contrast, Repetition, Alignment, Proximity
