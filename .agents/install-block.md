@@ -1,8 +1,5 @@
 # The canonical install block
 
-One install story, one wording. `README.md`, `README.zh-CN.md`, and any docs must say
-**this** and nothing else. Change it here first, then propagate.
-
 ## Claude Code — the plugin (primary, with ambient principles)
 
 `engineering-skills` ships as a Claude Code plugin. On install, a SessionStart hook injects
@@ -50,9 +47,3 @@ instructions/skills directory. Point the agent at `AGENTS.md` for routing + prin
 
 The Claude Code plugin is a managed bundle. skills.sh / manual copy writes files you own.
 Installing both leaves you with every skill twice — pick one.
-
-## Not the install story
-
-`.claude-plugin/marketplace.json` makes the repo its own single-plugin marketplace (the
-`/plugin marketplace add` command above uses it). It is the documented route for this repo
-and the only route — there is no separate official-marketplace listing.

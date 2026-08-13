@@ -83,4 +83,4 @@ MIT —— 见 [LICENSE](LICENSE)。
 
 ## 来源
 
-原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)，本地保留于 `archive/`（已 gitignore）供查阅。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。
+原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。

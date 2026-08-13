@@ -87,4 +87,4 @@ MIT — see [LICENSE](LICENSE).
 
 ## Provenance
 
-Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills), kept locally under `archive/` (gitignored) for reference. This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.
+Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills). This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.

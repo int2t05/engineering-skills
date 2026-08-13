@@ -1,7 +1,7 @@
 # OWASP Prevention Patterns
 
 Reference for the `security-review` skill. Code examples for the OWASP Top 10
-prevention patterns and related hardening, extracted from upstream guidance.
+prevention patterns and related hardening, based on the OWASP Top 10.
 Use these as the concrete "good pattern" to confirm against a diff.
 
 ## Injection (SQL, NoSQL, OS command)

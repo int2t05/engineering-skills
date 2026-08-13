@@ -11,35 +11,13 @@ catalog and install instructions.
 > discipline via `AGENTS.md` at session start.
 
 ## Conventions
-- Plugin manifest: `.claude-plugin/plugin.json` declares all 42 skills in a `skills[]` array (nested `./<phase>/<skill>` paths — preserves the 9-phase taxonomy).
 - Skills live under `skills/` — `skills/meta/` plus 9 numbered phase dirs (`skills/01-product/` through `skills/09-operate/`).
 - Every skill is a folder with SKILL.md (uppercase). See references/skill-anatomy.md — including the `**Output:**` declaration convention and the two-layer (project-level + version-level) output pattern for PRD/TECH/PLAN.
 - Every skill links `${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` — the distilled discipline. PM-side skills (brainstorm, spec, oss-strategy, market-research, tech-selection) also link `references/product-principles.md`; UIUX skills (frontend-design, image-to-code, imagegen-web, imagegen-mobile, brandkit, prototype) also link `references/design-principles.md` — domain discipline layers atop the shared engineering base.
 - Shared references use `${CLAUDE_PLUGIN_ROOT}/...` (portable); in-skill refs use plain `references/...`.
-- Multi-framework: `AGENTS.md` (universal entry) + `.agents/` (`invocation.md`, `install-block.md`) + per-skill `agents/openai.yaml` (Codex adapter). The invocation-sync invariant — `disable-model-invocation` (Claude Code) ↔ `policy.allow_implicit_invocation` (Codex) — is enforced by the validator.
+- Multi-framework: `AGENTS.md` (universal entry) + `.agents/` (`invocation.md`, `install-block.md`) + per-skill `agents/openai.yaml` (Codex adapter).
 - Planning uses Claude Code's built-in plan mode (EnterPlanMode/ExitPlanMode), not a skill.
-- Validate the collection: `bash scripts/validate-skills.sh` (schema + manifest-sync + Codex-adapter + invocation-sync).
-- Regenerate Codex adapters after editing frontmatter: `python scripts/gen-agents-yaml.py`.
 
 ## Skill discovery
 Run /using-skills (meta) to route a task to the right phase skill, or invoke a skill
 directly by name.
-
-## Working in this repo
-- Line endings: files are UTF-8; Git may warn LF→CRLF on Windows — harmless.
-- Original upstream source repos (addyosmani/agent-skills, mattpocock/skills) are kept
-  locally under archive/ (gitignored, not published) for provenance. See README for links.
-- When adding/removing a skill, update BOTH the `skills[]` array in
-  `.claude-plugin/plugin.json` AND run `python scripts/gen-agents-yaml.py` (generates the
-  new skill's `agents/openai.yaml`) AND run the validator (it checks the array stays in sync
-  and the Codex adapters stay in sync with frontmatter).
-- Versioning (semver, in `.claude-plugin/plugin.json`): bump after every publishable change.
-  - **Patch (third digit)** — small fixes: typo, wording, trigger-phrase tweak, single-skill
-    description edit. `1.1.0 → 1.1.1`.
-  - **Minor (second digit)** — additions/changes that don't break existing usage: new skill,
-    new reference file, output-path change, new validator check. Reset patch to 0.
-    `1.1.1 → 1.2.0`.
-  - **Major (first digit)** — large refactor or breaking change: skill removed/renamed,
-    manifest schema change, plugin restructure. Reset minor+patch to 0. `1.x.x → 2.0.0`.
-  - Tag the release (`git tag vX.Y.Z`) and push the tag — the marketplace compares version
-    strings, not commit SHAs, so an untagged bump won't reach installed users.
