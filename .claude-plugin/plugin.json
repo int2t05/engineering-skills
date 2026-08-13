@@ -1,6 +1,6 @@
 {
   "name": "engineering-skills",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Unified engineering skills pack for Claude Code — 42 skills organized by the software development lifecycle (product → research → design → develop → tune → test → verify → ship → operate), with shared engineering principles injected at session start, plus product and design principle references linked by domain skills.",
   "author": {
     "name": "int2t"
@@ -22,7 +22,6 @@
     "./skills/01-product/brainstorm",
     "./skills/01-product/spec",
     "./skills/01-product/oss-strategy",
-    "./skills/02-research/research",
     "./skills/02-research/research",
     "./skills/03-design/architecture",
     "./skills/03-design/domain-modeling",
