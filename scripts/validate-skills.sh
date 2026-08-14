@@ -146,45 +146,67 @@ if [ -n "$collisions" ]; then
   errors=$((errors+collision_count))
 fi
 
-# --- Output declaration vs skill-outputs.md sync (doc-producing skills) ---
+# --- Discovery-surface presence check: every manifest skill appears in all 5 routing surfaces ---
+# Catches the most dangerous drift — a skill added/renamed in the manifest but missing from a
+# discovery surface. Uses word-boundary matching (grep -w) so "spec" won't match "specific".
+# The catalog/ordering in these files is human-curated, so we check presence, not regeneration.
+routing_files="README.md README.zh-CN.md AGENTS.md skills/meta/using-skills/references/phase-tree.md skills/meta/using-skills/SKILL.md"
+if [ -f ".claude-plugin/plugin.json" ] && { command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; }; then
+  PY=$(command -v python || command -v python3)
+  skill_names=$("$PY" -c 'import json; d=json.load(open(".claude-plugin/plugin.json")); print("\n".join(e.split("/")[-1] for e in d["skills"]))' | tr -d '\r')
+  for name in $skill_names; do
+    for rf in $routing_files; do
+      [ -f "$rf" ] || { echo "FAIL: routing surface $rf not found"; errors=$((errors+1)); continue; }
+      grep -qw "$name" "$rf" || { echo "FAIL: skill '$name' (in manifest) missing from $rf"; errors=$((errors+1)); }
+    done
+  done
+fi
+
+# --- Output declaration vs skill-outputs.md sync (dynamic scan) ---
+# Scan every SKILL.md for **Output:** markers, extract declared md-paths, and verify each
+# appears in docs/skill-outputs.md. The marker is the single source; the matrix is the derived
+# view. Forward check only (every declared path must be in the matrix) — the reverse is omitted
+# because the matrix also lists cross-task artifacts (FRONT.md, FEATURES.md, CLAUDE.md) that no
+# single skill produces, which would false-positive. Code/descriptive declarations (no backtick
+# md-path) are filtered out — they are artifacts but not md docs.
 if [ -f docs/skill-outputs.md ] && { command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; }; then
   PY=$(command -v python || command -v python3)
   out_errors=$("$PY" - <<'PYEOF'
-import re, os, glob
+import re, glob, sys
+
+ROOT_DOCS = {"README.md", "ROADMAP.md", "CONTEXT.md", "PERF.md",
+             "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"}
+
+def is_md_path(p):
+    if p.startswith('references/'):
+        return False  # a reference file the skill loads, not an output it produces
+    return '.md' in p or p.startswith('docs/') or p in ROOT_DOCS
+
+def normalize(p):
+    return re.sub(r'docs/vX\.Y/', 'docs/', p)
+
 matrix = open("docs/skill-outputs.md", encoding="utf-8").read()
 errs = []
-# Output declaration paths to check: the canonical doc-producing skills' declared outputs
-declared = {
-    "skills/01-product/brainstorm/SKILL.md": ["ROADMAP.md", "docs/research/interview.md"],
-    "skills/01-product/spec/SKILL.md": ["docs/PRD.md", "docs/vX.Y/prd.md"],
-    "skills/03-design/architecture/SKILL.md": ["docs/TECH.md", "docs/vX.Y/tech.md"],
-    "skills/03-design/domain-modeling/SKILL.md": ["CONTEXT.md"],
-    "skills/03-design/api-design/SKILL.md": ["docs/API/"],
-    "skills/03-design/frontend-design/SKILL.md": ["docs/design/DESIGN.md", "docs/design/frontend-audit.md", "docs/research/ux-research.md"],
-    "skills/03-design/schema-design/SKILL.md": ["docs/design/SCHEMA.md"],
-    "skills/03-design/prompt-engineering/SKILL.md": ["docs/design/PROMPT.md"],
-    "skills/03-design/prototype/SKILL.md": ["docs/design/prototype-findings.md"],
-    "skills/03-design/codebase-design/SKILL.md": ["docs/design/codebase-audit.md"],
-    "skills/04-develop/breakdown/SKILL.md": ["docs/PLAN.md", "docs/vX.Y/plan.md"],
-    "skills/07-verify/code-review/SKILL.md": ["docs/TODO.md"],
-    "skills/07-verify/security-review/SKILL.md": ["docs/security-report.md"],
-    "skills/09-operate/incident-response/SKILL.md": ["docs/postmortem/"],
-    "skills/09-operate/documentation-audit/SKILL.md": ["docs/audit/YYYY-MM-DD-documentation.md"],
-    "skills/02-research/research/SKILL.md": ["docs/research/", "docs/research/market.md", "docs/research/competitor.md"],
-    "skills/08-ship/oss-polish/SKILL.md": ["README.md", "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"],
-    "skills/05-tune/performance/SKILL.md": ["PERF.md"],
-    "skills/06-test/load-testing/SKILL.md": ["docs/CAPACITY.md"],
-    "skills/03-design/design-research/SKILL.md": ["docs/design/references.md"],
-}
-for skill_md, outputs in declared.items():
-    if not os.path.isfile(skill_md):
-        continue
-    for out in outputs:
-        canon = re.sub(r'docs/vX\.Y/', 'docs/', out)
-        if canon not in matrix and out not in matrix:
-            errs.append(f"{skill_md} declares Output `{out}` but it's not in docs/skill-outputs.md")
-for e in errs: print("FAIL: " + e)
-import sys; sys.exit(1 if errs else 0)
+
+for skill_md in sorted(glob.glob("skills/*/*/SKILL.md")):
+    skill_md = skill_md.replace("\\", "/")
+    if skill_md.startswith("skills/meta/"):
+        continue  # meta skills document the convention, not artifact producers
+    text = open(skill_md, encoding="utf-8").read()
+    m = re.search(r'\*\*Output:\*\*\s*(.*?)(?=\n## |\Z)', text, re.S)
+    if not m:
+        continue  # behavior-only skill — no marker, no check
+    block = m.group(1)
+    paths = re.findall(r'`([^`]+)`', block)
+    md_paths = [p for p in paths if is_md_path(p)]
+    for p in md_paths:
+        n = normalize(p)
+        if n not in matrix and p not in matrix:
+            errs.append(f"{skill_md} declares Output `{p}` but it's not in docs/skill-outputs.md")
+
+for e in errs:
+    print("FAIL: " + e)
+sys.exit(1 if errs else 0)
 PYEOF
 )
   rc=$?

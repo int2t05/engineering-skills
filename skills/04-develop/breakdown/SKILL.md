@@ -82,6 +82,20 @@ until the way to the destination is clear.
 
 6. **Stop** when no tickets remain and the way to the destination is clear.
 
+**Example.** A team wants to extract an order service from a monolith but doesn't know
+where to start.
+
+- **Destination:** "Split the order service out of the monolith, zero downtime."
+- **Frontier (first pass):** "What is the order service boundary?" (research ticket);
+  "What is the current order data model?" (task ticket — can start now);
+  "How do peers handle the cutover?" (research ticket).
+- **Not yet specified (fog):** dual-write period length (can't phrase until the boundary
+  is decided); monitoring for the new service (can't phrase until it's extracted).
+
+After the boundary research resolves, dual-write and monitoring graduate from fog → two
+fresh task tickets, and the frontier advances. The map's Decisions-so-far gains a one-line
+gist of the boundary decision; the remaining fog shrinks until the path is clear.
+
 ## Verify
 
 - Tickets written with blocking edges declared; each sized to a single session.

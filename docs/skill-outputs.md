@@ -39,6 +39,7 @@
 | **5 测试** | `load-testing` | 容量报告 | `docs/CAPACITY.md`（可选） | 大写 | 容量上限/瓶颈/自动伸缩验证/行动项 |
 | **6 审查调试** | `security-review` | 安全报告 | `docs/security-report.md` | 小写 | 按严重度的安全发现 + 修复/接受理由 |
 | | `code-review` | **待办清单** | `docs/TODO.md` | 大写 | 代码↔TODO 双向校验的项目级待办（本阶段最重要产物） |
+| **7 上线发布** | `shipping` | 回滚计划 | `docs/launch/rollback-plan.md` | 小写 | 发布前回滚预案（触发条件/步骤/数据库/回滚耗时），项目级 |
 | **8 运行维护** | `documentation-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告 |
 | | `incident-response` | **复盘报告** | `docs/postmortem/YYYY-MM-DD-<slug>.md` | 阶段目录 | 无指责复盘：时间线/影响/根因/行动项 |
 | | `handoff` | 交接简报 | OS 临时目录 | — | 给下一会话的 context/决策/下一步 |
@@ -87,7 +88,7 @@
 | 4 优化重构 | `simplify` · `refactoring` | 重构后代码（simplify 清晰化 / refactoring 结构重构） |
 | 5 测试 | `test-generation` · `api-testing` · `e2e-testing` | 测试代码 |
 | 6 审查调试 | `debugging` · `linting` | 修复 + 回归测试（debugging 运行时 bug / linting 机器可检测问题） |
-| 7 上线发布 | `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` | 提交 / 流水线 / 部署 |
+| 7 上线发布 | `git-workflow` · `ci-cd` · `deprecation-migration` | 提交 / 流水线 / 部署 |
 | 8 运行维护 | `observability` | 插桩代码 |
 | meta | `using-skills` | 路由（无产物） |
 

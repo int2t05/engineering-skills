@@ -10,8 +10,7 @@ later. Many products use open source for early growth (Cursor from VSCode, Llama
 Dify) and later commercialize via managed services or open core.
 
 **Core insight:** Brand is the moat when code is commoditized. Developers won't pay directly;
-they become your marketing force through word-of-mouth, content, and recommendations. 95% of
-enterprises use open source; 33% are increasing usage.
+they become your marketing force through word-of-mouth, content, and recommendations.
 
 ## When to use
 
@@ -62,13 +61,8 @@ enterprises use open source; 33% are increasing usage.
    For DevHunt (developer tools directory): prepare product info (name, tagline, description,
    category, GitHub URL); it's naturally aligned with open source projects.
 
-5. **Sequence commercialization.** Start with community and trust; monetize later through
-   enterprise features, managed services, or support. The community becomes your marketing
-   army — users self-host, contribute, and recommend.
-
 **Output:** `docs/research/strategy.md` — the commercialization decision: business model, license,
-community plan, growth-launch channel plan, and monetization sequencing. A PRD input when
-commercialization shapes product scope.
+community plan, and growth-launch channel plan. A PRD input when commercialization shapes product scope.
 
 ## Verify
 
@@ -76,7 +70,6 @@ commercialization shapes product scope.
 - A license is selected with its trade-offs acknowledged.
 - A community plan exists (contributing guide, transparency, build-in-public cadence).
 - The growth launch has a concrete channel plan, not just "post on GitHub."
-- Commercialization sequencing is explicit: community first, monetization later.
 
 ## References
 

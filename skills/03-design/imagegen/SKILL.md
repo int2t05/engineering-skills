@@ -43,10 +43,12 @@ this step is the shared consistency spine across the whole set.
 
 ### 3. Ban AI slop (all modes)
 
-No purple-blue gradients, floating blobs, cloned blocks, fake KPI columns, generic copy ("elevate
-your life", "unlock your potential"), fake brands (Acme, NovaCore, Flowbit), stock-template boards,
-or phone-shaped websites. If a render is weak — tiny text, unclear spacing, fake navigation,
-clutter, inconsistent framing — regenerate it. Do not settle for the first mediocre render.
+The shared anti-slop ban list (banned brands, filler verbs, purple-blue gradients, glassmorphism,
+blobs, fake KPI columns) lives in
+[${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md) —
+load it and apply it. Mode-specific tells to also ban: stock-template boards, phone-shaped
+websites. If a render is weak — tiny text, unclear spacing, fake navigation, clutter, inconsistent
+framing — regenerate it. Do not settle for the first mediocre render.
 
 ### 4. Match references without copying
 

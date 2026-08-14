@@ -148,6 +148,8 @@ higher if tests are independent); `retries: process.env.CI ? 2 : 0`;
 browser projects (see step 3). Never use arbitrary `waitForTimeout` — use
 auto-waiting locators and web-first assertions.
 
+**Output:** E2E test files (Playwright/Cypress specs) under `e2e/` or `tests/e2e/` — code, not a report.
+
 ## Verify
 
 - [ ] Tests use role-based locators, not CSS selectors or test IDs

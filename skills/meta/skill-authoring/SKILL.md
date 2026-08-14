@@ -58,11 +58,14 @@ pass doesn't ship.
 
 ### 6. Sync the discovery surface
 
-A new or renamed skill touches: `.claude-plugin/plugin.json` skills[], `scripts/validate-skills.sh`
-(count + pm_skills/uiux_skills + declared dict), `docs/skill-outputs.md`, `AGENTS.md` routing table,
-`skills/meta/using-skills/SKILL.md` phase list, `skills/meta/using-skills/references/phase-tree.md`,
-`README.md` + `README.zh-CN.md` catalog. A rename is a breaking change ( invocation name disappears) →
-note the migration mapping in README.
+A new or renamed skill touches: `.claude-plugin/plugin.json` skills[] (the source), `docs/skill-outputs.md`
+(if the skill produces a doc), `AGENTS.md` routing table, `skills/meta/using-skills/SKILL.md` phase list,
+`skills/meta/using-skills/references/phase-tree.md`, and the `README.md` + `README.zh-CN.md` catalogs.
+The catalog ordering and the `research (general/market/tech-selection modes)` suffix are human-curated,
+so these are maintained by hand — but the validator now enforces them: the **presence check** fails if a
+manifest skill is missing from any of the five routing surfaces, and the **dynamic Output scan** fails if
+a declared `**Output:` path is missing from `docs/skill-outputs.md` (no hardcoded dict to update). A rename
+is a breaking change (the old invocation name disappears) — bump the version and call it out in the commit.
 
 ### 7. Evaluate — does it actually work?
 

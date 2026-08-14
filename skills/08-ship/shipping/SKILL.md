@@ -36,7 +36,9 @@ Before deploying, every section must be green.
 - [ ] Authn/authz in place; rate limiting on auth endpoints
 - [ ] Security headers (CSP, HSTS); CORS scoped to specific origins, not wildcard
 
-**Performance & accessibility**
+**Performance & accessibility** — adapt to your service type. The checklist below assumes a web
+frontend; for a backend service focus on p99 latency, error rate, and connection-pool saturation;
+for a CLI/library focus on startup time, binary size, and cross-platform tests.
 - [ ] Core Web Vitals in "Good" thresholds; bundle within budget
 - [ ] Images optimized (compression, responsive sizes, lazy loading)
 - [ ] No N+1 queries on critical paths; indexes and caching in place
@@ -54,9 +56,11 @@ Before deploying, every section must be green.
 
 ### 2. Ship behind a feature flag
 
-Decouple deployment from release so code can land in production inert.
+Decouple deployment from release so code can land in production inert. In any language: gate the
+new path behind a flag check — flag off runs the existing behavior, flag on runs the new.
 
 ```typescript
+// Example: TypeScript/React. Same shape in any language — a boolean gate around the new branch.
 const flags = await getFeatureFlags(userId);
 if (flags.taskSharing) return <TaskSharingPanel task={task} />;
 return null; // existing behavior
@@ -92,7 +96,7 @@ Every deployment needs a rollback plan written **before** it happens:
 
 - **Trigger conditions** — error rate > 2x baseline; P95 > [X]ms; user reports of [specific issue]; data integrity issues; security vulnerability discovered.
 - **Rollback steps** — disable feature flag (if applicable) OR `git revert <commit> && git push`; verify rollback via health check and error monitoring; notify team.
-- **Database considerations** — migration `[X]` has a rollback (`npx prisma migrate rollback`); data inserted by the new feature is preserved or cleaned up.
+- **Database considerations** — migration `[X]` has a rollback; data inserted by the new feature is preserved or cleaned up. Rollback command depends on your stack: `npx prisma migrate rollback` (Node/Prisma), `alembic downgrade -1` (Python), `goose down` (Go), `flyway undo` (Java).
 - **Time to rollback** — feature flag < 1 min; redeploy previous version < 5 min; database rollback < 15 min.
 
 ### 5. Verify in the first hour after launch
@@ -103,6 +107,8 @@ Every deployment needs a rollback plan written **before** it happens:
 4. Test the critical user flow manually.
 5. Logs are flowing and readable.
 6. Rollback mechanism confirmed working (dry run if possible).
+
+**Output:** `docs/launch/rollback-plan.md` — the pre-launch rollback plan (trigger conditions, steps, database considerations, time-to-rollback). Launch-specific, project-level.
 
 ## Verify
 

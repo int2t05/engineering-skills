@@ -104,18 +104,13 @@ sections with calmer ones.
 
 ## 6. Anti-slop ban list
 
-Ban unless explicitly requested:
+The shared ban list (banned brands, filler verbs, purple/blue AI gradients, glassmorphism, blobs,
+glowing edges) lives in [anti-tells.md](anti-tells.md) — load and apply it. Layout-specific bans
+to also enforce for web visuals:
 
 - **Layout**: endless centered sections, cloned left-text/right-image blocks, identical card rows,
   lifeless symmetry.
-- **Visual**: default purple/blue AI gradients, floating spheres/blobs, glassmorphism without reason,
-  glowing edges.
-- **Content**: "unleash / elevate / revolutionize / next-gen / seamless / transformative platform";
-  fake brands (Acme, Nexus, Flowbit, Quantumly, NovaCore).
 - **Data**: three identical stat columns, fake dashboards with pointless charts, infinity logo marquees.
-
-For the fuller forbidden-patterns matrix (including component-level tells and the pre-flight check),
-load `anti-tells.md` from the `frontend-design` skill.
 
 ## 7. How the two skills use this file
 

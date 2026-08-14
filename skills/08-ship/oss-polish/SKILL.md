@@ -28,7 +28,7 @@ positioning.
 3. Check existing `README.md` and repo metadata.
 4. If `README.md` exists, ask: update in place or back up to `README-backup.md` first?
 
-**Output:** a one-paragraph summary of what the project does, who it's for, and what's special.
+Result: a one-paragraph summary of what the project does, who it's for, and what's special.
 
 ### Step 2: Generate README
 
@@ -119,6 +119,8 @@ After user approval, apply changes via your available GitHub tooling — the `gh
 CLI or GitHub MCP (`create_or_update_file` for README/LICENSE; GitHub API
 `PUT /repos/:owner/:repo/topics` for topics; repo settings for the About
 description).
+
+**Output:** `README.md` (polished) + `REPOSITORY_SUMMARY.md` + `THE_STORY_OF_THIS_REPO.md` (commit-history narrative), plus topics/About applied via GitHub API.
 
 ## Verify
 

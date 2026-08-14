@@ -41,6 +41,7 @@ Roboto, Arial), purple gradients on white, rounded-2xl everything, stock card gr
 - Load [references/design-foundations.md](references/design-foundations.md) §Perception & Gestalt and §Hierarchy & Layout for the visual-organization principles beneath layout — Gestalt laws, the four hierarchy techniques, F/Z reading patterns, the squint and 5-second tests, CRAP expanded
 - Load [references/design-foundations.md](references/design-foundations.md) §Cognitive Laws for the psychology laws that constrain layout — Hick's, Fitts's, Miller's 7±2, Tesler, Von Restorff, cognitive load types, progressive disclosure
 - Load [references/ux-research.md](references/ux-research.md) when the user or context is unknown — interviews, personas, journey maps, empathy maps, usability testing (run discovery before visual design)
+- Load [references/design-foundations.md](references/design-foundations.md) §Information Architecture when organizing content — the four IA elements, tree vs network, card sorting, navigation depth, labeling systems
 
 ### 2. Pick a style
 
@@ -73,16 +74,25 @@ generations — never converge on the same choice every time.
 ### 5. Specify interaction states and mark specs
 
 Every interactive element needs all states: default, hover, focus, pressed, disabled, loading.
-Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values.
+Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values. Every
+view must also handle the four user-side states — design them explicitly, don't leave them to chance:
 
-- Load [references/ux-guidelines.md](references/ux-guidelines.md) for touch-target sizes, animation timing, focus rings, reduced-motion, spacing scale, and the pre-delivery checklist
-- Load [references/motion-system.md](references/motion-system.md) for the motion token scale (duration, easing, distance), choreography patterns (stagger, shared-element, cross-fade), and canonical scroll-animation skeletons (sticky-stack, horizontal-pan, scroll-reveal)
-- Load [references/design-tokens.md](references/design-tokens.md) for token tiers (global → semantic → component), naming convention, and scales (spacing, radius, elevation, z-index, typography)
-- Load [references/component-anatomy.md](references/component-anatomy.md) for part-based design (compound components, slots), variant architecture (orthogonal axes mapped to tokens), and composition patterns
-- Load [references/state-management.md](references/state-management.md) for the data-flow architecture beneath the UI — client vs server state, store selection, cache/query strategy, state machines, optimistic updates, derived state, normalization
-- Load [references/state-design.md](references/state-design.md) for the four user-side states every view must handle — loading, error, empty, partial — with skeleton screens, empty-state guidance, and error-recovery patterns
-- Load [references/design-foundations.md](references/design-foundations.md) §Usability Heuristics for the evaluation framework — Nielsen's 10 heuristics, Heuristic Evaluation method, Norman's emotional-design levels, Dieter Rams' principles
-- Load [references/design-foundations.md](references/design-foundations.md) §Information Architecture when organizing content — the four IA elements, tree vs network, card sorting, navigation depth, labeling systems, journey maps
+| State | Design job |
+|---|---|
+| **Loading** | Show structure (skeleton screen), not a bare spinner |
+| **Error** | Explain what happened in plain language + a concrete next step |
+| **Empty** | Explain why it's empty + guide the user to a first action |
+| **Partial** | Make loaded parts interactive; don't block the whole view on one fetch |
+
+Load for depth (the essentials above are enough to specify the step; load these when the corresponding concern is in play):
+
+- [references/ux-guidelines.md](references/ux-guidelines.md) — touch-target sizes, focus rings, reduced-motion, spacing scale, pre-delivery checklist
+- [references/motion-system.md](references/motion-system.md) — motion token scale (duration, easing, distance), choreography patterns (stagger, shared-element, cross-fade), scroll-animation skeletons
+- [references/design-tokens.md](references/design-tokens.md) — token tiers (global → semantic → component), naming convention, scales (spacing, radius, elevation, z-index)
+- [references/component-anatomy.md](references/component-anatomy.md) — part-based design (compound components, slots), variant axes mapped to tokens (load when building component systems)
+- [references/design-foundations.md](references/design-foundations.md) §Usability Heuristics — Nielsen's 10, Heuristic Evaluation, Norman, Rams (load when evaluating)
+- [references/state-design.md](references/state-design.md) — skeleton-screen patterns, empty-state copy, error-recovery flows beyond the table above
+- [references/state-management.md](references/state-management.md) — load only when the UI has complex data-flow (client/server state, cache strategy, optimistic updates); that's an architecture concern, not a state-spec one
 
 ### 6. Implement and verify
 

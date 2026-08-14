@@ -19,6 +19,7 @@ skill. Every skill in this collection lives under one of nine phases.
 ## Steps
 
 1. Pick the phase, then activate the entry-point skill it lists.
+   - **meta** — `using-skills` (this router) · `skill-authoring` (author + eval skills)
    - **01-product** — `brainstorm` · `spec` · `oss-strategy`
    - **02-research** — `research` (general / market / tech-selection modes)
    - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `imagegen` · `design-research` · `schema-design` · `prompt-engineering` · `prototype`

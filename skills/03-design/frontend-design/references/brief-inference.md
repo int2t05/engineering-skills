@@ -81,10 +81,11 @@ do not ask the user to edit configuration files.
 
 ## Anti-default discipline
 
-Do not default to: AI-purple gradients, centered hero over dark mesh, three equal feature
-cards, generic glassmorphism on everything, infinite-loop micro-animations everywhere,
-Inter + slate-900. These are the LLM defaults. Reach past them deliberately based on the
-design read.
+The LLM defaults to reach past: AI-purple gradients, centered hero over dark mesh, three equal
+feature cards, generic glassmorphism on everything, infinite-loop micro-animations everywhere,
+Inter + slate-900. The full forbidden-patterns list (brands, filler verbs, visual tells, the
+pre-flight check matrix) lives in [anti-tells.md](anti-tells.md) — load it. Reach past these
+defaults deliberately based on the design read.
 
 ## Design system selection
 

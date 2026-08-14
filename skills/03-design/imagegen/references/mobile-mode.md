@@ -76,11 +76,12 @@ framing are not.
 reduce content, enlarge the text, or split into another screen. Readable beats clever, dense, or
 decorative small type.
 
-**Anti-AI-tells** (ban unless explicitly requested):
-- Visual: purple-blue fintech gradients, random glass cards, ambient blobs, fake neon, oversized corner radii on everything.
+**Anti-AI-tells** (ban unless explicitly requested): the shared ban list (banned brands, filler
+verbs, purple-blue gradients, glassmorphism, blobs) lives in
+[${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md) —
+load and apply it. Mobile-mode-specific tells to also ban:
 - Layout: fake chart dashboard spam, repeated stat cards, a homepage of 12 widgets fighting for attention, cloned screens, phone-shaped websites.
 - UI clutter: too many pills/badges/tiny labels, fake system markers, meaningless avatar rows, decorative toggles.
-- Copy: "elevate your life / unlock your potential / next-gen finance / seamless control / smarter than ever"; fake brands (Acme, NovaCore, Flowbit, Quantix, VeloPay).
 - Icons: generic developer-tool icon packs and bland library-default line icons — prefer a clean custom-feeling icon system with consistent stroke or filled logic.
 
 **Regenerate weak screens**: if a screen has tiny text, unclear spacing, fake navigation, website-like

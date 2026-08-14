@@ -10,7 +10,6 @@ code. Read inputs, produce test files. No execution, no reports, no source
 modifications.
 
 **Input:** PRD acceptance criteria + architecture docs + source code
-**Output:** Complete test files (unit + integration)
 
 ## When to use
 
@@ -133,6 +132,8 @@ Source: src/auth/login.go
 | Security-sensitive inputs | Injection tests (SQL, command, path traversal, XSS) |
 | Database operations | Transaction/rollback tests |
 | Auth-protected endpoints | Unauthenticated + forbidden tests |
+
+**Output:** Complete test files (unit + integration) — code, not a report.
 
 ## Verify
 

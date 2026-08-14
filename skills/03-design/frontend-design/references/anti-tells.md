@@ -11,6 +11,8 @@ delivering any UI. Also load when reviewing existing UI for "AI slop" remediatio
 
 ## Visual & CSS tells
 
+- **No purple/blue AI gradients** — the default "AI slop" look (purple-to-indigo on white/dark). Choose a deliberate palette direction instead.
+- **No glassmorphism without reason** — floating translucent cards over blurred blobs is the generic AI default; earn it with a brief justification.
 - **No neon / outer glows** by default. Use inner borders or subtle tinted shadows.
 - **No pure black (`#000000`)** — off-black, zinc-950, or charcoal.
 - **No oversaturated accents** — desaturate to blend with neutrals.
@@ -20,6 +22,7 @@ delivering any UI. Also load when reviewing existing UI for "AI slop" remediatio
 ## Typography tells
 
 - **Avoid Inter as the default.** See `font-pairings.md` for distinctive alternatives.
+  The "Inter + slate-900" combo is the canonical LLM-default look — avoid it as a bundle.
   An override path exists, but the default must be a deliberate choice, not inertia.
 - **No oversized H1s** that just scream. Control hierarchy with weight + color, not raw
   scale.
@@ -42,10 +45,12 @@ delivering any UI. Also load when reviewing existing UI for "AI slop" remediatio
   placeholders or specific styling.
 - **No fake-perfect numbers** — avoid `99.99%`, `50%`, `1234567`. Use organic, messy
   data (`47.2%`, `+1 (312) 847-1928`).
-- **No startup-slop brand names** — "Acme", "Nexus", "SmartFlow", "Cloudly" → invent
-  contextual, premium names that sound real.
-- **No filler verbs** — "Elevate", "Seamless", "Unleash", "Next-Gen", "Revolutionize" →
-  concrete verbs only.
+- **No startup-slop brand names** — "Acme", "Nexus", "SmartFlow", "Cloudly", "Flowbit",
+  "Quantumly", "NovaCore", "Quantix", "VeloPay" → invent contextual, premium names that
+  sound real. This is the canonical list shared across `frontend-design`, `imagegen`, and
+  `image-to-code`.
+- **No filler verbs** — "Elevate", "Seamless", "Unleash", "Next-Gen", "Revolutionize",
+  "Transformative", "Unlock", "Smarter" → concrete verbs only.
 
 ## External resources & component tells
 

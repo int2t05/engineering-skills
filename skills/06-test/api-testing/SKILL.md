@@ -142,6 +142,8 @@ contract drift between deployed behavior and the spec.
   passes on retry
 - GraphQL introspection may be disabled in production — test against staging
 
+**Output:** API test files (contract + integration) under `test/` — code, not a report.
+
 ## Verify
 
 - [ ] Contract tests cover every consumer expectation

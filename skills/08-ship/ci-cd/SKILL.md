@@ -29,20 +29,31 @@ Every change goes through these gates before merge — no gate can be skipped. I
 Pull Request
   │
   ▼
-LINT          eslint, prettier
-TYPE CHECK    tsc --noEmit
-UNIT TESTS    jest/vitest
-BUILD         npm run build
-INTEGRATION   API/DB tests
-E2E (opt.)    Playwright/Cypress
-SECURITY      npm audit
-BUNDLE SIZE   bundlesize
+LINT          → code style + static analysis
+TYPE CHECK    → type safety (typed languages only)
+UNIT TESTS    → behavior
+BUILD         → artifact compiles / bundles
+INTEGRATION   → API/DB tests against real deps
+E2E (opt.)    → full user journeys in a browser/app
+SECURITY      → dependency + secret scan
   │
   ▼
 Ready for review
 ```
 
+Detect the stack from its manifest, then map each gate to the right command — never assume `npm test`:
+
+| Stack | Manifest | Lint | Test | Build |
+|---|---|---|---|---|
+| Node / TS | `package.json` | eslint / prettier | npm test (jest/vitest) | npm run build |
+| Python | `pyproject.toml` | ruff / mypy | pytest | pip build / uv build |
+| Go | `go.mod` | go vet / golangci-lint | go test ./... | go build |
+| Rust | `Cargo.toml` | clippy | cargo test | cargo build --release |
+| Java | `pom.xml` / `build.gradle` | spotbugs / checkstyle | mvn test / gradle test | mvn package / gradle build |
+
 ### 2. Configure the CI pipeline (GitHub Actions)
+
+Example: Node.js. For other stacks, swap `setup-node` for the matching setup action (`setup-python`, `setup-go`, `rust-toolchain`, `setup-java`) and the commands from the table above.
 
 Basic CI:
 
@@ -94,7 +105,7 @@ With database integration tests — use the `services:` block and GitHub Secrets
         with: { node-version: '22', cache: 'npm' }
       - run: npm ci
       - name: Run migrations
-        run: npx prisma migrate deploy
+        run: npx prisma migrate deploy   # Node/Prisma — swap for alembic (Python), goose/sqlx (Go), Flyway/Liquibase (Java)
         env:
           DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
       - name: Integration tests
@@ -115,7 +126,7 @@ The power of CI with AI agents is the feedback loop. When CI fails, copy the fai
 Fix the issue and verify locally before pushing again."
 ```
 
-- Lint failure → `npm run lint --fix` and commit
+- Lint failure → run your linter's auto-fix (`npm run lint --fix`, `ruff check --fix`, `golangci-lint run --fix`) and commit
 - Type error → read the error location and fix the type
 - Test failure → follow the debugging skill
 - Build error → check config and dependencies
@@ -150,7 +161,7 @@ CI should never have production secrets. Use separate secrets for CI testing.
 
 ### 7. Optimize when the pipeline exceeds 10 minutes
 
-Apply in order of impact: cache dependencies (`setup-node` cache option) → run jobs in parallel (split lint/typecheck/test/build into separate jobs; template in `references/ci-templates.md`) → only run what changed (path filters; skip e2e for docs-only PRs) → matrix builds (shard test suites) → optimize the test suite (move slow tests to a schedule) → use larger runners.
+Apply in order of impact: cache dependencies (`setup-node` cache, `setup-python` cache, `actions/cache` for `~/.cargo` / `~/go/pkg`) → run jobs in parallel (split lint/typecheck/test/build into separate jobs; template in `references/ci-templates.md`) → only run what changed (path filters; skip e2e for docs-only PRs) → matrix builds (shard test suites) → optimize the test suite (move slow tests to a schedule) → use larger runners.
 
 ## Verify
 
