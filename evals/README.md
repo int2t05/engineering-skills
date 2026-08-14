@@ -21,7 +21,7 @@ bash scripts/run-eval.sh --case tdd-001 --runs 3
 # Skip baselines (faster, but can't prove the skill changes behavior)
 bash scripts/run-eval.sh --no-baseline
 
-# Pin a model (else falls back to ANTHROPIC_MODEL / CLAUDE_MODEL env)
+# Pin a model (else falls back to ANTHROPIC_MODEL env)
 bash scripts/run-eval.sh --model <your-model-id>
 ```
 
@@ -43,8 +43,8 @@ export ANTHROPIC_BASE_URL=https://your-proxy/api/anthropic
 export ANTHROPIC_MODEL=<proxy-model-id>   # or pass --model <id>
 ```
 
-If `--model` is omitted, the runner falls back to `ANTHROPIC_MODEL` then
-`CLAUDE_MODEL` from the env before letting the CLI use its default.
+If `--model` is omitted, the runner falls back to the `ANTHROPIC_MODEL` env var
+before letting the CLI use its default.
 
 ## When to run
 

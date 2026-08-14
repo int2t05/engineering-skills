@@ -99,9 +99,10 @@ def run_claude(prompt, workspace, timeout, model=None):
     prompt so the model receives nothing. stdin bypasses all shell/arg escaping.
     """
     cmd = [CLAUDE_BIN, "-p", "--output-format", "stream-json", "--verbose"]
-    # Pin the model: explicit --model wins; else fall back to the env var the
-    # CLI reads (ANTHROPIC_MODEL on proxy setups, CLAUDE_MODEL as a fallback).
-    model = model or os.environ.get("ANTHROPIC_MODEL") or os.environ.get("CLAUDE_MODEL")
+    # Pin the model: explicit --model wins; else fall back to ANTHROPIC_MODEL,
+    # matching the ANTHROPIC_AUTH_TOKEN / ANTHROPIC_BASE_URL naming family the
+    # proxy setup uses.
+    model = model or os.environ.get("ANTHROPIC_MODEL")
     if model:
         cmd.extend(["--model", model])
     # Strip CLAUDECODE so claude -p can run nested inside a Claude Code session.
