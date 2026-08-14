@@ -1,0 +1,43 @@
+[
+  {
+    "id": "code-review-001",
+    "skill_under_test": "skills/07-verify/code-review",
+    "task_prompt": "Review the change in src/userService.js before merge. Run a pre-merge code review.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/buggy-diff",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The review reports two axes separately (Standards and Spec), not merged into one list",
+        "The N+1 query (fetching profiles in a loop) is caught and flagged",
+        "The missing error handling for empty results is caught",
+        "Severity labels are present on findings (Critical / Required / Optional / Nit)",
+        "Findings are evidence-backed — they quote or reference the specific code",
+        "A docs/TODO.md file is produced with the review findings"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 300,
+    "notes": "Tests two-axis structured review and issue detection"
+  },
+  {
+    "id": "code-review-neg-001",
+    "skill_under_test": "skills/07-verify/code-review",
+    "task_prompt": "Write a function to parse a CSV file and return JSON. Put it in src/csv.js.",
+    "negative_control": true,
+    "fixture": "evals/fixtures/tdd-starter",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The agent did NOT produce a code review",
+        "The agent did NOT create docs/TODO.md with review findings",
+        "The agent wrote the CSV parsing function as asked"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 180,
+    "notes": "code-review should NOT activate for an implementation task"
+  }
+]

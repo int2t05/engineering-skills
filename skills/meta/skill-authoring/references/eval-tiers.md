@@ -4,6 +4,14 @@ How to evaluate a skill beyond the structural validator. Three tiers, ascending 
 conviction. Adapted from established skill-eval practice (addyosmani's three-tier model + the
 anthropics skill-creator eval pattern).
 
+## Contents
+
+- [Tier 1 — Structural (free, CI)](#tier-1--structural-free-ci)
+- [Tier 2 — Trigger & routing (free, CI-safe)](#tier-2--trigger--routing-free-ci-safe)
+- [Tier 3 — Behavioral (tokens, on demand)](#tier-3--behavioral-tokens-on-demand)
+- [Tier 3 Implementation — the behavioral eval harness](#tier-3-implementation--the-behavioral-eval-harness)
+- [When to run each tier](#when-to-run-each-tier)
+
 ## Tier 1 — Structural (free, CI)
 
 What `scripts/validate-skills.sh` already checks:
@@ -69,6 +77,67 @@ Does an agent following the skill actually satisfy its `## Verify` checklist?
 **A skill passing Tier 1 + Tier 2 but failing Tier 3 has a wrong SKILL.md** — the description routes
 correctly but the body doesn't change behavior. Fix the body (steps, verify, references), not the
 eval. This is the real test; a skill untested at Tier 3 is a hypothesis, not a shipped skill.
+
+## Tier 3 Implementation — the behavioral eval harness
+
+The harness lives in `evals/` and runs via `scripts/run-eval.sh`. It implements the
+**RED-GREEN pattern**: every case runs twice (with-skill and without-skill/baseline) to
+prove the skill changes behavior, not just that the agent can do the task. If the
+baseline also passes, the case is flagged "non-discriminating" (the task doesn't
+exercise the skill's value) — not a failure, but a signal to harden the case.
+
+### Directory structure
+
+- `evals/cases/<skill>.json` — one file per skill, JSON array of eval cases
+- `evals/fixtures/` — shared input files (starter repos, buggy diffs, failing tests)
+- `evals/agents/grader.md` — the LLM-judge grader prompt
+- `evals/results/` — gitignored run outputs (transcripts, grading.json, summary)
+
+### Eval case format
+
+Each case: `id`, `skill_under_test`, `task_prompt` (real user phrasing), `negative_control`
+(bool), `fixture`, `grader` (type: code-based / llm-judge / hybrid), `expectations`, `runs`,
+`timeout_seconds`. See `evals/README.md` for the full schema and how to write cases.
+
+### Grader types
+
+- **code-based** — runs a command (`npm test`, `pytest`), checks exit code. Fast, deterministic.
+  For code-producing skills (tdd, implement, test-generation, api-testing, e2e-testing, etc.).
+- **llm-judge** — a grader subagent reads transcript + outputs, scores each expectation
+  PASS/FAIL with evidence. For doc/behavior skills (spec, architecture, code-review, debugging).
+- **hybrid** — both. Most code-producing pilots use hybrid (tests pass + process followed).
+
+### Running evals
+
+```bash
+bash scripts/run-eval.sh                      # all pilot skills
+bash scripts/run-eval.sh --skill tdd          # one skill
+bash scripts/run-eval.sh --case tdd-001 --runs 3   # one case, 3 runs (CI confidence)
+bash scripts/run-eval.sh --no-baseline        # faster, but can't prove the skill changes behavior
+```
+
+Exit code = number of failed cases (matches `validate-skills.sh`). A case passes when its
+pass-rate ≥ 0.67 (2/3 by default).
+
+### Negative controls
+
+Every skill's eval suite should include at least one negative control — a task where the skill
+should NOT activate (drawn from its `**Not for:**` boundary). This tests precision (the skill
+doesn't over-trigger), not just recall. A negative control passes when the agent does NOT invoke
+the skill's workflow for a task outside its scope.
+
+### When to run
+
+- On demand (manual) — before trusting a skill in production, after a SKILL.md rewrite.
+- Weekly (CI schedule) — catches regressions from model updates.
+- **NEVER as a CI gate** — behavioral evals are slow (5-10 min/case), non-deterministic, and
+  token-costly. Tier 1 (`validate-skills.sh`) remains the CI gate.
+
+### Pilot skills (MVP)
+
+`tdd`, `spec`, `code-review`, `debugging` — 2-5 cases each, including negative controls. See
+`evals/cases/`. The pattern is proven on these four; expanding to all 43 skills is mechanical
+case-writing once a skill's grader type and expectations are defined.
 
 ## When to run each tier
 

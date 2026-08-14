@@ -73,7 +73,7 @@ Three tiers (adapted from established skill-eval practice):
 
 - **Structural** (free, CI) — validator green. Already done in Step 5.
 - **Trigger & routing** (free, CI) — does the description fire on the right prompts and not collide? The collision check is the automated subset. For deeper routing eval, write ~3 positive + ~2 negative trigger prompts per skill and check the model routes correctly (defer to实战, like the Tier 2 framework).
-- **Behavioral** (tokens, on demand) — does an agent following the skill satisfy its `## Verify`? Run the skill against a real task, read the full trace, judge against the verify checklist. This is the real test; do it before trusting the skill.
+- **Behavioral** (tokens, on demand) — does an agent following the skill satisfy its `## Verify`? `bash scripts/run-eval.sh --skill <name>` runs the skill against real tasks with and without the skill loaded (RED-GREEN baseline) and grades the output. Every skill should have ≥3 cases (2 positive + 1 negative control) in `evals/cases/<name>.json` before it's trusted. This is the real test; do it before trusting the skill.
 
 If a skill passes structural but fails behavioral, the SKILL.md is wrong even if the validator is green. Fix the skill, not the test.
 
@@ -84,7 +84,7 @@ If a skill passes structural but fails behavioral, the SKILL.md is wrong even if
 - [ ] Description follows the hybrid format; quoted phrases unique across the pack (grep-confirmed)
 - [ ] Four sections present; `**Not for:**` names adjacent skills; `**Output:**` declared iff doc-producing
 - [ ] All discovery surface files synced (plugin.json, validator lists, skill-outputs, AGENTS, phase-tree, using-skills, README×2)
-- [ ] At least one behavioral check run against a real task (not just structural green)
+- [ ] At least one behavioral check run against a real task (not just structural green); ≥3 eval cases in `evals/cases/<name>.json` for skills that gate real work
 
 ## References
 

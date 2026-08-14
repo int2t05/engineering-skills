@@ -1,0 +1,100 @@
+[
+  {
+    "id": "tdd-001",
+    "skill_under_test": "skills/06-test/tdd",
+    "task_prompt": "Implement a function parseDuration(s) in src/duration.js that takes a duration string like '1h30m' and returns the total seconds (5400). Support h, m, s suffixes, combinable (e.g. '1h30m', '45s', '2h'). Use TDD.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/tdd-starter",
+    "grader": {
+      "type": "hybrid",
+      "code_check": {
+        "command": "npm test",
+        "cwd": "{workspace}",
+        "pass_condition": "exit_code == 0"
+      },
+      "llm_judge": {
+        "agent": "evals/agents/grader.md",
+        "expectations": [
+          "A test file exists and was written before the implementation file (transcript evidence of ordering)",
+          "The agent explicitly ran the test and observed it fail before writing implementation (RED phase)",
+          "The agent wrote minimal code to pass — no speculative features beyond h/m/s parsing",
+          "parseDuration('1h30m') returns 5400",
+          "parseDuration('45s') returns 45",
+          "parseDuration('2h') returns 7200",
+          "The full test suite passes with no skipped tests"
+        ]
+      }
+    },
+    "runs": 1,
+    "timeout_seconds": 300,
+    "notes": "Tests process discipline (red-green-refactor), not just code correctness"
+  },
+  {
+    "id": "tdd-002",
+    "skill_under_test": "skills/06-test/tdd",
+    "task_prompt": "There's a bug in src/duration.js: parseDuration('1h30m') returns 90 instead of 5400. It only handles minutes, dropping hours. Fix it.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/tdd-starter",
+    "fixture_setup": "pre-seed src/duration.js with the buggy version that only matches /(\\d+)m/",
+    "grader": {
+      "type": "hybrid",
+      "code_check": {
+        "command": "npm test",
+        "cwd": "{workspace}",
+        "pass_condition": "exit_code == 0"
+      },
+      "llm_judge": {
+        "agent": "evals/agents/grader.md",
+        "expectations": [
+          "The agent wrote a failing reproduction test BEFORE fixing the code",
+          "The agent observed the test fail (confirmed the bug reproduces)",
+          "The fix addresses the root cause (hours not parsed), not a symptom",
+          "The agent ran the full suite after the fix and it passes",
+          "No debug instrumentation or TODO markers left behind"
+        ]
+      }
+    },
+    "runs": 1,
+    "timeout_seconds": 300,
+    "notes": "Prove-It pattern — write the failing test first, then fix"
+  },
+  {
+    "id": "tdd-neg-001",
+    "skill_under_test": "skills/06-test/tdd",
+    "task_prompt": "Add a README.md with setup instructions for this Node.js project. Just a basic readme.",
+    "negative_control": true,
+    "fixture": "evals/fixtures/tdd-starter",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The agent did NOT write any test files",
+        "The agent did NOT mention TDD, red-green-refactor, or testing-first",
+        "The agent produced a README.md"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 120,
+    "notes": "Precision check: tdd should NOT activate for a documentation task"
+  },
+  {
+    "id": "tdd-neg-002",
+    "skill_under_test": "skills/06-test/tdd",
+    "task_prompt": "Rename the function parseDuration to parseDurationString across the codebase.",
+    "negative_control": true,
+    "fixture": "evals/fixtures/tdd-starter",
+    "fixture_setup": "pre-seed src/duration.js with a working parseDuration",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The agent did NOT invoke the TDD red-green-refactor workflow",
+        "The agent did NOT write new tests for a mechanical rename",
+        "The rename was completed across the file"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 120,
+    "notes": "tdd explicitly says Not for mechanical renames"
+  }
+]

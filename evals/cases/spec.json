@@ -1,0 +1,54 @@
+[
+  {
+    "id": "spec-001",
+    "skill_under_test": "skills/01-product/spec",
+    "task_prompt": "I want to build a CLI tool that converts CSV files to JSON. It should handle large files (>1GB), infer types (numbers, dates, booleans), and support streaming output. Write a spec.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/csv-project",
+    "grader": {
+      "type": "hybrid",
+      "code_check": {
+        "command": "test -f docs/PRD.md",
+        "cwd": "{workspace}",
+        "pass_condition": "exit_code == 0"
+      },
+      "llm_judge": {
+        "agent": "evals/agents/grader.md",
+        "expectations": [
+          "docs/PRD.md exists and is non-empty",
+          "The spec includes an Objective section describing the tool",
+          "Success criteria are specific and testable (not 'make it fast' but concrete thresholds like 'stream 1GB in < 30s')",
+          "A Project Structure section is present",
+          "A Commands section is present",
+          "A Testing Strategy section is present",
+          "Boundaries are stated (Always / Ask first / Never rules)",
+          "Non-Goals are explicit — what the tool will NOT do",
+          "The agent surfaced assumptions before writing the spec"
+        ]
+      }
+    },
+    "runs": 1,
+    "timeout_seconds": 300,
+    "notes": "Doc-producing skill — checks PRD structure and testable criteria"
+  },
+  {
+    "id": "spec-neg-001",
+    "skill_under_test": "skills/01-product/spec",
+    "task_prompt": "Fix this typo in the README: 'recieve' should be 'receive'.",
+    "negative_control": true,
+    "fixture": "evals/fixtures/csv-project",
+    "fixture_setup": "pre-seed README.md with the typo",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The agent did NOT write a spec or PRD",
+        "The agent did NOT create docs/PRD.md",
+        "The typo was fixed in the README"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 120,
+    "notes": "spec says NOT for single-line fixes — precision check"
+  }
+]

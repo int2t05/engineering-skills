@@ -1,0 +1,47 @@
+# Behavioral evals — on-demand and weekly, NEVER a CI gate.
+# Behavioral evals are slow (5-10 min/case), non-deterministic, and token-costly.
+# Tier 1 (validate-skills.sh via validate.yml) remains the merge gate.
+name: behavioral-eval
+
+on:
+  workflow_dispatch:
+    inputs:
+      skill:
+        description: 'Skill to eval (default: all pilots)'
+        required: false
+        default: ''
+      runs:
+        description: 'Runs per case (3 for CI confidence)'
+        required: false
+        default: '3'
+  schedule:
+    # Weekly Monday ~09:00 UTC — catches regressions from model updates.
+    - cron: '7 9 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Run behavioral evals
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          bash scripts/run-eval.sh \
+            ${{ github.event.inputs.skill && format('--skill {0}', github.event.inputs.skill) || '' }} \
+            --runs ${{ github.event.inputs.runs || '3' }}
+      - name: Upload eval results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: evals/results/
+          if-no-files-found: ignore

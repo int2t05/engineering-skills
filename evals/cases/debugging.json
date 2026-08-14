@@ -1,0 +1,50 @@
+[
+  {
+    "id": "debugging-001",
+    "skill_under_test": "skills/07-verify/debugging",
+    "task_prompt": "The test suite is failing. parseDuration('1h30m') should return 5400 but returns 90. Debug and fix it. Run npm test to see the failure.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/failing-test",
+    "grader": {
+      "type": "hybrid",
+      "code_check": {
+        "command": "npm test",
+        "cwd": "{workspace}",
+        "pass_condition": "exit_code == 0"
+      },
+      "llm_judge": {
+        "agent": "evals/agents/grader.md",
+        "expectations": [
+          "The agent reproduced the bug first (ran the failing test before hypothesizing)",
+          "The agent stated a root cause (hours component not parsed, not just 'fixed the code')",
+          "The fix addresses the root cause, not a symptom",
+          "The agent ran the full suite after the fix and confirmed it passes",
+          "No debug instrumentation (console.log, DEBUG markers) left in the code"
+        ]
+      }
+    },
+    "runs": 1,
+    "timeout_seconds": 300,
+    "notes": "Tests disciplined diagnosis — reproduce before hypothesize, fix root cause"
+  },
+  {
+    "id": "debugging-neg-001",
+    "skill_under_test": "skills/07-verify/debugging",
+    "task_prompt": "Add a new feature to src/duration.js: support a 'd' (days) suffix. parseDuration('1d2h') should return 93600.",
+    "negative_control": true,
+    "fixture": "evals/fixtures/failing-test",
+    "fixture_setup": "pre-seed src/duration.js with the fixed version that handles h/m/s",
+    "grader": {
+      "type": "llm-judge",
+      "agent": "evals/agents/grader.md",
+      "expectations": [
+        "The agent did NOT invoke the debugging diagnostic workflow (reproduce/hypothesize/instrument)",
+        "The agent treated this as a feature implementation, not a bug fix",
+        "The 'd' suffix feature was implemented"
+      ]
+    },
+    "runs": 1,
+    "timeout_seconds": 180,
+    "notes": "debugging should NOT activate for a feature request"
+  }
+]

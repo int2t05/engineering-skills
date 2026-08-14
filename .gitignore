@@ -4,3 +4,10 @@ archive/
 
 # Audit reports: local session trails (docs/audit/YYYY-MM-DD-<scope>.md), not published.
 docs/audit/
+
+# Behavioral eval results: large transcripts, non-deterministic, not published.
+evals/results/
+
+# Python bytecode cache.
+__pycache__/
+*.pyc
