@@ -60,6 +60,48 @@ def prepare_workspace(case, run_label):
     return workspace
 
 
+def save_artifacts(case, run_label, run_idx, workspace, transcript, prompt, duration, tokens, verdict):
+    """Persist a run's artifacts to evals/results/<case-id>/<label>-<n>/.
+
+    Without this the workspace is rmtree'd and the transcript, grading.json,
+    and agent-produced files are lost — leaving no evidence to audit. Artifacts
+    are gitignored (evals/results/) so they never pollute the repo.
+    """
+    out_dir = REPO_ROOT / "evals" / "results" / case["id"] / f"{run_label}-{run_idx}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "transcript.md").write_text(transcript, encoding="utf-8")
+    (out_dir / "prompt.txt").write_text(prompt, encoding="utf-8")
+    (out_dir / "run-meta.json").write_text(json.dumps({
+        "case_id": case["id"],
+        "run_label": run_label,
+        "run_index": run_idx,
+        "skill_under_test": case["skill_under_test"],
+        "negative_control": case.get("negative_control", False),
+        "duration_seconds": round(duration, 1),
+        "tokens": tokens,
+        "verdict": verdict,
+    }, indent=2), encoding="utf-8")
+    # Copy grading.json if the grader wrote one (sibling to eval-outputs/ in workspace)
+    grading_file = workspace / "grading.json"
+    if grading_file.exists():
+        shutil.copy2(grading_file, out_dir / "grading.json")
+    # Copy agent-produced files (the full workspace minus node_modules) so the
+    # actual code/docs the agent wrote are auditable, not just the transcript.
+    ws_snapshot = out_dir / "workspace"
+    ws_snapshot.mkdir(exist_ok=True)
+    for entry in workspace.rglob("*"):
+        if "node_modules" in entry.parts:
+            continue
+        rel = entry.relative_to(workspace)
+        dest = ws_snapshot / rel
+        if entry.is_dir():
+            dest.mkdir(parents=True, exist_ok=True)
+        else:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(entry, dest)
+    return out_dir
+
+
 def build_prompt(case, workspace, with_skill):
     """Build the prompt for claude -p. With-skill includes SKILL.md content."""
     task = case["task_prompt"]
@@ -151,9 +193,40 @@ def run_claude(prompt, workspace, timeout, model=None):
             transcript = f"[unparsed stdout — {len(proc.stdout)} chars, no stream-json events]\n{proc.stdout[:2000]}"
             print(f"  WARN: claude -p produced {len(proc.stdout)} chars but 0 stream-json events (proxy error or non-JSON output)", file=sys.stderr)
         return transcript, duration, total_tokens
-    except subprocess.TimeoutExpired:
+    except subprocess.TimeoutExpired as e:
+        # Recover partial output instead of discarding it. The agent often
+        # completes the work (files written, tests passing) even when the
+        # process doesn't terminate within the timeout — losing all narrative
+        # makes process-based expectations ungradeable and masks the real
+        # behavior. TimeoutExpired carries the stdout captured before kill.
         duration = time.time() - start
-        return f"[TIMEOUT after {timeout}s]", duration, 0
+        partial_lines = []
+        partial_tokens = 0
+        partial = e.stdout or ""
+        for line in partial.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if event.get("type") == "assistant":
+                for block in event.get("message", {}).get("content", []):
+                    if block.get("type") == "text":
+                        partial_lines.append(block["text"])
+                    elif block.get("type") == "tool_use":
+                        partial_lines.append(f"[tool: {block.get('name')}] {json.dumps(block.get('input', {}))[:200]}")
+            elif event.get("type") == "result":
+                usage = event.get("usage", {})
+                partial_tokens = usage.get("output_tokens", 0) + usage.get("input_tokens", 0)
+        partial_transcript = "\n\n".join(partial_lines)
+        header = f"[TIMEOUT after {timeout}s — partial transcript recovered ({len(partial)} bytes)]"
+        if partial_transcript:
+            return f"{header}\n{partial_transcript}", duration, partial_tokens
+        if partial.strip():
+            return f"{header}\n[unparsed partial — {len(partial)} chars]\n{partial[:2000]}", duration, 0
+        return header, duration, 0
     except FileNotFoundError:
         return "[ERROR: claude CLI not found — is it installed and on PATH?]", 0, 0
 
@@ -247,7 +320,7 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
     # --- With-skill runs ---
     with_passes = 0
     with_details = []
-    for _ in range(runs):
+    for run_idx in range(runs):
         ws = prepare_workspace(case, "with")
         try:
             prompt = build_prompt(case, ws, with_skill=True)
@@ -260,6 +333,8 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
             passed = code_pass and (llm_rate >= threshold)
             with_passes += int(passed)
             with_details.append(f"code:{code_detail} judge:{llm_detail}")
+            verdict = {"passed": passed, "code": code_detail, "judge": llm_detail, "transcript_chars": len(transcript)}
+            save_artifacts(case, "with", run_idx, ws, transcript, prompt, duration, tokens, verdict)
         finally:
             shutil.rmtree(ws, ignore_errors=True)
 
@@ -270,7 +345,7 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
     baseline_details = []
     if with_baseline:
         base_passes = 0
-        for _ in range(runs):
+        for run_idx in range(runs):
             ws = prepare_workspace(case, "base")
             try:
                 prompt = build_prompt(case, ws, with_skill=False)
@@ -282,6 +357,8 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
                 passed = code_pass and (llm_rate >= threshold)
                 base_passes += int(passed)
                 baseline_details.append(f"code:{code_detail} judge:{llm_detail}")
+                verdict = {"passed": passed, "code": code_detail, "judge": llm_detail, "transcript_chars": len(transcript)}
+                save_artifacts(case, "base", run_idx, ws, transcript, prompt, duration, tokens, verdict)
             finally:
                 shutil.rmtree(ws, ignore_errors=True)
         baseline_rate = base_passes / runs if runs else 0
@@ -357,6 +434,23 @@ def main():
     failed = len(results) - passed
     print(f"Summary: {passed}/{len(results)} cases passed, {failed} failed")
     print(f"Total errors: {failed}")
+
+    # Persist a machine-readable summary alongside the per-run artifacts.
+    results_dir = REPO_ROOT / "evals" / "results"
+    results_dir.mkdir(parents=True, exist_ok=True)
+    summary_path = results_dir / "run-summary.json"
+    summary_path.write_text(json.dumps({
+        "cases": len(results),
+        "passed": passed,
+        "failed": failed,
+        "runs_per_case": args.runs,
+        "baseline_run": not args.no_baseline,
+        "threshold": args.threshold,
+        "results": results,
+    }, indent=2), encoding="utf-8")
+    print(f"\nArtifacts written to: {results_dir}")
+    print(f"  - {summary_path.relative_to(REPO_ROOT)}")
+    print(f"  - {results_dir.relative_to(REPO_ROOT)}/<case-id>/<with|base>-<n>/  (transcript.md, grading.json, workspace/, run-meta.json)")
 
     # Non-discriminating positive cases (flag, don't fail)
     if not args.no_baseline:

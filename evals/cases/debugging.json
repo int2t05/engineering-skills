@@ -8,7 +8,7 @@
     "grader": {
       "type": "hybrid",
       "code_check": {
-        "command": "npm test",
+        "command": "npm install --silent && npm test",
         "cwd": "{workspace}",
         "pass_condition": "exit_code == 0"
       },

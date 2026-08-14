@@ -8,7 +8,7 @@
     "grader": {
       "type": "hybrid",
       "code_check": {
-        "command": "npm test",
+        "command": "npm install --silent && npm test",
         "cwd": "{workspace}",
         "pass_condition": "exit_code == 0"
       },
@@ -21,13 +21,14 @@
           "parseDuration('1h30m') returns 5400",
           "parseDuration('45s') returns 45",
           "parseDuration('2h') returns 7200",
+          "parseDuration handles an untested combination correctly (e.g. '3h5m' → 11100, proving the impl is general not hardcoded to the examples)",
           "The full test suite passes with no skipped tests"
         ]
       }
     },
     "runs": 1,
-    "timeout_seconds": 300,
-    "notes": "Tests process discipline (red-green-refactor), not just code correctness"
+    "timeout_seconds": 600,
+    "notes": "Tests process discipline (red-green-refactor), not just code correctness. Timeout 600s — with-skill prompt includes full SKILL.md, slower on proxies."
   },
   {
     "id": "tdd-002",
@@ -39,7 +40,7 @@
     "grader": {
       "type": "hybrid",
       "code_check": {
-        "command": "npm test",
+        "command": "npm install --silent && npm test",
         "cwd": "{workspace}",
         "pass_condition": "exit_code == 0"
       },
