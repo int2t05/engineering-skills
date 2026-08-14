@@ -96,7 +96,7 @@ Every deployment needs a rollback plan written **before** it happens:
 
 - **Trigger conditions** — error rate > 2x baseline; P95 > [X]ms; user reports of [specific issue]; data integrity issues; security vulnerability discovered.
 - **Rollback steps** — disable feature flag (if applicable) OR `git revert <commit> && git push`; verify rollback via health check and error monitoring; notify team.
-- **Database considerations** — migration `[X]` has a rollback; data inserted by the new feature is preserved or cleaned up. Rollback command depends on your stack: `npx prisma migrate rollback` (Node/Prisma), `alembic downgrade -1` (Python), `goose down` (Go), `flyway undo` (Java).
+- **Database considerations** — migration `[X]` has a rollback; data inserted by the new feature is preserved or cleaned up. Rollback command depends on your stack: `npx prisma migrate rollback` (Node/Prisma), `alembic downgrade -1` (Python), `goose down` (Go), `flyway undo` (Java — Teams/Enterprise only; Community users must `flyway repair` + manual SQL, or use Liquibase whose free edition supports `rollback`).
 - **Time to rollback** — feature flag < 1 min; redeploy previous version < 5 min; database rollback < 15 min.
 
 ### 5. Verify in the first hour after launch

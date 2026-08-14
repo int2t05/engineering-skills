@@ -176,6 +176,8 @@ client corrects on hydration, users see a flash of the wrong language (hydration
 - Detect locale on the server (from URL path, cookie, or Accept-Language)
 - Render the correct locale server-side
 - The client hydration must match — pass the detected locale to the client bundle
+- For RSC / App Router message loading, per-locale bundle splitting, and the `setRequestLocale`
+  pattern, see [server-i18n.md](server-i18n.md).
 
 ## 5. Test-locale matrix
 

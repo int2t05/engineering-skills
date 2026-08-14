@@ -42,17 +42,22 @@ If you can't name the trust boundaries for a feature, it's not ready to secure (
 
 **Never do:** commit secrets to version control; log sensitive data (passwords, tokens, full card numbers); trust client-side validation as a security boundary; disable security headers for convenience; `eval()` or `innerHTML` with user-provided data; store sessions in client-accessible storage (localStorage for auth tokens); expose stack traces or internal error details to users.
 
-### 3. Walk the OWASP Top 10 prevention patterns
+### 3. Walk the OWASP Top 10 (2021) prevention patterns
 
-For each, check the diff for the bad pattern and confirm the good one is in place:
+For each, check the diff for the bad pattern and confirm the good one is in place. (2021 IDs.
+XSS was folded into A03 Injection in 2021 but is kept as a sub-point here since its prevention —
+output encoding — differs from query/shell injection.)
 
-- **Injection** (SQL/NoSQL/OS command) — parameterized queries or ORM with parameterized input. No string concatenation of user input into queries or shell commands.
-- **Broken authentication** — bcrypt/scrypt/argon2 hash and compare; session secret from environment (not code); httpOnly + secure + sameSite cookies with explicit maxAge; password reset tokens expire.
-- **XSS** — framework auto-escaping (React escapes by default); if you must render HTML, sanitize first (DOMPurify). No `innerHTML` with user data.
-- **Broken access control** — check authorization, not just authentication. Verify resource ownership (`task.ownerId !== req.user.id` → 403). Admin actions require admin role verification. Users can only access their own resources.
-- **Security misconfiguration** — helmet for headers; CSP with tight directives (`defaultSrc 'self'`); CORS restricted to known origins (never wildcard `*` with credentials). No default credentials.
-- **Sensitive data exposure** — field allowlist in API responses (strip `passwordHash`, `resetToken`); secrets from environment variables; PII encrypted at rest if applicable.
-- **SSRF** — for server-side URL fetches (webhooks, import-from-URL, image proxies, link previews): allowlist scheme + host, reject if any resolved IP is private/reserved (covers loopback, link-local `169.254.169.254` cloud metadata, private, unique-local across IPv4/IPv6), forbid redirects. TOCTOU gap remains — for high-risk surfaces, pin the resolved IP or use a filtering agent (`request-filtering-agent`).
+- **A01: Broken Access Control** — check authorization, not just authentication. Verify resource ownership (`task.ownerId !== req.user.id` → 403). Admin actions require admin role verification. Users can only access their own resources.
+- **A02: Cryptographic Failures** (was "Sensitive Data Exposure") — field allowlist in API responses (strip `passwordHash`, `resetToken`); secrets from environment variables; PII encrypted at rest; TLS in transit; bcrypt/scrypt/argon2 for passwords.
+- **A03: Injection** (SQL/NoSQL/OS command, now incl. XSS) — parameterized queries or ORM with parameterized input; no string concatenation of user input into queries or shell commands. For XSS: framework auto-escaping (React escapes by default); sanitize before rendering HTML (DOMPurify); no `innerHTML` with user data.
+- **A04: Insecure Design** — the threat model in Step 1 is the control. If you can't name the trust boundaries for a feature, it's not ready to secure. Most breaches begin in design, not code.
+- **A05: Security Misconfiguration** — helmet for headers; CSP with tight directives (`defaultSrc 'self'`); CORS restricted to known origins (never wildcard `*` with credentials). No default credentials.
+- **A06: Vulnerable and Outdated Components** — Step 6 covers this: run the native audit against the lockfile, triage by reachability, block unreviewed install scripts.
+- **A07: Identification and Authentication Failures** (was "Broken Authentication") — bcrypt/scrypt/argon2 hash and compare; session secret from environment (not code); httpOnly + secure + sameSite cookies with explicit maxAge; password reset tokens expire.
+- **A08: Software and Data Integrity Failures** — verify CI/CD pipeline integrity; sign and verify dependencies (provenance); treat untrusted dependencies and plugin update channels as adversarial (Step 6 supply-chain hygiene).
+- **A09: Security Logging and Monitoring Failures** — audit-log security-relevant events (auth, access denials, admin actions) with enough context to investigate; the STRIDE Repudiation check in Step 1 surfaces what must be logged.
+- **A10: Server-Side Request Forgery (SSRF)** — for server-side URL fetches (webhooks, import-from-URL, image proxies, link previews): allowlist scheme + host, reject if any resolved IP is private/reserved (covers loopback, link-local `169.254.169.254` cloud metadata, private, unique-local across IPv4/IPv6), forbid redirects. TOCTOU gap remains — for high-risk surfaces, pin the resolved IP or use a filtering agent (`request-filtering-agent`).
 
 ### 4. Input validation + file uploads
 

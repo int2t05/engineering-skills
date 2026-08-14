@@ -46,9 +46,14 @@ Read the code's actual behavior and compare against PRD/TECH:
 
 Extract every route declaration from code and match against `docs/API/`:
 
-- **express / fastify:** `grep -rh "app\.\(get\|post\|put\|delete\|patch\)" --include="*.ts" --include="*.js"`
-- **nestjs:** `grep -rh "@\(Get\|Post\|Put\|Delete\|Patch\)" --include="*.ts"`
+- **express:** `grep -rh "\(app\|router\)\.\(get\|post\|put\|delete\|patch\|all\)" --include="*.ts" --include="*.js"`
+- **fastify:** `grep -rh "\(app\|fastify\)\.\(get\|post\|put\|delete\|patch\|all\)" --include="*.ts" --include="*.js"`
+- **nestjs:** `grep -rh "@\(Get\|Post\|Put\|Delete\|Patch\|All\)" --include="*.ts"`
 - **fastapi / flask:** `grep -rh "@app\.\(get\|post\|put\|delete\|patch\)" --include="*.py"`
+
+Express routers register on `router.get` (not just `app.get`); Fastify often names the instance
+`fastify` rather than `app`; NestJS `@All` is a catch-all route — the patterns above cover these.
+For chains like `app.route('/x').get(handler)`, the `.get` match still catches it.
 
 Every endpoint in code with no matching `docs/API/` entry is a drift gap. For each gap, add to the API doc: method, path, parameters, request/response shape, errors. If no `docs/API/` exists yet, flag for `api-design`.
 

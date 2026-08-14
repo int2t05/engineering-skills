@@ -65,6 +65,6 @@ CSS: < 50KB gzipped
 Images: < 200KB per image (above the fold)
 Fonts: < 100KB total
 API response time: < 200ms (p95)
-Time to Interactive: < 3.5s on 4G
+INP (Interaction to Next Paint): ≤ 200ms
 Lighthouse Performance score: ≥ 90
 ```

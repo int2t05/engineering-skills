@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Site Metrics Collection Script
+Site Metrics Collection Script (documentation/educational repos)
 
-Scans a repository and collects metrics for README generation including:
-- Markdown file counts and word counts
-- Chapter and section counts
-- MicroSim counts
-- Glossary, FAQ, quiz statistics
-- Image and diagram counts
-- Learning graph statistics
+Scans a documentation- or educational-content repository and collects metrics
+for README generation: markdown files and word counts, chapters, MicroSims,
+glossary/FAQ/quiz statistics, images, and learning-graph concepts.
+
+This tool is scoped to content-heavy repos (docs sites, courses) — it looks
+for `docs/chapters/`, `docs/sims/`, `docs/glossary.md`, etc. For code-focused
+repos it returns mostly zeros; use `github_fetcher.py` for those instead.
 
 Usage:
     python collect-site-metrics.py [repo_path]

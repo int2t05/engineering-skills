@@ -40,8 +40,10 @@ Produce a professional `README.md` with sections in this order:
    self-link "GitHub repo" badge — readers are already on GitHub.
 3. **Live site link** — if deployed (GitHub Pages, Netlify, Vercel).
 4. **Overview** — 1–3 paragraphs answering what / who / why / unique. Hook a visitor in <15s.
-5. **Site metrics** — run `python references/scripts/collect-site-metrics.py <repo-path>`;
-   emit a `| Metric | Count |` table (markdown files, words, chapters, MicroSims, glossary…).
+5. **Site metrics (documentation/educational repos)** — for content-heavy repos (docs sites,
+   courses), run `python references/scripts/collect-site-metrics.py <repo-path>`; emit a
+   `| Metric | Count |` table (markdown files, words, chapters, glossary…). For code-focused
+   repos, skip this step — `github_fetcher.py` covers repo metrics instead.
 6. **Getting Started** — prerequisites, clone, install, build/serve, deploy.
 7. **Repository Structure** — concise ASCII tree (10–20 lines), representative not exhaustive.
 8. **Reporting Issues** — link to GitHub Issues + bug-report template.

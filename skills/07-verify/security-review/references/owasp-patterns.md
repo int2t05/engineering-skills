@@ -1,24 +1,30 @@
 # OWASP Prevention Patterns
 
-Reference for the `security-review` skill. Code examples for the OWASP Top 10
-prevention patterns and related hardening, based on the OWASP Top 10.
-Use these as the concrete "good pattern" to confirm against a diff.
+Reference for the `security-review` skill. Code examples for the OWASP Top 10 (2021)
+prevention patterns and related hardening. Use these as the concrete "good pattern" to
+confirm against a diff.
+
+A04 (Insecure Design), A06 (Vulnerable Components), A08 (Software/Data Integrity), and
+A09 (Logging/Monitoring) are process concerns — threat modeling, dependency audit, CI
+integrity, audit logging — covered in the skill's Steps 1, 6, and 2 (STRIDE Repudiation),
+not as code patterns here. XSS was folded into A03 Injection in 2021; its encoding-specific
+example is kept under A03 below.
 
 ## Contents
 
-- [Injection (SQL, NoSQL, OS command)](#injection-sql-nosql-os-command)
-- [Broken authentication](#broken-authentication)
-- [Cross-site scripting (XSS)](#cross-site-scripting-xss)
-- [Broken access control](#broken-access-control)
-- [Security misconfiguration (helmet / CSP / CORS)](#security-misconfiguration-helmet--csp--cors)
-- [Sensitive data exposure (field allowlist)](#sensitive-data-exposure-field-allowlist)
-- [Server-side request forgery (SSRF)](#server-side-request-forgery-ssrf)
+- [A03: Injection (SQL, NoSQL, OS command)](#a03-injection-sql-nosql-os-command)
+- [A07: Identification and Authentication Failures](#a07-identification-and-authentication-failures)
+- [A03 (cont): Cross-site scripting (XSS)](#a03-cont-cross-site-scripting-xss)
+- [A01: Broken Access Control](#a01-broken-access-control)
+- [A05: Security Misconfiguration (helmet / CSP / CORS)](#a05-security-misconfiguration-helmet--csp--cors)
+- [A02: Cryptographic Failures (field allowlist)](#a02-cryptographic-failures-field-allowlist)
+- [A10: Server-Side Request Forgery (SSRF)](#a10-server-side-request-forgery-ssrf)
 - [Input validation (zod)](#input-validation-zod)
 - [File upload validation](#file-upload-validation)
 - [Rate limiting (express-rate-limit)](#rate-limiting-express-rate-limit)
 - [LLM output handling](#llm-output-handling)
 
-## Injection (SQL, NoSQL, OS command)
+## A03: Injection (SQL, NoSQL, OS command)
 
 ```typescript
 // BAD: SQL injection via string concatenation
@@ -31,7 +37,7 @@ const user = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
 const user = await prisma.user.findUnique({ where: { id: userId } });
 ```
 
-## Broken authentication
+## A07: Identification and Authentication Failures
 
 ```typescript
 // Password hashing
@@ -55,7 +61,7 @@ app.use(session({
 }));
 ```
 
-## Cross-site scripting (XSS)
+## A03 (cont): Cross-site scripting (XSS)
 
 ```typescript
 // BAD: Rendering user input as HTML
@@ -69,7 +75,7 @@ import DOMPurify from 'dompurify';
 const clean = DOMPurify.sanitize(userInput);
 ```
 
-## Broken access control
+## A01: Broken Access Control
 
 ```typescript
 // Always check authorization, not just authentication
@@ -89,7 +95,7 @@ app.patch('/api/tasks/:id', authenticate, async (req, res) => {
 });
 ```
 
-## Security misconfiguration (helmet / CSP / CORS)
+## A05: Security Misconfiguration (helmet / CSP / CORS)
 
 ```typescript
 // Security headers (use helmet for Express)
@@ -114,7 +120,7 @@ app.use(cors({
 }));
 ```
 
-## Sensitive data exposure (field allowlist)
+## A02: Cryptographic Failures (field allowlist)
 
 ```typescript
 // Never return sensitive fields in API responses
@@ -128,7 +134,7 @@ const API_KEY = process.env.STRIPE_API_KEY;
 if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');
 ```
 
-## Server-side request forgery (SSRF)
+## A10: Server-Side Request Forgery (SSRF)
 
 Any time the server fetches a URL the user influenced — webhooks, "import from
 URL", image proxies, link previews — an attacker can aim it at internal

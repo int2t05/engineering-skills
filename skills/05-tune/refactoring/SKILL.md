@@ -41,6 +41,8 @@ State the move in one sentence before executing. The catalog:
 - **Merge** — fold near-duplicates into one canonical implementation.
 - **Change dependency** — invert a dependency, decouple via interface, or replace a concrete dependency with a port.
 
+For before→after examples and characterization-test guidance per move, load `references/refactoring-catalog.md`.
+
 If you can't name it as one of these, it's probably clarity cleanup (→ `simplify`) or a design question (→ `codebase-design`).
 
 ### 3. Plan the move as the smallest behavior-preserving steps
@@ -82,3 +84,4 @@ If the "refactored" structure is not clearly better, or the diff entangles behav
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, enforce simplicity)
+- [references/refactoring-catalog.md](references/refactoring-catalog.md) — before→after examples + characterization-test guidance for each move (extract, move, split, merge, change-dependency)

@@ -1,5 +1,10 @@
 # ADR Template
 
+The default ADR is a minimal paragraph (context + decision + why) — most decisions need nothing
+more. This file defines the **expanded format** for high-stakes decisions where the trade-offs,
+consequences, and rejected alternatives are worth recording in full. Use it when the decision is
+hard to reverse and a future reader will need the full reasoning, not for every ADR.
+
 ## Contents
 
 - [ADR Format](#adr-format)

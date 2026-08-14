@@ -75,6 +75,10 @@ Decide how a user's locale is determined and how it maps to routes:
   path-less with client detection for app-only surfaces — choose deliberately
 - **SSR / hydration:** the server must render in the detected locale, not render a default then
   flash-correct on the client (hydration mismatch = broken UX)
+- **Server-side message loading (RSC):** in App Router / RSC frameworks, load only the request's
+  locale messages on the server (per-locale bundle split, not an all-locales bundle); bind locale
+  per-request (`setRequestLocale`-style, never a module global); keep server-only messages out of
+  the client bundle. See [references/server-i18n.md](references/server-i18n.md) for the full pattern.
 
 _Verify: locale detection follows the documented order; the initial server render matches the
 client locale (no flash)._
@@ -112,6 +116,8 @@ that source-locale testing hides:
 - [ ] All messages extracted to locale files with descriptive IDs
 - [ ] Pluralization uses ICU MessageFormat; no concatenation
 - [ ] Locale detection documented; SSR matches client locale (no flash)
+- [ ] Only the request's locale messages ship to the client (no all-locales bundle); locale is
+      request-scoped, not a module global
 - [ ] Dates/numbers/currencies via Intl APIs; correct in LTR + RTL
 - [ ] CSS uses logical properties; layout survives 140% text expansion
 - [ ] App tested in at least one RTL locale; no overflow, overlap, or missing translations
@@ -120,9 +126,12 @@ that source-locale testing hides:
 hand-built date formatting (`day + "/" + month`); `margin-left` in a layout that needs RTL;
 fixed-width containers with text; positional placeholders; splitting a string around an inline link;
 assuming `Accept-Language` is the right detection (users override); rendering a default locale
-server-side then correcting on the client.
+server-side then correcting on the client; a module-level `currentLocale` variable under concurrent
+requests; `import messages from './messages'` where the index re-exports every locale (ships all
+locales to every client).
 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, surgical scope, verify don't assume)
 - [references/i18n-checklist.md](references/i18n-checklist.md) — locale-surface audit template, ICU syntax reference, RTL conversion checklist, locale-detection patterns, test-locale matrix
+- [references/server-i18n.md](references/server-i18n.md) — RSC / App Router message loading, per-locale bundle splitting, request-scoped locale, hydration alignment

@@ -1,4 +1,9 @@
 #!/bin/bash
+# PreToolUse hook: block the agent from running destructive git commands.
+# ALL `git push` is blocked — pushing is a user action, not an agent action
+# (the agent prepares the commit; the user reviews and pushes). `--force` and
+# `reset --hard` are listed separately so they are caught even without the
+# `git` prefix (chained commands, aliases).
 
 INPUT=$(cat)
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command')

@@ -55,12 +55,12 @@ metrics, graph for relationships, search for full-text.
 
 ### 4. Record decisions as ADRs
 
-Write an ADR for every significant decision — architectural shape, integration patterns,
-technology choices with lock-in, boundary/scope decisions, deliberate deviations from the obvious
-path. Skip ADRs for reversible or obvious decisions.
+Write an ADR when a decision is **hard to reverse**, **surprising without context**, and the
+result of a **real trade-off**. Skip reversible or obvious ones — they clutter the log.
 
-- Load `references/adr-template.md` for the ADR format and example
-- Each ADR: Context, Decision, Consequences (positive/negative/neutral), Alternatives Considered
+- A minimal paragraph (context + decision + why) is the default; most ADRs need nothing more.
+- Load `references/adr-template.md` for the expanded format (Status / Context / Decision /
+  Consequences / Alternatives) when the trade-offs warrant recording in full.
 - Number sequentially: `docs/design/adr/0001-slug.md`
 
 **Output:** Two layers:
