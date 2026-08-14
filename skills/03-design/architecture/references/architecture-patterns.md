@@ -1,5 +1,14 @@
 # Architecture Patterns
 
+## Contents
+
+- [Pattern Comparison](#pattern-comparison)
+- [Monolith](#monolith)
+- [Microservices](#microservices)
+- [Event-Driven](#event-driven)
+- [CQRS (Command Query Responsibility Segregation)](#cqrs-command-query-responsibility-segregation)
+- [Quick Reference](#quick-reference)
+
 ## Pattern Comparison
 
 | Pattern | Best For | Team Size | Trade-offs |

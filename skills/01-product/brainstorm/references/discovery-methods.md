@@ -4,6 +4,17 @@ Depth reference for the `brainstorm` skill. Methods for validating whether a pro
 solving — the problem-space track that runs before and alongside delivery. Complements `techniques.md`
 (ideation lenses for generating variations); this file is for verifying which problem is true.
 
+## Contents
+
+- [1. The Mom Test](#1-the-mom-test)
+- [2. JTBD switching interview](#2-jtbd-switching-interview)
+- [3. Opportunity-solution tree](#3-opportunity-solution-tree)
+- [4. Working backwards (PR-FAQ)](#4-working-backwards-pr-faq)
+- [5. Problem sources and evaluation funnel](#5-problem-sources-and-evaluation-funnel)
+- [6. User-Problem-Value triangle](#6-user-problem-value-triangle)
+- [7. Lean Canvas](#7-lean-canvas)
+- [8. MVP validation loop](#8-mvp-validation-loop)
+
 ## 1. The Mom Test
 
 Interview users about their past behavior, not their future opinions. Stated future intent predicts

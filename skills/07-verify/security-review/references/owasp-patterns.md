@@ -4,6 +4,20 @@ Reference for the `security-review` skill. Code examples for the OWASP Top 10
 prevention patterns and related hardening, based on the OWASP Top 10.
 Use these as the concrete "good pattern" to confirm against a diff.
 
+## Contents
+
+- [Injection (SQL, NoSQL, OS command)](#injection-sql-nosql-os-command)
+- [Broken authentication](#broken-authentication)
+- [Cross-site scripting (XSS)](#cross-site-scripting-xss)
+- [Broken access control](#broken-access-control)
+- [Security misconfiguration (helmet / CSP / CORS)](#security-misconfiguration-helmet--csp--cors)
+- [Sensitive data exposure (field allowlist)](#sensitive-data-exposure-field-allowlist)
+- [Server-side request forgery (SSRF)](#server-side-request-forgery-ssrf)
+- [Input validation (zod)](#input-validation-zod)
+- [File upload validation](#file-upload-validation)
+- [Rate limiting (express-rate-limit)](#rate-limiting-express-rate-limit)
+- [LLM output handling](#llm-output-handling)
+
 ## Injection (SQL, NoSQL, OS command)
 
 ```typescript

@@ -27,20 +27,7 @@ Scan the project before generating. Detection priority: existing test files
 (naming conventions) → dependency manifests → test config files. If nothing
 found, ask which framework to use.
 
-| Language | Check For | Common Frameworks |
-|----------|-----------|-------------------|
-| Go | `go.mod`, `*_test.go` | testing (stdlib), testify, ginkgo |
-| Python | `pyproject.toml`, `pytest.ini`, `conftest.py` | pytest, unittest |
-| Java/Kotlin | `pom.xml`, `build.gradle`, `*Test.java` | JUnit 5, TestNG, AssertJ, Mockito |
-| Rust | `Cargo.toml` ([dev-dependencies]), `tests/` | test (built-in), rstest |
-| C#/.NET | `*.csproj`, `*Tests.cs` | xUnit, NUnit, FluentAssertions |
-| TS/JS | `package.json`, `jest.config.*`, `vitest.config.*` | Vitest, Jest |
-| Ruby | `Gemfile`, `*_spec.rb`, `spec/` | RSpec, Minitest |
-| PHP | `composer.json`, `phpunit.xml` | PHPUnit, Pest |
-| C/C++ | `CMakeLists.txt`, `*_test.cpp` | GoogleTest, Catch2 |
-| Swift | `Package.swift`, `*Tests.swift` | XCTest, Quick/Nimble |
-
-- Load [references/language-patterns.md](references/language-patterns.md) for the per-language mapping of Test Framework | Assertion Style | Mock Library (testify/gomock, pytest/unittest.mock, jest/jest.fn, etc.)
+- Load [references/language-patterns.md](references/language-patterns.md) for the per-language detection table (manifests and test-file patterns to scan for) and the Test Framework | Assertion Style | Mock Library mapping (testify/gomock, pytest/unittest.mock, jest/jest.fn, etc.)
 
 ### 2. Read inputs
 

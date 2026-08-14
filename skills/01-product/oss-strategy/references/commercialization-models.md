@@ -5,6 +5,17 @@ decision: pricing models, value-based pricing, the AI-product pricing trap, go-t
 the indie-developer revenue ladder. OSS (the skill's primary focus) is one commercialization shape; this
 reference covers the rest so the skill can advise non-OSS projects too.
 
+## Contents
+
+- [1. Pricing models](#1-pricing-models)
+- [2. Value-based pricing](#2-value-based-pricing)
+- [3. AI-product pricing trap](#3-ai-product-pricing-trap)
+- [4. GTM (Go-to-Market) — 4 steps](#4-gtm-go-to-market--4-steps)
+- [5. Cold-start funnel](#5-cold-start-funnel)
+- [6. GTM motions by buyer](#6-gtm-motions-by-buyer)
+- [7. Indie-developer revenue ladder](#7-indie-developer-revenue-ladder)
+- [8. Community-first sequencing (OSS and beyond)](#8-community-first-sequencing-oss-and-beyond)
+
 ## 1. Pricing models
 
 | Model | Best for | Risk |

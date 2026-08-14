@@ -4,6 +4,18 @@ Depth reference for the `frontend-design` skill. Google's Material Design 3 (M3)
 `apple-hig.md` for Android and Google-ecosystem products. This file summarizes the M3 system and routes
 to official sources for depth; it is not a substitute for the M3 spec.
 
+## Contents
+
+- [1. When to use Material vs Apple HIG vs custom](#1-when-to-use-material-vs-apple-hig-vs-custom)
+- [2. M3 core principles](#2-m3-core-principles)
+- [3. M3 color roles](#3-m3-color-roles)
+- [4. M3 type roles](#4-m3-type-roles)
+- [5. M3 elevation (5 levels)](#5-m3-elevation-5-levels)
+- [6. M3 state layers](#6-m3-state-layers)
+- [7. M3 vs M2](#7-m3-vs-m2)
+- [8. Official sources](#8-official-sources)
+- [9. How this connects](#9-how-this-connects)
+
 ## 1. When to use Material vs Apple HIG vs custom
 
 | System | Use when |

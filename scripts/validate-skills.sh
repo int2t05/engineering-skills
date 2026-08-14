@@ -213,5 +213,37 @@ PYEOF
   [ $rc -eq 0 ] || { echo "$out_errors"; errors=$((errors+1)); }
 fi
 
+# --- Reference ToC + SKILL.md length checks (WARN, non-blocking) ---
+# Convention per references/skill-anatomy.md: references >100 lines need ## Contents;
+# SKILL.md target 15-150 lines. Warn-only to flag drift without blocking CI.
+if command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; then
+  PY=$(command -v python || command -v python3)
+  "$PY" - <<'PYEOF'
+import glob, re
+warns = []
+# Reference ToC: >100 lines must have ## Contents
+refs = []
+refs.extend(glob.glob('references/**/*.md', recursive=True))
+refs.extend(glob.glob('skills/**/references/**/*.md', recursive=True))
+for f in sorted(refs):
+    f = f.replace('\\', '/')
+    with open(f, encoding='utf-8') as fh:
+        lines = fh.readlines()
+    if len(lines) > 100 and not any(re.match(r'^##\s*[Cc]ontents', l) for l in lines):
+        warns.append(f"WARN: {f} has {len(lines)} lines but no ## Contents (see skill-anatomy.md progressive disclosure)")
+# SKILL.md length: target ≤150
+for f in sorted(glob.glob('skills/*/*/SKILL.md')):
+    f = f.replace('\\', '/')
+    with open(f, encoding='utf-8') as fh:
+        n = sum(1 for _ in fh)
+    if n > 150:
+        warns.append(f"WARN: {f} is {n} lines (target ≤150 — move detail to references/)")
+for w in warns:
+    print(w)
+if warns:
+    print(f"Warnings: {len(warns)} (non-blocking)")
+PYEOF
+fi
+
 echo "Total errors: $errors"
 exit $errors

@@ -5,6 +5,17 @@ competition, and positioning — the analysis layer that turns raw research into
 the skill's four research modes (investor/competitive/market-sizing/technology), which define *how* to
 gather; this defines *how to structure the analysis*.
 
+## Contents
+
+- [1. TAM / SAM / SOM](#1-tam--sam--som)
+- [2. SWOT](#2-swot)
+- [3. PEST](#3-pest)
+- [4. Porter's Five Forces](#4-porters-five-forces)
+- [5. Competitive analysis — 6 steps](#5-competitive-analysis--6-steps)
+- [6. Competitive feature matrix](#6-competitive-feature-matrix)
+- [7. Positioning quadrant](#7-positioning-quadrant)
+- [8. Direct competitor ≠ real opponent](#8-direct-competitor--real-opponent)
+
 ## 1. TAM / SAM / SOM
 
 Three concentric circles that prevent "the market is huge" from substituting for "we can reach these

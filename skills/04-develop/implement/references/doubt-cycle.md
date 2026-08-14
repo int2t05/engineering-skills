@@ -10,6 +10,13 @@ This is not `/code-review`. `/code-review` is a verdict on a finished artifact.
 This is an in-flight posture: non-trivial decisions get cross-examined while
 course-correction is still cheap.
 
+## Contents
+
+- [When NOT to use](#when-not-to-use)
+- [The five steps](#the-five-steps)
+- [Cross-model escalation](#cross-model-escalation)
+- [Doubt theater — checkable signal](#doubt-theater--checkable-signal)
+
 ## When NOT to use
 
 - Mechanical operations (renaming, formatting, file moves).

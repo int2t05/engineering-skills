@@ -3,6 +3,15 @@
 Loaded on demand by `05-tune/performance/SKILL.md`. Concrete fixes for the most
 common performance anti-patterns, with before/after code.
 
+## Contents
+
+- [N+1 Queries (Backend)](#n1-queries-backend)
+- [Unbounded Data Fetching](#unbounded-data-fetching)
+- [Missing Image Optimization (Frontend)](#missing-image-optimization-frontend)
+- [Unnecessary Re-renders (React)](#unnecessary-re-renders-react)
+- [Large Bundle Size](#large-bundle-size)
+- [Missing Caching (Backend)](#missing-caching-backend)
+
 ## N+1 Queries (Backend)
 
 ```typescript

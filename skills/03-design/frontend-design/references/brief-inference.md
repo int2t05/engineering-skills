@@ -5,6 +5,15 @@ jumps to a default aesthetic instead of reading the room. This reference defines
 inference protocol and the three dials that gate every layout, motion, and density
 decision.
 
+## Contents
+
+- [When to load this](#when-to-load-this)
+- [The design read](#the-design-read)
+- [The three dials](#the-three-dials)
+- [Anti-default discipline](#anti-default-discipline)
+- [Design system selection](#design-system-selection)
+- [Verify](#verify)
+
 ## When to load this
 
 Load when the brief is ambiguous or could go multiple aesthetic directions — to infer

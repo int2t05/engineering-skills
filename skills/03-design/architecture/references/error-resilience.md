@@ -5,6 +5,17 @@ envelope; `observability` defines how errors are logged; `debugging` diagnoses o
 reference owns the architecture between them — how errors propagate across layers, when to retry,
 how to fail gracefully, and how internal errors become user-facing messages.
 
+## Contents
+
+- [1. Throw vs. return — pick a convention and hold it](#1-throw-vs-return--pick-a-convention-and-hold-it)
+- [2. Error propagation across layers](#2-error-propagation-across-layers)
+- [3. Internal error → user-facing message mapping](#3-internal-error--user-facing-message-mapping)
+- [4. Retry, backoff, and circuit breakers](#4-retry-backoff-and-circuit-breakers)
+- [5. Idempotency under retry](#5-idempotency-under-retry)
+- [6. Fallback UX and graceful degradation](#6-fallback-ux-and-graceful-degradation)
+- [7. Error boundaries and containment](#7-error-boundaries-and-containment)
+- [Anti-patterns](#anti-patterns)
+
 ## 1. Throw vs. return — pick a convention and hold it
 
 The most common source of error-handling confusion is mixing two models. Choose one per layer and

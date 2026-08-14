@@ -4,6 +4,18 @@ Reference for the `debugging` skill. A catalog of recurring bug shapes and the s
 to each — so a symptom routes to a hypothesis faster. Pair with the red-loop workflow in SKILL.md:
 this narrows *what to suspect*, not *how to confirm* (confirm by reproducing).
 
+## Contents
+
+- [Concurrency / race conditions](#concurrency--race-conditions)
+- [Null / None / undefined](#null--none--undefined)
+- [Off-by-one / boundary](#off-by-one--boundary)
+- [State / staleness](#state--staleness)
+- [Type / encoding](#type--encoding)
+- [Error handling / control flow](#error-handling--control-flow)
+- [Resource / leak](#resource--leak)
+- [Log analysis checklist](#log-analysis-checklist)
+- [Anti-patterns](#anti-patterns)
+
 ## Concurrency / race conditions
 
 **Signals:** intermittent, "works on retry", fails under load but not in single-user tests,

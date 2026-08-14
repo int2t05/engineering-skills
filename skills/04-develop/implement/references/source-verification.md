@@ -4,6 +4,16 @@ Detailed reference for the source-driven discipline used by the `implement`
 skill. Every framework-specific code decision must be backed by official
 documentation — not memory, not training data, not blog posts.
 
+## Contents
+
+- [Source hierarchy (in order of authority)](#source-hierarchy-in-order-of-authority)
+- [Fetch precisely](#fetch-precisely)
+- [Citation rules](#citation-rules)
+- [When docs conflict with existing code](#when-docs-conflict-with-existing-code)
+- [Retrieval safety](#retrieval-safety)
+- [Framework implementation patterns](#framework-implementation-patterns)
+- [版本漂移信号](#版本漂移信号)
+
 ## Source hierarchy (in order of authority)
 
 | Priority | Source | Example |

@@ -5,6 +5,13 @@ activate via the Skill tool. When a task fits more than one branch, walk them
 in phase order. Skills are listed by name as they appear under
 `<phase>/<skill>/SKILL.md`.
 
+## Contents
+
+- [How to read](#how-to-read)
+- [The tree](#the-tree)
+- [Typical sequences](#typical-sequences)
+- [Routing heuristics](#routing-heuristics)
+
 ## How to read
 
 Start at the top. Answer each question; follow the matching arrow to the next

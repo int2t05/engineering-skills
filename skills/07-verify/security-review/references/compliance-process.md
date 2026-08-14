@@ -6,6 +6,17 @@ injection, field allowlists); this teaches the compliance workflow: data subject
 policies, right-to-erasure, privacy-by-design. The skill is "is this code secure?"; this is "can
 this system demonstrate compliance to an auditor?"
 
+## Contents
+
+- [1. Compliance is a process, not a feature](#1-compliance-is-a-process-not-a-feature)
+- [2. Data inventory — the foundation](#2-data-inventory--the-foundation)
+- [3. Data subject requests (DSR / DSAR)](#3-data-subject-requests-dsr--dsar)
+- [4. Retention policies](#4-retention-policies)
+- [5. Privacy by design](#5-privacy-by-design)
+- [6. Cross-border data transfer](#6-cross-border-data-transfer)
+- [7. Demonstrating compliance (the audit)](#7-demonstrating-compliance-the-audit)
+- [8. When this applies vs the skill](#8-when-this-applies-vs-the-skill)
+
 ## 1. Compliance is a process, not a feature
 
 You cannot "add compliance" to a system the way you add auth. Compliance is a documented,

@@ -5,6 +5,15 @@ path: loading, error, empty, and partial. Designing all four is what separates a
 mockup. This is the user-side state experience; `component-anatomy.md` covers the component-side state
 architecture (default/hover/focus/pressed/disabled).
 
+## Contents
+
+- [1. The four states](#1-the-four-states)
+- [2. Loading state](#2-loading-state)
+- [3. Error state](#3-error-state)
+- [4. Empty state](#4-empty-state)
+- [5. Partial state](#5-partial-state)
+- [6. How this connects](#6-how-this-connects)
+
 ## 1. The four states
 
 | State | When | User's question | Design job |

@@ -5,6 +5,18 @@ transfer, dual-write, change data capture, backfill, cutover — the discipline 
 schema/code/API migration Steps don't cover. Schema migration (altering table structure in place)
 is handled in the skill's expand/contract Steps; this is about moving data to a different system.
 
+## Contents
+
+- [1. When this applies](#1-when-this-applies)
+- [2. Migration strategies](#2-migration-strategies)
+- [3. Dual-write + backfill (the most common zero-downtime pattern)](#3-dual-write--backfill-the-most-common-zero-downtime-pattern)
+- [4. Backfill discipline](#4-backfill-discipline)
+- [5. Change data capture (CDC)](#5-change-data-capture-cdc)
+- [6. Cutover](#6-cutover)
+- [7. Verification](#7-verification)
+- [8. Common failure modes](#8-common-failure-modes)
+- [9. How this connects to the skill](#9-how-this-connects-to-the-skill)
+
 ## 1. When this applies
 
 - Replacing one datastore with another (MySQL → Postgres, monolith DB → service-owned DB).

@@ -4,6 +4,17 @@ Depth reference for the `spec` skill. How to define success criteria that measur
 the North Star metric, the AARRR funnel, retention curves, cohort analysis, the Hook Model for habit
 formation, and A/B-testing discipline. Spec defines the metric up front; operate measures it.
 
+## Contents
+
+- [1. North Star metric](#1-north-star-metric)
+- [2. AARRR funnel (Pirate Metrics)](#2-aarrr-funnel-pirate-metrics)
+- [3. Retention curves](#3-retention-curves)
+- [4. Cohort analysis](#4-cohort-analysis)
+- [5. Hook Model](#5-hook-model)
+- [6. A/B testing discipline](#6-ab-testing-discipline)
+- [7. Data-driven loop](#7-data-driven-loop)
+- [8. Vanity metrics warning](#8-vanity-metrics-warning)
+
 ## 1. North Star metric
 
 One metric that represents users truly receiving value. Not revenue, not downloads — the thing that

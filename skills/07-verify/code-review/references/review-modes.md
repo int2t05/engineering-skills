@@ -5,6 +5,12 @@ in SKILL.md; these run at different moments with distinct postures. Adapted from
 practice (addyosmani's doubt-driven-development, obra's verification-before-completion and
 receiving-code-review).
 
+## Contents
+
+- [§in-flight — adversarial doubt before a decision stands](#in-flight--adversarial-doubt-before-a-decision-stands)
+- [§evidence-gate — before claiming done](#evidence-gate--before-claiming-done)
+- [§receiving — when review feedback arrives](#receiving--when-review-feedback-arrives)
+
 ## §in-flight — adversarial doubt before a decision stands
 
 **When:** during implementation, when a non-trivial decision is about to become load-bearing

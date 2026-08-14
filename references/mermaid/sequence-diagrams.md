@@ -2,6 +2,26 @@
 
 Sequence diagrams show interactions between participants over time. They're ideal for API flows, authentication sequences, and system component interactions.
 
+## Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Participants and Actors](#participants-and-actors)
+- [Message Types](#message-types)
+- [Activations](#activations)
+- [Alt/Else (Conditional Logic)](#altelse-conditional-logic)
+- [Opt (Optional)](#opt-optional)
+- [Par (Parallel)](#par-parallel)
+- [Loop](#loop)
+- [Break (Early Exit)](#break-early-exit)
+- [Notes](#notes)
+- [Sequence Numbers](#sequence-numbers)
+- [Links and Tooltips](#links-and-tooltips)
+- [Comprehensive Example: User Authentication Flow](#comprehensive-example-user-authentication-flow)
+- [API Request/Response Example](#api-requestresponse-example)
+- [Microservices Communication](#microservices-communication)
+- [Best Practices](#best-practices)
+- [Common Use Cases](#common-use-cases)
+
 ## Basic Syntax
 
 ```mermaid

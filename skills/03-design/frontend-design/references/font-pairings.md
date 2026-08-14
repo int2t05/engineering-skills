@@ -5,6 +5,16 @@ selection. Pair a distinctive display font with a refined body font — avoid ge
 Inter, Roboto, system fonts). Vary between generations; never converge on the same choice every
 time.
 
+## Contents
+
+- [Pairing rules](#pairing-rules)
+- [Type scale](#type-scale)
+- [Weight hierarchy](#weight-hierarchy)
+- [Specialized figures](#specialized-figures)
+- [Pairing catalog by personality](#pairing-catalog-by-personality)
+- [Google Fonts selection tips](#google-fonts-selection-tips)
+- [Avoid (generic AI defaults)](#avoid-generic-ai-defaults)
+
 ## Pairing rules
 
 - **Match heading/body personalities** — a brutalist display font needs a body font that can carry

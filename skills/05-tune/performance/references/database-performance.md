@@ -5,6 +5,16 @@ EXPLAIN plan reading, index maintenance, N+1 detection. The skill's `bottlenecks
 `anti-patterns.md` are generic; this is the DB-depth layer. Design-time indexing is covered by
 `schema-design`; this is ongoing performance management of a live database.
 
+## Contents
+
+- [1. Symptom → cause for databases](#1-symptom--cause-for-databases)
+- [2. EXPLAIN — reading the plan](#2-explain--reading-the-plan)
+- [3. Index maintenance](#3-index-maintenance)
+- [4. N+1 query detection](#4-n1-query-detection)
+- [5. Query anti-patterns (DB-specific)](#5-query-anti-patterns-db-specific)
+- [6. Connection and pool](#6-connection-and-pool)
+- [7. How this connects to the skill](#7-how-this-connects-to-the-skill)
+
 ## 1. Symptom → cause for databases
 
 | Symptom | Likely cause | First check |

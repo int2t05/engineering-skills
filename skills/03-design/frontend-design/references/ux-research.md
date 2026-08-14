@@ -5,6 +5,19 @@ Depth reference for the `frontend-design` skill. Methods for understanding users
 range into the discovery phase that precedes visual design. For product-side discovery (problem
 validation, JTBD, opportunity trees), see the `brainstorm` skill's `discovery-methods.md`.
 
+## Contents
+
+- [1. Research vs testing — two phases](#1-research-vs-testing--two-phases)
+- [2. User interviews (the Mom Test, UX variant)](#2-user-interviews-the-mom-test-ux-variant)
+- [3. Personas](#3-personas)
+- [4. Journey maps](#4-journey-maps)
+- [5. Empathy maps](#5-empathy-maps)
+- [6. Usability testing — task-based](#6-usability-testing--task-based)
+- [7. The 5-user rule (Nielsen)](#7-the-5-user-rule-nielsen)
+- [8. Think-aloud pitfalls](#8-think-aloud-pitfalls)
+- [9. Heuristic evaluation (pre-test)](#9-heuristic-evaluation-pre-test)
+- [10. When to research vs test](#10-when-to-research-vs-test)
+
 ## 1. Research vs testing — two phases
 
 | | User research (before design) | Usability testing (after design) |

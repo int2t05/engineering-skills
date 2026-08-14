@@ -2,6 +2,20 @@
 
 ERDs model database schemas, showing tables (entities), their columns (attributes), and relationships between tables. Essential for database design and documentation.
 
+## Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Defining Entities](#defining-entities)
+- [Entity Attributes](#entity-attributes)
+- [Relationships](#relationships)
+- [Data Types](#data-types)
+- [Comprehensive Example: E-Commerce Database](#comprehensive-example-e-commerce-database)
+- [Blog Platform Schema](#blog-platform-schema)
+- [Social Media Schema](#social-media-schema)
+- [Best Practices](#best-practices)
+- [Common Patterns](#common-patterns)
+- [Tips for Database Design](#tips-for-database-design)
+
 ## Basic Syntax
 
 ```mermaid

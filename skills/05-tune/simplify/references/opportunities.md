@@ -3,6 +3,13 @@
 Loaded on demand by `05-tune/simplify/SKILL.md`. Full signal tables (structural,
 naming, redundancy) and language-specific before/after examples.
 
+## Contents
+
+- [Structural Complexity](#structural-complexity)
+- [Naming and Readability](#naming-and-readability)
+- [Redundancy](#redundancy)
+- [Language-Specific Examples](#language-specific-examples)
+
 ## Structural Complexity
 
 | Pattern | Signal | Simplification |

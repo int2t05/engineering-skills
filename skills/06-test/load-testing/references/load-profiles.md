@@ -3,6 +3,13 @@
 Depth reference for the `load-testing` skill. Traffic-mix modeling, the test-pattern catalog,
 breaking-point characterization, and autoscaling validation.
 
+## Contents
+
+- [1. Traffic-mix modeling](#1-traffic-mix-modeling)
+- [2. Test-pattern catalog](#2-test-pattern-catalog)
+- [3. Breaking-point characterization](#3-breaking-point-characterization)
+- [4. Autoscaling validation](#4-autoscaling-validation)
+
 ## 1. Traffic-mix modeling
 
 Load is only meaningful if it resembles real usage. Model the traffic mix from production

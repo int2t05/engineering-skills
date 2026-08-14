@@ -90,56 +90,7 @@ When a merge or rebase conflicts, never `--abort`. Resolve by tracing each side'
 
 ### 5. Block dangerous git commands
 
-Install a PreToolUse hook that intercepts and blocks destructive git commands before Claude executes them: `git push` (including `--force`), `git reset --hard`, `git clean -f[d]`, `git branch -D`, `git checkout .` / `git restore .`. The hook script is at [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — copy it to `.claude/hooks/` (project) or `~/.claude/hooks/` (global), `chmod +x`, and register it in `settings.json` under `hooks.PreToolUse` with matcher `Bash`.
-
-**Project** (`.claude/settings.json`):
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-dangerous-git.sh"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-**Global** (`~/.claude/settings.json`):
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/block-dangerous-git.sh"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-If the settings file already exists, merge the hook into the existing `hooks.PreToolUse` array — don't overwrite other settings.
-
-Verify with:
-
-```bash
-echo '{"tool_input":{"command":"git push origin main"}}' | <path-to-script>
-# expect: exit code 2, BLOCKED message on stderr
-```
+Install a PreToolUse hook that intercepts and blocks destructive git commands before Claude executes them: `git push` (including `--force`), `git reset --hard`, `git clean -f[d]`, `git branch -D`, `git checkout .` / `git restore .`. The hook script is at [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — copy it to `.claude/hooks/` (project) or `~/.claude/hooks/` (global), `chmod +x`, and register it in `settings.json` under `hooks.PreToolUse` with matcher `Bash`. The full `settings.json` wiring (project + global) and a verify snippet are in [references/block-dangerous-git-setup.md](references/block-dangerous-git-setup.md).
 
 ### 6. Handle generated files correctly
 
@@ -149,43 +100,13 @@ echo '{"tool_input":{"command":"git push origin main"}}' | <path-to-script>
 
 ### 7. Use git for debugging
 
-```bash
-git bisect start && git bisect bad HEAD && git bisect good <known-good>   # find the commit that broke it
-git log --oneline -20                                                       # recent history
-git diff HEAD~5..HEAD -- src/                                               # what changed in src
-git blame src/services/task.ts                                              # who last touched a line
-git log --grep="validation" --oneline                                       # commits matching a keyword
-```
+`git bisect`, `log`, `diff`, `blame`, and `log --grep` for locating regressions and tracing history — see [references/git-debugging.md](references/git-debugging.md).
 
 ### 8. Version, tag, and changelog for anything with consumers
 
 A version is how *consumers* track change. The moment anything else depends on your code — another team, a published package, a deployed client — "latest on main" stops being a sufficient answer.
 
-**Semantic versioning** — `MAJOR.MINOR.PATCH`:
-- `MAJOR` — breaking change; consumers must change their code to upgrade.
-- `MINOR` — new, backward-compatible functionality; safe to upgrade.
-- `PATCH` — backward-compatible bug fix; safe to upgrade.
-
-When unsure whether a change is breaking, assume it is (Hyrum's Law — a "patch" that changes behavior consumers relied on is a major wearing a disguise).
-
-**Tag the release; let the tag be the source of truth.** A release is an immutable point in history, not a moving branch. Derive the version from the tag so artifact, tag, and changelog can never disagree:
-
-```bash
-git tag -a v1.4.0 -m "Release 1.4.0"
-git push origin v1.4.0
-```
-
-**Keep a changelog written for humans.** A changelog is not `git log` — it's the curated, consumer-facing answer to "what changed and do I care?", grouped by `Added / Changed / Fixed / Deprecated / Removed / Security`, newest on top, every entry phrased around user impact. Write the entry in the same change that makes the change, while the impact is fresh — breaking changes get a migration note and a deprecation window (see the `deprecation-migration` skill).
-
-```markdown
-## [1.4.0] - 2025-06-12
-### Added
-- Bulk task import via CSV
-### Fixed
-- Timezone drift in recurring task due dates
-### Deprecated
-- `GET /v1/tasks/all` — use the paginated `GET /v1/tasks` (removal in 2.0)
-```
+**Tag the release; let the tag be the source of truth.** A release is an immutable point in history, not a moving branch. Semantic versioning (`MAJOR.MINOR.PATCH`), the tag commands, and the changelog format (grouped by `Added / Changed / Fixed / Deprecated / Removed / Security`, newest on top, phrased around user impact) — see [references/versioning.md](references/versioning.md). Write the changelog entry in the same change that makes the change; breaking changes get a migration note and a deprecation window (see the `deprecation-migration` skill).
 
 ## Verify
 
@@ -211,4 +132,7 @@ For every release (anything with consumers):
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
 - [references/block-dangerous-git.sh](references/block-dangerous-git.sh) — PreToolUse hook blocking `git push`, `reset --hard`, `clean -f`, `branch -D`, etc.
+- [references/block-dangerous-git-setup.md](references/block-dangerous-git-setup.md) — settings.json wiring (project + global) for the block-dangerous-git hook
 - [references/pre-commit-setup.md](references/pre-commit-setup.md) — Husky + lint-staged + Prettier pre-commit hook setup
+- [references/git-debugging.md](references/git-debugging.md) — bisect/log/diff/blame commands for tracing regressions
+- [references/versioning.md](references/versioning.md) — semver definitions, tag commands, changelog format

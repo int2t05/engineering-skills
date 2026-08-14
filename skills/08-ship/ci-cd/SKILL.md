@@ -53,66 +53,7 @@ Detect the stack from its manifest, then map each gate to the right command — 
 
 ### 2. Configure the CI pipeline (GitHub Actions)
 
-Example: Node.js. For other stacks, swap `setup-node` for the matching setup action (`setup-python`, `setup-go`, `rust-toolchain`, `setup-java`) and the commands from the table above.
-
-Basic CI:
-
-```yaml
-# .github/workflows/ci.yml
-name: CI
-on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
-
-jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '22', cache: 'npm' }
-      - run: npm ci
-      - run: npm run lint
-      - run: npx tsc --noEmit
-      - run: npm test -- --coverage
-      - run: npm run build
-      - run: npm audit --audit-level=high
-```
-
-With database integration tests — use the `services:` block and GitHub Secrets for credentials (never hardcode, even in CI):
-
-```yaml
-  integration:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_DB: testdb
-          POSTGRES_USER: ci_user
-          POSTGRES_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
-        ports: [5432:5432]
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '22', cache: 'npm' }
-      - run: npm ci
-      - name: Run migrations
-        run: npx prisma migrate deploy   # Node/Prisma — swap for alembic (Python), goose/sqlx (Go), Flyway/Liquibase (Java)
-        env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
-      - name: Integration tests
-        run: npm run test:integration
-        env:
-          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
-```
+Example: Node.js. For other stacks, swap `setup-node` for the matching setup action (`setup-python`, `setup-go`, `rust-toolchain`, `setup-java`) and the commands from the table above. Basic CI (lint → typecheck → test → build → audit) and database-integration CI (Postgres `services:` block, secrets, migrations) are in [references/ci-templates.md](references/ci-templates.md) — copy and adapt.
 
 E2E (Playwright, or your framework's equivalent) — same shape: install browser deps, build, run the E2E suite. Upload the report directory as an artifact `if: failure()` so the run isn't a black box.
 

@@ -5,6 +5,18 @@ simple text definitions, making them version-controllable and maintainable along
 Loaded on demand by `architecture`, `code-review`, `domain-modeling`, and any skill that needs
 to visualize structure.
 
+## Contents
+
+- [Core Syntax](#core-syntax)
+- [Diagram Type Selection](#diagram-type-selection)
+- [Quick Start](#quick-start)
+- [Detailed References](#detailed-references)
+- [Best Practices](#best-practices)
+- [Configuration and Theming](#configuration-and-theming)
+- [Rendering](#rendering)
+- [Common Pitfalls](#common-pitfalls)
+- [When to Create Diagrams](#when-to-create-diagrams)
+
 ## Core Syntax
 
 All Mermaid diagrams follow this pattern:

@@ -2,6 +2,21 @@
 
 Class diagrams model object-oriented designs and domain models. They show entities (classes), their attributes/methods, and relationships.
 
+## Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Defining Classes with Members](#defining-classes-with-members)
+- [Relationships](#relationships)
+- [Multiplicity](#multiplicity)
+- [Relationship Labels](#relationship-labels)
+- [Class Stereotypes](#class-stereotypes)
+- [Abstract Classes and Methods](#abstract-classes-and-methods)
+- [Generic Classes](#generic-classes)
+- [Comprehensive Example: E-Commerce Domain](#comprehensive-example-e-commerce-domain)
+- [Domain-Driven Design Patterns](#domain-driven-design-patterns)
+- [Tips for Effective Class Diagrams](#tips-for-effective-class-diagrams)
+- [Common Patterns](#common-patterns)
+
 ## Basic Syntax
 
 ```mermaid

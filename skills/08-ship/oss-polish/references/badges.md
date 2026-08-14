@@ -2,6 +2,19 @@
 
 This document provides a comprehensive reference for badges commonly used in GitHub README files, particularly for educational and documentation projects.
 
+## Contents
+
+- [Badge Services](#badge-services)
+- [Common Technology Badges](#common-technology-badges)
+- [License Badges](#license-badges)
+- [Status Badges](#status-badges)
+- [Custom Badges](#custom-badges)
+- [Badge Colors](#badge-colors)
+- [Logo Names](#logo-names)
+- [Best Practices](#best-practices)
+- [Example Badge Section](#example-badge-section)
+- [Resources](#resources)
+
 ## Badge Services
 
 - **Shields.io**: https://shields.io/ - Most popular badge service

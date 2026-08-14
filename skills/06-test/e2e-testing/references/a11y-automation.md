@@ -6,6 +6,16 @@ Lighthouse CI, Storybook a11y addon. Design-time a11y rules are in `frontend-des
 `shipping` skill's pre-launch checklist checks for "no axe-core / Lighthouse a11y warnings." This
 reference teaches how to install and configure those tools so the checklist can pass.
 
+## Contents
+
+- [1. Why automate a11y testing](#1-why-automate-a11y-testing)
+- [2. axe-core — the standard engine](#2-axe-core--the-standard-engine)
+- [3. Lighthouse CI](#3-lighthouse-ci)
+- [4. Storybook a11y addon](#4-storybook-a11y-addon)
+- [5. What to test (the a11y test surface)](#5-what-to-test-the-a11y-test-surface)
+- [6. CI integration rules](#6-ci-integration-rules)
+- [7. How this connects](#7-how-this-connects)
+
 ## 1. Why automate a11y testing
 
 Manual a11y testing (keyboard navigation, screen reader, contrast check) is essential but slow and

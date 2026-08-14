@@ -4,6 +4,14 @@ Depth reference for the `schema-design` skill. Normalization trade-offs, index p
 partitioning strategies, and soft-delete policies — the decisions that recur across schema
 design and are easy to get wrong on first pass.
 
+## Contents
+
+- [1. Normalization trade-offs](#1-normalization-trade-offs)
+- [2. Index patterns](#2-index-patterns)
+- [3. Partitioning strategies](#3-partitioning-strategies)
+- [4. Soft-delete policies](#4-soft-delete-policies)
+- [5. Key and type choices](#5-key-and-type-choices)
+
 ## 1. Normalization trade-offs
 
 ### 3NF / BCNF (default)

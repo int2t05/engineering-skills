@@ -4,6 +4,16 @@ Tokens are the single source of truth for design decisions — spacing, color, r
 elevation, typography, z-index. This reference defines the token tiers, naming
 conventions, and scales. Load when building or auditing a token system.
 
+## Contents
+
+- [When to load this](#when-to-load-this)
+- [Token tiers](#token-tiers)
+- [Naming convention](#naming-convention)
+- [Token scales](#token-scales)
+- [Color tokens](#color-tokens)
+- [Implementation](#implementation)
+- [Verify](#verify)
+
 ## When to load this
 
 - Building a design token system from scratch.

@@ -2,6 +2,80 @@
 
 YAML templates referenced by the `ci-cd` skill. Copy and adapt for your stack.
 
+## Contents
+
+- [Basic CI (Node)](#basic-ci-node)
+- [Integration tests with database services](#integration-tests-with-database-services)
+- [Dependabot — automated dependency updates](#dependabot--automated-dependency-updates)
+- [Caching and parallelism — split jobs](#caching-and-parallelism--split-jobs)
+- [Per-stack CI — Python and Go](#per-stack-ci--python-and-go)
+- [Preview deployment — deploy on every PR](#preview-deployment--deploy-on-every-pr)
+- [Rollback — manual redeploy of a previous version](#rollback--manual-redeploy-of-a-previous-version)
+
+## Basic CI (Node)
+
+The minimal quality pipeline — one job, sequential gates. The starting point before
+splitting into parallel jobs.
+
+```yaml
+# .github/workflows/ci.yml
+name: CI
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'npm' }
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm test -- --coverage
+      - run: npm run build
+      - run: npm audit --audit-level=high
+```
+
+## Integration tests with database services
+
+Use the `services:` block and GitHub Secrets for credentials (never hardcode, even in CI):
+
+```yaml
+  integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
+        ports: [5432:5432]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'npm' }
+      - run: npm ci
+      - name: Run migrations
+        run: npx prisma migrate deploy   # Node/Prisma — swap for alembic (Python), goose/sqlx (Go), Flyway/Liquibase (Java)
+        env:
+          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+      - name: Integration tests
+        run: npm run test:integration
+        env:
+          DATABASE_URL: postgresql://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+```
+
 ## Dependabot — automated dependency updates
 
 `package-ecosystem` can be `npm`, `pip`, `gomod`, `cargo`, `maven`, or `gradle` — add one entry per ecosystem your repo uses.

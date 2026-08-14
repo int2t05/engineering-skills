@@ -1,5 +1,11 @@
 # Good and Bad Tests
 
+## Contents
+
+- [Good Tests](#good-tests)
+- [Bad Tests](#bad-tests)
+- [Arrange-Act-Assert Pattern](#arrange-act-assert-pattern)
+
 ## Good Tests
 
 **Integration-style**: Test through real interfaces, not mocks of internal parts.

@@ -6,6 +6,15 @@ scrape the official page on the fly — never guess.
 
 **Base URL pattern:** `https://developer.apple.com/design/human-interface-guidelines/{topic-slug}`
 
+## Contents
+
+- [Verbosity control](#verbosity-control)
+- [Quick reference: most common specs](#quick-reference-most-common-specs)
+- [Routing table: official HIG URLs](#routing-table-official-hig-urls)
+- [URL construction rules](#url-construction-rules)
+- [Response pattern](#response-pattern)
+- [Critical design rules (top 10 to flag)](#critical-design-rules-top-10-to-flag)
+
 ## Verbosity control
 
 | User says | Response |

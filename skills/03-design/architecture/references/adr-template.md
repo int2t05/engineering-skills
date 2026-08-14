@@ -1,5 +1,12 @@
 # ADR Template
 
+## Contents
+
+- [ADR Format](#adr-format)
+- [Example: Database Selection](#example-database-selection)
+- [ADR Naming Convention](#adr-naming-convention)
+- [Quick Reference](#quick-reference)
+
 ## ADR Format
 
 ```markdown

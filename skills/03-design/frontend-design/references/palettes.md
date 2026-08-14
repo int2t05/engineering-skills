@@ -3,6 +3,16 @@
 Color selection guidance: the dominant-surface-accent formula, semantic tokens, accessible pairs,
 dark-mode rules, and palette selection by product type.
 
+## Contents
+
+- [The color formula](#the-color-formula)
+- [Semantic tokens](#semantic-tokens)
+- [Contrast rules (WCAG 2.1 AA)](#contrast-rules-wcag-21-aa)
+- [Dark mode](#dark-mode)
+- [Palette selection by product type](#palette-selection-by-product-type)
+- [Common pitfalls (AI aesthetic)](#common-pitfalls-ai-aesthetic)
+- [Contrast verification](#contrast-verification)
+
 ## The color formula
 
 Use a dominant-surface-accent distribution. Timid, evenly-distributed palettes look generic;

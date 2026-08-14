@@ -1,5 +1,11 @@
 # Non-Functional Requirements Checklist
 
+## Contents
+
+- [NFR Categories](#nfr-categories)
+- [Template](#template)
+- [Quick Reference](#quick-reference)
+
 ## NFR Categories
 
 ### Scalability

@@ -2,6 +2,17 @@
 
 Architecture diagrams visualize cloud services, CI/CD deployments, and infrastructure relationships. Introduced in Mermaid v11.1.0.
 
+## Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Building Blocks](#building-blocks)
+- [Icons](#icons)
+- [Complex Example](#complex-example)
+- [Edge Patterns](#edge-patterns)
+- [Group Edges](#group-edges)
+- [Best Practices](#best-practices)
+- [Reference](#reference)
+
 ## Basic Syntax
 
 ```mermaid

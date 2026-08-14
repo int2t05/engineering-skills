@@ -32,20 +32,8 @@ in dev causes 429s after ~5 login attempts).
 ### 2. Choose locators by priority
 
 Role-based locators mirror how users and assistive technology interact with the
-page. They survive refactoring; CSS selectors and test IDs don't.
-
-```javascript
-// 1st: Role (best — mirrors accessibility)
-page.getByRole('button', { name: 'Submit' })
-// 2nd: Label (for form fields)
-page.getByLabel('Email')
-// 3rd: Text (use exact when ambiguous)
-page.getByText('Welcome', { exact: true })
-// 4th: ID (for inputs without labels)
-page.locator('#password')
-// Last resort: CSS selector
-page.locator('button.submit-btn')
-```
+page. They survive refactoring; CSS selectors and test IDs don't. Priority order
+and code examples — see [references/playwright-rules.md](references/playwright-rules.md).
 
 Handle strict mode violations with `{ exact: true }`, scoped locators, or
 `.first()` — never disable strict mode.
@@ -54,47 +42,20 @@ Handle strict mode violations with `{ exact: true }`, scoped locators, or
 
 Log in once per role in a setup project, save browser state to JSON, and reuse
 via `storageState` in all tests. Never log in per-test — it wastes 1-2s per
-test and hits rate limits after ~5 attempts.
-
-```javascript
-// auth/auth.setup.js — runs once before all tests
-setup(`authenticate as ${user.name}`, async ({ page }) => {
-    await page.goto('/login');
-    await page.getByLabel('Email').fill(user.email);
-    await page.locator('#password').fill('password');
-    await page.getByRole('button', { name: 'Sign In' }).click();
-    await page.waitForURL('**/dashboard');
-    await page.context().storageState({ path: `.auth/${user.name}.json` });
-});
-
-// specs/dashboard.spec.js — tests get pre-authenticated pages
-test.use({ role: 'customer' });
-test('shows dashboard', async ({ authedPage: page }) => {
-    await page.goto('/dashboard');
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-});
-```
+test and hits rate limits after ~5 attempts. Setup-project and storage-state
+code examples — see [references/playwright-rules.md](references/playwright-rules.md).
 
 ### 4. Use web-first assertions
 
 `expect(locator)` auto-retries until the condition is met or timeout. Never use
-`page.$()` + manual checks, `waitForTimeout`, or `isVisible()` snapshots.
-
-```javascript
-await expect(page.getByText('Success')).toBeVisible({ timeout: 10_000 });
-await expect(page.getByRole('button')).toBeEnabled();
-await expect(page).toHaveURL(/\/dashboard/);
-```
+`page.$()` + manual checks, `waitForTimeout`, or `isVisible()` snapshots. Assertion
+examples — see [references/playwright-rules.md](references/playwright-rules.md).
 
 ### 5. Handle form gotchas
 
 **React controlled date/time inputs:** `fill()` doesn't trigger React's
-`onChange` for date/time inputs. Use `keyboard.type()` instead:
-
-```javascript
-await dateInput.click();
-await page.keyboard.type('16042026');  // DDMMYYYY
-```
+`onChange` for date/time inputs. Use `keyboard.type()` instead (example in
+[references/playwright-rules.md](references/playwright-rules.md)).
 
 **Custom checkboxes (sr-only pattern):** `.check()` on hidden inputs may not
 trigger React's `onChange`. Click the component's own `<label>` wrapper or the

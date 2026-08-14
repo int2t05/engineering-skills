@@ -2,6 +2,21 @@
 
 Flowcharts visualize processes, algorithms, decision trees, and user journeys. They show step-by-step progression through a system or workflow.
 
+## Contents
+
+- [Basic Syntax](#basic-syntax)
+- [Node Shapes](#node-shapes)
+- [Connections](#connections)
+- [Subgraphs](#subgraphs)
+- [Styling](#styling)
+- [Comprehensive Example: User Registration Flow](#comprehensive-example-user-registration-flow)
+- [Algorithm Example: Binary Search](#algorithm-example-binary-search)
+- [CI/CD Pipeline](#cicd-pipeline)
+- [E-Commerce Checkout Flow](#e-commerce-checkout-flow)
+- [Decision Matrix Example](#decision-matrix-example)
+- [Best Practices](#best-practices)
+- [Common Patterns](#common-patterns)
+
 ## Basic Syntax
 
 ```mermaid

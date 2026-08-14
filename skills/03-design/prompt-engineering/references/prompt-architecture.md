@@ -3,6 +3,15 @@
 Depth reference for the `prompt-engineering` skill. Component breakdown, few-shot patterns,
 structured-output techniques, model selection, eval-harness setup, and the guardrail catalog.
 
+## Contents
+
+- [1. Prompt component breakdown](#1-prompt-component-breakdown)
+- [2. Few-shot patterns](#2-few-shot-patterns)
+- [3. Structured-output techniques](#3-structured-output-techniques)
+- [4. Model selection matrix](#4-model-selection-matrix)
+- [5. Eval-harness setup](#5-eval-harness-setup)
+- [6. Guardrail catalog](#6-guardrail-catalog)
+
 ## 1. Prompt component breakdown
 
 Structure the prompt as labeled components, not a wall of text. Each component has one job:

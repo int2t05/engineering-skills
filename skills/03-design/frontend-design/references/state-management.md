@@ -9,6 +9,17 @@ Framework-agnostic. Examples name React-ecosystem libraries (React Query, Zustan
 illustrative defaults; Vue, Svelte, and Solid have direct equivalents — apply the pattern, not the
 import.
 
+## Contents
+
+- [1. Separate client state from server state](#1-separate-client-state-from-server-state)
+- [2. Server-state caching](#2-server-state-caching)
+- [3. Client-state stores](#3-client-state-stores)
+- [4. State machines for complex flows](#4-state-machines-for-complex-flows)
+- [5. Derived state](#5-derived-state)
+- [6. Optimistic updates](#6-optimistic-updates)
+- [7. State shape normalization](#7-state-shape-normalization)
+- [8. Anti-patterns](#8-anti-patterns)
+
 ## 1. Separate client state from server state
 
 The foundational decision. These two state types have different sources, lifecycles, and rules —

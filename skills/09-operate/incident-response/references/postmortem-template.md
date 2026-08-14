@@ -5,6 +5,13 @@ and process, never on individuals. "The deploy bypassed the canary" is a system 
 without checking" is blame. Every contributing factor is a system failure that allowed the human
 action to cause an incident — fix the system, not the human.
 
+## Contents
+
+- [When to write a postmortem](#when-to-write-a-postmortem)
+- [Template](#template)
+- [Action-item tracking](#action-item-tracking)
+- [What a blameless postmortem is not](#what-a-blameless-postmortem-is-not)
+
 ## When to write a postmortem
 
 - Every SEV1 and SEV2 incident, within 48 hours of resolution

@@ -5,6 +5,32 @@ idioms — file layout, assertion style, fixtures, parametrization, async handli
 calls against real dependencies** (real database, real API, real filesystem) over mocks; mock only
 a slow or third-party boundary you genuinely cannot stand up, and say why.
 
+## Contents
+
+- [Detection — what to scan for](#detection--what-to-scan-for)
+- [Framework matrix](#framework-matrix)
+- [Python — pytest](#python--pytest)
+- [TS/JS — Vitest / Jest](#tsjs--vitest--jest)
+- [Go — table-driven](#go--table-driven)
+- [通用原则（跨框架）](#通用原则跨框架)
+
+## Detection — what to scan for
+
+Detection priority: existing test files (naming conventions) → dependency manifests → test config files. If nothing found, ask which framework to use.
+
+| Language | Check For | Common Frameworks |
+|----------|-----------|-------------------|
+| Go | `go.mod`, `*_test.go` | testing (stdlib), testify, ginkgo |
+| Python | `pyproject.toml`, `pytest.ini`, `conftest.py` | pytest, unittest |
+| Java/Kotlin | `pom.xml`, `build.gradle`, `*Test.java` | JUnit 5, TestNG, AssertJ, Mockito |
+| Rust | `Cargo.toml` ([dev-dependencies]), `tests/` | test (built-in), rstest |
+| C#/.NET | `*.csproj`, `*Tests.cs` | xUnit, NUnit, FluentAssertions |
+| TS/JS | `package.json`, `jest.config.*`, `vitest.config.*` | Vitest, Jest |
+| Ruby | `Gemfile`, `*_spec.rb`, `spec/` | RSpec, Minitest |
+| PHP | `composer.json`, `phpunit.xml` | PHPUnit, Pest |
+| C/C++ | `CMakeLists.txt`, `*_test.cpp` | GoogleTest, Catch2 |
+| Swift | `Package.swift`, `*Tests.swift` | XCTest, Quick/Nimble |
+
 ## Framework matrix
 
 | Language | Test Framework | Runner | Assertion | Fixture/Param |

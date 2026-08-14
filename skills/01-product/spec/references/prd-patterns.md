@@ -4,6 +4,17 @@ Depth reference for the `spec` skill. PRD structure, user-story format, acceptan
 the INVEST criteria, success-criteria reframing, Non-Goals, and the anti-patterns that make PRDs fail
 to function as a shared source of truth.
 
+## Contents
+
+- [1. PRD structure](#1-prd-structure)
+- [2. User-story format](#2-user-story-format)
+- [3. Acceptance criteria as executable tests](#3-acceptance-criteria-as-executable-tests)
+- [4. INVEST criteria for stories](#4-invest-criteria-for-stories)
+- [5. Success-criteria reframing](#5-success-criteria-reframing)
+- [6. Non-Goals](#6-non-goals)
+- [7. PRD anti-patterns](#7-prd-anti-patterns)
+- [8. PRD vs vision](#8-prd-vs-vision)
+
 ## 1. PRD structure
 
 A PRD is an interface specification + acceptance checklist for the business side. It is not a feature

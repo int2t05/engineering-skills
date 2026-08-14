@@ -3,6 +3,14 @@
 Detailed reference for the `context-engineering` skill: context packing
 strategies, MCP integrations, and anti-patterns.
 
+## Contents
+
+- [Context Packing Strategies](#context-packing-strategies)
+- [Rules File Template (CLAUDE.md)](#rules-file-template-claudemd)
+- [Context Sources (examples, not requirements)](#context-sources-examples-not-requirements)
+- [Anti-Patterns](#anti-patterns)
+- [Red Flags](#red-flags)
+
 ## Context Packing Strategies
 
 ### The Brain Dump

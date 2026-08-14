@@ -3,6 +3,15 @@
 Reference for the `imagegen` skill, **mobile** mode. Generate premium mobile app screen concepts and
 flow images — app-native, readable, art-directed — not generic AI mockups or phone-shaped websites.
 
+## Contents
+
+- [1. Set platform mode and screen count](#1-set-platform-mode-and-screen-count)
+- [2. Lock the design bible for multi-screen consistency](#2-lock-the-design-bible-for-multi-screen-consistency)
+- [3. Frame in a clean phone mockup](#3-frame-in-a-clean-phone-mockup)
+- [4. Respect safe areas and design clean first screens](#4-respect-safe-areas-and-design-clean-first-screens)
+- [5. Apply art direction, readability, and anti-AI-tells](#5-apply-art-direction-readability-and-anti-ai-tells)
+- [Verify (mobile mode)](#verify-mobile-mode)
+
 ## 1. Set platform mode and screen count
 
 Decide platform mode first — never mix patterns carelessly:

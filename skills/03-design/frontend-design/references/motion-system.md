@@ -5,6 +5,19 @@ easing catalog, choreography patterns, and the canonical scroll-animation skelet
 Load when `MOTION_INTENSITY > 3` or when building any scroll-driven, pinned, or
 staggered animation.
 
+## Contents
+
+- [When to load this](#when-to-load-this)
+- [Duration token scale](#duration-token-scale)
+- [Easing catalog](#easing-catalog)
+- [Distance scale](#distance-scale)
+- [Choreography patterns](#choreography-patterns)
+- [Scroll-driven animation skeletons](#scroll-driven-animation-skeletons)
+- [Forbidden animation patterns](#forbidden-animation-patterns)
+- [Reduced motion (mandatory)](#reduced-motion-mandatory)
+- [Performance guardrails](#performance-guardrails)
+- [Verify](#verify)
+
 ## When to load this
 
 - Building scroll-driven animations (sticky-stack, horizontal-pan, scroll-reveal stagger).

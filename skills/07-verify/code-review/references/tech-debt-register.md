@@ -5,6 +5,16 @@ prioritized register with interest/principal/effort metadata — so tech debt is
 portfolio, not a backlog that grows forever. The skill produces TODO.md with findings grouped by
 business area; this teaches how to quantify and prioritize those findings for sustainable paydown.
 
+## Contents
+
+- [1. Why a register, not a list](#1-why-a-register-not-a-list)
+- [2. The register fields](#2-the-register-fields)
+- [3. Debt types](#3-debt-types)
+- [4. Prioritization](#4-prioritization)
+- [5. Sustainable paydown cadence](#5-sustainable-paydown-cadence)
+- [6. "Accepted" debt is a decision, not a default](#6-accepted-debt-is-a-decision-not-a-default)
+- [7. How this connects to the skill](#7-how-this-connects-to-the-skill)
+
 ## 1. Why a register, not a list
 
 A flat TODO list has two failure modes: it grows without bound (everything is "some day"), and it

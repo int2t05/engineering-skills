@@ -4,6 +4,14 @@ How to translate a design brief into a retrieval plan for the 5 free public sour
 galleries have no search API — a "query" is a **category URL path + a search term**, fetched via
 WebFetch. Build the specific URL that matches the brief's domain and surface.
 
+## Contents
+
+- [The translation](#the-translation)
+- [Per-source URL patterns](#per-source-url-patterns)
+- [Per-goal example queries](#per-goal-example-queries)
+- [What makes a good query](#what-makes-a-good-query)
+- [What NOT to do](#what-not-to-do)
+
 ## The translation
 
 ```

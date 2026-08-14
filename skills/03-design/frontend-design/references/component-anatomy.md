@@ -4,6 +4,17 @@ How to decompose a component into parts, variants, and states. This reference de
 the structural patterns for building composable, variant-rich components. Load when
 designing a new component from scratch or refactoring an existing one into parts.
 
+## Contents
+
+- [When to load this](#when-to-load-this)
+- [Part-based design (compound components)](#part-based-design-compound-components)
+- [Slot architecture](#slot-architecture)
+- [Variant architecture](#variant-architecture)
+- [Component composition patterns](#component-composition-patterns)
+- [Accessibility anatomy](#accessibility-anatomy)
+- [Anti-patterns](#anti-patterns)
+- [Verify](#verify)
+
 ## When to load this
 
 - Designing a compound component (Card with Header/Body/Footer, Modal with Title/Content/Actions).

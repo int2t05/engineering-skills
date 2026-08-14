@@ -35,26 +35,7 @@ Test from the consumer perspective using schema validation, not exact values.
 Consumers depend on the contract (status codes, response shape); they don't
 care about internal structure.
 
-**Pattern — Consumer-Driven Contracts:**
-
-```javascript
-const contract = {
-  request: { method: 'POST', path: '/orders', body: { productId: 'abc', quantity: 2 } },
-  response: { status: 201, body: { orderId: 'string', total: 'number' } }
-};
-
-test('order API meets contract', async () => {
-  const response = await api.post('/orders', { productId: 'abc', quantity: 2 });
-  expect(response.status).toBe(201);
-  expect(response.body).toMatchSchema({
-    orderId: expect.any(String),
-    total: expect.any(Number)
-  });
-});
-```
-
-Use **Pact** or **Spring Cloud Contract** for consumer-driven contract testing
-in microservice architectures.
+**Pattern — Consumer-Driven Contracts:** schema validation against the contract (status codes, response shape), not exact values — code example in [references/templates/api-test-scaffold.md](references/templates/api-test-scaffold.md). Use **Pact** or **Spring Cloud Contract** for consumer-driven contract testing in microservice architectures.
 
 ### 3. Cover critical scenarios
 
@@ -72,34 +53,8 @@ both responses must return the same `orderId` (no duplicate created).
 ### 4. REST CRUD pattern
 
 Test the full resource lifecycle — CREATE, READ, UPDATE, DELETE — as a sequence
-that proves each operation and its side effects.
-
-```javascript
-describe('Product CRUD', () => {
-  let productId;
-
-  it('CREATE', async () => {
-    const r = await api.post('/products', { name: 'Widget', price: 10 });
-    expect(r.status).toBe(201);
-    productId = r.body.id;
-  });
-
-  it('READ', async () => {
-    const r = await api.get(`/products/${productId}`);
-    expect(r.body.name).toBe('Widget');
-  });
-
-  it('UPDATE', async () => {
-    const r = await api.put(`/products/${productId}`, { price: 12 });
-    expect(r.body.price).toBe(12);
-  });
-
-  it('DELETE', async () => {
-    expect((await api.delete(`/products/${productId}`)).status).toBe(204);
-    expect((await api.get(`/products/${productId}`)).status).toBe(404);
-  });
-});
-```
+that proves each operation and its side effects. Code example in
+[references/templates/api-test-scaffold.md](references/templates/api-test-scaffold.md).
 
 ### 5. GraphQL-specific checks
 

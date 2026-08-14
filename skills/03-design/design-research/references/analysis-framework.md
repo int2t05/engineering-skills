@@ -8,6 +8,13 @@ Adapted from established UX-research synthesis practice (the 8-lens structure or
 `ddruids/mobbin-skill` framework, MIT). The lenses analyze the design itself and are source-agnostic;
 the extraction axes are tuned to what `imagegen` and `frontend-design` consume.
 
+## Contents
+
+- [Extraction axes (per reference)](#extraction-axes-per-reference)
+- [The 8 analysis lenses](#the-8-analysis-lenses)
+- [Three output frameworks](#three-output-frameworks)
+- [Synthesis rules](#synthesis-rules)
+
 ## Extraction axes (per reference)
 
 For each reference, extract these six axes — as **text description**, not pixel measurement

@@ -6,6 +6,15 @@ teaches how to design backup strategy, test restores, run DR drills, and validat
 RPO/RTO targets are recorded at design time (`architecture/references/nfr-checklist.md`); this is
 the ongoing practice of proving you can actually meet them.
 
+## Contents
+
+- [1. RPO and RTO — what you're planning for](#1-rpo-and-rto--what-youre-planning-for)
+- [2. Backup strategy](#2-backup-strategy)
+- [3. Restore testing — the practice most teams skip](#3-restore-testing--the-practice-most-teams-skip)
+- [4. Failover orchestration](#4-failover-orchestration)
+- [5. DR drill procedure](#5-dr-drill-procedure)
+- [6. What DR planning is NOT](#6-what-dr-planning-is-not)
+
 ## 1. RPO and RTO — what you're planning for
 
 | Target | Definition | Planning question |

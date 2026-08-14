@@ -4,6 +4,16 @@ Condensed from the former cognitive-laws, color-theory, gestalt-and-hierarchy, t
 
 The psychology, theory, and evaluation frameworks beneath a usable interface: how the brain groups and perceives elements, how users decide and remember, how color and type carry meaning, how hierarchy directs the eye, how heuristics surface flaws, and how content organization makes things findable. Each principle below has a concrete UI consequence — not abstract theory, but constraints on component and layout decisions.
 
+## Contents
+
+- [Perception & Gestalt](#perception--gestalt)
+- [Cognitive Laws](#cognitive-laws)
+- [Color](#color)
+- [Typography](#typography)
+- [Hierarchy & Layout](#hierarchy--layout)
+- [Usability Heuristics](#usability-heuristics)
+- [Information Architecture](#information-architecture)
+
 ## Perception & Gestalt
 
 The brain groups elements before it reads them. Use grouping to imply structure without drawing it. Related things go close and look similar; unrelated things go far and look different. Most "messy" layouts violate proximity (everything equidistant) or similarity (inconsistent styling for the same role).

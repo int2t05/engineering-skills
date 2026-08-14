@@ -2,6 +2,28 @@
 
 Advanced configuration, styling, theming, and other powerful features for creating professional diagrams.
 
+## Contents
+
+- [Frontmatter Configuration](#frontmatter-configuration)
+- [Themes](#themes)
+- [Custom Theme Variables](#custom-theme-variables)
+- [Layout Options](#layout-options)
+- [Look Options](#look-options)
+- [Complete Configuration Example](#complete-configuration-example)
+- [Diagram-Specific Styling](#diagram-specific-styling)
+- [Directional Hints](#directional-hints)
+- [Click Events and Links](#click-events-and-links)
+- [Tooltips](#tooltips)
+- [Subgraph Styling](#subgraph-styling)
+- [Comments and Documentation](#comments-and-documentation)
+- [Complex Styling Example](#complex-styling-example)
+- [Responsive Sizing](#responsive-sizing)
+- [SVG Export Options](#svg-export-options)
+- [Best Practices for Advanced Features](#best-practices-for-advanced-features)
+- [Accessibility Considerations](#accessibility-considerations)
+- [Performance Considerations](#performance-considerations)
+- [Integration Examples](#integration-examples)
+
 ## Frontmatter Configuration
 
 Add YAML configuration at the top of diagrams:

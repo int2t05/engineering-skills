@@ -3,6 +3,14 @@
 Ideation frameworks, evaluation rubric, and worked examples. Use selectively — pick the
 lens that fits the idea, don't run every framework mechanically.
 
+## Contents
+
+- [Ideation Frameworks](#ideation-frameworks)
+- [Decision Techniques](#decision-techniques)
+- [Evaluation Rubric](#evaluation-rubric)
+- [Worked Example](#worked-example)
+- [What to Notice in This Example](#what-to-notice-in-this-example)
+
 ## Ideation Frameworks
 
 ### Divergent Lenses

@@ -4,6 +4,17 @@ The signatures that make LLM-generated UI look generic. Avoid these unless the b
 explicitly asks for them. This reference consolidates the forbidden patterns and the
 pre-flight check that catches them before delivery.
 
+## Contents
+
+- [When to load this](#when-to-load-this)
+- [Visual & CSS tells](#visual--css-tells)
+- [Typography tells](#typography-tells)
+- [Layout & spacing tells](#layout--spacing-tells)
+- [Content & data tells ("Jane Doe" effect)](#content--data-tells-jane-doe-effect)
+- [External resources & component tells](#external-resources--component-tells)
+- [Production-test tells (hard bans)](#production-test-tells-hard-bans)
+- [Pre-flight check](#pre-flight-check)
+
 ## When to load this
 
 Load during the Verify phase of `frontend-design` — run the pre-flight check before

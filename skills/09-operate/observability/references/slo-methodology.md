@@ -5,6 +5,15 @@ error budgets, burn-rate alerting, and release gating. The skill teaches you to 
 (RED/USE, tracing, logs); this teaches you to close the loop from "what users feel" to "what the
 error budget says about release cadence."
 
+## Contents
+
+- [1. SLI / SLO / SLA — the hierarchy](#1-sli--slo--sla--the-hierarchy)
+- [2. Defining an SLI](#2-defining-an-sli)
+- [3. Error budget](#3-error-budget)
+- [4. Burn rate](#4-burn-rate)
+- [5. SLO-based release gating](#5-slo-based-release-gating)
+- [6. Reviewing SLOs](#6-reviewing-slos)
+
 ## 1. SLI / SLO / SLA — the hierarchy
 
 | Term | Definition | Audience |

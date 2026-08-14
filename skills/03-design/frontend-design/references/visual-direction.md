@@ -6,6 +6,16 @@ continuity rules, creativity escalation, and the anti-slop ban list. Both skills
 instead of maintaining separate inline copies of the same engine — eliminating the duplication where
 `imagegen` web mode carried 9 axes and `image-to-code` carried a 7-axis subset.
 
+## Contents
+
+- [1. The combinatorial variation engine](#1-the-combinatorial-variation-engine)
+- [2. Hero scale and brief→direction mapping](#2-hero-scale-and-briefdirection-mapping)
+- [3. Composition anchors and background mode](#3-composition-anchors-and-background-mode)
+- [4. Continuity — one brand world](#4-continuity--one-brand-world)
+- [5. Creativity escalation](#5-creativity-escalation)
+- [6. Anti-slop ban list](#6-anti-slop-ban-list)
+- [7. How the two skills use this file](#7-how-the-two-skills-use-this-file)
+
 ## 1. The combinatorial variation engine
 
 Pick one option from each axis and commit to it consistently across the whole set — don't mash

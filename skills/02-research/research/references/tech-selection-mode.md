@@ -4,6 +4,16 @@ Reference for the `research` skill, **tech-selection** mode. Choosing or compari
 stack, library, framework, open-source project, or repository for a concrete requirement. Produces
 a defensible selection backed by GitHub evidence and official docs — not a popularity contest.
 
+## Contents
+
+- [Clarify the requirement](#clarify-the-requirement)
+- [Split the selection problem](#split-the-selection-problem)
+- [Source priority](#source-priority)
+- [Search GitHub first](#search-github-first)
+- [Validate with official and community sources](#validate-with-official-and-community-sources)
+- [10-section output template](#10-section-output-template)
+- [Verify (tech-selection mode)](#verify-tech-selection-mode)
+
 ## Clarify the requirement
 
 Restate: goal, constraints, platform, language/runtime, scale, budget, deadline, team skill,

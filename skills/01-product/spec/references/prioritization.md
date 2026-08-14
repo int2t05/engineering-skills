@@ -4,6 +4,16 @@ Depth reference for the `spec` skill. Frameworks for deciding what to build firs
 MoSCoW, the Value×Feasibility matrix, and the true-need vs false-need check. No single framework fits
 every stage — pick by signal quality.
 
+## Contents
+
+- [1. RICE](#1-rice)
+- [2. ICE](#2-ice)
+- [3. Kano model](#3-kano-model)
+- [4. MoSCoW](#4-moscow)
+- [5. Value × Feasibility matrix](#5-value--feasibility-matrix)
+- [6. True need vs false need](#6-true-need-vs-false-need)
+- [7. Which framework when](#7-which-framework-when)
+
 ## 1. RICE
 
 The default when you have enough signal to score. Scores every item on four dimensions:

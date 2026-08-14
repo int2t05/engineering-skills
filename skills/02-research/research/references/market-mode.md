@@ -4,6 +4,14 @@ Reference for the `research` skill, **market** mode. Market sizing, competitor c
 investor due diligence, industry intelligence, fund research, and technology scans that inform
 business decisions.
 
+## Contents
+
+- [Research standards](#research-standards)
+- [Source priority](#source-priority)
+- [The 4 sub-modes](#the-4-sub-modes)
+- [Output template](#output-template)
+- [Verify (market mode)](#verify-market-mode)
+
 ## Research standards
 
 - Every important claim needs a source.

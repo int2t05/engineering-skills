@@ -5,6 +5,16 @@ unavoidable, and how to deprecate old versions on a timeline. The skill's "One-V
 "Addition Over Modification" cover design-time extension (avoid breaking changes); this covers what
 happens when a breaking change is necessary and dual-version coexistence is needed.
 
+## Contents
+
+- [1. When to version vs extend](#1-when-to-version-vs-extend)
+- [2. Versioning strategies](#2-versioning-strategies)
+- [3. Sunset and deprecation headers](#3-sunset-and-deprecation-headers)
+- [4. Dual-version coexistence](#4-dual-version-coexistence)
+- [5. Sunset timeline](#5-sunset-timeline)
+- [6. Breaking-change communication](#6-breaking-change-communication)
+- [7. How this connects to the skill](#7-how-this-connects-to-the-skill)
+
 ## 1. When to version vs extend
 
 Prefer extension over versioning — most "breaking changes" can be additive:

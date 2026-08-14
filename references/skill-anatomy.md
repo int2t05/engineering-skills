@@ -3,6 +3,25 @@
 How to write a skill in this collection. Every skill conforms to this spec; the
 validator (scripts/validate-skills.sh) enforces it.
 
+## Contents
+
+- [Folder layout](#folder-layout)
+- [Frontmatter (minimal, enforced)](#frontmatter-minimal-enforced)
+- [Description writing](#description-writing)
+- [Body sections (in order)](#body-sections-in-order)
+- [When to use    — 2-4 trigger conditions; include Chinese phrases where relevant](#when-to-use-----2-4-trigger-conditions-include-chinese-phrases-where-relevant)
+- [Steps          — numbered, each step independently verifiable](#steps-----------numbered-each-step-independently-verifiable)
+- [Verify         — concrete completion check (evidence, not "looks right")](#verify----------concrete-completion-check-evidence-not-looks-right)
+- [Output         — (doc-producing skills only) the artifact path(s) this skill produces](#output----------doc-producing-skills-only-the-artifact-paths-this-skill-produces)
+- [References     — link ${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md + skill-specific docs](#references------link-claude_plugin_rootreferencesengineering-principlesmd--skill-specific-docs)
+- [Output declaration (doc-producing skills)](#output-declaration-doc-producing-skills)
+- [Progressive disclosure](#progressive-disclosure)
+- [README.md](#readmemd)
+- [User-invoked vs model-invoked](#user-invoked-vs-model-invoked)
+- [Naming](#naming)
+- [Language](#language)
+- [Relationship to the official Agent Skills spec](#relationship-to-the-official-agent-skills-spec)
+
 ## Folder layout
 <phase>/<skill-name>/SKILL.md            # lean core, always loaded
 <phase>/<skill-name>/references/<x>.md   # progressive disclosure, loaded on demand
@@ -67,6 +86,11 @@ checks this sync.
 Keep SKILL.md lean (target 15-150 lines, matching function complexity). Move
 encyclopedic data, long examples, and platform-specific detail into references/
 subfiles the skill loads only when needed.
+
+Reference files over 100 lines include a `## Contents` table-of-contents near the
+top (after the title and intro, before the first content section), linking to each
+`## ` section. Keeps long references navigable when loaded on demand. The validator
+warns when a >100-line reference lacks one.
 
 ## README.md
 The repo README is the shop window — lean, scannable in one screen. Keep to:

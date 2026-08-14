@@ -3,6 +3,14 @@
 Depth reference for the `i18n` skill. Locale-surface audit template, ICU syntax reference, RTL
 conversion checklist, locale-detection patterns, and the test-locale matrix.
 
+## Contents
+
+- [1. Locale-surface audit template](#1-locale-surface-audit-template)
+- [2. ICU MessageFormat syntax reference](#2-icu-messageformat-syntax-reference)
+- [3. RTL conversion checklist](#3-rtl-conversion-checklist)
+- [4. Locale-detection patterns](#4-locale-detection-patterns)
+- [5. Test-locale matrix](#5-test-locale-matrix)
+
 ## 1. Locale-surface audit template
 
 Before writing code, find every locale-sensitive surface. Run this audit:

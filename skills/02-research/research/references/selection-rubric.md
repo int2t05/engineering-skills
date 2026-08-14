@@ -5,6 +5,15 @@ dimensions: weighted scoring, build-vs-buy, total cost of ownership (TCO), migra
 and the long-term-bet vs commodity distinction. The skill gathers evidence; this rubric turns it into a
 defensible choice.
 
+## Contents
+
+- [1. Weighted scoring model](#1-weighted-scoring-model)
+- [2. Build vs buy](#2-build-vs-buy)
+- [3. Total cost of ownership (TCO)](#3-total-cost-of-ownership-tco)
+- [4. Migration cost estimation](#4-migration-cost-estimation)
+- [5. Long-term bet vs commodity technology](#5-long-term-bet-vs-commodity-technology)
+- [6. Confidence and validation](#6-confidence-and-validation)
+
 ## 1. Weighted scoring model
 
 The 10 dimensions are not equal. Weight them by what matters for *this* project, then score:

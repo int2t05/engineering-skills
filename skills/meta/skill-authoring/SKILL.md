@@ -41,7 +41,7 @@ Load [${CLAUDE_PLUGIN_ROOT}/references/skill-anatomy.md](${CLAUDE_PLUGIN_ROOT}/r
 ### 4. Write the four sections
 
 - **When to use** — 2-4 conditions + a `**Not for:**` boundary naming the adjacent skills (prevents routing collisions). This is load-bearing: every boundary pair in this pack was deliberate.
-- **Steps** — numbered, each independently verifiable. Push encyclopedic data into `references/<x>.md` loaded on demand (progressive disclosure).
+- **Steps** — numbered, each independently verifiable. Push encyclopedic data into `references/<x>.md` loaded on demand (progressive disclosure). Reference files over 100 lines get a `## Contents` ToC (see the anatomy's progressive-disclosure rule).
 - **Verify** — concrete evidence (file exists, no placeholders, count met), not "looks right".
 - **References** — `engineering-principles.md` (+ domain backbone) + skill-specific `references/`. Every `references/` link must resolve (dead-link check).
 - **Output** — declare `**Output:** <path>` only if the skill produces a doc/artifact. Behavior-only skills (implement, tdd, debugging) omit it. Every declared path must appear in `docs/skill-outputs.md` (validator syncs).

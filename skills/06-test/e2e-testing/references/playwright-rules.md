@@ -4,6 +4,18 @@ Eight rules across six categories. Load this reference when writing or reviewing
 Playwright E2E tests, choosing locator strategies, setting up authentication,
 or debugging flaky tests.
 
+## Contents
+
+- [Quick Reference](#quick-reference)
+- [1. Prefer Role-Based Locators](#1-prefer-role-based-locators)
+- [2. Handle Strict Mode Violations](#2-handle-strict-mode-violations)
+- [3. Reuse Authentication with Storage State](#3-reuse-authentication-with-storage-state)
+- [4. Use Web-First Assertions](#4-use-web-first-assertions)
+- [5. Handle React Controlled Date and Time Inputs](#5-handle-react-controlled-date-and-time-inputs)
+- [6. Handle Custom Checkbox Components](#6-handle-custom-checkbox-components)
+- [7. Mirror Route Structure in Test Organization](#7-mirror-route-structure-in-test-organization)
+- [8. Never Use Arbitrary waitForTimeout](#8-never-use-arbitrary-waitfortimeout)
+
 ## Quick Reference
 
 | # | Category | Rule | Impact |

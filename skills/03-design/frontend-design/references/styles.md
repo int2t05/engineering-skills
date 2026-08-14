@@ -3,6 +3,12 @@
 18 visual styles with characteristics, when-to-use, and effect specs (shadows, blur, radius).
 Pick one style per project and apply it consistently — don't mix flat and skeuomorphic randomly.
 
+## Contents
+
+- [Style selection rules](#style-selection-rules)
+- [Styles](#styles)
+- [Anti-patterns (all styles)](#anti-patterns-all-styles)
+
 ## Style selection rules
 
 - **Match style to product type** — a fintech dashboard and a playful consumer app need different styles.
