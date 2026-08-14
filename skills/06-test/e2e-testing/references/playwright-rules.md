@@ -335,8 +335,9 @@ const timeInput = page.locator('#preferred-time');
 await timeInput.click();
 await page.keyboard.type('1000AM'); // 10:00 AM
 
-// Brief wait needed: keyboard.type() on date inputs triggers React state
-// updates asynchronously — 200ms allows the controlled component to sync
+// Preferred: assert the sync happened rather than wait a fixed duration
+// (see Rule 8 — arbitrary waitForTimeout is a smell). If a web-first assertion
+// isn't feasible for this input type, this 200ms is the documented rare exception.
 await page.waitForTimeout(200);
 ```
 

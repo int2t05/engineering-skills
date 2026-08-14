@@ -6,7 +6,7 @@ description: Use when deciding open source strategy — business model, COSS, op
 # Open Source Strategy
 
 Guide open source as a commercialization path: build community and trust first, monetize
-later. Many products use open source for early growth (Cursor from VSCode, Llama, Qwen,
+later. Many products use open source for early growth (Supabase, Plausible, Cal.com, Llama, Qwen,
 Dify) and later commercialize via managed services or open core.
 
 **Core insight:** Brand is the moat when code is commoditized. Developers won't pay directly;

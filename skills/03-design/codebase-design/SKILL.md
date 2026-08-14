@@ -32,7 +32,7 @@ Scope before you scan — put weight on parts of the codebase that have recently
 named a direction, take it. Otherwise walk the commit history (`git log --oneline`) to find hot
 spots, then explore those paths first.
 
-Spawn an `Explore` sub-agent to walk the codebase and note friction: where understanding one
+Spawn an `Explore` sub-agent to walk the codebase and note friction (if sub-agents are unavailable in this environment, walk it yourself with Glob/Grep/Read, focusing on recently-changed files via `git log --oneline -20`). Note where understanding one
 concept requires bouncing between many small modules; where modules are **shallow** (interface
 nearly as complex as the implementation); where pure functions were extracted just for testability
 but bugs hide in how they're called; where tightly-coupled modules leak across seams; where code

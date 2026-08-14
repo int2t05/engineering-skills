@@ -5,12 +5,12 @@ Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
 `AGENTS.md`.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
-> assets are the 45 skills under `skills/`; this file routes work to them and loads the
+> assets are the 47 skills under `skills/`; this file routes work to them and loads the
 > shared discipline.
 
 ## What this pack is
 
-45 skills organized by the software development lifecycle, including a meta router.
+47 skills organized by the software development lifecycle, including a meta router.
 Each skill is a folder `skills/<phase>/<name>/SKILL.md` with YAML frontmatter (`name`,
 `description`, optional `disable-model-invocation`) and four sections: When to use / Steps /
 Verify / References. Encyclopedic data lives in per-skill `references/` (progressive
@@ -56,6 +56,8 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
 | develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
 | develop | `i18n` | "国际化", "本地化", "多语言", i18n, RTL, localization |
+| develop | `auth-implementation` | "implement auth", "实现认证", "实现登录", "OAuth 集成", "password hashing", "token 轮换", JWT, RBAC |
+| develop | `error-handling` | "error handling", "错误处理", "重试策略", "熔断", "降级", retry strategy, circuit breaker, error propagation |
 | tune | `cost-optimization` | "成本优化", "云账单", "费用", cloud bill, FinOps, spend |
 | tune | `performance` | "性能优化", "性能调优", "太慢了", "卡顿", profile, bottlenecks |
 | tune | `simplify` | "too complex", "简化", "重构求清晰", refactor for clarity |

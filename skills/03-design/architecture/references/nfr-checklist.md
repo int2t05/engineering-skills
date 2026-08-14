@@ -61,7 +61,6 @@
 | Question | Considerations |
 |----------|----------------|
 | Deployment frequency? | Daily / weekly / monthly |
-| Deployment strategy? | Blue-green, canary, rolling |
 | Monitoring requirements? | Logs, metrics, traces, alerts |
 | On-call requirements? | 24/7, business hours |
 

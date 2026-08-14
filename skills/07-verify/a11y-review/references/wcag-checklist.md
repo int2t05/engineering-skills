@@ -1,8 +1,10 @@
 # WCAG 2.2 AA Checklist — Mapped to axe-core + Manual Checks
 
-The criterion-by-criterion checklist for an a11y review. WCAG 2.2 AA is the default
-target (it covers 2.1 AA plus new criteria). Each criterion notes whether axe-core
-catches it automatically or it requires a manual check.
+The high-value subset of WCAG 2.2 AA criteria for an a11y review. WCAG 2.2 AA has ~50
+success criteria; this checklist covers the ones most often violated and most impactful.
+Criteria not listed here (e.g. 2.4.2 Page Titled, 2.4.6 Headings and Labels, 3.1.1/3.1.2
+Language, 1.4.5 Images of Text, 2.3.1 Three Flashes, 2.4.4 Link Purpose) still apply —
+verify them separately, or use a full WCAG 2.2 AA checklist for complete audits.
 
 ## Perceivable
 

@@ -97,3 +97,4 @@ Instrumentation is code; it can be wrong. Trigger the paths and look at the actu
 - [references/slo-methodology.md](references/slo-methodology.md) — SLI definition, error budgets, burn-rate alerting, SLO-based release gating
 - [references/cost-observability.md](references/cost-observability.md) — FinOps: cost attribution, per-request cost, anomaly detection, optimization levers
 - [../incident-response/references/runbook-template.md](../incident-response/references/runbook-template.md) — runbook authoring structure (write when you create the alert, not during the incident)
+- [references/slo-implementation.md](references/slo-implementation.md) — Prometheus recording/alerting rules, multi-window burn-rate alerts, error-budget queries, dashboards, review cadence

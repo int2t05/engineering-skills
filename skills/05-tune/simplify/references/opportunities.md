@@ -145,7 +145,8 @@ function UserBadge({ user }: Props) {
   return <Badge variant={variant}>{label}</Badge>;
 }
 
-// SIMPLIFY: Prop drilling through intermediate components
-// Before — consider whether context or composition solves this better.
-// This is a judgment call — flag it, don't auto-refactor.
+// FLAG FOR REFACTORING: Prop drilling through intermediate components
+// This is a cross-component structural concern, not single-file clarity —
+// it belongs to `refactoring` (move to context/composition), not `simplify`.
+// Flag it; don't auto-refactor here.
 ```

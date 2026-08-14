@@ -72,6 +72,11 @@ done
 # Non-markdown files are scanned for the script threats so a skill that documents "watch
 # for curl|bash" in its own markdown isn't false-flagged. Markdown is scanned only for
 # prompt-injection phrases.
+# Context-aware qualifiers avoid false positives on the pack's own legit usage:
+#  - data exfil: curl/wget with a POST body (-d/--data/-X POST/--post-data), not plain GET
+#  - global install: npm -g/--global or brew install (system-wide), not local npm install
+#  - nohup: detached background process (backdoor signal); --silent/2>/dev/null stay deferred (too common)
+#  - suspicious domains: in scripts only (non-markdown), so design-research's gallery URL docs don't match
 sec_tmp=$(mktemp)
 for phase in $phases; do
   for skill_dir in "skills/$phase"/*/; do
@@ -79,7 +84,7 @@ for phase in $phases; do
     # Non-markdown bundled files (scripts, yaml, json): execution / credential / persistence
     while IFS= read -r f; do
       [ -n "$f" ] || continue
-      grep -nE 'nc -e |/dev/tcp/|mkfifo|socat |base64 -d|curl.*\| *bash|wget.*\| *bash|ghp_[0-9a-f]{36}|AKIA[0-9A-Z]{16}|sk-ant-|BEGIN.*PRIVATE KEY|http://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+|~/\.(ssh|aws|kube|gnupg|netrc)|crontab -|authorized_keys|systemctl |launchctl |--index-url|--registry |git\+https|rm -rf /|rm -rf ~|rm -rf \$' "$f" >> "$sec_tmp" 2>/dev/null || true
+      grep -nE 'nc -e |/dev/tcp/|mkfifo|socat |base64 -d|curl.*\| *bash|wget.*\| *bash|ghp_[0-9a-f]{36}|AKIA[0-9A-Z]{16}|sk-ant-|BEGIN.*PRIVATE KEY|http://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+|~/\.(ssh|aws|kube|gnupg|netrc)|crontab -|authorized_keys|systemctl |launchctl |nohup |--index-url|--registry |git\+https|rm -rf /|rm -rf ~|rm -rf \$|curl.*(-d |--data[ =]|-X *POST)|wget.*--post-data|npm (install|i) -g|npm (install|i) --global|brew install |pastebin\.com|ngrok\.io|bit\.ly|tinyurl\.com' "$f" >> "$sec_tmp" 2>/dev/null || true
     done < <(find "$skill_dir" -type f ! -name '*.md' ! -path '*/node_modules/*' 2>/dev/null)
     # Markdown files: prompt-injection phrases (instruction-injection threat)
     while IFS= read -r f; do
@@ -96,8 +101,8 @@ if [ -s "$sec_tmp" ]; then
 fi
 rm -f "$sec_tmp"
 
-echo "Skills found: $count (expected 45)"
-[ "$count" -eq 45 ] || { echo "FAIL: expected 45 skills, found $count"; errors=$((errors+1)); }
+echo "Skills found: $count (expected 47)"
+[ "$count" -eq 47 ] || { echo "FAIL: expected 47 skills, found $count"; errors=$((errors+1)); }
 
 # --- Plugin manifest sync: skills[] array must match actual skills on disk ---
 manifest=".claude-plugin/plugin.json"

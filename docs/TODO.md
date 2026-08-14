@@ -185,7 +185,7 @@ discriminating（with 过、base 不过），analyzer pass 报出非判别断言
 | SLO 实现深度          | `observability` + 更深 ref                                | Prometheus recording/alerting 规则、燃尽告警、复盘节奏                       | 低   | 同上（已引`slo-methodology.md`）       |
 | On-call 班次交接      | `handoff` + `references/on-call-shift.md` 模式          | 活跃事件/进行中调查/最近变更/已知问题/升级触发 + 班前中后清单                | 低   | 同上（与现有 dev-work handoff 模式区分） |
 
-- [ ] 逐个按需实现（每条独立 commit，便于回滚）
+- [x] 逐个实现（v2.7.0 一次性交付 6 个 ref：sql-optimization / design-system-audit / openapi-lifecycle / changelog-and-release-notes / slo-implementation / on-call-shift）
 
 ---
 
@@ -200,8 +200,8 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 | `error-handling`       | 04-develop | 横切关注点（熔断/重试/Result type/优雅降级）无主人；`debugging` 诊断 bug，不设计错误传播策略。多语言、框架中立                                                                                  | 中    |
 | `accessibility-review` | 07-verify  | 07-verify 有 code-review/debugging/security-review/linting 但无 a11y。法律要求、常被跳过、WCAG 标准框架中立、干净缺口                                                                             | 低-中 |
 
-- [ ] `auth-implementation` — 先写 spec/触发词，跑 collision 检查，再写 4 段 + ref
-- [ ] `error-handling` — 同上
+- [x] `auth-implementation` — 已发布（v2.7.0）：SKILL.md + token-patterns.md + oauth-flows.md + openai.yaml
+- [x] `error-handling` — 已发布（v2.7.0）：SKILL.md + retry-patterns.md + openai.yaml
 - [X] `accessibility-review` — 已发布为 `a11y-review`（v2.6.0）
 - [ ] 每个：`gen-agents-yaml.py` + `validate-skills.sh` 绿 + 5 处 surface 同步 + version bump + CHANGELOG
 
@@ -213,11 +213,11 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 框架中立的内容器件，作为**指引**纳入 anatomy，非强制：
 
-- [ ] **压力测试场景文件** — 伴生 `test-pressure-N.md`，逼模型在真实压力下违反规则（配合 A5）
-- [ ] **合理化借口→现实表** — 出现在 3+ 收割 skill，任何纪律 skill 受益
-- [ ] **参考文件只深一级** — 不嵌套（Claude 会 `head -100` 部分读，嵌套致信息缺失）；当前包已基本遵守，显式化
-- [ ] **"按需加载"参考表** — SKILL.md 内置 `文件→何时加载` 表，利多 ref skill（如 frontend-design 16 个）
-- [ ] **CREATION-LOG.md**（可选）— 记录提取决策/来源/结构理由，利维护
+- [x] **压力测试场景文件** — 已写入 anatomy 作为 convention（eval artifact，配合 A5 Tier 3）
+- [x] **合理化借口→现实表** — 已写入 anatomy 作为 convention + using-skills 已实装 6 行表
+- [x] **参考文件只深一级** — 已写入 anatomy 显式化（validator dead-link 检查也依赖此）
+- [x] **"按需加载"参考表** — 已写入 anatomy 作为 convention
+- [x] **CREATION-LOG.md**（可选）— 已写入 anatomy 作为可选 convention
 
 **明确不采纳：** scripts/templates/data/CSV 伴生结构——违反纯 markdown 可移植性（`AGENTS.md` 明言"skill content is plain markdown"）。
 
@@ -305,7 +305,7 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 | 不做                                                                    | 理由                                                                                                      |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 45 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
+| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 47 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
 | scripts/templates/data 伴生文件                                         | 破坏跨 agent 可移植性                                                                                     |
 | MCP builder / MCP integration skill                                     | 包是 skill 包非 plugin-dev 包；README 明言 out of scope                                                   |
 | CloudBase/Godot/Tencent/Next.js/LangChain/FastAPI 等 vendor 技能        | 不可泛化                                                                                                  |

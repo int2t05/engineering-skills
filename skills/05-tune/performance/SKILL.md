@@ -84,3 +84,4 @@ Then add monitoring or a regression test so the gain doesn't erode. If a perform
 - [references/bottlenecks.md](references/bottlenecks.md) — symptom→cause decision tree, frontend/backend bottleneck tables, Core Web Vitals targets, performance budgets
 - [references/anti-patterns.md](references/anti-patterns.md) — N+1, unbounded fetching, image optimization, re-renders, bundle splitting, caching (with code examples)
 - [references/database-performance.md](references/database-performance.md) — DB-specific: EXPLAIN plan reading, index maintenance, slow-query analysis, N+1 detection, query anti-patterns, connection pooling
+- [references/sql-optimization.md](references/sql-optimization.md) — SQL-design optimization: composite/covering/partial index strategy, missing-vs-unused index audit, cursor vs offset pagination, materialized views, partitioning

@@ -64,6 +64,15 @@ discounts for steady-state.
 for stopped VMs (still paying disk); Azure Advisor cost recommendations; reserved VM
 instances for steady-state.
 
+**Kubernetes / containers:** FinOps on k8s is about attribution — who owns which workload's
+spend. `kubectl costs` (kubecost/OpenCost) gives per-namespace and per-label cost allocation;
+without it, shared-cluster spend is invisible. Check: unrequested-pod overprovisioning (requests
+>> actual usage — the #1 k8s waste), idle LoadBalancers pointing at nothing, PersistentVolumes
+not reclaimed after PVC deletion, and orphaned snapshots. Right-size via vertical autoscaler
+recommendations; spot/preemptible for batch workloads; shared clusters over per-team clusters
+(attribution via labels, not isolation). For managed k8s control-plane fees (EKS/GKE/AKS charge
+per cluster-hour), consolidate clusters — a $70/mo control plane × 10 teams = $8.4k/yr of pure waste.
+
 **General:** the fastest single win is usually committing steady-state compute that's
 currently on on-demand — verify 30 days of steady load, then commit 1 year. Second is
 cutting idle dev/staging. Architecture changes (cache, co-locate) pay off most but take

@@ -47,8 +47,9 @@ Produce a professional `README.md` with sections in this order:
 6. **Getting Started** — prerequisites, clone, install, build/serve, deploy.
 7. **Repository Structure** — concise ASCII tree (10–20 lines), representative not exhaustive.
 8. **Reporting Issues** — link to GitHub Issues + bug-report template.
-9. **License** — match `LICENSE` file / `mkdocs.yml` copyright; default CC BY-NC-SA 4.0 for
-   educational content, MIT or Apache-2.0 for code.
+9. **License** — match `LICENSE` file / `mkdocs.yml` copyright; default CC BY 4.0 for
+   educational content (CC BY-SA if share-alike is desired); reserve NC (NonCommercial) only for
+   projects that explicitly restrict commercial use, MIT or Apache-2.0 for code.
 10. **Acknowledgements** — key dependencies only.
 11. **Contact** — maintainer info.
 12. **Optional** — Contributing, Citation (BibTeX), Changelog.

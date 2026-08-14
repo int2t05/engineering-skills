@@ -92,6 +92,27 @@ top (after the title and intro, before the first content section), linking to ea
 `## ` section. Keeps long references navigable when loaded on demand. The validator
 warns when a >100-line reference lacks one.
 
+**Reference depth.** Keep references one level deep — `references/x.md`, not
+`references/sub/x.md`. Claude loads references with `head`-style partial reads; nesting
+hides files and breaks the `grep -oE ']\(references/...'` dead-link check in the validator.
+
+**On-demand load table.** Skills with many references (e.g. frontend-design has 16) include
+a `| File | When to load |` table in their References section so the model knows which ref
+answers which question without loading all of them.
+
+**Pressure-test scenario files.** Discipline skills (tdd, debugging, code-review, etc.) may
+bundle `references/test-pressure-N.md` files — scenarios that argue for skipping the discipline
+(time/authority/sunk-cost pressure) to verify the workflow holds under pressure. These are eval
+artifacts, not runtime guidance; the skill-authoring eval tiers (Tier 3) document how to use them.
+
+**Rationalization table.** Discipline skills benefit from a short excuse→reality table (6-8 rows)
+in their `## When to use` section, countering the rationalizations that skip the discipline
+("This is too small to test" → "Small code breaks. Test takes 30 seconds.").
+
+**CREATION-LOG.md (optional).** A skill may include `references/CREATION-LOG.md` recording
+extraction decisions, upstream source, and structural rationale — for maintainers, not the model.
+Omit if the skill's provenance is obvious.
+
 ## README.md
 The repo README is the shop window — lean, scannable in one screen. Keep to:
 badges + elevator pitch + install (primary agent only) + how-to + structure tree
@@ -129,6 +150,6 @@ where a skill serves a Chinese-speaking workflow.
 The official Agent Skills contract is minimal: a folder with `SKILL.md` carrying `name` +
 `description`. This anatomy is a **strict superset** — it adds the four-section body (When to use
 / Steps / Verify / References), the `**Output:**` declaration, the engineering-principles link,
-and the validator. These additions are what make the pack coherent across 45 skills; do not strip
+and the validator. These additions are what make the pack coherent across 47 skills; do not strip
 them to "align" with the minimal spec. A skill meeting only the official minimum would fail this
 collection's validator by design.

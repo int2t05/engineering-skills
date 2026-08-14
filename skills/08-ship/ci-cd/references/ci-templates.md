@@ -171,7 +171,9 @@ jobs:
 ## Preview deployment — deploy on every PR
 
 ```yaml
-# Deploy preview on PR (Vercel/Netlify/etc.)
+# Deploy preview on PR. Example uses Vercel; for other platforms swap the deploy
+# command (Cloud Run: gcloud run deploy; Netlify: npx netlify deploy; Docker:
+# build+push image tag) — the workflow_dispatch + PR-gated shape is portable.
 deploy-preview:
   runs-on: ubuntu-latest
   if: github.event_name == 'pull_request'

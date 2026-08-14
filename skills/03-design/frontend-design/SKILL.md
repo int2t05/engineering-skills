@@ -144,3 +144,4 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 - [references/material-design.md](references/material-design.md) — Material 3 color/type/elevation/state-layer roles, M3 vs M2, when Material vs HIG vs custom
 - [references/ux-research.md](references/ux-research.md) — user interviews, personas, journey maps, empathy maps, usability testing (5-user rule, think-aloud)
 - [references/visual-direction.md](references/visual-direction.md) — shared web visual-direction engine for imagegen (web mode) and image-to-code (variation axes, hero scale, composition anchors, anti-slop)
+- [references/design-system-audit.md](references/design-system-audit.md) — token coverage vs hardcoded values audit, component variant/state/a11y documentation, systematic extension patterns

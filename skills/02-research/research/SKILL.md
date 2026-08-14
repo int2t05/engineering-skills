@@ -89,7 +89,7 @@ Two checks are mandatory, not optional:
 
 ### 5. Synthesize the cited Markdown report
 
-Default language: Chinese unless the user specifies otherwise. Proper nouns, code identifiers,
+Default language: match the user's input language (Chinese input → Chinese report, English → English). The user can override with an explicit instruction. Proper nouns, code identifiers,
 filenames, and license names stay in original form. Inline-cite at each claim (`[text](url)`), not
 just a URL dump in the appendix. Use the mode's output template (7-section general / 6-section
 market / 10-section tech-selection) — trim to fit but keep section order. ≥3 mermaid diagrams

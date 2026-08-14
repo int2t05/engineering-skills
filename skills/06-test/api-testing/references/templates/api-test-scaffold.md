@@ -70,20 +70,20 @@ describe('{{Resource}} API', () => {
       expect(res.body.errors).toBeDefined();
     });
 
-    it('is idempotent with same request ID', async () => {
-      const requestId = crypto.randomUUID();
+    it('is idempotent with same idempotency key', async () => {
+      const idempotencyKey = crypto.randomUUID();
       const payload = { /* valid fields */ };
 
       const res1 = await request(app)
         .post('/api/{{resource}}')
         .set('Authorization', `Bearer ${authToken}`)
-        .set('X-Request-ID', requestId)
+        .set('Idempotency-Key', idempotencyKey)
         .send(payload);
 
       const res2 = await request(app)
         .post('/api/{{resource}}')
         .set('Authorization', `Bearer ${authToken}`)
-        .set('X-Request-ID', requestId)
+        .set('Idempotency-Key', idempotencyKey)
         .send(payload);
 
       expect(res1.body.id).toBe(res2.body.id);

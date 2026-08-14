@@ -41,7 +41,7 @@ The first decision is containment vs. fix. Containment is faster and safer — r
 the offending feature flag, route around the failing dependency, shed load. A fix under pressure
 is a second incident waiting to happen.
 
-- Rollback to the last known-good deploy (fastest, use `shipping` rollback plan)
+- Rollback to the last known-good deploy (fastest). Platform commands: `kubectl rollout undo deployment/<name>` (Kubernetes), `aws deploy create-deployment --revision REVISION<prev>` (AWS CodeDeploy), `gcloud run services update-traffic --to-revisions` (Cloud Run), `vercel rollback <url>` (Vercel). The `shipping` skill documents *when* to roll back (trigger conditions); these are the *how* commands for a live SEV1.
 - Disable the feature flag that triggered the issue
 - Fail over to a healthy replica or region
 - Rate-limit or circuit-break the failing path

@@ -12,7 +12,7 @@ documentation — not memory, not training data, not blog posts.
 - [When docs conflict with existing code](#when-docs-conflict-with-existing-code)
 - [Retrieval safety](#retrieval-safety)
 - [Framework implementation patterns](#framework-implementation-patterns)
-- [版本漂移信号](#版本漂移信号)
+- [Version Drift Signals](#version-drift-signals)
 
 ## Source hierarchy (in order of authority)
 
@@ -109,14 +109,14 @@ move between major versions).
 + `fetch` is the legacy escape hatch.
 
 ```tsx
-// 当前模式：Server Component 直接 await（react.dev/reference/react/server-components）
+// Current pattern: Server Component directly awaits (react.dev/reference/react/server-components)
 async function UserProfile({ id }: { id: string }) {
   const user = await db.user.findUnique({ where: { id } });
   if (!user) notFound();
   return <h1>{user.name}</h1>;
 }
 
-// 客户端交互态：useEffect 仅用于同步外部系统，不用于派生数据
+// Client interaction state: useEffect only for syncing external systems, not for derived data
 // react.dev/reference/react/useEffect#you-might-not-need-an-effect
 function SearchBox() {
   const [query, setQuery] = useState("");
@@ -125,23 +125,24 @@ function SearchBox() {
 }
 ```
 
-- **Verify:** `react.dev/reference/react/useEffect` — "You Might Not Need an Effect". 派生状态用
-  `useMemo`/直接计算，不用 Effect。
-- **Common mistake:** 用 `useEffect` 派生数据（`setX(compute(y))`）→ 无限渲染循环或过期值。直接
-  `const x = compute(y)` 即可。
-- **Form state:** React 19 用 `useActionState`（`react.dev/reference/react/useActionState`），不再
-  手写 `useState` + `onSubmit` + pending 三件套。
-- **Conflict signal:** 现有代码用 `useEffect` 同步 props 到 state → 多半是过期模式，按 docs 迁移。
+- **Verify:** `react.dev/reference/react/useEffect` — "You Might Not Need an Effect". Derive state with
+  `useMemo`/direct computation, not Effects.
+- **Common mistake:** Using `useEffect` to derive data (`setX(compute(y))`) → infinite render loops or
+  stale values. Just use `const x = compute(y)`.
+- **Form state:** React 19 uses `useActionState` (`react.dev/reference/react/useActionState`), no longer
+  hand-rolling the `useState` + `onSubmit` + pending trio.
+- **Conflict signal:** Existing code uses `useEffect` to sync props to state → likely a stale pattern,
+  migrate per docs.
 
 ### FastAPI (fastapi.tiangolo.com)
 
-**Dependency injection** 是 FastAPI 的核心——用 `Depends` 而非全局变量或手动传参。
+**Dependency injection** is FastAPI's core — use `Depends` rather than global variables or manual parameter passing.
 
 ```python
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-# 依赖：每请求一个 DB session（fastapi.tiangolo.com/tutorial/dependencies/）
+# Dependency: one DB session per request (fastapi.tiangolo.com/tutorial/dependencies/)
 def get_db():
     db = SessionLocal()
     try:
@@ -156,26 +157,27 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
-# 异步 + 异步 DB（fastapi.tiangolo.com/async/#very-technical-details）
+# Async + async DB (fastapi.tiangolo.com/async/#very-technical-details)
 @app.post("/users")
 async def create_user(payload: UserCreate, db: AsyncSession = Depends(get_async_db)):
-    # async def 配 async I/O；若用同步 DB 驱动，用普通 def，FastAPI 跑线程池
+    # async def pairs with async I/O; if using a sync DB driver, use plain def — FastAPI runs it in a threadpool
     user = User(**payload.model_dump())
     await db.add(user)
     await db.commit()
     return user
 ```
 
-- **Verify:** `fastapi.tiangolo.com/tutorial/dependencies/` 和 `.../async/`。
-- **Common mistake:** `async def` 里调同步阻塞 I/O（同步 `requests`、同步 DB）→ 阻塞事件循环。
-  要么换异步库，要么用普通 `def`（FastAPI 自动放线程池）。
-- **Pydantic v2:** 用 `model_dump()` 不是 `.dict()`；`model_validate()` 不是 `parse_obj()`。
-- **Path/query/body 声明**在函数签名里，FastAPI 据此生成 OpenAPI——不要手动解析 `Request`。
+- **Verify:** `fastapi.tiangolo.com/tutorial/dependencies/` and `.../async/`.
+- **Common mistake:** Calling sync blocking I/O inside `async def` (sync `requests`, sync DB) → blocks the
+  event loop. Either switch to an async library or use plain `def` (FastAPI automatically uses a threadpool).
+- **Pydantic v2:** Use `model_dump()` not `.dict()`; `model_validate()` not `parse_obj()`.
+- **Path/query/body declarations** go in the function signature — FastAPI generates OpenAPI from them;
+  don't manually parse `Request`.
 
 ### Django (docs.djangoproject.com)
 
-**ORM 查询**用 QuerySet API，不写裸 SQL（除非性能必需）；view 用 class-based 或函数式，
-按项目既有约定。
+**ORM queries** use the QuerySet API, not raw SQL (unless performance requires it); views use class-based
+or functional style, per existing project convention.
 
 ```python
 from django.db import models
@@ -190,10 +192,10 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
-# View：class-based，按 docs.djangoproject.com/en/5.0/topics/class-based-views/
+# View: class-based, per docs.djangoproject.com/en/5.0/topics/class-based-views/
 class UserListView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
-        # ORM：select_related/prefetch_related 防 N+1
+        # ORM: select_related/prefetch_related prevents N+1
         # docs.djangoproject.com/en/5.0/ref/models/querysets/#prefetch-related
         users = User.objects.filter(is_active=True).order_by("-created_at")[:50]
         return HttpResponse(
@@ -201,34 +203,39 @@ class UserListView(View):
             content_type="application/json",
         )
 
-# 迁移：改 model 后必须 makemigrations + migrate
+# Migrations: after changing a model, must run makemigrations + migrate
 # docs.djangoproject.com/en/5.0/topics/migrations/
 # $ python manage.py makemigrations && python manage.py migrate
 ```
 
-- **Verify:** `docs.djangoproject.com/en/<version>/ref/models/querysets/`（按项目的 Django 版本号
-  替换 `<version>`——1.x/2.x/3.x/4.x/5.x API 有差异）。
-- **Common mistake:** 循环里查关联对象 → N+1 查询。用 `select_related`（FK/OneToOne）或
-  `prefetch_related`（M2M/反向）预加载。
-- **Migration:** 改 model 字段后不跑 `makemigrations` → 部署后表结构不匹配。改 model 即改 schema，
-  迁移是部署的一部分。
-- **`auto_now_add` vs `auto_now`:** 前者只在创建时设，后者每次 save 设。混淆会导致"更新时间不刷新"。
+- **Verify:** `docs.djangoproject.com/en/<version>/ref/models/querysets/` (replace `<version>` with the
+  project's Django version — 1.x/2.x/3.x/4.x/5.x APIs differ).
+- **Common mistake:** Querying related objects in a loop → N+1 queries. Use `select_related` (FK/OneToOne)
+  or `prefetch_related` (M2M/reverse) to preload.
+- **Migration:** Not running `makemigrations` after changing a model field → schema mismatch on deploy.
+  Changing a model changes the schema; migration is part of deployment.
+- **`auto_now_add` vs `auto_now`:** The former only sets on creation, the latter sets on every save.
+  Confusing them causes "update time not refreshing".
 
-### 通用框架决策流程
+### General framework decision flow
 
-1. **识别版本** — 读 `package.json` / `pyproject.toml` / `go.mod` / `Cargo.toml` 锁定的主版本。
-   React 18 vs 19、Django 4 vs 5 的正确模式不同。
-2. **fetch 该版本的官方文档页** — URL 含版本号（`/en/5.0/`、`@19`），不要用"latest"记忆。
-3. **找 canonical example** — 官方 tutorial / reference 里的代码块是基线。偏离它需要理由。
-4. **对照现有代码** — 若现有代码用旧模式，按"When docs conflict with existing code"流程 surfacing，
-   不静默改也不静默沿用。
-5. **验证 API 签名** — 参数名、返回类型、抛出的异常。`fetch` 后引用具体段落，不凭记忆写签名。
+1. **Identify the version** — read the major version pinned in `package.json` / `pyproject.toml` /
+   `go.mod` / `Cargo.toml`. React 18 vs 19, Django 4 vs 5 have different correct patterns.
+2. **Fetch the official docs page for that version** — URL includes the version number (`/en/5.0/`, `@19`),
+   don't rely on "latest" memory.
+3. **Find the canonical example** — code blocks in the official tutorial / reference are the baseline.
+   Deviating from them requires a reason.
+4. **Compare with existing code** — if existing code uses an old pattern, follow the "When docs conflict
+   with existing code" flow to surface it; don't silently change or silently keep it.
+5. **Verify API signatures** — parameter names, return types, thrown exceptions. After fetching, cite the
+   specific passage; don't write signatures from memory.
 
-## 版本漂移信号
+## Version Drift Signals
 
-- 教程/博客用 `componentWillMount`、`getDerivedStateFromProps` → React 16 时代，已废弃。
-- FastAPI 用 `.dict()` / `parse_obj()` → Pydantic v1，v2 已重命名。
-- Django 用 `url()` / `ugettext_lazy` → 2.0/4.0 前的 API，已移除。
-- 任何 `componentWill*` 生命周期 → React unsafe lifecycle，16.3 起废弃。
+- Tutorials/blogs using `componentWillMount`, `getDerivedStateFromProps` → React 16 era, deprecated.
+- FastAPI using `.dict()` / `parse_obj()` → Pydantic v1, renamed in v2.
+- Django using `url()` / `ugettext_lazy` → pre-2.0/4.0 API, removed.
+- Any `componentWill*` lifecycle → React unsafe lifecycle, deprecated since 16.3.
 
-遇到这些信号，按当前版本官方迁移指南改写，不要复制旧代码。
+When you encounter these signals, rewrite per the current version's official migration guide; don't
+copy old code.

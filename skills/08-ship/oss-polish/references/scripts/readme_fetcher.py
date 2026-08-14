@@ -1,6 +1,6 @@
 """
-README Fetcher - 获取仓库 README 内容
-使用 GitHub API 获取仓库的 README 文件
+README Fetcher - Fetch repository README content.
+Uses the GitHub API to fetch a repository's README file.
 """
 import time
 import re
@@ -11,11 +11,11 @@ from config import GITHUB_TOKEN, GITHUB_API_BASE, FETCH_REQUEST_DELAY
 
 
 class ReadmeFetcher:
-    """获取仓库 README 内容"""
+    """Fetch repository README content."""
 
     def __init__(self, token: str = None):
         """
-        初始化
+        Initialize.
 
         Args:
             token: GitHub Personal Access Token
@@ -37,15 +37,15 @@ class ReadmeFetcher:
 
     def fetch_readme(self, owner: str, repo: str, html: bool = False) -> Optional[str]:
         """
-        获取仓库 README 内容
+        Fetch repository README content.
 
         Args:
-            owner: 仓库拥有者
-            repo: 仓库名称
-            html: 是否返回 HTML 格式
+            owner: Repository owner
+            repo: Repository name
+            html: Whether to return HTML format
 
         Returns:
-            README 内容
+            README content
         """
         url = f"{self.api_base}/repos/{owner}/{repo}/readme"
 
@@ -56,7 +56,7 @@ class ReadmeFetcher:
             response = self.session.get(url, timeout=30)
             response.raise_for_status()
 
-            # GitHub 返回的是 base64 编码的内容
+            # GitHub returns base64-encoded content
             data = response.json()
 
             if data.get("encoding") == "base64":
@@ -67,30 +67,30 @@ class ReadmeFetcher:
                 return data.get("content", "")
 
         except requests.RequestException as e:
-            print(f"   ⚠️ 获取 README 失败 {owner}/{repo}: {e}")
+            print(f"   ⚠️ Failed to fetch README {owner}/{repo}: {e}")
             return None
 
     def fetch_readme_summary(self, owner: str, repo: str, max_length: int = 500) -> Optional[str]:
         """
-        获取 README 摘要
+        Fetch a README summary.
 
         Args:
-            owner: 仓库拥有者
-            repo: 仓库名称
-            max_length: 最大长度
+            owner: Repository owner
+            repo: Repository name
+            max_length: Maximum length
 
         Returns:
-            README 摘要文本
+            README summary text
         """
         readme = self.fetch_readme(owner, repo)
 
         if not readme:
             return None
 
-        # 移除 Markdown 标记，提取纯文本
+        # Strip Markdown markup, extract plain text
         summary = self._extract_text_from_markdown(readme)
 
-        # 截断到指定长度
+        # Truncate to the specified length
         if len(summary) > max_length:
             summary = summary[:max_length].rsplit(" ", 1)[0] + "..."
 
@@ -98,38 +98,38 @@ class ReadmeFetcher:
 
     def _extract_text_from_markdown(self, markdown: str) -> str:
         """
-        从 Markdown 中提取纯文本
+        Extract plain text from Markdown.
 
         Args:
-            markdown: Markdown 内容
+            markdown: Markdown content
 
         Returns:
-            纯文本
+            Plain text
         """
-        # 移除代码块
+        # Remove code blocks
         markdown = re.sub(r'```.*?```', '', markdown, flags=re.DOTALL)
         markdown = re.sub(r'`.*?`', '', markdown)
 
-        # 移除链接
+        # Remove links
         markdown = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', markdown)
 
-        # 移除图片
+        # Remove images
         markdown = re.sub(r'!\[([^\]]*)\]\([^\)]+\)', '', markdown)
 
-        # 移除标题标记
+        # Remove heading markers
         markdown = re.sub(r'^#+\s+', '', markdown, flags=re.MULTILINE)
 
-        # 移除加粗/斜体
+        # Remove bold/italic
         markdown = re.sub(r'\*\*([^*]+)\*\*', r'\1', markdown)
         markdown = re.sub(r'\*([^*]+)\*', r'\1', markdown)
         markdown = re.sub(r'__([^_]+)__', r'\1', markdown)
         markdown = re.sub(r'_([^_]+)_', r'\1', markdown)
 
-        # 移除水平线
+        # Remove horizontal rules
         markdown = re.sub(r'^---+$', '', markdown, flags=re.MULTILINE)
         markdown = re.sub(r'^\*\*\*+$', '', markdown, flags=re.MULTILINE)
 
-        # 移除多余的空行
+        # Remove excess blank lines
         lines = [line.strip() for line in markdown.split('\n')]
         lines = [line for line in lines if line]
 
@@ -137,19 +137,19 @@ class ReadmeFetcher:
 
     def batch_fetch_readmes(self, repos: List[Dict], delay: float = None) -> Dict[str, str]:
         """
-        批量获取 README 内容
+        Batch-fetch README content.
 
         Args:
-            repos: 仓库列表
-            delay: 请求间隔
+            repos: Repository list
+            delay: Request delay
 
         Returns:
-            {repo_name: readme_summary} 字典
+            {repo_name: readme_summary} dict
         """
         delay = delay if delay is not None else self.delay
         summaries = {}
 
-        print(f"📥 开始批量获取 README...")
+        print(f"📥 Starting batch README fetch...")
 
         for i, repo in enumerate(repos, 1):
             repo_name = repo.get("repo_name") or repo.get("name", "")
@@ -165,26 +165,26 @@ class ReadmeFetcher:
             if summary:
                 summaries[repo_name] = summary
 
-            # 请求间隔
+            # Request delay
             if i < len(repos):
                 time.sleep(delay)
 
-        print(f"✅ 成功获取 {len(summaries)} 个 README 摘要")
+        print(f"✅ Successfully fetched {len(summaries)} README summaries")
         return summaries
 
     def fetch_from_github_raw(self, owner: str, repo: str, branch: str = "main") -> Optional[str]:
         """
-        直接从 GitHub raw 内容获取 README
+        Fetch README directly from GitHub raw content.
 
         Args:
-            owner: 仓库拥有者
-            repo: 仓库名称
-            branch: 分支名
+            owner: Repository owner
+            repo: Repository name
+            branch: Branch name
 
         Returns:
-            README 内容
+            README content
         """
-        # 尝试常见的 README 文件名
+        # Try common README file names
         readme_names = ["README.md", "README.markdown", "README.rst", "README.txt"]
 
         for name in readme_names:
@@ -197,7 +197,7 @@ class ReadmeFetcher:
             except requests.RequestException:
                 continue
 
-        # 尝试 master 分支
+        # Try master branch
         if branch == "main":
             return self.fetch_from_github_raw(owner, repo, "master")
 
@@ -205,12 +205,12 @@ class ReadmeFetcher:
 
 
 def fetch_readme_summary(owner: str, repo: str) -> Optional[str]:
-    """便捷函数：获取 README 摘要"""
+    """Convenience function: fetch README summary."""
     fetcher = ReadmeFetcher()
     return fetcher.fetch_readme_summary(owner, repo)
 
 
 def batch_fetch_readmes(repos: List[Dict]) -> Dict[str, str]:
-    """便捷函数：批量获取 README"""
+    """Convenience function: batch-fetch READMEs."""
     fetcher = ReadmeFetcher()
     return fetcher.batch_fetch_readmes(repos)

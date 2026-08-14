@@ -160,6 +160,10 @@ async function getAppConfig(): Promise<AppConfig> {
   return cachedConfig;
 }
 
+// (minimal illustration — in production use a proper cache layer: lru-cache,
+// framework cache, or Redis; this pattern is not concurrency-safe and silently
+// fails in serverless/edge where each invocation may be a fresh instance)
+
 // HTTP caching headers for static assets
 app.use('/static', express.static('public', {
   maxAge: '1y',           // Cache for 1 year

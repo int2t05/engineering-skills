@@ -36,3 +36,4 @@ Write a handoff brief summarizing the current conversation so a fresh agent can 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, surgical scope)
+- [references/on-call-shift.md](references/on-call-shift.md) — on-call shift handoff: active incidents, in-progress investigations, recent changes, known issues, escalation triggers, pre/mid/post-shift checklist

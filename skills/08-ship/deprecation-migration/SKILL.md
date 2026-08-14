@@ -113,6 +113,8 @@ Worked example — renaming `name` to `full_name`:
 
 Rules: additive first, destructive last and alone; every migration has a tested `down` path; backfill in batches off the hot path; build large indexes without blocking writes (e.g. Postgres `CREATE INDEX CONCURRENTLY`); decouple cutover from code by feature flag when risky.
 
+> **Warning:** If `CONCURRENTLY` fails mid-build, it leaves an `INVALID` index that silently does nothing — check `\di` or `pg_indexes` for validity; drop and recreate before relying on it.
+
 ## Verify
 
 After completing a deprecation:

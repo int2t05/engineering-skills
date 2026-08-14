@@ -28,6 +28,14 @@ Structure the prompt as labeled components, not a wall of text. Each component h
 variable components (retrieved context, user input) so prompt caching applies to the prefix.
 Swapping the order breaks caching and multiplies cost.
 
+**Provider differences matter.** Anthropic requires explicit `cache_control: { type: "ephemeral" }`
+markers on the content blocks to cache (up to 4 breakpoints); OpenAI caches automatically with no
+marker (no breakpoint control). Both have a ~5-minute TTL that refreshes on hit. Cache reads cost
+~10% of a full input; a cache *miss* (prefix changed or TTL expired) charges full input + a small
+write overhead. So: keep the stable prefix byte-identical across requests, avoid inserting a
+timestamp or request-id into the cached region, and mark the largest stable block as the cache
+breakpoint to maximize hit rate.
+
 ### Component anti-patterns
 
 - **Instruction buried in context** — the rule the model must follow is lost in a wall of

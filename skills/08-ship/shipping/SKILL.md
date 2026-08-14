@@ -86,7 +86,7 @@ Decision thresholds at each stage:
 | Metric | Advance | Hold / investigate | Roll back |
 |--------|---------|---------------------|-----------|
 | Error rate | within 10% of baseline | 10–100% above | >2x baseline |
-| P95 latency | within 20% of baseline | 20–50% above | >50% above |
+| P99 latency | within 20% of baseline | 20–50% above | >50% above |
 | Client JS errors | no new types | new errors <0.1% sessions | >0.1% sessions |
 | Business metrics | neutral or positive | decline <5% | decline >5% |
 
@@ -94,7 +94,7 @@ Decision thresholds at each stage:
 
 Every deployment needs a rollback plan written **before** it happens:
 
-- **Trigger conditions** — error rate > 2x baseline; P95 > [X]ms; user reports of [specific issue]; data integrity issues; security vulnerability discovered.
+- **Trigger conditions** — error rate > 2x baseline; P99 > [X]ms; user reports of [specific issue]; data integrity issues; security vulnerability discovered.
 - **Rollback steps** — disable feature flag (if applicable) OR `git revert <commit> && git push`; verify rollback via health check and error monitoring; notify team.
 - **Database considerations** — migration `[X]` has a rollback; data inserted by the new feature is preserved or cleaned up. Rollback command depends on your stack: `npx prisma migrate rollback` (Node/Prisma), `alembic downgrade -1` (Python), `goose down` (Go), `flyway undo` (Java — Teams/Enterprise only; Community users must `flyway repair` + manual SQL, or use Liquibase whose free edition supports `rollback`).
 - **Time to rollback** — feature flag < 1 min; redeploy previous version < 5 min; database rollback < 15 min.
@@ -131,3 +131,4 @@ After deploying:
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
 - [references/launch-monitoring.md](references/launch-monitoring.md) — what to monitor at launch (application p50/p95/p99, infrastructure CPU/DB-pool/disk, client Core Web Vitals/JS errors) + ErrorBoundary and error-middleware scaffolding
+- [references/changelog-and-release-notes.md](references/changelog-and-release-notes.md) — commit history → categorized changelog (keepachangelog) → user-language release notes

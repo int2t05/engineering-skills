@@ -35,7 +35,7 @@ even if it seems obvious; the skill may enforce discipline the shortcut skips.
    - **01-product** — `brainstorm` · `spec` · `oss-strategy`
    - **02-research** — `research` (general / market / tech-selection modes)
    - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `imagegen` · `design-research` · `schema-design` · `prompt-engineering` · `prototype`
-   - **04-develop** — `implement` · `multi-agent-orchestration` · `breakdown` · `context-engineering` · `i18n`
+   - **04-develop** — `implement` · `multi-agent-orchestration` · `breakdown` · `context-engineering` · `i18n` · `auth-implementation` · `error-handling`
    - **05-tune** — `cost-optimization` · `performance` · `simplify` · `refactoring`
    - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `load-testing`
    - **07-verify** — `a11y-review` · `code-review` · `debugging` · `security-review` · `linting`
@@ -68,4 +68,4 @@ The routed skill's `## When to use` matches the task, and the skill activates vi
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill in this collection.
 - [references/phase-tree.md](references/phase-tree.md) — full ASCII decision tree by phase and task shape.
 
-External skill discovery (`npx skills find/add`) is out of scope — this router maps tasks to this collection's 45 internal skills only.
+External skill discovery (`npx skills find/add`) is out of scope — this router maps tasks to this collection's 47 internal skills only.

@@ -57,8 +57,8 @@ interface APIError {
 }
 ```
 
-Status code mapping: 400 invalid data, 401 not authenticated, 403 not authorized, 404 not found,
-409 conflict (duplicate, version mismatch), 422 validation failed, 500 server error (never expose
+Status code mapping: 400 malformed request (can't parse — bad JSON, wrong content-type), 401 not authenticated, 403 not authorized, 404 not found,
+409 conflict (duplicate, version mismatch), 422 well-formed but semantically invalid (fails business validation), 500 server error (never expose
 internal details).
 
 ### 4. Validate at boundaries
@@ -133,3 +133,4 @@ the start. "Nobody uses that undocumented behavior" — Hyrum's Law says someone
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
 - [references/versioning-strategy.md](references/versioning-strategy.md) — when breaking change is unavoidable: URI/header versioning, sunset/deprecation headers (RFC 8594), dual-version coexistence, sunset timeline
+- [references/openapi-lifecycle.md](references/openapi-lifecycle.md) — design-first vs code-first, Spectral/Redocly linting, openapi-generator SDK generation, spec versioning, CI pipeline

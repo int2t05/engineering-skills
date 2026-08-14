@@ -54,7 +54,9 @@ Task arrives
     │   ├── Break a spec into verifiable tasks? ────────→ breakdown
     │   ├── Load the right context first? ──────────────→ context-engineering
     │   ├── Explain code / codebase tour? ─────────────→ context-engineering (code-explanation ref)
-    │   └── Internationalize / multi-locale / RTL? ─────→ i18n
+    │   ├── Internationalize / multi-locale / RTL? ─────→ i18n
+    │   ├── Implement auth (login/sessions/JWT/OAuth)? → auth-implementation
+    │   └── Design error-handling strategy (retry/circuit-breaker/fallback)? → error-handling
     │
     ├── 05 TUNE — improving working code
     │   ├── Cloud bill / spend too high? ───────────────→ cost-optimization
