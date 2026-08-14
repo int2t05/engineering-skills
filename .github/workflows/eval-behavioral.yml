@@ -33,7 +33,11 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
       - name: Run behavioral evals
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Proxy/Bedrock auth (NOT ANTHROPIC_API_KEY — the CLI reads
+          # ANTHROPIC_AUTH_TOKEN for non-default endpoints).
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          CLAUDE_MODEL: ${{ secrets.CLAUDE_MODEL }}
         run: |
           bash scripts/run-eval.sh \
             ${{ github.event.inputs.skill && format('--skill {0}', github.event.inputs.skill) || '' }} \

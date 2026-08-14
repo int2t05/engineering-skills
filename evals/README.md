@@ -21,11 +21,30 @@ bash scripts/run-eval.sh --case tdd-001 --runs 3
 # Skip baselines (faster, but can't prove the skill changes behavior)
 bash scripts/run-eval.sh --no-baseline
 
-# Pin a model
-bash scripts/run-eval.sh --model claude-sonnet-5
+# Pin a model (else falls back to ANTHROPIC_MODEL / CLAUDE_MODEL env)
+bash scripts/run-eval.sh --model <your-model-id>
 ```
 
 Exit code = number of failed cases (matches `validate-skills.sh` convention).
+
+## Environment
+
+The runner spawns `claude -p` subprocesses. It inherits the caller's environment
+(stripping only `CLAUDECODE` so nested execution is allowed), so the CLI's standard
+env vars route it correctly — including proxy/Bedrock endpoints:
+
+```bash
+# Stock Anthropic:
+export ANTHROPIC_API_KEY=<key>
+
+# Proxy (e.g. GLM, Bedrock — the CLI reads these for non-default endpoints):
+export ANTHROPIC_AUTH_TOKEN=<token>
+export ANTHROPIC_BASE_URL=https://your-proxy/api/anthropic
+export ANTHROPIC_MODEL=<proxy-model-id>   # or pass --model <id>
+```
+
+If `--model` is omitted, the runner falls back to `ANTHROPIC_MODEL` then
+`CLAUDE_MODEL` from the env before letting the CLI use its default.
 
 ## When to run
 

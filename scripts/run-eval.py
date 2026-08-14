@@ -26,6 +26,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+# Resolve the claude CLI path once. On Windows, npm installs `claude` as a
+# `.CMD` shim; subprocess.run (CreateProcess) only finds `.exe` without help,
+# so shutil.which (which honors PATHEXT) is required to locate it.
+CLAUDE_BIN = shutil.which("claude") or "claude"
+
 
 def load_cases(skill_filter=None, case_filter=None):
     """Load eval cases from evals/cases/*.json. Returns a list of case dicts."""
@@ -59,11 +64,20 @@ def build_prompt(case, workspace, with_skill):
     """Build the prompt for claude -p. With-skill includes SKILL.md content."""
     task = case["task_prompt"]
     ws = str(workspace).replace("\\", "/")
+    # Non-interactive notice: claude -p has no user to answer assumption questions,
+    # so skills that say "surface assumptions before proceeding" would stall.
+    # Tell the agent to state assumptions and proceed autonomously.
+    nonce = (
+        "This is a non-interactive session — no one will answer questions. "
+        "State your assumptions explicitly, then proceed autonomously to complete "
+        "the task and write any output files.\n\n"
+    )
     if with_skill:
         skill_path = REPO_ROOT / case["skill_under_test"] / "SKILL.md"
         skill_content = skill_path.read_text(encoding="utf-8")
         return (
             f"You are a software engineer working in this directory: {ws}\n\n"
+            f"{nonce}"
             f"## Skill Instructions ({case['skill_under_test']})\n"
             f"Follow these skill instructions carefully:\n\n"
             f"{skill_content}\n\n"
@@ -71,13 +85,23 @@ def build_prompt(case, workspace, with_skill):
         )
     return (
         f"You are a software engineer working in this directory: {ws}\n\n"
+        f"{nonce}"
         f"## Task\n{task}\n"
     )
 
 
 def run_claude(prompt, workspace, timeout, model=None):
-    """Run claude -p with the prompt. Returns (transcript_text, duration_s, tokens)."""
-    cmd = ["claude", "-p", prompt, "--output-format", "stream-json", "--verbose"]
+    """Run claude -p with the prompt. Returns (transcript_text, duration_s, tokens).
+
+    The prompt is passed via stdin, not as a CLI argument. On Windows the claude
+    CLI is a .CMD shim whose argument parser mangles prompts containing double
+    quotes (e.g. skill descriptions with ``Triggers on "..."``), truncating the
+    prompt so the model receives nothing. stdin bypasses all shell/arg escaping.
+    """
+    cmd = [CLAUDE_BIN, "-p", "--output-format", "stream-json", "--verbose"]
+    # Pin the model: explicit --model wins; else fall back to the env var the
+    # CLI reads (ANTHROPIC_MODEL on proxy setups, CLAUDE_MODEL as a fallback).
+    model = model or os.environ.get("ANTHROPIC_MODEL") or os.environ.get("CLAUDE_MODEL")
     if model:
         cmd.extend(["--model", model])
     # Strip CLAUDECODE so claude -p can run nested inside a Claude Code session.
@@ -87,6 +111,7 @@ def run_claude(prompt, workspace, timeout, model=None):
     try:
         proc = subprocess.run(
             cmd,
+            input=prompt,
             capture_output=True,
             text=True,
             timeout=timeout,
@@ -114,10 +139,16 @@ def run_claude(prompt, workspace, timeout, model=None):
                     elif block.get("type") == "tool_use":
                         transcript_lines.append(f"[tool: {block.get('name')}] {json.dumps(block.get('input', {}))[:200]}")
             elif etype == "result":
-                total_tokens = event.get("total_cost_usd", 0)  # placeholder; real tokens in usage
                 usage = event.get("usage", {})
                 total_tokens = usage.get("output_tokens", 0) + usage.get("input_tokens", 0)
         transcript = "\n\n".join(transcript_lines)
+        # Defensive fallback: if no stream-json events parsed but stdout is non-empty,
+        # claude -p emitted something we couldn't parse (a proxy error, plain-text
+        # response, or a non-JSON error message). Surface it as the transcript so the
+        # grader has something to evaluate and the failure is observable, not silent.
+        if not transcript and proc.stdout.strip():
+            transcript = f"[unparsed stdout — {len(proc.stdout)} chars, no stream-json events]\n{proc.stdout[:2000]}"
+            print(f"  WARN: claude -p produced {len(proc.stdout)} chars but 0 stream-json events (proxy error or non-JSON output)", file=sys.stderr)
         return transcript, duration, total_tokens
     except subprocess.TimeoutExpired:
         duration = time.time() - start

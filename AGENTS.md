@@ -5,12 +5,12 @@ Codex, OpenCode, Cline, Continue, Cursor (agents mode), and any agent that reads
 `AGENTS.md`.
 
 > **Scope:** This file orients agents *using* the `engineering-skills` pack. The reusable
-> assets are the 43 skills under `skills/`; this file routes work to them and loads the
+> assets are the 45 skills under `skills/`; this file routes work to them and loads the
 > shared discipline.
 
 ## What this pack is
 
-43 skills organized by the software development lifecycle, including a meta router.
+45 skills organized by the software development lifecycle, including a meta router.
 Each skill is a folder `skills/<phase>/<name>/SKILL.md` with YAML frontmatter (`name`,
 `description`, optional `disable-model-invocation`) and four sections: When to use / Steps /
 Verify / References. Encyclopedic data lives in per-skill `references/` (progressive

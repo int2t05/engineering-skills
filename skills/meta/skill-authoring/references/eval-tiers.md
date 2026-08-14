@@ -59,7 +59,7 @@ Prompt template (one per skill, stored for re-runs):
 **A Tier-2 failure usually means fix the description, not the eval.** Missing vocabulary → add the
 phrase users actually say. Over-broad → narrow the `Use when…` or sharpen the `Not for`.
 
-> The full Tier 2 prompt set (~5 per skill × 43 = ~215 prompts) is deferred to实战 — prompts should
+> The full Tier 2 prompt set (~5 per skill × 45 = ~225 prompts) is deferred to实战 — prompts should
 > target the final descriptions after a refactor, not be written prematurely. This reference defines
 > the shape so the work is ready when prioritized.
 
@@ -136,7 +136,7 @@ the skill's workflow for a task outside its scope.
 ### Pilot skills (MVP)
 
 `tdd`, `spec`, `code-review`, `debugging` — 2-5 cases each, including negative controls. See
-`evals/cases/`. The pattern is proven on these four; expanding to all 43 skills is mechanical
+`evals/cases/`. The pattern is proven on these four; expanding to all 45 skills is mechanical
 case-writing once a skill's grader type and expectations are defined.
 
 ## When to run each tier

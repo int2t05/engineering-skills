@@ -129,6 +129,6 @@ where a skill serves a Chinese-speaking workflow.
 The official Agent Skills contract is minimal: a folder with `SKILL.md` carrying `name` +
 `description`. This anatomy is a **strict superset** — it adds the four-section body (When to use
 / Steps / Verify / References), the `**Output:**` declaration, the engineering-principles link,
-and the validator. These additions are what make the pack coherent across 43 skills; do not strip
+and the validator. These additions are what make the pack coherent across 45 skills; do not strip
 them to "align" with the minimal spec. A skill meeting only the official minimum would fail this
 collection's validator by design.

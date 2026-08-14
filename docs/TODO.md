@@ -1,7 +1,7 @@
 # 项目待办 — 技能包改进
 
 > **来源：** 2026-08-14 对 workbuddy 三 marketplace 的 191 个 SDLCx skill 做全量调研，以 7 维度
-> （覆盖缺口 / 解剖结构 / 元层路由 / 验证安全 / 编排 / 内容器件 / 技能创作法）交叉比对当前 43-skill 包。
+> （覆盖缺口 / 解剖结构 / 元层路由 / 验证安全 / 编排 / 内容器件 / 技能创作法）交叉比对当前 45-skill 包。
 > 本文件是过滤后的可执行清单；原始收割物与子 agent 报告为本地研究材料，未发布。
 >
 > **原则：** 本包主动"去胖"（v2.0.0 合并技能、多次 purity audit、CLAUDE.md 明令不得臆测增项）。
@@ -130,11 +130,11 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 |---|---|---|---|
 | `auth-implementation` | 04-develop | 无 skill 指导**正确实现**认证；`security-review` 只审查漏洞。认证是工程师引入安全洞的 #1 位置，几乎每个应用都需要。模式（JWT/session/OAuth2、RBAC、refresh-token 轮换、密码哈希）语言无关 | 中 |
 | `error-handling` | 04-develop | 横切关注点（熔断/重试/Result type/优雅降级）无主人；`debugging` 诊断 bug，不设计错误传播策略。多语言、框架中立 | 中 |
-| `accessibility-review` | 07-verify | 07-verify 有 code-review/debugging/security-review/linting 但无 a11y。法律要求、常被跳过、WCAG 标准框架中立、干净缺口 | 低-中 |
+| `accessibility-review` | 07-verify | 07-verify 有 code-review/debugging/security-review/linting 但无 a11y。法律要求、常被跳过、WCAG 标准框架中立、干净缺口 | 低-中 | **已发布为 `a11y-review`（v2.6.0）** |
 
 - [ ] `auth-implementation` — 先写 spec/触发词，跑 collision 检查，再写 4 段 + ref
 - [ ] `error-handling` — 同上
-- [ ] `accessibility-review` — 同上（最易，WCAG 标准稳定）
+- [x] `accessibility-review` — 已发布为 `a11y-review`（v2.6.0）
 - [ ] 每个：`gen-agents-yaml.py` + `validate-skills.sh` 绿 + 5 处 surface 同步 + version bump + CHANGELOG
 
 **边界情况 — RAG/LLM-app：** 倾向**扩展** `prompt-engineering` 加 `references/rag-architecture.md`（向量库/embedding/分块/rerank/eval），而非新建——收割版 LangChain 锁定严重，新建成本高且偏离纯 markdown。
@@ -161,13 +161,13 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 | 不做 | 理由 |
 |---|---|
-| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 43 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
+| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 45 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
 | scripts/templates/data 伴生文件 | 破坏跨 agent 可移植性 |
 | MCP builder / MCP integration skill | 包是 skill 包非 plugin-dev 包；README 明言 out of scope |
 | CloudBase/Godot/Tencent/Next.js/LangChain/FastAPI 等 vendor 技能 | 不可泛化 |
 | monorepo / Helm / K8s 打包 / secrets 基础设施 | 工具/vendor 特定；implement/breakdown/ci-cd/security-review 已在正确高度覆盖概念 |
 | UX copy / roadmap / test-case design | PM/QA 侧，与现有 skill 部分重叠，边际价值低 |
-| 第三人称改写 43 个 description | 风格偏好非缺陷；当前第二人称祈使一致且有效；churn 巨大不值 |
+| 第三人称改写 45 个 description | 风格偏好非缺陷；当前第二人称祈使一致且有效；churn 巨大不值 |
 | 行数预算放宽到 500 行 | 当前 15-150 行**更严**，契合反臃肿哲学，保持 |
 
 ---
