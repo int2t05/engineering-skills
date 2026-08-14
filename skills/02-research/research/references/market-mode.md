@@ -32,6 +32,12 @@ business decisions.
 Final recommendations must be primarily supported by P0 and P1; use P2 to qualify confidence and
 surface risk. If P0/P1 evidence is missing, label the number an estimate and state the gap.
 
+For technology, AI, or open-source companies, treat the official GitHub org's repositories as **P0
+evidence on a par with SEC filings** — latest release/commit date and activity are ground truth for
+"is it shipped / open-sourced / alive," more reliable than any secondary "截至 X 月" snapshot. Record
+the org name searched and the result (found / not found); "not found" is a search outcome, not proof
+of absence (see the negative-claim check in SKILL.md Step 4).
+
 ## The 4 sub-modes
 
 Run the sub-mode that fits the ask.

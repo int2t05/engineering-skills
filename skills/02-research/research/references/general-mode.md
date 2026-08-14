@@ -5,11 +5,32 @@ citations and a 7-section cited Markdown report.
 
 ## Source strategy
 
-Fan out across ≥3 query angles and ≥3 source categories:
-- Official docs, project blogs, papers, release notes, GitHub repos.
-- Default depth for broad topics: ≥6 relevant sources. For narrow topics, state why fewer suffice.
-- For repository sources, collect: URL, description, language, stars, forks, open issues, last updated date, fit for the user's goal.
-- Collect both Chinese and English sources.
+Fan out across ≥3 query angles and ≥3 source categories. Prioritize by reliability:
+
+| Priority | Source type | Use |
+| --- | --- | --- |
+| P0 | Official docs, specs, RFCs, papers, release notes | Authoritative capability/behavior claims |
+| P1 | GitHub repos (org + repo search), official project blogs | Implementation reality, maintenance, latest activity |
+| P2 | Technical blogs, conference talks, community discussions | Adoption friction, operational pain, context |
+| P3 | SEO listicles, tutorials, media summaries | Background only; never key evidence |
+
+**Never a primary source:** Stack Overflow answers, random blog posts, AI-generated docs, model
+training-data recall. Use them only to point toward a primary source.
+
+Default depth for broad topics: ≥6 relevant sources. For narrow topics, state why fewer suffice.
+Collect both Chinese and English sources.
+
+### Search GitHub
+
+When the topic touches a technology, framework, or organization, GitHub is a P0/P1 floor — search it
+even though general mode is not GitHub-first by default:
+
+- Search the official org name and likely repo names; collect URL, description, primary language,
+  license, stars/forks, latest commit or release date, open issue/PR signal, docs quality.
+- A repo's latest commit/release date is ground truth for "is this alive / released / open-sourced" —
+  more reliable than any secondary "截至 X 月" claim.
+- Record the org name and search terms tried, and the result (found / not found). "Not found" is a
+  search outcome, not a fact about the world — see the negative-claim check in SKILL.md Step 4.
 
 ## Quality rules
 

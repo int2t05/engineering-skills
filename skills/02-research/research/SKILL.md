@@ -22,7 +22,21 @@ verify, synthesize a cited report — but differ in sources, frameworks, and out
 
 ### 1. Pick the mode and frame the question
 
-Infer the mode from the ask, then restate the goal, scope, output language, and output path.
+Route by the dominant signal in the ask — don't guess:
+
+| Signal in the ask | Mode | Source strategy |
+| --- | --- | --- |
+| Tech / framework / library / SDK / repo / tool comparison | tech-selection | GitHub-first P0 |
+| Market / competitor / investor / industry / pricing / TAM | market | SEC, reports, press |
+| Everything else — concept, spec, state-of-the-art survey | general | Official docs, blog, paper, GitHub |
+
+If the ask hits **two or more modes** (e.g. "research DeepSeek's harness" is both a tech-framework
+question *and* a company deep-dive; "an AI company's stack + market" is both tech-selection and
+market), **ask the user to pick one** — "技术选型（GitHub 源优先）/ 市场分析 / 通用深度？三选一" —
+rather than silently choosing. A single dominant signal needs no question; state assumptions and
+proceed.
+
+Then restate the goal, scope, output language, and output path:
 
 - **general** → `docs/research/YYYY-MM-DD-<slug>.md` (slug: 2-4 words, lowercase ASCII; transliterate non-ASCII; no redundant prefixes). If the file exists, append `-2` or `-HHmmss`; overwrite only with explicit permission.
 - **market** → `docs/research/market.md`
@@ -60,6 +74,19 @@ data, missing dates, and access restrictions explicitly. Separate fact from infe
 uncertain claims as inference. Include contrarian evidence and downside cases; delete unsupported
 claims or label them as inference.
 
+Two checks are mandatory, not optional:
+
+- **Falsify negative claims on GitHub.** If a conclusion asserts that something does *not* exist —
+  "X 未发布 / 不存在 / 无官方实现 / 尚未开源 / 未开源" — search the org/product on GitHub before publishing
+  it. "Didn't find it" ≠ "doesn't exist": record the search term, the org name tried, and the result
+  (found / not found). If the negative cannot be falsified from a primary source, label it
+  `UNVERIFIED:` with the search trail, and do not present a secondary source's "截至 X 月" snapshot
+  as the current truth.
+- **Re-check recency on secondary sources.** When a secondary source is dated "截至 X 月" / "as of X"
+  and that point is more than one month old, check the official org's latest activity (GitHub
+  release/commit, official blog, official X) before restating its claim. A stale "as of" is a lead,
+  not a conclusion.
+
 ### 5. Synthesize the cited Markdown report
 
 Default language: Chinese unless the user specifies otherwise. Proper nouns, code identifiers,
@@ -82,6 +109,9 @@ do not present the result as researched — explain the limitation and offer an 
 - The `.md` file exists and contains no unresolved placeholders (`TBD`, `[标题]`, `https://example.com`, `github.com/org/repo`).
 - Every key conclusion, recommendation, comparison point, and date-sensitive claim has an inline citation.
 - Source appendix lists access dates and access limitations.
+- The mode was chosen via the criteria table, not guessed; if the ask hit two or more modes, the user was asked to pick.
+- Any negative claim ("未发布/不存在/尚未开源/无官方实现") carries a GitHub falsification record (search term, org, result) or an `UNVERIFIED:` label — never a bare secondary-source assertion.
+- For any tech/framework/org topic, GitHub source evidence is present regardless of mode.
 - For general: ≥3 mermaid diagrams mixing `flowchart` and `sequenceDiagram`; 7-section structure.
 - For tech-selection: GitHub repo evidence + official docs present; stars alone did not drive the recommendation.
 - For market: all numbers sourced or labeled estimates; old data flagged; recommendation follows from evidence.
