@@ -22,6 +22,8 @@ Code you can't observe is code you can't operate. Instrumentation is written alo
 
 Write down 2–4 questions an on-call engineer will ask about this feature. Every signal you add must answer one of them — if you can't name the questions, you'll log everything and learn nothing.
 
+**If the service has no SLO, define one before setting alert thresholds.** An SLO turns "is it healthy?" from a feeling into a number — see [references/slo-methodology.md](references/slo-methodology.md) for SLI definition, error budgets, and burn-rate alerting.
+
 ### 2. Pick the right signal per question
 
 - **Structured log** — "what happened in this specific case?" (per-event; grows with traffic)
@@ -67,7 +69,7 @@ Alert on **symptoms users feel** (error rate, p99 latency, queue age), not on ca
 
 Every alert must:
 1. Be actionable — if the response is "ignore it, it self-heals", delete it.
-2. Link to a runbook (minimum three lines: what it means, first query, escalation path).
+2. Link to a runbook written **when you create the alert, before any incident** (minimum three lines: what it means, first query, escalation path). See [../incident-response/references/runbook-template.md](../incident-response/references/runbook-template.md) for the authoring structure — the alert author owns the runbook.
 3. Have a threshold and duration justified by the SLO or historical data, not a guess.
 4. Use one of two severities: **page** (user-facing, act now) or **ticket** (degradation, act this week).
 
@@ -94,3 +96,4 @@ Instrumentation is code; it can be wrong. Trigger the paths and look at the actu
 - [references/observability-checklist.md](references/observability-checklist.md) — at-a-glance instrumentation checklist + pre-launch gate
 - [references/slo-methodology.md](references/slo-methodology.md) — SLI definition, error budgets, burn-rate alerting, SLO-based release gating
 - [references/cost-observability.md](references/cost-observability.md) — FinOps: cost attribution, per-request cost, anomaly detection, optimization levers
+- [../incident-response/references/runbook-template.md](../incident-response/references/runbook-template.md) — runbook authoring structure (write when you create the alert, not during the incident)

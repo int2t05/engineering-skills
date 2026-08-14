@@ -35,9 +35,11 @@
 | | `architecture` | **架构总览** | `docs/TECH.md`（项目级，简洁，main）+ `docs/vX.Y/tech.md`（版本级，详细，版本分支） | 大写+小写 | 系统架构图、组件、NFR、数据层（由 PRD 驱动） |
 | **2 实现计划** | `documentation-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告 |
 | | `breakdown` | **实现计划** | `docs/PLAN.md`（项目级，简洁，main）+ `docs/vX.Y/plan.md`（版本级，详细，版本分支） | 大写+小写 | ticket 拆解作章节，blocking edges（本阶段最重要产物） |
-| **4 优化重构** | `performance` | 性能台账 | `PERF.md`（可选） | 大写 | 尝试记录（kept + reverted），防重复踩坑 |
+| **4 优化重构** | `cost-optimization` | 成本台账 | `COST.md`（可选） | 大写 | 成本优化尝试记录（kept + reverted），镜像 PERF.md，防重复踩坑 |
+| | `performance` | 性能台账 | `PERF.md`（可选） | 大写 | 尝试记录（kept + reverted），防重复踩坑 |
 | **5 测试** | `load-testing` | 容量报告 | `docs/CAPACITY.md`（可选） | 大写 | 容量上限/瓶颈/自动伸缩验证/行动项 |
-| **6 审查调试** | `security-review` | 安全报告 | `docs/security-report.md` | 小写 | 按严重度的安全发现 + 修复/接受理由 |
+| **6 审查调试** | `a11y-review` | 无障碍报告 | `docs/a11y-report.md` | 小写 | 按 WCAG 条款/axe 规则的无障碍发现 + 修复/接受理由 |
+| | `security-review` | 安全报告 | `docs/security-report.md` | 小写 | 按严重度的安全发现 + 修复/接受理由 |
 | | `code-review` | **待办清单** | `docs/TODO.md` | 大写 | 代码↔TODO 双向校验的项目级待办（本阶段最重要产物） |
 | **7 上线发布** | `shipping` | 回滚计划 | `docs/launch/rollback-plan.md` | 小写 | 发布前回滚预案（触发条件/步骤/数据库/回滚耗时），项目级 |
 | **8 运行维护** | `documentation-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告 |

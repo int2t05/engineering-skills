@@ -1,0 +1,3 @@
+interface:
+  display_name: "A11y Review"
+  short_description: "Reviewing changes for accessibility — WCAG conformance, axe-core findings, keyboard and…"

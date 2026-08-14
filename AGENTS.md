@@ -56,6 +56,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
 | develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
 | develop | `i18n` | "国际化", "本地化", "多语言", i18n, RTL, localization |
+| tune | `cost-optimization` | "成本优化", "云账单", "费用", cloud bill, FinOps, spend |
 | tune | `performance` | "性能优化", "性能调优", "太慢了", "卡顿", profile, bottlenecks |
 | tune | `simplify` | "too complex", "简化", "重构求清晰", refactor for clarity |
 | tune | `refactoring` | "refactor structure", "提取模块", "拆分文件", extract/move/split/merge |
@@ -64,6 +65,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | test | `api-testing` | contract testing, "API 测试", "接口测试", REST/GraphQL |
 | test | `e2e-testing` | e2e, browser test, "端到端测试", "浏览器测试" |
 | test | `load-testing` | "压测", "压力测试", "容量测试", load/stress test, capacity |
+| verify | `a11y-review` | "无障碍", "可访问性", accessibility, a11y, WCAG, screen reader |
 | verify | `code-review` | review before merge, "代码审查", "合并前审查", "帮我看看这代码", "能合并吗" |
 | verify | `debugging` | bug, "调试", "排查 bug", "读日志", "排查错误日志", "为什么返回 null", "跑不通" |
 | verify | `security-review` | security review, "安全审查", "安全审计", secrets, injection |

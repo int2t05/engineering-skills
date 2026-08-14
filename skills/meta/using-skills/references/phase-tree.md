@@ -57,6 +57,7 @@ Task arrives
     │   └── Internationalize / multi-locale / RTL? ─────→ i18n
     │
     ├── 05 TUNE — improving working code
+    │   ├── Cloud bill / spend too high? ───────────────→ cost-optimization
     │   ├── Measure then optimize hot paths? ───────────→ performance
     │   ├── Reduce complexity, preserve behavior? ──────→ simplify
     │   └── Restructure without changing behavior? ────→ refactoring
@@ -69,6 +70,7 @@ Task arrives
     │   └── Capacity / load / breaking point? ─────────→ load-testing
     │
     ├── 07 VERIFY — checking the diff
+    │   ├── Accessibility / WCAG conformance? ──────────→ a11y-review
     │   ├── Review the diff for bugs / cleanups? ───────→ code-review
     │   ├── Bug resists a first glance? ────────────────→ debugging
     │   ├── Just read an error log / triage? ───────────→ debugging (log-triage ref)

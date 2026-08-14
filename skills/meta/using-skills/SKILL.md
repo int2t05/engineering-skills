@@ -24,9 +24,9 @@ skill. Every skill in this collection lives under one of nine phases.
    - **02-research** — `research` (general / market / tech-selection modes)
    - **03-design** — `architecture` · `domain-modeling` · `api-design` · `codebase-design` · `frontend-design` · `image-to-code` · `imagegen` · `design-research` · `schema-design` · `prompt-engineering` · `prototype`
    - **04-develop** — `implement` · `multi-agent-orchestration` · `breakdown` · `context-engineering` · `i18n`
-   - **05-tune** — `performance` · `simplify` · `refactoring`
+   - **05-tune** — `cost-optimization` · `performance` · `simplify` · `refactoring`
    - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `load-testing`
-   - **07-verify** — `code-review` · `debugging` · `security-review` · `linting`
+   - **07-verify** — `a11y-review` · `code-review` · `debugging` · `security-review` · `linting`
    - **08-ship** — `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` · `oss-polish`
    - **09-operate** — `observability` · `documentation-audit` · `handoff` · `incident-response`
 
