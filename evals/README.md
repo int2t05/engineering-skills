@@ -48,12 +48,16 @@ before letting the CLI use its default.
 
 ## When to run
 
-- **On demand** — before trusting a skill in production, after a SKILL.md rewrite.
-- **Weekly CI schedule** — catches regressions from model updates
-  (`.github/workflows/eval-behavioral.yml`).
+- **On demand only** — before trusting a skill in production, after a SKILL.md rewrite.
 - **NEVER as a CI gate** — behavioral evals are slow (5-10 min/case),
   non-deterministic, and token-costly. Tier 1 (`validate-skills.sh`) remains the
   CI gate.
+
+> **Status: experimental / 待完善.** The harness runs and produces artifacts, but
+> formal RED-GREEN runs on GLM-5.2 have not yet achieved discrimination (a strong
+> model passes the cases without the skill loaded). See `docs/TODO.md` → "评估体系"
+> for the tuning roadmap (pressure cases, analyzer pass, multi-run variance).
+> There is no CI workflow — evals run locally via the commands below.
 
 ## Directory structure
 

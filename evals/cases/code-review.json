@@ -2,7 +2,7 @@
   {
     "id": "code-review-001",
     "skill_under_test": "skills/07-verify/code-review",
-    "task_prompt": "Review the change in src/userService.js before merge. Run a pre-merge code review.",
+    "task_prompt": "Review src/userService.js before merge. It adds user list, detail, and search endpoints. Run a pre-merge code review.",
     "negative_control": false,
     "fixture": "evals/fixtures/buggy-diff",
     "grader": {
@@ -10,16 +10,18 @@
       "agent": "evals/agents/grader.md",
       "expectations": [
         "The review reports two axes separately (Standards and Spec), not merged into one list",
-        "The N+1 query (fetching profiles in a loop) is caught and flagged",
-        "The missing error handling for empty results is caught",
+        "The SQL injection in /users/search (string concatenation of req.query.q) is caught and flagged as a security/Critical issue",
+        "The route-ordering bug is caught: /users/search is registered AFTER /users/:id, so GET /users/search matches the :id param first and the search endpoint is unreachable",
+        "The N+1 query in /users (fetching profiles in a loop) is caught",
+        "Missing error handling (no try/catch around async handlers) is caught",
         "Severity labels are present on findings (Critical / Required / Optional / Nit)",
-        "Findings are evidence-backed — they quote or reference the specific code",
+        "Findings are evidence-backed — they quote or reference the specific code lines",
         "A docs/TODO.md file is produced with the review findings"
       ]
     },
     "runs": 1,
-    "timeout_seconds": 300,
-    "notes": "Tests two-axis structured review and issue detection"
+    "timeout_seconds": 600,
+    "notes": "Multi-severity diff: SQLi (obvious, Critical) is the decoy; route-ordering (subtle, the real showstopper) is the discriminator. A superficial review catches SQLi + N+1 but misses the unreachable endpoint. Two-axis structure + severity + TODO.md are skill-specific."
   },
   {
     "id": "code-review-neg-001",

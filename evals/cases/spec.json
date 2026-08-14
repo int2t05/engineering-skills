@@ -2,9 +2,9 @@
   {
     "id": "spec-001",
     "skill_under_test": "skills/01-product/spec",
-    "task_prompt": "I want to build a CLI tool that converts CSV files to JSON. It should handle large files (>1GB), infer types (numbers, dates, booleans), and support streaming output. Write a spec.",
+    "task_prompt": "Read brief.md in this directory — it's a product brief for a notification system with several open questions. Write a spec/PRD. Do not implement any code.",
     "negative_control": false,
-    "fixture": "evals/fixtures/csv-project",
+    "fixture": "evals/fixtures/spec-brief",
     "grader": {
       "type": "hybrid",
       "code_check": {
@@ -16,27 +16,25 @@
         "agent": "evals/agents/grader.md",
         "expectations": [
           "docs/PRD.md exists and is non-empty",
-          "The spec includes an Objective section describing the tool",
-          "Success criteria are specific and testable (not 'make it fast' but concrete thresholds like 'stream 1GB in < 30s')",
-          "A Project Structure section is present",
-          "A Commands section is present",
-          "A Testing Strategy section is present",
+          "The spec surfaces the brief's unknowns (channels, delivery guarantees, user preferences, frequency/batching, scaling, 'message' definition) as Open Questions or assumptions — it does NOT silently resolve them by picking one option without acknowledging the decision",
+          "A Non-Goals section is present with at least 3 explicit items (what the notification system will NOT do)",
+          "Success criteria are specific and testable, not vague (e.g. a concrete delivery-latency threshold, not 'fast notifications')",
+          "The email provider's 100 msg/sec rate limit constraint is reflected in the spec (e.g. a batching/queueing decision)",
           "Boundaries are stated (Always / Ask first / Never rules)",
-          "Non-Goals are explicit — what the tool will NOT do",
-          "The agent surfaced assumptions before writing the spec"
+          "No implementation code was written — only the spec document"
         ]
       }
     },
     "runs": 1,
-    "timeout_seconds": 300,
-    "notes": "Doc-producing skill — checks PRD structure and testable criteria"
+    "timeout_seconds": 600,
+    "notes": "Discriminator: the brief lists 6 explicit unknowns. A naive spec silently picks options ('we'll do email + push, best-effort'). The skill surfaces them as questions/assumptions + adds Non-Goals + testable criteria. Directly tests 'surface assumptions, don't silently fill ambiguous requirements'."
   },
   {
     "id": "spec-neg-001",
     "skill_under_test": "skills/01-product/spec",
     "task_prompt": "Fix this typo in the README: 'recieve' should be 'receive'.",
     "negative_control": true,
-    "fixture": "evals/fixtures/csv-project",
+    "fixture": "evals/fixtures/spec-brief",
     "fixture_setup": "pre-seed README.md with the typo",
     "grader": {
       "type": "llm-judge",
@@ -48,7 +46,7 @@
       ]
     },
     "runs": 1,
-    "timeout_seconds": 120,
+    "timeout_seconds": 180,
     "notes": "spec says NOT for single-line fixes — precision check"
   }
 ]

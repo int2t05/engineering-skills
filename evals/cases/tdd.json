@@ -2,7 +2,7 @@
   {
     "id": "tdd-001",
     "skill_under_test": "skills/06-test/tdd",
-    "task_prompt": "Implement a function parseDuration(s) in src/duration.js that takes a duration string like '1h30m' and returns the total seconds (5400). Support h, m, s suffixes, combinable (e.g. '1h30m', '45s', '2h'). Use TDD.",
+    "task_prompt": "Implement paginate(items, page, perPage) in src/paginate.js. It returns { items, totalItems, currentPage, totalPages, hasNext, hasPrev }. page is 1-indexed. Edge cases to handle: empty array returns empty items with totalPages=0; page beyond range returns empty items and hasNext=false; page=0 is treated as page 1 (some callers pass 0); perPage must be >= 1 (throw RangeError if 0 or negative). Use TDD.",
     "negative_control": false,
     "fixture": "evals/fixtures/tdd-starter",
     "grader": {
@@ -17,26 +17,25 @@
         "expectations": [
           "A test file exists and was written before the implementation file (transcript evidence of ordering)",
           "The agent explicitly ran the test and observed it fail before writing implementation (RED phase)",
-          "The agent wrote minimal code to pass — no speculative features beyond h/m/s parsing",
-          "parseDuration('1h30m') returns 5400",
-          "parseDuration('45s') returns 45",
-          "parseDuration('2h') returns 7200",
-          "parseDuration handles an untested combination correctly (e.g. '3h5m' → 11100, proving the impl is general not hardcoded to the examples)",
+          "Tests cover the edge cases: empty array, page beyond range, page=0 treated as page 1, perPage=0 throws RangeError",
+          "paginate([1,2,3,4,5], 2, 2) returns items [3,4] with totalPages=3 and hasNext=true",
+          "paginate([1,2,3,4,5], 0, 2) returns items [1,2] (page=0 treated as page 1), not empty",
+          "paginate([1,2,3,4,5], 1, 0) throws RangeError",
+          "paginate([], 1, 2) returns items [] with totalPages=0",
           "The full test suite passes with no skipped tests"
         ]
       }
     },
     "runs": 1,
     "timeout_seconds": 600,
-    "notes": "Tests process discipline (red-green-refactor), not just code correctness. Timeout 600s — with-skill prompt includes full SKILL.md, slower on proxies."
+    "notes": "Harder than parseDuration: page=0 negative-slice bug (slice(-perPage) returns []) is a real JS gotcha impl-first ships, test-first catches. Timeout 600s — with-skill prompt includes full SKILL.md."
   },
   {
     "id": "tdd-002",
     "skill_under_test": "skills/06-test/tdd",
-    "task_prompt": "There's a bug in src/duration.js: parseDuration('1h30m') returns 90 instead of 5400. It only handles minutes, dropping hours. Fix it.",
+    "task_prompt": "There's a bug in src/paginate.js: paginate([1,2,3,4,5], 1, 2) returns items [3,4] instead of [1,2]. The slice math is off by one page. Fix it using the Prove-It pattern — write a failing reproduction test first, watch it fail, then fix the root cause.",
     "negative_control": false,
-    "fixture": "evals/fixtures/tdd-starter",
-    "fixture_setup": "pre-seed src/duration.js with the buggy version that only matches /(\\d+)m/",
+    "fixture": "evals/fixtures/paginate-buggy",
     "grader": {
       "type": "hybrid",
       "code_check": {
@@ -49,15 +48,15 @@
         "expectations": [
           "The agent wrote a failing reproduction test BEFORE fixing the code",
           "The agent observed the test fail (confirmed the bug reproduces)",
-          "The fix addresses the root cause (hours not parsed), not a symptom",
+          "The fix addresses the root cause (off-by-one in the slice start index), not a symptom",
           "The agent ran the full suite after the fix and it passes",
           "No debug instrumentation or TODO markers left behind"
         ]
       }
     },
     "runs": 1,
-    "timeout_seconds": 300,
-    "notes": "Prove-It pattern — write the failing test first, then fix"
+    "timeout_seconds": 600,
+    "notes": "Prove-It pattern — write the failing test first, then fix. Buggy fixture pre-seeded."
   },
   {
     "id": "tdd-neg-001",
@@ -75,16 +74,16 @@
       ]
     },
     "runs": 1,
-    "timeout_seconds": 120,
+    "timeout_seconds": 180,
     "notes": "Precision check: tdd should NOT activate for a documentation task"
   },
   {
     "id": "tdd-neg-002",
     "skill_under_test": "skills/06-test/tdd",
-    "task_prompt": "Rename the function parseDuration to parseDurationString across the codebase.",
+    "task_prompt": "Rename the function paginate to paginateItems across the codebase.",
     "negative_control": true,
-    "fixture": "evals/fixtures/tdd-starter",
-    "fixture_setup": "pre-seed src/duration.js with a working parseDuration",
+    "fixture": "evals/fixtures/paginate-buggy",
+    "fixture_setup": "pre-seed src/paginate.js with a working paginate",
     "grader": {
       "type": "llm-judge",
       "agent": "evals/agents/grader.md",
@@ -95,7 +94,7 @@
       ]
     },
     "runs": 1,
-    "timeout_seconds": 120,
+    "timeout_seconds": 180,
     "notes": "tdd explicitly says Not for mechanical renames"
   }
 ]

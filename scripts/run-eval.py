@@ -254,10 +254,26 @@ def grade_code(case, workspace):
         return False, f"code check error: {e}"
 
 
+def resolve_llm_judge(grader):
+    """Resolve the LLM-judge config from either of the two grader schema shapes.
+
+    Hybrid graders nest the judge under grader.llm_judge (alongside code_check).
+    Pure llm-judge graders put agent/expectations directly under grader (flat).
+    Returning None here means the case declares no judge — grade_llm then
+    auto-passes only when the grader type is genuinely judge-free (code-based),
+    never as a silent fallback for a misread flat llm-judge case.
+    """
+    if grader.get("llm_judge"):
+        return grader["llm_judge"]
+    if grader.get("type") == "llm-judge" and grader.get("agent"):
+        return {"agent": grader["agent"], "expectations": grader.get("expectations", [])}
+    return None
+
+
 def grade_llm(case, transcript, workspace):
     """Run the LLM-judge grader via claude -p. Returns (pass_rate, detail)."""
     grader = case.get("grader", {})
-    llm_judge = grader.get("llm_judge")
+    llm_judge = resolve_llm_judge(grader)
     if not llm_judge:
         return 1.0, "no llm judge"
 

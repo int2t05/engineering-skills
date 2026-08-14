@@ -80,6 +80,12 @@ eval. This is the real test; a skill untested at Tier 3 is a hypothesis, not a s
 
 ## Tier 3 Implementation — the behavioral eval harness
 
+> **Status: experimental / 待完善.** The harness runs and persists artifacts (transcripts,
+> grading.json, workspace snapshots), but formal RED-GREEN runs on GLM-5.2 have not yet
+> achieved discrimination — a strong model passes the current cases without the skill loaded.
+> The tuning roadmap (pressure cases, analyzer pass, multi-run variance, dual-gate grading)
+> lives in `docs/TODO.md` → "评估体系". There is no CI workflow; evals run locally on demand.
+
 The harness lives in `evals/` and runs via `scripts/run-eval.sh`. It implements the
 **RED-GREEN pattern**: every case runs twice (with-skill and without-skill/baseline) to
 prove the skill changes behavior, not just that the agent can do the task. If the
@@ -128,10 +134,9 @@ the skill's workflow for a task outside its scope.
 
 ### When to run
 
-- On demand (manual) — before trusting a skill in production, after a SKILL.md rewrite.
-- Weekly (CI schedule) — catches regressions from model updates.
+- On demand (manual, local) — before trusting a skill in production, after a SKILL.md rewrite.
 - **NEVER as a CI gate** — behavioral evals are slow (5-10 min/case), non-deterministic, and
-  token-costly. Tier 1 (`validate-skills.sh`) remains the CI gate.
+  token-costly. Tier 1 (`validate-skills.sh`) remains the CI gate. There is no CI workflow.
 
 ### Pilot skills (MVP)
 

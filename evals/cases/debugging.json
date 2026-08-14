@@ -2,9 +2,9 @@
   {
     "id": "debugging-001",
     "skill_under_test": "skills/07-verify/debugging",
-    "task_prompt": "The test suite is failing. parseDuration('1h30m') should return 5400 but returns 90. Debug and fix it. Run npm test to see the failure.",
+    "task_prompt": "The cart module has a failing test. Customers report that after previewing a discount and then checking out at full price, they're charged less than expected. Run the tests, find out why, and fix it.",
     "negative_control": false,
-    "fixture": "evals/fixtures/failing-test",
+    "fixture": "evals/fixtures/cart-bug",
     "grader": {
       "type": "hybrid",
       "code_check": {
@@ -15,36 +15,37 @@
       "llm_judge": {
         "agent": "evals/agents/grader.md",
         "expectations": [
-          "The agent reproduced the bug first (ran the failing test before hypothesizing)",
-          "The agent stated a root cause (hours component not parsed, not just 'fixed the code')",
-          "The fix addresses the root cause, not a symptom",
-          "The agent ran the full suite after the fix and confirmed it passes",
+          "The agent reproduced the bug by running the failing test first (not by reading code and guessing)",
+          "The agent identified the ROOT CAUSE as input mutation — applyDiscount mutates the original item objects in place, corrupting the original cart — NOT a math/calculation error",
+          "The fix addresses the root cause: applyDiscount returns new objects (e.g. {...item, price: ...}) instead of mutating, OR otherwise avoids mutating the input",
+          "The agent did NOT patch the symptom (e.g. multiplying totals by a correction factor, cloning the array only inside the test, or adjusting test expectations)",
+          "The full test suite passes after the fix",
           "No debug instrumentation (console.log, DEBUG markers) left in the code"
         ]
       }
     },
     "runs": 1,
-    "timeout_seconds": 300,
-    "notes": "Tests disciplined diagnosis — reproduce before hypothesize, fix root cause"
+    "timeout_seconds": 600,
+    "notes": "Symptom != root cause. Symptom: 'charged less than expected' (total=22.5 not 25). Root cause: applyDiscount mutates input via item.price = ... inside .map. Naive fix: adjust math or clone in test (symptom patch). Root-cause fix: return new objects. Directly tests the skill's 'fix root cause not symptom' rule."
   },
   {
     "id": "debugging-neg-001",
     "skill_under_test": "skills/07-verify/debugging",
-    "task_prompt": "Add a new feature to src/duration.js: support a 'd' (days) suffix. parseDuration('1d2h') should return 93600.",
+    "task_prompt": "Add a new feature to src/cart.js: support a 'buyOneGetOne' discount type where every second item is free. applyDiscount should accept a type parameter.",
     "negative_control": true,
-    "fixture": "evals/fixtures/failing-test",
-    "fixture_setup": "pre-seed src/duration.js with the fixed version that handles h/m/s",
+    "fixture": "evals/fixtures/cart-bug",
+    "fixture_setup": "pre-seed src/cart.js with the fixed (non-mutating) version",
     "grader": {
       "type": "llm-judge",
       "agent": "evals/agents/grader.md",
       "expectations": [
-        "The agent did NOT invoke the debugging diagnostic workflow (reproduce/hypothesize/instrument)",
+        "The agent did NOT invoke the debugging diagnostic workflow (reproduce/hypothesize/instrument) — this is a feature, not a bug",
         "The agent treated this as a feature implementation, not a bug fix",
-        "The 'd' suffix feature was implemented"
+        "The buyOneGetOne feature was implemented"
       ]
     },
     "runs": 1,
-    "timeout_seconds": 180,
+    "timeout_seconds": 300,
     "notes": "debugging should NOT activate for a feature request"
   }
 ]
