@@ -83,7 +83,6 @@
     "task_prompt": "Rename the function paginate to paginateItems across the codebase.",
     "negative_control": true,
     "fixture": "evals/fixtures/paginate-buggy",
-    "fixture_setup": "pre-seed src/paginate.js with a working paginate",
     "grader": {
       "type": "llm-judge",
       "agent": "evals/agents/grader.md",

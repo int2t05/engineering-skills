@@ -17,13 +17,15 @@ anthropics skill-creator eval pattern).
 What `scripts/validate-skills.sh` already checks:
 
 - Frontmatter: `name` + `description` (+ optional `disable-model-invocation`); no disallowed fields.
-- `description` contains `Triggers on` / `触发`; ≤1024 chars.
+- `description` contains `Triggers on` / `触发`. (The ≤1024-char limit is documented in `skill-anatomy.md` but not yet enforced by the validator — tracked as TODO A2.)
 - Four sections present: When to use (with `Not for`), Steps, Verify, References.
 - `engineering-principles.md` linked; PM skills link `product-principles.md`; UIUX skills link `design-principles.md`.
-- `agents/openai.yaml` exists and is in sync (`gen-agents-yaml.py`).
+- `agents/openai.yaml` exists with required fields (`interface`, `display_name`, `short_description`) and invocation-sync (`disable-model-invocation` / `allow_implicit_invocation`). Full regeneration sync via `gen-agents-yaml.py` is a separate CI step in `validate.yml`.
 - `plugin.json` skills[] matches on-disk skills; count correct.
 - No dead `references/` links; no cross-skill trigger-phrase collisions.
 - `**Output:**` paths match `docs/skill-outputs.md`.
+- Discovery-surface presence: every manifest skill appears in all 5 routing surfaces (README×2, AGENTS.md, phase-tree.md, using-skills/SKILL.md).
+- WARN (non-blocking): reference files >100 lines without a `## Contents` ToC; SKILL.md files >150 lines.
 
 **A skill passing Tier 1 is structurally valid, not behaviorally correct.** It can still fail to
 fire, collide semantically, or not change agent behavior. Tier 1 is the floor.
@@ -80,11 +82,11 @@ eval. This is the real test; a skill untested at Tier 3 is a hypothesis, not a s
 
 ## Tier 3 Implementation — the behavioral eval harness
 
-> **Status: experimental / 待完善.** The harness runs and persists artifacts (transcripts,
+> **Status: experimental / not-yet-proven.** The harness runs and persists artifacts (transcripts,
 > grading.json, workspace snapshots), but formal RED-GREEN runs on GLM-5.2 have not yet
 > achieved discrimination — a strong model passes the current cases without the skill loaded.
 > The tuning roadmap (pressure cases, analyzer pass, multi-run variance, dual-gate grading)
-> lives in `docs/TODO.md` → "评估体系". There is no CI workflow; evals run locally on demand.
+> lives in `docs/TODO.md` (section A5). There is no CI workflow; evals run locally on demand.
 
 The harness lives in `evals/` and runs via `scripts/run-eval.sh`. It implements the
 **RED-GREEN pattern**: every case runs twice (with-skill and without-skill/baseline) to
@@ -102,23 +104,25 @@ exercise the skill's value) — not a failure, but a signal to harden the case.
 ### Eval case format
 
 Each case: `id`, `skill_under_test`, `task_prompt` (real user phrasing), `negative_control`
-(bool), `fixture`, `grader` (type: code-based / llm-judge / hybrid), `expectations`, `runs`,
-`timeout_seconds`. See `evals/README.md` for the full schema and how to write cases.
+(bool), `fixture`, `grader` (type: code-based / llm-judge / hybrid), `runs`, `timeout_seconds`.
+`expectations` nests inside `grader` — under `grader.llm_judge.expectations` for hybrid,
+or `grader.expectations` for flat llm-judge. See `evals/README.md` for the full schema.
 
 ### Grader types
 
 - **code-based** — runs a command (`npm test`, `pytest`), checks exit code. Fast, deterministic.
   For code-producing skills (tdd, implement, test-generation, api-testing, e2e-testing, etc.).
 - **llm-judge** — a grader subagent reads transcript + outputs, scores each expectation
-  PASS/FAIL with evidence. For doc/behavior skills (spec, architecture, code-review, debugging).
-- **hybrid** — both. Most code-producing pilots use hybrid (tests pass + process followed).
+  PASS/FAIL with evidence. For doc/behavior skills (architecture, code-review, etc.).
+- **hybrid** — both. Used when both outcome (tests pass) and process (discipline followed)
+  matter: the current pilots tdd, spec, debugging all use hybrid; code-review uses llm-judge.
 
 ### Running evals
 
 ```bash
 bash scripts/run-eval.sh                      # all pilot skills
 bash scripts/run-eval.sh --skill tdd          # one skill
-bash scripts/run-eval.sh --case tdd-001 --runs 3   # one case, 3 runs (CI confidence)
+bash scripts/run-eval.sh --case tdd-001 --runs 3   # one case, 3 runs (statistical confidence)
 bash scripts/run-eval.sh --no-baseline        # faster, but can't prove the skill changes behavior
 ```
 
@@ -138,7 +142,7 @@ the skill's workflow for a task outside its scope.
 - **NEVER as a CI gate** — behavioral evals are slow (5-10 min/case), non-deterministic, and
   token-costly. Tier 1 (`validate-skills.sh`) remains the CI gate. There is no CI workflow.
 
-### Pilot skills (MVP)
+### Pilot skills
 
 `tdd`, `spec`, `code-review`, `debugging` — 2-5 cases each, including negative controls. See
 `evals/cases/`. The pattern is proven on these four; expanding to all 45 skills is mechanical

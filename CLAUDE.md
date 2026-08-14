@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This is a **Claude Code plugin** (`engineering-skills`) — a curated pack of 43 agent
+This is a **Claude Code plugin** (`engineering-skills`) — a curated pack of 45 agent
 skills organized by the software development lifecycle. See README.md for the full
 catalog and install instructions.
 

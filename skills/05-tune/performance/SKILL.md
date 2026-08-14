@@ -76,6 +76,8 @@ Then add monitoring or a regression test so the gain doesn't erode. If a perform
 
 **Red flags:** optimization without profiling data to justify it; N+1 patterns or unpaginated list endpoints in new code; images without dimensions / lazy loading / responsive sizes; `React.memo` / `useMemo` sprayed everywhere (overusing is as bad as underusing); a "win" that required a test to be changed, skipped, or deleted; several optimizations bundled into one unattributable measurement; the same failed optimization attempted again because nobody recorded the first attempt.
 
+**Output:** `PERF.md` (optional) — attempt ledger of performance changes (kept + reverted), so a dead idea isn't re-run next quarter. Mirrors `COST.md` in cost-optimization.
+
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, enforce simplicity, surgical scope)

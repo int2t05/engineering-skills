@@ -5,7 +5,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.6.2-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.6.3-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 A Claude Code plugin — **45 engineering skills** organized by the software development
@@ -53,7 +53,7 @@ engineering-skills/
 │   ├── 01-product/ … 09-operate/
 │   └── <skill>/SKILL.md + references/ + agents/openai.yaml
 ├── references/               # engineering / product / design principles (shared)
-├── scripts/                  # validate-skills.sh, gen-agents-yaml.py
+├── scripts/                  # validate-skills.sh, gen-agents-yaml.py, run-eval, check-routing-overlap.py
 ├── docs/                     # skill-outputs.md, workflow-prompts.md
 ├── AGENTS.md                 # universal entry for non-Claude agents
 └── LICENSE                   # MIT

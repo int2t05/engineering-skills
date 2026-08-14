@@ -5,7 +5,7 @@ Implements the RED-GREEN pattern: every case runs twice (with-skill and
 without-skill/baseline). A case passes only when with-skill satisfies the
 expectations AND the baseline does not — proving the skill changes behavior.
 
-Adapted from archive/upstream-anthropics-skills/skills/skill-creator/scripts/run_eval.py
+Adapted from the anthropics skill-creator eval pattern
 (trigger detection → behavioral judgment). Uses `claude -p --output-format stream-json`
 subprocesses; strips CLAUDECODE to allow nesting.
 
@@ -415,7 +415,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run behavioral evals for the engineering-skills pack")
     parser.add_argument("--skill", default=None, help="Skill to eval (default: all pilots)")
     parser.add_argument("--case", default=None, help="Single case id to run")
-    parser.add_argument("--runs", type=int, default=1, help="Runs per case (3 for CI confidence)")
+    parser.add_argument("--runs", type=int, default=None, help="Runs per case (overrides case-level runs; default: case's runs field or 1)")
     parser.add_argument("--no-baseline", action="store_true", help="Skip baseline runs (faster, less proof)")
     parser.add_argument("--model", default=None, help="Model id for claude -p")
     parser.add_argument("--threshold", type=float, default=0.67, help="Pass-rate threshold per case")
@@ -434,10 +434,13 @@ def main():
 
     results = []
     # Run cases sequentially (each case already parallelizes with/baseline internally if needed).
-    # True parallelism across cases would exhaust token budget too fast for MVP.
+    # True parallelism across cases would exhaust the token budget too fast.
     for case in cases:
         print(f"  Running {case['id']}...", file=sys.stderr, flush=True)
-        result = run_case(case, args.runs, not args.no_baseline, args.model, args.threshold)
+        # Case-level `runs` is the default; --runs CLI flag overrides it so a
+        # case that declares runs:3 can still be quick-checked with --runs 1.
+        runs = args.runs if args.runs is not None else case.get("runs", 1)
+        result = run_case(case, runs, not args.no_baseline, args.model, args.threshold)
         results.append(result)
         status = "PASS" if result["passed"] else "FAIL"
         with_str = f"with={result['with_skill_rate']:.0%}"

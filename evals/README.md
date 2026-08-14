@@ -53,9 +53,9 @@ before letting the CLI use its default.
   non-deterministic, and token-costly. Tier 1 (`validate-skills.sh`) remains the
   CI gate.
 
-> **Status: experimental / 待完善.** The harness runs and produces artifacts, but
+> **Status: experimental / not-yet-proven.** The harness runs and produces artifacts, but
 > formal RED-GREEN runs on GLM-5.2 have not yet achieved discrimination (a strong
-> model passes the cases without the skill loaded). See `docs/TODO.md` → "评估体系"
+> model passes the cases without the skill loaded). See `docs/TODO.md` (section A5)
 > for the tuning roadmap (pressure cases, analyzer pass, multi-run variance).
 > There is no CI workflow — evals run locally via the commands below.
 
@@ -113,8 +113,8 @@ Each case is a JSON object in `cases/<skill>.json`:
 - `grader.code_check` — deterministic check: command, cwd, pass condition.
 - `grader.llm_judge.expectations` — verifiable statements the grader scores
   PASS/FAIL against the transcript + output files.
-- `runs` — repetitions (1 for MVP, 3 for CI confidence). A case passes if
-  pass_rate >= 0.67 (2/3).
+- `runs` — case-level default repetitions; `--runs` CLI flag overrides (1 for a quick
+  check, 3 for statistical confidence). A case passes if pass_rate >= 0.67 (2/3).
 - `timeout_seconds` — per-run wall-clock timeout.
 
 ## Grader types
@@ -123,10 +123,10 @@ Each case is a JSON object in `cases/<skill>.json`:
   existence. Fast, deterministic. For code-producing skills (tdd, implement,
   test-generation, api-testing, e2e-testing, etc.).
 - **llm-judge** — a grader subagent reads the transcript + output files, scores
-  each expectation PASS/FAIL with evidence. For doc/behavior skills (spec,
-  architecture, code-review, debugging, etc.).
+  each expectation PASS/FAIL with evidence. For doc/behavior skills (architecture,
+  code-review, etc.).
 - **hybrid** — both. Code check (tests pass) + LLM-judge (process followed).
-  Most code-producing pilot skills use hybrid.
+  The current pilots tdd, spec, debugging use hybrid; code-review uses llm-judge.
 
 ## RED-GREEN baseline
 

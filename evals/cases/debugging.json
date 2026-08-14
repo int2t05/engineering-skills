@@ -34,7 +34,6 @@
     "task_prompt": "Add a new feature to src/cart.js: support a 'buyOneGetOne' discount type where every second item is free. applyDiscount should accept a type parameter.",
     "negative_control": true,
     "fixture": "evals/fixtures/cart-bug",
-    "fixture_setup": "pre-seed src/cart.js with the fixed (non-mutating) version",
     "grader": {
       "type": "llm-judge",
       "agent": "evals/agents/grader.md",

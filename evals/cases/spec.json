@@ -35,7 +35,6 @@
     "task_prompt": "Fix this typo in the README: 'recieve' should be 'receive'.",
     "negative_control": true,
     "fixture": "evals/fixtures/spec-brief",
-    "fixture_setup": "pre-seed README.md with the typo",
     "grader": {
       "type": "llm-judge",
       "agent": "evals/agents/grader.md",
