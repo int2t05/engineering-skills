@@ -14,7 +14,19 @@ skill. Every skill in this collection lives under one of nine phases.
 - Unsure which skill fits the task at hand.
 - A task spans multiple phases and you need to sequence them.
 
-**Not for:** tasks where the right skill is already obvious — invoke that skill directly instead of routing.
+**Not for:** mid-task when a skill is already active — don't re-route. For any new task, route
+even if it seems obvious; the skill may enforce discipline the shortcut skips.
+
+**Rationalizations that skip routing — resist them:**
+
+| Excuse | Reality |
+|---|---|
+| "This is just a simple question." | Questions are tasks. A skill may structure the answer. |
+| "I already know how to do this." | Knowing how ≠ following the discipline. The skill enforces the steps. |
+| "It's faster to just do it." | A skipped test-first or review is a bug shipped faster. |
+| "The skill is obvious here." | Obvious to route ≠ obvious to follow. Invoke it; let it run. |
+| "This is too small for a skill." | Small tasks are where discipline slips. `tdd`/`debugging` scale down. |
+| "I'll route after I start." | Starting unrouted biases you against the skill's process. Route first. |
 
 ## Steps
 
@@ -44,6 +56,12 @@ skill. Every skill in this collection lives under one of nine phases.
 ## Verify
 
 The routed skill's `## When to use` matches the task, and the skill activates via the Skill tool without a mismatch signal. If the skill's triggers don't fit the work, re-route — don't force-fit.
+
+**If no skill fits after disambiguation** — don't force a poor match:
+1. Say so — name the gap explicitly rather than silently improvising.
+2. Use general engineering ability to help directly (the principles are always loaded).
+3. If the gap is recurring, suggest the user invoke `skill-authoring` — the pack grows by
+   filling real needs, not speculative ones.
 
 ## References
 

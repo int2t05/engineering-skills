@@ -29,19 +29,24 @@
 一旦引入第三方贡献 skill，藏在 `scripts/install.sh` 里的恶意载荷会绕过所有现有检查。收割的 `skill-vetter` /
 `skills-security-check` 给出完整 grep 检查目录。
 
-- [ ] 把扫描循环从 `SKILL.md` 扩到 `find "$skill_dir" -type f`（覆盖 scripts/、references/、**所有**伴生文件）—— 一行架构改动解锁下面全部
-- [ ] prompt-injection 短语模板（`⚠️ CRITICAL REQUIREMENT`、`必须先执行`、`THE SKILL WILL NOT WORK`）
-- [ ] 混淆执行：`base64 -d | bash`、`curl | bash`、`wget | sh`
-- [ ] 裸 IP URL（`http://123.45.67.89`）
-- [ ] 云凭证路径（`~/.ssh`、`~/.aws`、`~/.kube`、`~/.gnupg`、`~/.netrc`）
-- [ ] 持久化/后门（`.bashrc`、`.zshrc`、`crontab`、`authorized_keys`、`systemctl`、`launchctl`）
-- [ ] 反向 shell（`nc -e`、`/dev/tcp/`、`mkfifo`、`socat`）
-- [ ] 数据外送（`curl -d`、`wget --post-data`）
-- [ ] 全局包安装（`pip install`、`npm i -g`、`brew install` 等）+ 非官方源（`--index-url`、`--registry`、`git+https`）
-- [ ] 破坏性操作（`rm -rf`、`shutil.rmtree`）带**项目本地 vs 系统级路径区分**：`rm -rf ./dist` 放行，`rm -rf /` 或 `~/*` 失败
-- [ ] 隐蔽标志（`--quiet`、`--silent`、`2>/dev/null`、`nohup`）
-- [ ] 硬编码凭证前缀（`sk-`、`ghp_`、`AKIA`、`-----BEGIN.*PRIVATE KEY-----`）
-- [ ] 可疑域名（`pastebin`、`ngrok`、`bit.ly`、`tinyurl`）
+- [x] 把扫描循环从 `SKILL.md` 扩到 `find "$skill_dir" -type f`（覆盖 scripts/、references/、**所有**伴生文件）—— 非 markdown 走执行/凭证/持久化模式，markdown 走注入短语
+- [x] prompt-injection 短语模板（`⚠️ CRITICAL REQUIREMENT`、`必须先执行`、`THE SKILL WILL NOT WORK`）
+- [x] 混淆执行：`base64 -d`、`curl | bash`、`wget | bash`
+- [x] 裸 IP URL（`http://123.45.67.89`）
+- [x] 云凭证路径（`~/.ssh`、`~/.aws`、`~/.kube`、`~/.gnupg`、`~/.netrc`）
+- [x] 持久化/后门（`.bashrc`、`.zshrc`、`crontab`、`authorized_keys`、`systemctl`、`launchctl`）
+- [x] 反向 shell（`nc -e`、`/dev/tcp/`、`mkfifo`、`socat`）
+- [ ] 数据外送（`curl -d`、`wget --post-data`）— **deferred**：design-research/github_fetcher 合法用 curl，需上下文感知区分 fetch vs exfil
+- [x] 非官方源（`--index-url`、`--registry`、`git+https`）；全局包安装（`pip install`、`npm i -g`）— **deferred**：eval fixture 合法 `npm install`，需区分 `-g` 全局 vs 本地
+- [x] 破坏性操作：`rm -rf /`、`rm -rf ~`、`rm -rf $`（系统级路径拦截）；完整 local-vs-system 区分（`shutil.rmtree` 参数解析）— **deferred**
+- [ ] 隐蔽标志（`--quiet`、`--silent`、`2>/dev/null`、`nohup`）— **deferred**：validator/run-eval 自身合法用 `--silent`/`2>/dev/null`，高假阳性
+- [x] 硬编码凭证前缀（`ghp_`、`AKIA`、`sk-ant-`、`-----BEGIN.*PRIVATE KEY-----`）
+- [ ] 可疑域名（`pastebin`、`ngrok`、`bit.ly`、`tinyurl`）— **deferred**：需上下文感知（design-research 合法 gallery 域名）
+
+> **A1 现状：** 9/13 模式已实现并验证（构造恶意样本被拦截，干净包 0 假阳性）。4 项 deferred
+> 因纯 grep 假阳性高（需上下文感知实现），记于此待后续。已实现的覆盖最高信号的脚本捆绑威胁
+> （reverse shell / 混淆执行 / 硬编码凭证 / 裸 IP / 云凭证路径 / 持久化 / 非官方源 / 系统级 rm）+
+> markdown 注入短语。
 
 **Cost:** 低（纯 bash grep） · **Value:** 高 · **Verify:** 构造含上述模式的样本 skill 文件，CI 拦截且 `Total errors: 0` 在干净 skill 上仍成立。
 
@@ -49,9 +54,9 @@
 
 收割的 `quick_validate.py` 做了几件当前验证器没做的：
 
-- [ ] `name:` == 目录名（防 frontmatter/目录名漂移）
-- [ ] description ≤ 1024 字符强制（anatomy 说了，验证器没查）
-- [ ] kebab-case 目录名强制（regex `/^[a-z][a-z0-9]*(-[a-z0-9]+)*$/`）
+- [x] `name:` == 目录名（防 frontmatter/目录名漂移）
+- [x] description ≤ 1024 字符强制（anatomy 说了，验证器没查）
+- [x] kebab-case 目录名强制（regex `/^[a-z][a-z0-9]*(-[a-z0-9]+)*$/`）
 
 **Cost:** 低（awk/grep） · **Value:** 中高 · **Verify:** 构造 `name:` 与目录名不符 / 超 1024 字符的样本，被 CI 拦截。
 
@@ -60,7 +65,7 @@
 `skills/meta/using-skills/SKILL.md` 的失败处理只有一句"re-route — don't force-fit"，无具体降级。
 收割的 `find-skills` 给出三步。
 
-- [ ] 加入三步降级：承认缺口 → 用通用能力直接帮 → 建议用 `skill-authoring` 创建（包内自然降级，不引入外部发现）
+- [x] 加入三步降级：承认缺口 → 用通用能力直接帮 → 建议用 `skill-authoring` 创建（包内自然降级，不引入外部发现）
 
 **Cost:** 低（几行） · **Value:** 高 · **Verify:** using-skills SKILL.md 更新 + `validate-skills.sh` 绿。
 
@@ -69,8 +74,8 @@
 当前路由器主动邀请跳过："Not for: tasks where the right skill is already obvious"。收割的 `using-superpowers`
 给出 12 行借口→现实对照表。
 
-- [ ] 在 using-skills 加精简红旗表（"This is just a simple question" → "Questions are tasks. Check for skills." 等约 6 条）
-- [ ] 收紧"Not for"措辞，避免鼓励跳过路由
+- [x] 在 using-skills 加精简红旗表（"This is just a simple question" → "Questions are tasks. Check for skills." 等约 6 条）
+- [x] 收紧"Not for"措辞，避免鼓励跳过路由
 
 **Cost:** 低 · **Value:** 中高 · **Verify:** using-skills 更新 + validator 绿。契合 engineering-principles §1-3（浮现假设/管理困惑/反弹）。
 

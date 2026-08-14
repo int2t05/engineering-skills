@@ -25,6 +25,13 @@ for phase in $phases; do
     [ -z "$bad" ] || { echo "FAIL: $skill_md disallowed frontmatter: $bad"; errors=$((errors+1)); }
     # Description must carry trigger phrasing so auto-invocation can fire.
     echo "$fm" | grep -qiE 'Triggers on|触发' || { echo "FAIL: $skill_md description lacks trigger phrasing (Triggers on / 触发)"; errors=$((errors+1)); }
+    # A2: structural drift — frontmatter name matches dir, kebab-case dir, description length
+    fm_name=$(echo "$fm" | sed -n 's/^name:[[:space:]]*//p' | tr -d '[:space:]')
+    dir_name=$(basename "${skill_dir%/}")
+    [ "$fm_name" = "$dir_name" ] || { echo "FAIL: $skill_md name '$fm_name' != dir '$dir_name'"; errors=$((errors+1)); }
+    echo "$dir_name" | grep -qE '^[a-z][a-z0-9]*(-[a-z0-9]+)*$' || { echo "FAIL: $skill_dir not kebab-case ('$dir_name')"; errors=$((errors+1)); }
+    desc_val=$(echo "$fm" | sed -n 's/^description:[[:space:]]*//p')
+    [ ${#desc_val} -le 1024 ] || { echo "FAIL: $skill_md description is ${#desc_val} chars (limit 1024)"; errors=$((errors+1)); }
     grep -q '^## When to use' "$skill_md" || { echo "FAIL: $skill_md missing ## When to use"; errors=$((errors+1)); }
     # When-to-use must state a negative boundary so adjacent tasks don't mis-route.
     wtu=$(awk '/^## When to use/{f=1;next} /^## /{f=0} f' "$skill_md")
@@ -57,6 +64,37 @@ for phase in $phases; do
     fi
   done
 done
+
+# --- A1: Security scan — flag malicious patterns in skill-bundled files ---
+# Threat: a third-party skill bundles a script that exfiltrates, persists, backdoors, or
+# injects instructions. Split by file type: prompt-injection phrases are a markdown
+# (instruction) threat; execution/credential/persistence patterns are a script threat.
+# Non-markdown files are scanned for the script threats so a skill that documents "watch
+# for curl|bash" in its own markdown isn't false-flagged. Markdown is scanned only for
+# prompt-injection phrases.
+sec_tmp=$(mktemp)
+for phase in $phases; do
+  for skill_dir in "skills/$phase"/*/; do
+    [ -d "$skill_dir" ] || continue
+    # Non-markdown bundled files (scripts, yaml, json): execution / credential / persistence
+    while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      grep -nE 'nc -e |/dev/tcp/|mkfifo|socat |base64 -d|curl.*\| *bash|wget.*\| *bash|ghp_[0-9a-f]{36}|AKIA[0-9A-Z]{16}|sk-ant-|BEGIN.*PRIVATE KEY|http://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+|~/\.(ssh|aws|kube|gnupg|netrc)|crontab -|authorized_keys|systemctl |launchctl |--index-url|--registry |git\+https|rm -rf /|rm -rf ~|rm -rf \$' "$f" >> "$sec_tmp" 2>/dev/null || true
+    done < <(find "$skill_dir" -type f ! -name '*.md' ! -path '*/node_modules/*' 2>/dev/null)
+    # Markdown files: prompt-injection phrases (instruction-injection threat)
+    while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      grep -nE '⚠️ CRITICAL REQUIREMENT|THE SKILL WILL NOT WORK|必须先执行' "$f" >> "$sec_tmp" 2>/dev/null || true
+    done < <(find "$skill_dir" -type f -name '*.md' 2>/dev/null)
+  done
+done
+if [ -s "$sec_tmp" ]; then
+  while IFS= read -r line; do
+    echo "FAIL: security scan — $line"
+  done < "$sec_tmp"
+  errors=$((errors + $(grep -c '' "$sec_tmp")))
+fi
+rm -f "$sec_tmp"
 
 echo "Skills found: $count (expected 45)"
 [ "$count" -eq 45 ] || { echo "FAIL: expected 45 skills, found $count"; errors=$((errors+1)); }
