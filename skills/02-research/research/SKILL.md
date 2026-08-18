@@ -63,8 +63,11 @@ Every mode fans out across ≥3 source categories and ≥3 query angles, but the
 Search current information; never rely on memory. Fetch the source page before summarizing — never
 treat search snippets as final evidence. On empty or navigation-only pages, retry in order: add
 wait, switch format, switch canonical URL, try sitemap/site search, fall back to raw GitHub/API
-source. Mark access limits if all fail. Prefer primary sources; discard reposts, SEO listicles,
-off-topic, and low-signal duplicates. Collect both Chinese and English sources where relevant.
+source. Mark access limits if all fail. If the fetch tool itself is unavailable (network policy,
+auth wall) or a search tool's quota is exhausted, switch tools by quota dependency — see
+[references/web-tool-fallback.md](references/web-tool-fallback.md). Prefer primary sources; discard
+reposts, SEO listicles, off-topic, and low-signal duplicates. Collect both Chinese and English
+sources where relevant.
 
 ### 4. Adversarially verify claims
 
@@ -124,4 +127,5 @@ do not present the result as researched — explain the limitation and offer an 
 - [references/general-mode.md](references/general-mode.md) — general mode: 7-section template, fan-out source strategy, mermaid/glossary patterns.
 - [references/market-mode.md](references/market-mode.md) — market mode: 4 sub-modes (investor/competitive/sizing/tech-vendor), 6-section template, market frameworks.
 - [references/tech-selection-mode.md](references/tech-selection-mode.md) — tech-selection mode: GitHub-first P0-P3 source priority, 10-section template, selection rubric.
+- [references/web-tool-fallback.md](references/web-tool-fallback.md) — when a fetch tool is blocked or quota-exhausted: tiered fallback by quota dependency (GitHub → indexed docs → scrape → discovery), orthogonal to page-level retries.
 - [references/pressure-scenarios.md](references/pressure-scenarios.md) — failure-mode pressure tests for this skill.
