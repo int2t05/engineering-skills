@@ -72,6 +72,9 @@ Rules: every flag has an owner and an expiration date; clean up within 2 weeks o
 
 ### 3. Follow the staged rollout sequence
 
+Notify the team in the deploy channel before starting: state the deploy window, what's shipping,
+and the rollback trigger. Then follow the sequence:
+
 ```
 1. DEPLOY to staging          → full test suite + manual smoke of critical flows
 2. DEPLOY to production (OFF) → verify health check; check error monitoring
@@ -117,7 +120,7 @@ Before deploying:
 - [ ] Feature flag configured (if applicable)
 - [ ] Rollback plan documented
 - [ ] Monitoring dashboards set up
-- [ ] Team notified of deployment
+- [ ] Team notified before deployment (channel + window stated)
 
 After deploying:
 - [ ] Health check returns 200

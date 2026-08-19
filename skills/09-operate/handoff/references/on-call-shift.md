@@ -30,7 +30,7 @@ last 12 hours of logs. Five categories:
 ### Active incidents
 
 For each live incident:
-- Severity (SEV-1 through SEV-3) and user impact
+- Severity (SEV1 through SEV3) and user impact
 - When it started, what triggered it (deploy, dependency, traffic spike)
 - Current status: mitigated / investigating / waiting on external dependency
 - Who's engaged (incident commander, service owner, vendor support)

@@ -61,7 +61,7 @@ Prompt template (one per skill, stored for re-runs):
 **A Tier-2 failure usually means fix the description, not the eval.** Missing vocabulary → add the
 phrase users actually say. Over-broad → narrow the `Use when…` or sharpen the `Not for`.
 
-> The full Tier 2 prompt set (~5 per skill × 47 = ~235 prompts) is deferred to实战 — prompts should
+> The full Tier 2 prompt set (~5 per skill × 47 = ~235 prompts) is deferred to a later run — prompts should
 > target the final descriptions after a refactor, not be written prematurely. This reference defines
 > the shape so the work is ready when prioritized.
 

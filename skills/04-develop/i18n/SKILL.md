@@ -68,9 +68,11 @@ _Verify: every message with a count uses ICU plural syntax; no `count + " items"
 
 Decide how a user's locale is determined and how it maps to routes:
 
-- **Detection order:** explicit user preference (account setting) → URL path/query →
-  Accept-Language header → geo (with caution — geo ≠ language) → default
-- **Persistence:** store the choice (cookie / account) so it survives navigation
+- **Detection order:** explicit user preference (account setting) → URL path/query → cookie (last
+  chosen locale) → Accept-Language header → geo (with caution — geo ≠ language) → default. See
+  [references/i18n-checklist.md](references/i18n-checklist.md) §1 for the full 6-step ladder.
+- **Persistence:** cookie covers logged-out users; account setting covers logged-in — both persist
+  the choice across visits.
 - **Routing:** locale-prefixed routes (`/en/...`, `/ar/...`) for SEO and shareability; or
   path-less with client detection for app-only surfaces — choose deliberately
 - **SSR / hydration:** the server must render in the detected locale, not render a default then

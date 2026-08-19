@@ -15,7 +15,6 @@ incident so the system improves, not just the symptom.
 - A production incident is live (page fired, users affected, error spike)
 - An incident just resolved and needs a postmortem
 - Reviewing or rehearsing incident response readiness
-- Triggers on "incident", "on-call", "page", "postmortem", "事故响应", "线上故障", "复盘"
 
 **Not for:** diagnosing a dev-time bug (use `debugging`); adding telemetry after the fact (use
 `observability`); launching a new release (use `shipping`). This skill is for when something

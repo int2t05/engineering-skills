@@ -7,7 +7,7 @@ description: Use when working on CI/CD pipelines and automation — build, test,
 
 Automate quality gates so no change reaches production without passing tests, lint, type checking, and build. CI/CD is the enforcement mechanism for every other skill — it catches what humans and agents miss, and it does so consistently on every change.
 
-**Shift left:** catch problems as early in the pipeline as possible. A bug caught in linting costs minutes; the same bug caught in production costs hours. **Faster is safer:** smaller batches and more frequent releases reduce risk, not increase it. A deployment with 3 changes is easier to debug than one with 30.
+**Shift left:** catch problems as early in the pipeline as possible. A bug caught in linting costs minutes; the same bug caught in production costs hours. A deployment with 3 changes is easier to debug than one with 30.
 
 ## When to use
 
@@ -76,7 +76,7 @@ Fix the issue and verify locally before pushing again."
 
 **Preview deployments** — every PR gets a preview for manual testing (Vercel/Netlify/etc.).
 
-**Feature flags** — decouple deployment from release. Ship code without enabling it; roll back without redeploying (disable the flag); canary (1% → 10% → 100%); A/B test. Flag lifecycle: create → enable for testing → canary → full rollout → **remove the flag and dead code**. Flags that live forever become technical debt — set a cleanup date when you create them. (See the `shipping` skill for the full flag rollout sequence and thresholds.)
+**Feature flags** — decouple deployment from release. Ship code without enabling it; roll back without redeploying (disable the flag); canary; A/B test. Flag lifecycle: create → enable for testing → canary → full rollout → **remove the flag and dead code**. Flags that live forever become technical debt — set a cleanup date when you create them. (See the `shipping` skill for the full flag rollout sequence and thresholds — `5% → 25% → 50% → 100%`.)
 
 **Staged rollouts** — PR merged to main → staging deployment (auto) → manual verification → production deployment → monitor 15-min window → roll back on errors or done.
 

@@ -43,7 +43,7 @@ Compare the next billing cycle (or a representative week) against the baseline. 
 
 ### 5. Guard against regression
 
-Record the change in an attempt ledger so the same cut isn't re-investigated. Set a budget alert at the new baseline + 20% so creep is caught early, not at month-end. Tag every resource with owner + environment so future attribution is automatic.
+Record the change in an attempt ledger so the same cut isn't re-investigated. Set a budget alert at the new baseline + 20% so creep is caught early, not at month-end. Tag every resource with owner + environment so future attribution is automatic. For idle cuts (dev/staging schedules, unattached volumes), put a guard on re-provisioning — a policy/IaC rule or a tag-based alarm that flags the resource returning, so the cut persists rather than silently regrowing.
 
 ## Verify
 

@@ -90,7 +90,7 @@ burn rate = (actual error rate) / (allowed error rate = 1 - SLO)
 Alert on burn rate across two windows — a short window (fast detection) confirmed by a long window
 (avoid false positives):
 
-| Alert | Short window (1h) | Long window (6h) | Meaning |
+| Alert | Short window | Long window | Meaning |
 |---|---|---|---|
 | **Page** (fast burn) | burn rate > 14.4 | burn rate > 6 | Budget exhausted in < 2 days if sustained |
 | **Ticket** (slow burn) | burn rate > 3 | burn rate > 1 | Budget exhausted in < 30 days if sustained |

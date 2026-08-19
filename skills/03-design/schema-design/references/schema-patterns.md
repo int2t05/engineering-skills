@@ -30,7 +30,7 @@ complicates, how consistency is maintained.
 
 | Pattern | When to use | Consistency cost |
 |---|---|---|
-| **Calculated column** (e.g. `order_total`) | Hot read path; calculation is expensive or跨-row | Must update on every input change — trigger or app-level sync |
+| **Calculated column** (e.g. `order_total`) | Hot read path; calculation is expensive or cross-row | Must update on every input change — trigger or app-level sync |
 | **Pre-joined snapshot** (e.g. `user_name` copied into `comment`) | Avoid join on ultra-hot read; tolerate stale | Update lag when source changes; acceptable if source is near-static |
 | **Aggregate table** (e.g. `daily_sales_summary`) | Reporting/analytics over large raw tables | Rebuild on late-arriving data; schedule or event-driven refresh |
 | **Materialized view** | DB-maintained denormalization | Refresh policy (concurrent or rebuild); stale window |

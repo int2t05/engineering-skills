@@ -148,7 +148,7 @@ flowchart TD
 
 ## 9. 源附录与核查记录
 ### 9.1 源参考
-- [标题](<url>) — 访问：YYYY-MM-DD — 日期：[发布/更新或不可见] — 可靠性：[P0/P1/P2/P3] — 支持：[论点]
+- [标题](<url>) — 访问：YYYY-MM-DD — 日期：[发布/更新或不可见] — 可靠性：[per-mode source-priority taxonomy, see mode ref] — 支持：[论点]
 ### 9.2 负面断言核查记录
 - [断言]：搜索词 + org + 结果（found / not found / UNVERIFIED）
 ### 9.3 UNVERIFIED 项

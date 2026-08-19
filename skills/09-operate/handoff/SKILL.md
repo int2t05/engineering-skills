@@ -12,7 +12,6 @@ Write a handoff brief summarizing the current conversation so a fresh agent can 
 
 - The current session is ending and another agent (or a future you) will continue the work.
 - Switching between foreground and background agents mid-task.
-- Triggers on "handoff", "hand over", "交接", "移交工作".
 
 **Not for:** continuing work in the same session — just keep going; summarizing work that's already captured in specs/plans/ADRs — reference those by path instead.
 

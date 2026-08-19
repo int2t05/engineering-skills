@@ -25,10 +25,12 @@ Task arrives
     │
     What phase is this work in?
     │
+    ├── meta — authoring or routing skills themselves
+    │   └── Author/edit/evaluate a skill? ─────────────→ skill-authoring
+    │
     ├── 01 PRODUCT — shaping what to build
     │   ├── Vague idea, need to explore intent? ────────→ brainstorm
     │   ├── Need a spec / acceptance criteria? ─────────→ spec
-    │   ├── Author/edit/evaluate a skill? ─────────────→ skill-authoring (meta)
     │   └── Open-source strategy / growth / COSS? ──────→ oss-strategy
     │
     ├── 02 RESEARCH — learning before deciding

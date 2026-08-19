@@ -18,8 +18,8 @@ the extraction axes are tuned to what `imagegen` and `frontend-design` consume.
 ## Extraction axes (per reference)
 
 For each reference, extract these six axes — as **text description**, not pixel measurement
-(WebFetch returns markdown, not the screenshot). These map directly to what `imagegen` Step 4 and
-`frontend-design` Step 2 need:
+(WebFetch returns a page's markdown, not the screenshot — see [sources.md](sources.md) §Capability
+boundary). These map directly to what `imagegen` Step 4 and `frontend-design` Step 2 need:
 
 | Axis | What to describe | Feeds |
 |---|---|---|

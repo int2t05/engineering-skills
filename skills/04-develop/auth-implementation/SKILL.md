@@ -72,6 +72,7 @@ Authentication ≠ authorization. "Who are you?" vs "are you allowed?". On every
 - [ ] Passwords hashed with bcrypt / argon2id / scrypt (never plaintext, MD5, or SHA)
 - [ ] Tokens and sessions never stored in `localStorage` or client-accessible JS
 - [ ] Session cookies carry `httpOnly` + `secure` + `sameSite`
+- [ ] Session ID rotated on login and on any privilege change; absolute + idle timeout set; server-side invalidation on logout (delete the session record, not just clear the cookie)
 - [ ] Access tokens short-lived (≤ 15 min); refresh tokens rotated with reuse detection
 - [ ] Authorization (ownership or role) checked on every protected endpoint — not just authentication
 - [ ] Auth endpoints rate-limited; error messages do not leak which field failed

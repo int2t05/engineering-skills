@@ -110,11 +110,12 @@ Use PostgreSQL as the primary database, hosted on AWS RDS.
 
 ```
 docs/
-└── adr/
-    ├── 0001-use-postgresql-database.md
-    ├── 0002-adopt-microservices.md
-    ├── 0003-implement-event-sourcing.md
-    └── README.md
+└── design/
+    └── adr/
+        ├── 0001-use-postgresql-database.md
+        ├── 0002-adopt-microservices.md
+        ├── 0003-implement-event-sourcing.md
+        └── README.md
 ```
 
 ## Quick Reference

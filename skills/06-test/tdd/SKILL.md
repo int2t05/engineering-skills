@@ -19,10 +19,11 @@ in disguise — delete means delete.
 - Refactoring or changing existing behavior
 - Triggers on "tdd", "test-driven", "red green refactor", "测试驱动开发", "红绿重构", "测试驱动"
 
-**Not for:** generating tests for already-written code (use `test-generation`); have a spec and want slice-by-slice feature implementation (use `implement` — it drives TDD within each slice); throwaway prototypes or pure config (just implement directly).
+**Not for:** generating tests for already-written code (use `test-generation`); have a spec and want slice-by-slice feature implementation (use `implement` — it drives TDD within each slice).
 
 **Exceptions (confirm with the user):** throwaway prototypes, generated code,
-pure configuration changes with no behavioral impact.
+pure configuration changes with no behavioral impact — for these, confirm with
+the user before skipping TDD rather than defaulting either way.
 
 ## Steps
 

@@ -121,6 +121,8 @@ auto-waiting locators and web-first assertions.
 - [ ] UI changes verified in the browser with screenshots (before/after)
 - [ ] Console is clean — zero errors and warnings
 - [ ] Network requests return expected status codes and payloads
+- [ ] Test directory mirrors route groups; one `describe` per page/feature; `ui/` for cross-cutting concerns
+- [ ] `playwright.config.js` set for reliability: `fullyParallel`/`workers` match data isolation; `retries` on CI; `trace`/`screenshot`/`video` on failure; `auth-setup` wired as dependency
 
 ## References
 

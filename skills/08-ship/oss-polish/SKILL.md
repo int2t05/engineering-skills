@@ -15,13 +15,12 @@ positioning.
 - Repo has working code but a bare README, missing topics, or no About description
 - Want a commit-history narrative (`REPOSITORY_SUMMARY.md` + `THE_STORY_OF_THIS_REPO.md`)
 - Researching trending repos in a domain for positioning benchmarking
-- Triggers on "polish my repo", "beautify open source project", "开源项目美化", "优化项目展示"
 
 **Not for:** open source business model or commercialization strategy (use `oss-strategy`), or general project documentation (use `documentation-audit`).
 
 ## Steps
 
-### Step 1: Analyze project
+### 1. Analyze project
 
 1. Read entry files (`package.json`, `go.mod`, `Cargo.toml`, `requirements.txt`, `mkdocs.yml`).
 2. Scan source dirs for architecture and key features; note tech stack, target users, unique value.
@@ -30,7 +29,7 @@ positioning.
 
 Result: a one-paragraph summary of what the project does, who it's for, and what's special.
 
-### Step 2: Generate README
+### 2. Generate README
 
 Produce a professional `README.md` with sections in this order:
 
@@ -56,7 +55,7 @@ Produce a professional `README.md` with sections in this order:
 
 Formatting: ATX headers, blank line before lists, code fences with a language tag, lines <120 chars.
 
-### Step 3: Topics & About description
+### 3. Topics & About description
 
 1. Research trending repos in the same domain — what topics do they use? Run
    `python references/scripts/github_fetcher.py` with `TOPIC=<domain>` env var to list repos
@@ -69,7 +68,7 @@ Formatting: ATX headers, blank line before lists, code fences with a language ta
 Present the final list + rationale to the user before applying. Apply via GitHub API
 (`PUT /repos/:owner/:repo/topics`) and repo settings (description).
 
-### Step 4: Commit-history narrative story
+### 4. Commit-history narrative story
 
 Generate two files in the repo root using git data as evidence — write the files directly,
 do NOT paste markdown to chat.
@@ -92,7 +91,7 @@ Git commands to run systematically (POSIX forms for Git Bash):
 Be specific: actual file names, commit messages, contributor names. Evidence-based — explain
 why patterns exist (holidays, releases, incidents).
 
-### Step 5: Trending-repo positioning
+### 5. Trending-repo positioning
 
 1. Run `python references/scripts/github_fetcher.py` with `TOPIC=<your-domain>` to fetch top
    repos by stars.
@@ -104,7 +103,7 @@ why patterns exist (holidays, releases, incidents).
 
 `GH_TOKEN` env var is optional but recommended (5000 req/hr authenticated vs 60 unauthenticated).
 
-### Step 6: Consolidated report
+### 6. Consolidated report
 
 Output a single report:
 

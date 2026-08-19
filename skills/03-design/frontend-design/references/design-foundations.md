@@ -1,7 +1,5 @@
 # Design Foundations
 
-Condensed from the former cognitive-laws, color-theory, gestalt-and-hierarchy, typography-fundamentals, usability-heuristics, and information-architecture references.
-
 The psychology, theory, and evaluation frameworks beneath a usable interface: how the brain groups and perceives elements, how users decide and remember, how color and type carry meaning, how hierarchy directs the eye, how heuristics surface flaws, and how content organization makes things findable. Each principle below has a concrete UI consequence — not abstract theory, but constraints on component and layout decisions.
 
 ## Contents

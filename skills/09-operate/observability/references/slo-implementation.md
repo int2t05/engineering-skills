@@ -117,7 +117,7 @@ multipliers for your SLO: replace `0.001` with your allowed error rate (1 - SLO)
 
 Every SLO alert must link to a runbook. The alert without a runbook is noise that trains
 on-call to ignore pages. See
-[../incident-response/references/runbook-template.md](../incident-response/references/runbook-template.md)
+[${CLAUDE_PLUGIN_ROOT}/skills/09-operate/incident-response/references/runbook-template.md](${CLAUDE_PLUGIN_ROOT}/skills/09-operate/incident-response/references/runbook-template.md)
 for the runbook structure.
 
 ## 3. Error budget queries

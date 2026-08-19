@@ -5,6 +5,10 @@ feel like they came from a serious identity studio — not generic logos, not ra
 messy AI moodboards. Every board is a visual argument for why the brand exists: one strong brand
 idea, presented as a complete identity system.
 
+The shared anti-slop ban list (banned brands, filler verbs, gradients, glassmorphism, blobs, fake
+KPIs) is canonical for all modes — load [anti-tells.md](anti-tells.md) and apply it. The brand-mode
+Verify checklist below is a brand-specific subset, not a replacement for the full catalog.
+
 ## 1. Infer brand strategy first
 
 Before generating, think through the brand's meaning — the visual system must be based on strategy,

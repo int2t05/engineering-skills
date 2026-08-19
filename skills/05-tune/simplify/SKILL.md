@@ -51,7 +51,7 @@ One simplification at a time. Run the test suite after each change. The incremen
 separate-PR, and Rule-of-500 rules are in §9 (behavior-preserving change discipline) of
 engineering-principles.md — apply them here.
 
-- Make the change → run the suite → pass: continue to the next; fail: revert and reconsider.
+- Make the change → run the suite + linter/formatter → pass: continue to the next; fail: revert and reconsider.
 - Avoid batching multiple simplifications into one untested change. If something breaks, you need to know which simplification caused it.
 
 ### 5. Verify the result

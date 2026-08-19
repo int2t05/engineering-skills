@@ -98,9 +98,9 @@ product is flat, and you find out before investing in implementation.
 
 Three sources of problems to discover:
 
-- **Pain points (痛点)** — acute, frequent, actively resented. Strongest signal.
-- **Desires (痒点)** — aspirational, lower urgency. Validated only if behavior follows.
-- **Trends (趋势)** — emerging shifts that change what's possible. Weak alone, strong combined with pain.
+- **Pain points** — acute, frequent, actively resented. Strongest signal. (Chinese PM term: 痛点.)
+- **Desires** — aspirational, lower urgency. Validated only if behavior follows. (Chinese PM term: 痒点.)
+- **Trends** — emerging shifts that change what's possible. Weak alone, strong combined with pain. (Chinese PM term: 趋势.)
 
 **Evaluation funnel:** `Frequency × Pain intensity × Willingness to pay`
 

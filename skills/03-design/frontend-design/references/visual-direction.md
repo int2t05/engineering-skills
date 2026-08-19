@@ -3,8 +3,7 @@
 Shared depth reference for the `imagegen` (web mode) and `image-to-code` skills. The combinatorial
 variation engine, hero-scale mapping, composition anchors, background-mode menu, CTA variation,
 continuity rules, creativity escalation, and the anti-slop ban list. Both skills load this file
-instead of maintaining separate inline copies of the same engine — eliminating the duplication where
-`imagegen` web mode carried 9 axes and `image-to-code` carried a 7-axis subset.
+instead of maintaining separate inline copies of the same engine.
 
 ## Contents
 

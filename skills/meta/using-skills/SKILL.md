@@ -6,7 +6,8 @@ description: Use when starting a session or deciding which skill applies — map
 # Using Skills
 
 A router. Identify the SDLC phase of the incoming work, then activate the matching
-skill. Every skill in this collection lives under one of nine phases.
+skill. Skills live under nine SDLC phases, plus a `meta` group for this router and
+`skill-authoring`.
 
 ## When to use
 

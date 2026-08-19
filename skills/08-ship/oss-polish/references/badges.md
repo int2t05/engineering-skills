@@ -188,7 +188,7 @@ This document provides a comprehensive reference for badges commonly used in Git
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 ```
 
-**CC BY-NC-SA 4.0** (Default for this project)
+**CC BY-NC-SA 4.0** (NonCommercial + ShareAlike — for projects that restrict commercial use and require derivatives to use the same license)
 ```markdown
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ```

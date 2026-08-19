@@ -114,9 +114,10 @@ and passes only the client-needed subset to the client provider.
 
 ## 6. Next.js App Router example
 
-Next.js is the canonical RSC framework; the pattern below uses `next-intl` (the most widely adopted
-App Router i18n library). The structure generalizes — Remix, TanStack Start, and Astro follow the
-same request-scoped shape with their own primitives.
+Next.js is the canonical RSC framework; the pattern below uses `next-intl` (mature App Router i18n
+with middleware-based locale detection, server/client message splitting, and ICU support). The
+structure generalizes — Remix, TanStack Start, and Astro follow the same request-scoped shape with
+their own primitives.
 
 ```
 app/
