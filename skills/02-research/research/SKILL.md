@@ -67,7 +67,9 @@ source. Mark access limits if all fail. If the fetch tool itself is unavailable 
 auth wall) or a search tool's quota is exhausted, switch tools by quota dependency — see
 [references/web-tool-fallback.md](references/web-tool-fallback.md). Prefer primary sources; discard
 reposts, SEO listicles, off-topic, and low-signal duplicates. Collect both Chinese and English
-sources where relevant.
+sources where relevant. Source-code material (repo, SDK source, release notes whose canonical home
+is a repo) → `git clone --depth 1` into `archive/` (gitignored provenance) and read locally, rather
+than relying on remote fetch of individual files.
 
 ### 4. Adversarially verify claims
 
@@ -94,10 +96,11 @@ Two checks are mandatory, not optional:
 
 Default language: match the user's input language (Chinese input → Chinese report, English → English). The user can override with an explicit instruction. Proper nouns, code identifiers,
 filenames, and license names stay in original form. Inline-cite at each claim (`[text](url)`), not
-just a URL dump in the appendix. Use the mode's output template (7-section general / 6-section
-market / 10-section tech-selection) — trim to fit but keep section order. ≥3 mermaid diagrams
-mixing `flowchart` and `sequenceDiagram` for general; tables for comparisons; inline-explain jargon
-on first use and aggregate a glossary.
+just a URL dump in the appendix. Use the **conclusion-first 9-section spine** shared by all modes —
+§1 TL;DR → §2 核心认知 → §3-§7 主体 → §8 避坑清单 → §9 源附录与核查记录. Load
+[references/report-spine.md](references/report-spine.md) for the full structure, main-thread rule,
+mermaid rules, and shared skeleton. Each mode ref fills the mode-specific 主体 (§3-§7). Trim to fit
+but keep fixed sections (§1/§2/§8/§9) in order.
 
 ### 6. Deliver a short chat summary
 
@@ -115,7 +118,8 @@ do not present the result as researched — explain the limitation and offer an 
 - The mode was chosen via the criteria table, not guessed; if the ask hit two or more modes, the user was asked to pick.
 - Any negative claim ("未发布/不存在/尚未开源/无官方实现") carries a GitHub falsification record (search term, org, result) or an `UNVERIFIED:` label — never a bare secondary-source assertion.
 - For any tech/framework/org topic, GitHub source evidence is present regardless of mode.
-- For general: ≥3 mermaid diagrams mixing `flowchart` and `sequenceDiagram`; 7-section structure.
+- For all modes: §1 TL;DR is conclusion-first (not process/method); §2 核心认知 states one main thread in a findable sentence and includes ≥1 decision flowchart; §8 避坑清单 has numbered negative claims each carrying evidence or a falsification trail; §9 源附录与核查记录 has 9.2 负面断言核查记录 + 9.3 UNVERIFIED + 9.4 访问限制与缺口 subsections.
+- For general: 9-section conclusion-first structure; ≥3 mermaid (≥1 decision flowchart in §2), each serving information.
 - For tech-selection: GitHub repo evidence + official docs present; stars alone did not drive the recommendation.
 - For market: all numbers sourced or labeled estimates; old data flagged; recommendation follows from evidence.
 - Final reply states: file path, source count, access limitations.
@@ -124,8 +128,9 @@ do not present the result as researched — explain the limitation and offer an 
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline for every skill (surface assumptions, verify don't assume, push back).
 - [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (the real competitor is the current workaround). Linked by market + tech-selection modes.
-- [references/general-mode.md](references/general-mode.md) — general mode: 7-section template, fan-out source strategy, mermaid/glossary patterns.
-- [references/market-mode.md](references/market-mode.md) — market mode: 4 sub-modes (investor/competitive/sizing/tech-vendor), 6-section template, market frameworks.
-- [references/tech-selection-mode.md](references/tech-selection-mode.md) — tech-selection mode: GitHub-first P0-P3 source priority, 10-section template, selection rubric.
+- [references/report-spine.md](references/report-spine.md) — shared conclusion-first 9-section spine (TL;DR → 核心认知 → 主体 → 避坑 → 源附录与核查记录), main-thread rule, mermaid rules, shared skeleton.
+- [references/general-mode.md](references/general-mode.md) — general mode: 9-section conclusion-first template, fan-out source strategy, mermaid/glossary patterns.
+- [references/market-mode.md](references/market-mode.md) — market mode: 4 sub-modes (investor/competitive/sizing/tech-vendor), 9-section conclusion-first template, market frameworks.
+- [references/tech-selection-mode.md](references/tech-selection-mode.md) — tech-selection mode: GitHub-first P0-P3 source priority, 9-section conclusion-first template, selection rubric.
 - [references/web-tool-fallback.md](references/web-tool-fallback.md) — when a fetch tool is blocked or quota-exhausted: tiered fallback by quota dependency (GitHub → indexed docs → scrape → discovery), orthogonal to page-level retries.
 - [references/pressure-scenarios.md](references/pressure-scenarios.md) — failure-mode pressure tests for this skill.
