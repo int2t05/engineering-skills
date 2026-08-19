@@ -4,11 +4,30 @@ Reference for the `research` skill. The shared **conclusion-first 9-section spin
 (general / market / tech-selection) follow. Each mode fills the mode-specific 主体 (§3-§7); the
 fixed sections (§1, §2, §8, §9) do not rename or reorder across modes.
 
+## Contents
+
+- [Why conclusion-first](#why-conclusion-first)
+- [Scope](#scope)
+- [The 5-point spine](#the-5-point-spine)
+- [The main thread](#the-main-thread)
+- [Mermaid rules](#mermaid-rules)
+- [Format discipline](#format-discipline)
+- [Shared skeleton shell](#shared-skeleton-shell)
+
 ## Why conclusion-first
 
 A research report is read to decide, not to audit the research process. The reader wants the answer
 first, the backing second. Reports that open with "目标 + 调研方法" bury the conclusion and force the
 reader to assemble it from §6. Lead with the conclusion; let the body earn it.
+
+## Scope
+
+This spine covers **decision-oriented** reports — selection, market decision, survey-for-action.
+The reader wants to *decide and act*. It does **not** cover the **expository-encyclopedia** genre
+(e.g. Wikipedia-style articles, as STORM produces), where the reader wants to *understand a topic*:
+the lead is context-establishing rather than verdict-leading, the body is purely expository, and no
+pitfall-audit or verification register exists. A conclusion-first TL;DR, a decision flowchart, and a
+避坑清单 serve a decision; an encyclopedia has none of these and should not be forced into this spine.
 
 ## The 5-point spine
 
