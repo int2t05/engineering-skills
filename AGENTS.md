@@ -79,6 +79,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | ship | `oss-polish` | "开源项目美化", "优化项目展示", README/topics polish |
 | operate | `observability` | logs, metrics, "可观测性", "监控告警", instrumentation |
 | operate | `documentation-audit` | docs drift, "写文档", "写 README", "文档化这个功能", sync docs |
+| operate | `purity-audit` | "纯净审计", "残留审计", files read like edited many times, historical residue |
 | operate | `handoff` | hand off to another session, "交接" (*user-typed*) |
 | operate | `incident-response` | "事故响应", "线上故障", "复盘", incident, on-call, postmortem |
 
@@ -89,6 +90,7 @@ Several skills carry **sub-task references** for focused scenarios — the main
 - `debugging` → log triage without full reproduction (`references/log-triage.md`)
 - `implement` → lightweight changes: small edits, renames, scaffolding (`references/lightweight-changes.md`)
 - `documentation-audit` → writing new docs from scratch (`references/writing-docs.md`)
+- `purity-audit` → per-category auditor subagent dispatch (`references/subagent-dispatch.md`)
 - `deprecation-migration` → dependency upgrades (`references/dependency-upgrade.md`)
 
 Every skill's `## When to use` states a **negative boundary** (`NOT for` → the

@@ -101,8 +101,8 @@ if [ -s "$sec_tmp" ]; then
 fi
 rm -f "$sec_tmp"
 
-echo "Skills found: $count (expected 47)"
-[ "$count" -eq 47 ] || { echo "FAIL: expected 47 skills, found $count"; errors=$((errors+1)); }
+echo "Skills found: $count (expected 48)"
+[ "$count" -eq 48 ] || { echo "FAIL: expected 48 skills, found $count"; errors=$((errors+1)); }
 
 # --- Plugin manifest sync: skills[] array must match actual skills on disk ---
 manifest=".claude-plugin/plugin.json"
@@ -112,7 +112,7 @@ if [ -f "$manifest" ]; then
     sync_errors=$("$PY" - "$manifest" "$count" <<'PYEOF'
 import json, os, sys
 manifest, expected = sys.argv[1], int(sys.argv[2])
-d = json.load(open(manifest))
+d = json.load(open(manifest, encoding="utf-8"))
 arr = d.get("skills", [])
 errs = []
 if len(arr) != expected:
@@ -196,7 +196,7 @@ fi
 routing_files="README.md README.zh-CN.md AGENTS.md skills/meta/using-skills/references/phase-tree.md skills/meta/using-skills/SKILL.md"
 if [ -f ".claude-plugin/plugin.json" ] && { command -v python >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1; }; then
   PY=$(command -v python || command -v python3)
-  skill_names=$("$PY" -c 'import json; d=json.load(open(".claude-plugin/plugin.json")); print("\n".join(e.split("/")[-1] for e in d["skills"]))' | tr -d '\r')
+  skill_names=$("$PY" -c 'import json; d=json.load(open(".claude-plugin/plugin.json", encoding="utf-8")); print("\n".join(e.split("/")[-1] for e in d["skills"]))' | tr -d '\r')
   for name in $skill_names; do
     for rf in $routing_files; do
       [ -f "$rf" ] || { echo "FAIL: routing surface $rf not found"; errors=$((errors+1)); continue; }

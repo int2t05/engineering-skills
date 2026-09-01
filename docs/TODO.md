@@ -1,10 +1,8 @@
 # 项目待办 — 技能包改进
 
-> **来源：** 2026-08-14 对 workbuddy 三 marketplace 的 191 个 SDLCx skill 做全量调研，以 7 维度
-> （覆盖缺口 / 解剖结构 / 元层路由 / 验证安全 / 编排 / 内容器件 / 技能创作法）交叉比对当前 45-skill 包。
-> 本文件是过滤后的可执行清单；原始收割物与子 agent 报告为本地研究材料，未发布。
+> **来源：** 竞品 SDLCx skill 全量调研，7 维度交叉比对后过滤出的可执行清单。
 >
-> **原则：** 本包主动"去胖"（v2.0.0 合并技能、多次 purity audit、CLAUDE.md 明令不得臆测增项）。
+> **原则：** 本包主动"去胖"（CLAUDE.md 明令不得臆测增项）。
 > 调研约 60% 印证当前设计正确，约 25% 该跳过，仅约 15% 真正值得改。下列按执行顺序排。
 >
 > **与 code-review 契约的关系：** `docs/TODO.md` 是项目级待办（见 `docs/skill-outputs.md`）。
@@ -94,7 +92,7 @@
 - [X] 10 个 case（6 正向 + 4 负控），4 个 fixture（cart-bug / paginate-buggy / buggy-diff / spec-brief）
 - [X] 负控测试精度（技能不该激活的任务，grader 反转逻辑）
 
-**实跑发现（2026-08-14，GLM-5.2）：**
+**实跑发现（GLM-5.2）：**
 
 | Case            | with          | base | discriminating | 性质                                       |
 | --------------- | ------------- | ---- | -------------- | ------------------------------------------ |
@@ -185,7 +183,7 @@ discriminating（with 过、base 不过），analyzer pass 报出非判别断言
 | SLO 实现深度          | `observability` + 更深 ref                                | Prometheus recording/alerting 规则、燃尽告警、复盘节奏                       | 低   | 同上（已引`slo-methodology.md`）       |
 | On-call 班次交接      | `handoff` + `references/on-call-shift.md` 模式          | 活跃事件/进行中调查/最近变更/已知问题/升级触发 + 班前中后清单                | 低   | 同上（与现有 dev-work handoff 模式区分） |
 
-- [x] 逐个实现（v2.7.0 一次性交付 6 个 ref：sql-optimization / design-system-audit / openapi-lifecycle / changelog-and-release-notes / slo-implementation / on-call-shift）
+- [x] 逐个实现（交付 6 个 ref：sql-optimization / design-system-audit / openapi-lifecycle / changelog-and-release-notes / slo-implementation / on-call-shift）
 
 ---
 
@@ -200,12 +198,12 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 | `error-handling`       | 04-develop | 横切关注点（熔断/重试/Result type/优雅降级）无主人；`debugging` 诊断 bug，不设计错误传播策略。多语言、框架中立                                                                                  | 中    |
 | `accessibility-review` | 07-verify  | 07-verify 有 code-review/debugging/security-review/linting 但无 a11y。法律要求、常被跳过、WCAG 标准框架中立、干净缺口                                                                             | 低-中 |
 
-- [x] `auth-implementation` — 已发布（v2.7.0）：SKILL.md + token-patterns.md + oauth-flows.md + openai.yaml
-- [x] `error-handling` — 已发布（v2.7.0）：SKILL.md + retry-patterns.md + openai.yaml
-- [X] `accessibility-review` — 已发布为 `a11y-review`（v2.6.0）
+- [x] `auth-implementation` — 已发布：SKILL.md + token-patterns.md + oauth-flows.md + openai.yaml
+- [x] `error-handling` — 已发布：SKILL.md + retry-patterns.md + openai.yaml
+- [x] `accessibility-review` — 已发布为 `a11y-review`
 - [ ] 每个：`gen-agents-yaml.py` + `validate-skills.sh` 绿 + 5 处 surface 同步 + version bump + CHANGELOG
 
-**边界情况 — RAG/LLM-app：** 倾向**扩展** `prompt-engineering` 加 `references/rag-architecture.md`（向量库/embedding/分块/rerank/eval），而非新建——收割版 LangChain 锁定严重，新建成本高且偏离纯 markdown。
+**边界情况 — RAG/LLM-app：** 倾向**扩展** `prompt-engineering` 加 `references/rag-architecture.md`（向量库/embedding/分块/rerank/eval），而非新建——竞品 LangChain 技能锁定严重，新建成本高且偏离纯 markdown。
 
 ---
 
@@ -225,8 +223,7 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 ## Tier F — 内容质量审计（2026-08-14 全量 skill 审计，skill 级具体发现）
 
-> **来源：** 3 个并行 audit agent 通读全部 45 个 SKILL.md + references/，按**内容质量**（非结构——结构归 validator）
-> 报告具体发现。high 级已人工逐条验证。与 Tier B/C（竞品调研来的扩展/新增）**互补不冲突**：
+> **来源：** 全量 skill 内容质量审计（非结构——结构归 validator）。与 Tier B/C（竞品调研来的扩展/新增）**互补不冲突**：
 > B/C 答"该加什么深度"，F 答"现有内容哪里错/薄/矛盾"。交汇处已标注。
 
 ### HIGH — 错误 / 误导 / 缺失关键（已验证，优先修）

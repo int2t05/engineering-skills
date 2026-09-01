@@ -5,10 +5,10 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 [![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.9.0-blue)](./.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/version-2.10.0-blue)](./.claude-plugin/plugin.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-A Claude Code plugin — **47 engineering skills** organized by the software development
+A Claude Code plugin — **48 engineering skills** organized by the software development
 lifecycle. Shared engineering principles are injected at every session start, so the
 discipline is ambient — not something you have to remember to load. PM and UIUX skills
 additionally layer `product-principles.md` / `design-principles.md` as domain discipline.
@@ -47,7 +47,7 @@ engineering-skills/
 │   ├── workflows/validate.yml   # CI: schema + adapter-sync + invocation-sync
 │   ├── ISSUE_TEMPLATE/          # bug-report.md
 │   └── PULL_REQUEST_TEMPLATE.md
-├── skills/                   # 47 skills, 9 SDLC phases + meta
+├── skills/                   # 48 skills, 9 SDLC phases + meta
 │   ├── meta/using-skills/       # router
 │   ├── meta/skill-authoring/    # author + eval skills
 │   ├── 01-product/ … 09-operate/
@@ -59,7 +59,7 @@ engineering-skills/
 └── LICENSE                   # MIT
 ```
 
-## Catalog — 47 skills by phase
+## Catalog — 48 skills by phase
 
 | Phase | Skills |
 |---|---|
@@ -72,7 +72,7 @@ engineering-skills/
 | 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
 | 07-verify | a11y-review, code-review, debugging, security-review, linting |
 | 08-ship | shipping, git-workflow, ci-cd, deprecation-migration, oss-polish |
-| 09-operate | observability, documentation-audit, incident-response, handoff |
+| 09-operate | observability, documentation-audit, purity-audit, incident-response, handoff |
 
 > Triggers + routing: [`AGENTS.md`](AGENTS.md) · Product matrix: [`docs/skill-outputs.md`](docs/skill-outputs.md)
 

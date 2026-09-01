@@ -41,7 +41,7 @@ even if it seems obvious; the skill may enforce discipline the shortcut skips.
    - **06-test** — `tdd` · `test-generation` · `api-testing` · `e2e-testing` · `load-testing`
    - **07-verify** — `a11y-review` · `code-review` · `debugging` · `security-review` · `linting`
    - **08-ship** — `shipping` · `git-workflow` · `ci-cd` · `deprecation-migration` · `oss-polish`
-   - **09-operate** — `observability` · `documentation-audit` · `handoff` · `incident-response`
+   - **09-operate** — `observability` · `documentation-audit` · `purity-audit` · `handoff` · `incident-response`
 
 2. Disambiguate with three questions:
    - *Building new, or fixing what exists?* New → start at `01-product` (`brainstorm` / `spec`), not `04-develop`. Fixing → `07-verify` (`debugging`), then `06-test` (`tdd`) to lock the fix.

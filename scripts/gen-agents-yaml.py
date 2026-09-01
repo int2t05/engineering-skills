@@ -96,7 +96,7 @@ def main():
         agents_dir = skill_md.parent / "agents"
         agents_dir.mkdir(exist_ok=True)
         out = agents_dir / "openai.yaml"
-        out.write_text(render_yaml(meta), encoding="utf-8")
+        out.write_text(render_yaml(meta), encoding="utf-8", newline="\n")
         count += 1
     print(f"Generated {count} agents/openai.yaml files")
     if errors:

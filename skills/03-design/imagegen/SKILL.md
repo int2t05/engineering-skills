@@ -73,6 +73,7 @@ slogans, or unique visual assets. References are quality training, not templates
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
 - [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional, consistency from systems)
+- [${CLAUDE_PLUGIN_ROOT}/references/product-icon.md](${CLAUDE_PLUGIN_ROOT}/references/product-icon.md) — product-icon execution criterion (study OSS icon systems; not simple shapes + simple colors)
 - [references/brand-mode.md](references/brand-mode.md) — brand identity board workflow (strategy, visual modes, logo concepting, board composition)
 - [references/web-mode.md](references/web-mode.md) — web section image workflow (section count, hero scale, 9-axis variation engine)
 - [references/mobile-mode.md](references/mobile-mode.md) — mobile screen flow workflow (platform mode, design bible, phone mockup, safe areas)

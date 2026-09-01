@@ -93,6 +93,7 @@ Task arrives
         ├── Logs / metrics / traces / alerts? ──────────→ observability
         ├── Docs drifted from code? ────────────────────→ documentation-audit
         ├── Write new docs from scratch? ───────────────→ documentation-audit (writing-docs ref)
+        ├── Files read like edited many times? ─────────→ purity-audit
         ├── Production incident / on-call / postmortem? → incident-response
         └── Hand a session off to a colleague? ─────────→ handoff
 ```

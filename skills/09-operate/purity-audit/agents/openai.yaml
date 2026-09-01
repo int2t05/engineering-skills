@@ -1,0 +1,3 @@
+interface:
+  display_name: "Purity Audit"
+  short_description: "Auditing whether code or docs read as first-written — flags tracing residue, decorative…"

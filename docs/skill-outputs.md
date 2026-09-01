@@ -43,6 +43,7 @@
 | | `code-review` | **待办清单** | `docs/TODO.md` | 大写 | 代码↔TODO 双向校验的项目级待办（本阶段最重要产物） |
 | **7 上线发布** | `shipping` | 回滚计划 | `docs/launch/rollback-plan.md` | 小写 | 发布前回滚预案（触发条件/步骤/数据库/回滚耗时），项目级 |
 | **8 运行维护** | `documentation-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告 |
+| | `purity-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-purity.md` | 阶段目录 | 16 点纯净度审计 + 产审计报告 |
 | | `incident-response` | **复盘报告** | `docs/postmortem/YYYY-MM-DD-<slug>.md` | 阶段目录 | 无指责复盘：时间线/影响/根因/行动项 |
 | | `handoff` | 交接简报 | OS 临时目录 | — | 给下一会话的 context/决策/下一步 |
 | **9 开源上线** | `oss-polish` | **README** | `README.md` | 大写 | 开源展示面（本阶段最重要产物） |
