@@ -101,8 +101,8 @@ if [ -s "$sec_tmp" ]; then
 fi
 rm -f "$sec_tmp"
 
-echo "Skills found: $count (expected 48)"
-[ "$count" -eq 48 ] || { echo "FAIL: expected 48 skills, found $count"; errors=$((errors+1)); }
+echo "Skills found: $count"
+[ "$count" -gt 0 ] || { echo "FAIL: no skills found (run from repo root?)"; errors=$((errors+1)); }
 
 # --- Plugin manifest sync: skills[] array must match actual skills on disk ---
 manifest=".claude-plugin/plugin.json"

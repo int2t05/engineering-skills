@@ -145,7 +145,7 @@ the skill's workflow for a task outside its scope.
 ### Pilot skills
 
 `tdd`, `spec`, `code-review`, `debugging` — 2-5 cases each, including negative controls. See
-`evals/cases/`. The pattern is proven on these four; expanding to all 47 skills is mechanical
+`evals/cases/`. The pattern is proven on these four; expanding to all skills is mechanical
 case-writing once a skill's grader type and expectations are defined.
 
 ## When to run each tier
