@@ -30,9 +30,9 @@
 | | `api-design` | API 契约 | `docs/API/*.md` | 大写目录 | 每端点组一份，请求/响应/错误/示例 |
 | | `frontend-design` | UIUX 设计报告 | `docs/design/DESIGN.md` | 阶段目录 | 从零设计：设计系统/信息架构/交互/组件规划 |
 | | `frontend-design` | 前端审计 | `docs/design/frontend-audit.md` | 阶段目录 | 审计现有前端的优化建议 |
-| | `architecture` | 决策记录 | `docs/design/adr/NNNN-slug.md` | 阶段目录 | 每项重大架构决策的 ADR（跨版本共享） |
+| | `architecture` | 决策记录 | `docs/design/adr/NNNN-slug.md` | 阶段目录 | 每项重大架构决策的 ADR，含同类需求参考证据（跨版本共享） |
 | | `spec` | **需求文档** | `docs/PRD.md`（项目级，简洁，main）+ `docs/vX.Y/prd.md`（版本级，详细，版本分支） | 大写+小写 | 项目级 shared source of truth；版本级详细 PRD；编写/重构/更新为人工可审计版 |
-| | `architecture` | **架构总览** | `docs/TECH.md`（项目级，简洁，main）+ `docs/vX.Y/tech.md`（版本级，详细，版本分支） | 大写+小写 | 系统架构图、组件、NFR、数据层（由 PRD 驱动） |
+| | `architecture` | **架构总览** | `docs/TECH.md`（项目级，简洁，main）+ `docs/vX.Y/tech.md`（版本级，详细，版本分支） | 大写+小写 | 系统架构图、组件、NFR、数据层（由 PRD 驱动）；证据化决策 + 人工审计区（草案→人工审计→已确认→成熟） |
 | **2 实现计划** | `documentation-audit` | 审计报告 | `docs/audit/YYYY-MM-DD-documentation.md` | 阶段目录 | 同步五类正式文档到代码 + 产审计报告 |
 | | `breakdown` | **实现计划** | `docs/PLAN.md`（项目级，简洁，main）+ `docs/vX.Y/plan.md`（版本级，详细，版本分支） | 大写+小写 | ticket 拆解作章节，blocking edges（本阶段最重要产物） |
 | **4 优化重构** | `cost-optimization` | 成本台账 | `COST.md`（可选） | 大写 | 成本优化尝试记录（kept + reverted），镜像 PERF.md，防重复踩坑 |
@@ -55,7 +55,7 @@
 | 文档 | 产出 skill | 风格 |
 |---|---|---|
 | `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | spec | 项目级简洁多 mermaid（main）；版本级详细（版本分支）；稳定 ID + 人工审计区 |
-| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | architecture | 项目级简洁多 mermaid（main）；版本级详细（版本分支） |
+| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | architecture | 项目级简洁多 mermaid（main）；版本级详细（版本分支）；证据化决策 + 人工审计区 |
 | `docs/API/*.md` | api-design | 详细请求/响应（跨版本共享） |
 | `docs/FLOW/*.md` | 跨任务产物 | mermaid 流程 + 详细数据流描述（跨版本共享） |
 | `docs/TODO.md` | code-review | 按业务合并（项目级） |

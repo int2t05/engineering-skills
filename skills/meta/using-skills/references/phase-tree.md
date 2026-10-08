@@ -37,7 +37,7 @@ Task arrives
     │   ├── Deep multi-source / market / tech-selection? → research (3 modes)
     │
     ├── 03 DESIGN — shaping the system
-    │   ├── High-level system architecture? ────────────→ architecture
+    │   ├── High-level architecture / tech decisions / design audit? → architecture
     │   ├── Domain language / glossary / ADR? ──────────→ domain-modeling
     │   ├── API contracts / interface design? ──────────→ api-design
     │   ├── Module shape / seams / depth? ──────────────→ codebase-design

@@ -44,8 +44,9 @@ What constraints exist? What are we trying to achieve?]
 [What other options were evaluated and why were they rejected?]
 
 ## References
-- [Link to relevant documentation]
-- [Link to discussion/RFC]
+[证据区：每条 = 同类需求的真实实现。至少一条；禁止无参考决策。]
+
+- [名称＋链接]（访问日期 YYYY-MM-DD）— 同类需求：做了什么；我们采纳什么、不采纳什么；与我们约束的差异
 ```
 
 ## Example: Database Selection
@@ -102,7 +103,7 @@ Use PostgreSQL as the primary database, hosted on AWS RDS.
 - Considered: Better horizontal scaling
 
 ## References
-- https://www.postgresql.org/docs/current/
+- [Shopify's PostgreSQL at scale](https://shopify.engineering/…)（访问日期 2026-10-08）— 同类需求（高并发订单事务）：分库分表＋读副本；我们采纳读副本，不采纳分表（当前量级不需要）；差异：其自托管，我们用 RDS
 - Internal RFC: Database Selection for E-commerce Platform
 ```
 
@@ -127,3 +128,4 @@ docs/
 | Decision | The choice | What did we choose? |
 | Consequences | Impact | What happens now? |
 | Alternatives | Options | What else was considered? |
+| References | Evidence | 同类需求谁做过？我们采纳了什么、哪里不同？ |

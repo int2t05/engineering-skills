@@ -39,7 +39,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | product | `oss-strategy` | OSS business model, COSS, "开源策略", "开源商业模式" |
 | research | `research` | deep web research, cited report, "深度检索", "调研报告" |
 | research | `research` | "deep research", "市场调研", "竞品分析", "技术选型", "选哪个" (general/market/tech-selection modes) |
-| design | `architecture` | system design, "架构设计", "系统设计", ADR |
+| design | `architecture` | system design, "架构设计", "系统设计", ADR, evidence-based tech decisions, design audit, "这个技术方案怎么审计" |
 | design | `domain-modeling` | domain model, ubiquitous language, "领域模型", CONTEXT.md |
 | design | `api-design` | REST/GraphQL contracts, "接口设计", "API 契约" |
 | design | `codebase-design` | deep modules, "深化模块", "重构架构" |
