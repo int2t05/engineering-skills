@@ -84,6 +84,7 @@ sees it, and how it's structured.
 - Agent references actual project files and APIs (not hallucinated ones).
 - Context is refreshed when switching between major tasks.
 - Conflicts and incomplete requirements are surfaced, not silently resolved.
+- Inline plan emitted before multi-step execution (Step 5).
 
 ## References
 

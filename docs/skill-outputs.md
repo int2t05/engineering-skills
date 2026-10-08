@@ -54,16 +54,15 @@
 
 | 文档 | 产出 skill | 风格 |
 |---|---|---|
-| `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | spec | 项目级简洁多 mermaid（main）；版本级详细（版本分支）；稳定 ID + 人工审计区 |
-| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | architecture | 项目级简洁多 mermaid（main）；版本级详细（版本分支）；证据化决策 + 人工审计区 |
+| `docs/PRD.md`（+ `docs/vX.Y/prd.md`） | spec | 项目级简洁多 mermaid（每图承载信息，main）；版本级详细（版本分支）；稳定 ID + 人工审计区 |
+| `docs/TECH.md`（+ `docs/vX.Y/tech.md`） | architecture | 项目级简洁多 mermaid（每图承载信息，main）；版本级详细（版本分支）；证据化决策 + 人工审计区 |
 | `docs/API/*.md` | api-design | 详细请求/响应（跨版本共享） |
 | `docs/FLOW/*.md` | 跨任务产物 | mermaid 流程 + 详细数据流描述（跨版本共享） |
 | `docs/TODO.md` | code-review | 按业务合并（项目级） |
 
-> **版本分层规则**：ROADMAP.md 是项目全局视图（简洁，多版本+验收项，main）。
-> PRD/TECH/PLAN 分两层——大写项目级（`docs/PRD.md` 等，简洁多 mermaid，main 分支）+
-> 小写版本级（`docs/vX.Y/prd.md` 等，详细，版本分支）。单版本项目自动回退 `docs/` 根，
-> 不建版本目录。API/FLOW/TODO/research 跨版本共享，不重复。
+> **版本分层规则**：单一权威定义见 [skill-anatomy.md](../references/skill-anatomy.md)「Output declaration」——
+> PRD/TECH/PLAN 分两层（大写项目级 + 小写版本级），单版本项目自动回退 `docs/` 根。
+> ROADMAP.md 是项目全局视图；API/FLOW/TODO/research 跨版本共享，不重复。
 
 ## 跨任务产物（非 skill 直接产出，工作流约定）
 

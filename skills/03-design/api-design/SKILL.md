@@ -107,7 +107,12 @@ Separate input types (what the caller provides) from output types (what the syst
 including server-generated fields). Use branded types for IDs to prevent accidentally passing a
 `UserId` where a `TaskId` is expected.
 
-**Output:** `docs/API/*.md` — one file per endpoint group, with full request/response shapes, parameters, errors, and examples. Close with an AUD block (6–10 items: contract consistency across endpoint groups, single error strategy, versioning/deprecation plan, naming conventions, pagination) — implementation starts only after the human audit passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
+### 8. Publish
+
+Write `docs/API/*.md` — one file per endpoint group — and commit alongside the implementation;
+the contract doc and the code land together.
+
+**Output:** `docs/API/*.md` — one file per endpoint group, with full request/response shapes, parameters, errors, and examples. Close with an AUD block (6–12 items: contract consistency across endpoint groups, single error strategy, versioning/deprecation plan, naming conventions, pagination) — implementation starts only after the human audit passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 

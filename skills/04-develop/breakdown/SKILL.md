@@ -53,7 +53,7 @@ until the way to the destination is clear.
    - `docs/vX.Y/plan.md` — the current version's detailed ticket breakdown (title, blocked by,
      what it delivers, ordered blockers first), on the version branch. Falls back to
      `docs/PLAN.md` alone for single-version projects.
-   Close with an AUD block (6–10 items: slice completeness, blocking-edge correctness,
+   Close with an AUD block (6–12 items: slice completeness, blocking-edge correctness,
    expand–contract sequencing, scope vs spec) — implementation starts only after the human
    audit passes. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
    Work the **frontier**: any ticket whose blockers are all done.

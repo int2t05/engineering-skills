@@ -9,7 +9,8 @@ Design system-level architecture: pick patterns, size components, choose datasto
 decisions as ADRs. Pragmatic trade-offs over theoretical purity. Core principle:
 **evidence-grounded and auditable** — every decision cites real implementations that faced
 similar requirements (never designed from nothing), and the document matures through a
-human-audit loop: draft → human audit → confirmed → revised → mature.
+human-audit loop: draft → human audit → confirmed → mature, with revisions looping back on
+findings.
 
 ## When to use
 
@@ -93,13 +94,15 @@ the ADRs it depends on. Commit both — living documents.
 ### 7. Human-audit gate: audit → confirm → revise → mature
 
 A TECH doc is not done when written — it's done when a human has audited it. Write an AUD
-section into the doc (6–10 items covering reference authenticity, reference fit, alternatives,
+section into the doc (6–12 items covering reference authenticity, reference fit, alternatives,
 NFR measurability, failure/recovery, consistency, cost & ops, reversibility — see
 `references/tech-audit-guide.md`), each with required evidence and a close criterion. Status on
 the first screen tracks the loop: 草案 draft → 人工审计 in-audit → 已确认 confirmed → 成熟
 mature. Only the human moves the status. Findings drive revision; revisions preserve ADR
 numbers and IDs; re-audit until every item closes. _Verify: audit feedback is incorporated or
 explicitly overridden with rationale; all AUD items pass before the doc is called mature._
+
+**Output:** `docs/TECH.md` (project-level, concise, main) + `docs/vX.Y/tech.md` (version-level, detailed, version branch) + `docs/design/adr/NNNN-slug.md` (decision records, cross-version). Single-version projects fall back to `docs/TECH.md` alone.
 
 ## Verify
 
@@ -109,7 +112,7 @@ explicitly overridden with rationale; all AUD items pass before the doc is calle
 - [ ] Architecture diagram renders (Mermaid valid); figures have IDs/titles/captions; all components and data flows shown
 - [ ] Every NFR category has a concrete target or explicit "not applicable", linked to the goal it serves
 - [ ] Failure modes identified with mitigations; operational complexity and cost considered
-- [ ] AUD section present (6–10 items) with evidence and close criteria; statuses tracked; unverified claims marked; no fabricated confirmations
+- [ ] AUD section present (6–12 items) with evidence and close criteria; statuses tracked; unverified claims marked; no fabricated confirmations
 - [ ] Status reflects the loop honestly (草案/人工审计/已确认/成熟); revisions preserved ADR numbers
 - [ ] Human audit passed — every AUD item closed
 

@@ -52,6 +52,7 @@ for a CLI/library focus on startup time, binary size, and cross-platform tests.
 - [ ] Environment variables set in production; DB migrations applied or ready
 - [ ] DNS, SSL, CDN configured; health check endpoint responds
 - [ ] Logging and error reporting configured
+- [ ] Monitoring dashboards set up (error rate, p99 — produced via `observability`)
 - [ ] README, API docs, ADRs, changelog, user-facing docs updated
 
 ### 2. Ship behind a feature flag

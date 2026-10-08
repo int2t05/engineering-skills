@@ -123,6 +123,9 @@ For every merge/rebase conflict:
 - [ ] Both intents preserved where possible; trade-offs noted where not
 - [ ] Typecheck, tests, and format all pass after resolution
 
+For guardrail setup (when the PreToolUse hook was installed):
+- [ ] Hook registered and actually blocking a destructive command (`git push --force`, `reset --hard` dry-checked)
+
 For every release (anything with consumers):
 - [ ] The version bump matches the change: breaking → major, additive → minor, fix → patch
 - [ ] The release is tagged, and the version is derived from the tag

@@ -49,7 +49,9 @@ one that only survives approval is not.
 is the gate; evidence is the key.
 
 **Posture:** no completion claim without fresh verification evidence. "Seems right" / "should work"
-/ "I'm pretty sure" are not evidence — they're assertions. The bar is: identify the proving command,
+/ "I'm pretty sure" are not evidence — they're assertions; this is the definition-of-done bar
+([../../../../references/definition-of-done.md](../../../../references/definition-of-done.md)) applied
+at claim time. The bar is: identify the proving command,
 run it, read the full output, confirm it proves the claim.
 
 ### Workflow

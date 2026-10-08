@@ -78,7 +78,8 @@ Quote the spec line for each finding. Under 400 words. If no spec, skip this axi
 
 #### 2d. Synthesize findings
 
-Present both reports under `## Standards` and `## Spec` headings. Do **not** merge or rerank across
+Before reporting, re-read each Required/Critical finding's hunk and confirm the problem is real —
+drop findings that don't survive scrutiny. Then present both reports under `## Standards` and `## Spec` headings. Do **not** merge or rerank across
 axes — a change can pass one and fail the other; keeping them separate stops one from masking the other.
 
 **Approval standard.** Approve when the change definitely improves overall code health, even if

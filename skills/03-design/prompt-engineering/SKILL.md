@@ -109,7 +109,7 @@ code commits pair with test results.
 **Output:** `docs/design/PROMPT.md` — the prompt design document: task definition, success
 criteria, prompt architecture (component breakdown), model selection rationale, eval harness
 description and dataset, guardrails, and version history with eval scores. Close with an AUD
-block (6–10 items: success-criteria measurability, eval coverage of failure modes, guardrail
+block (6–12 items: success-criteria measurability, eval coverage of failure modes, guardrail
 failure behaviors, cost caps, PII handling) — implementation starts only after the human audit
 passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 

@@ -71,7 +71,7 @@ reader actually chooses. Default path: `docs/research/competitor.md`. If the fil
 | 6 | GitHub 仓库深度 | Per-candidate: repo, license, activity, strengths/weaknesses (evidence-backed), requirement fit. |
 | 7 | 维度核心结论 | Per-dimension analysis (并行/互换/额度/数据源/成熟度…). Absorbs "为什么选" + "效果如何" — expected effect and success metrics as one dimension. Supports §1, doesn't restate it. |
 | 8 | 避坑清单 | Numbered negative claims (e.g. "X 无官方 MCP" / "Y 已进维护模式"), each with evidence or falsification trail. |
-| 9 | 源附录与核查记录 | 9.1 源 · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证: prototype/benchmark/test plan). |
+| 9 | 源附录与核查记录 | 9.1 源参考 · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证: prototype/benchmark/test plan). |
 
 - ≥1 decision flowchart in §2; add more only where they earn their place. No "mixing" requirement.
 - Tables dense (speed-tables are the workhorse); one sentence per idea; jargon inline-explained.

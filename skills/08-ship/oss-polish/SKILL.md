@@ -122,7 +122,7 @@ CLI or GitHub MCP (`create_or_update_file` for README/LICENSE; GitHub API
 `PUT /repos/:owner/:repo/topics` for topics; repo settings for the About
 description).
 
-**Output:** `README.md` (polished) + `REPOSITORY_SUMMARY.md` + `THE_STORY_OF_THIS_REPO.md` (commit-history narrative), plus topics/About applied via GitHub API.
+**Output:** `README.md` (polished) + `REPOSITORY_SUMMARY.md` + `THE_STORY_OF_THIS_REPO.md` (commit-history narrative), plus topics/About applied via GitHub API. The three docs close with a 确认 block — narrative claims (metrics, differentiators, story) carry their evidence, and the human approves the report before any change applies via GitHub API. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -139,5 +139,6 @@ description).
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares.
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [references/badges.md](references/badges.md) — shields.io templates by category (languages, hosting, license, status, custom).
 - [references/scripts/](references/scripts/) — `collect-site-metrics.py` (README metrics), `validate-readme.py` (README linter, scores 0–100), `github_fetcher.py` + `readme_fetcher.py` + `config.py` (trending-repo research via GitHub API).

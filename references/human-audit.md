@@ -57,6 +57,12 @@ just the claim:
 - Every conclusion carries evidence: measurement, run output, citation with retrieval date.
 - Unverified claims marked as such; no fabricated confirmations.
 - Dismissed findings stay in the doc with the reason — deletion destroys the audit trail.
+- Decision vocabulary maps to the domain: defect/finding reports (security, a11y, code review)
+  use 修复/接受/驳回; conclusions, research, and plans use 采纳/修正/驳回. Both record the
+  human's decision plus the reason.
+
+Ephemeral artifacts are exempt — a handoff brief written to an OS temp dir has nothing durable
+to audit; the baseline applies to docs that persist in the repo.
 
 ## Status lifecycle
 

@@ -115,7 +115,7 @@ checklist. Follow priority 1→10 to decide which category to focus on first.
 
 - `viewport-meta` - width=device-width initial-scale=1 (never disable zoom)
 - `mobile-first` - Design mobile-first, then scale up to tablet and desktop
-- `breakpoint-consistency` - Use systematic breakpoints (e.g. 375 / 768 / 1024 / 1440)
+- `breakpoint-consistency` - Use systematic breakpoints (e.g. 320 / 768 / 1024 / 1440)
 - `readable-font-size` - Minimum 16px body text on mobile (avoids iOS auto-zoom)
 - `line-length-control` - Mobile 35–60 chars per line; desktop 60–75 chars
 - `horizontal-scroll` - No horizontal scroll on mobile; ensure content fits viewport width

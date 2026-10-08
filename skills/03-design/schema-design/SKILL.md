@@ -101,7 +101,7 @@ stated per entity._
 **Output:** `docs/design/SCHEMA.md` — the data model document: ER diagram, entity definitions with
 columns/types/constraints, index plan mapped to access patterns, partitioning strategy, and any
 denormalization trade-offs. Reference ADRs for significant model decisions. Close with an AUD
-block (6–10 items: domain-model consistency, FK/constraint coverage, index-to-query mapping,
+block (6–12 items: domain-model consistency, FK/constraint coverage, index-to-query mapping,
 partitioning decision, migration safety) — implementation starts only after the human audit
 passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 

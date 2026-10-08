@@ -84,7 +84,8 @@ Conclusion-first. §1/§2/§8/§9 are fixed by [report-spine.md](report-spine.md
 organized by **sub-mode** (investor / competitive / sizing / tech-vendor) — the dimension most
 useful to the reader's market decision. Default path: `docs/research/market.md`. If the file
 exists, append `-2` or `-HHmmss`; overwrite only with explicit permission. Default language:
-Chinese unless the user specifies otherwise. Trim to fit, keep order and fixed sections.
+match the user's input language (the shared spine rule in SKILL.md Step 5). Trim to fit, keep
+order and fixed sections.
 
 | § | Section | Purpose |
 | --- | --- | --- |
@@ -96,7 +97,7 @@ Chinese unless the user specifies otherwise. Trim to fit, keep order and fixed s
 | 6 | 风险与注意事项 | Contrarian evidence, downside risk, stale data, fragile assumptions. |
 | 7 | 建议 | Concrete next action, not "值得继续研究." |
 | 8 | 避坑清单 | Numbered negative claims (e.g. "X 已停运" / "数据截至 Y 月已过时"), each with evidence or falsification trail. |
-| 9 | 源附录与核查记录 | 9.1 源 · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证). |
+| 9 | 源附录与核查记录 | 9.1 源参考 · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证). |
 
 - ≥1 market map or decision flowchart in §2; add more only where they earn their place. No "mixing" requirement.
 - Tables dense; one sentence per idea; jargon inline-explained; all numbers sourced or labeled estimates.
@@ -156,8 +157,6 @@ flowchart TD
 ### 9.4 访问限制与缺口
 - [访问限制 + 后续可调研/验证]
 ````
-
-**Output:** `docs/research/market.md` — a decision-oriented research summary with source attribution.
 
 ## Verify (market mode)
 

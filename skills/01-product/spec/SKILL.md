@@ -5,12 +5,11 @@ description: Use when starting a new project, feature, or significant change —
 
 # Spec
 
-Write, refactor, or update the spec/PRD — the shared source of truth for what we're building,
-why, and how we'll know it's done. Code without a spec is guessing. Core principle:
-**concise, readable, easy to audit** — clarity and accuracy first, brevity second; never drop
-a binding rule to save space. From the first screen a human reader can answer: for whom, what
-problem, what this version ships, how the flow goes, what happens on exceptions, how it's
-accepted, and what still needs a decision.
+Write, refactor, or update the spec/PRD — the shared source of truth for what we're building, why,
+and how we'll know it's done. Code without a spec is guessing. Core principle: **concise, readable,
+easy to audit** — clarity and accuracy first, brevity second; never drop a binding rule to save
+space. From the first screen a human reader answers: for whom, what problem, what this version
+ships, how the flow goes, what happens on exceptions, how it's accepted, what still needs a decision.
 
 ## When to use
 
@@ -46,7 +45,8 @@ market/competitor investigation feeding the spec → use `research`.
    start; detail to appendices; no empty placeholders), the ID allocation, and what each
    figure explains. The first screen fits one glance: version, date, status, positioning,
    readers, goals, this version's scope, blocking items. Reframe vague requirements as
-   testable criteria ("make the dashboard faster" → "LCP < 2.5s on 4G"). Load on demand:
+   testable criteria ("make the dashboard faster" → "LCP < 2.5s on 4G"); cost boundaries separate
+   estimate from unknown, trial-run ≠ full-scenario guarantee (the guide carries both). Load on demand:
    `references/prd-patterns.md` (PRD structure, user stories, Given/When/Then, INVEST),
    `references/readable-prd-guide.md` (layout, Mermaid, requirement cards, human audit,
    update discipline), `references/prioritization.md` (RICE, Kano, MoSCoW),

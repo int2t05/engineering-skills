@@ -80,6 +80,12 @@ Log every error with enough context to reproduce the diagnosis without re-runnin
 - No secrets: redact tokens, passwords, PII before logging (see `debugging` skill's redaction discipline).
 - Log at the boundary where the error is handled, not at every catch site — duplicated logs obscure the real failure path.
 
+### 8. Test the strategy
+
+Write tests for the behavior the strategy promises: retry fires on transient and not on permanent,
+circuit-breaker transitions (open / half-open / closed) advance as configured, and the fallback
+path returns the degraded result.
+
 ## Verify
 
 - [ ] Every error in the new code is classified (transient / permanent / validation / auth) — strategy follows classification

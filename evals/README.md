@@ -116,6 +116,8 @@ Each case is a JSON object in `cases/<skill>.json`:
 - `runs` — case-level default repetitions; `--runs` CLI flag overrides (1 for a quick
   check, 3 for statistical confidence). A case passes if pass_rate >= 0.67 (2/3).
 - `timeout_seconds` — per-run wall-clock timeout.
+- `notes` — maintainer-facing intent record: what the case discriminates and why the
+  fixture is shaped the way it is. Read by humans, not by `run-eval.py`.
 
 ## Grader types
 

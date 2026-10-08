@@ -37,7 +37,7 @@ pitfall-audit or verification register exists. A conclusion-first TL;DR, a decis
 | 2 | 核心认知 | 2-3 mental models + **one main thread** (see below) + ≥1 decision flowchart (mermaid). Every 主体 section must serve the main thread or be cut. | ✅ |
 | 3-7 | 主体 | Organized by the dimension most useful to the reader's decision — by reader angle (tech-selection: 按X选/按画像), by sub-mode (market: 投资尽调/竞品/规模/技术供应商), or by subject dimension (general survey: 关系/实现/能力/局限/评估). Speed-tables dense + "按X选" subsections. | mode-specific |
 | 8 | 避坑清单 | Numbered negative claims, each carrying evidence or a falsification trail (Step 4 output made visible). Prospective validation plans go in §9.4, not here. | ✅ |
-| 9 | 源附录与核查记录 | 9.1 源 (by category + access date + reliability) · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证计划) · 术语表 (optional — only if not all terms were inline-explained) | ✅ |
+| 9 | 源附录与核查记录 | 9.1 源参考 (by category + access date + reliability) · 9.2 负面断言核查记录 · 9.3 UNVERIFIED 项 · 9.4 访问限制与缺口 (incl. 后续验证计划) · 术语表 (optional — only if not all terms were inline-explained) | ✅ |
 
 ## The main thread
 

@@ -97,7 +97,8 @@ Load for depth (the essentials above are enough to specify the step; load these 
 ### 6. Implement and verify
 
 Implement working code (HTML/CSS/JS, React, Vue, etc.) that is production-grade, functional,
-visually striking, and meticulously refined.
+visually striking, and meticulously refined. Responsive at 320 / 768 / 1024 / 1440px — no
+horizontal scroll on mobile.
 
 **Output:**
 - Designing UI from scratch → `docs/design/DESIGN.md` — the UIUX design report: design system, information architecture, interaction patterns, component plan.

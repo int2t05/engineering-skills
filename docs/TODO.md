@@ -80,8 +80,7 @@
 ### A5 评估体系 — 待完善（系统性最强）
 
 > **状态：实验性 / 待完善。** harness 能跑、能留产物，但在 GLM-5.2 上**未实现区分力**——
-> 强模型裸跑（不加载 skill）也能通过当前 case。CI workflow 已删（`eval-behavioral.yml`），
-> 评估改为本地按需运行，绝不 gate CI。本节是调优路线图。
+> 强模型裸跑（不加载 skill）也能通过当前 case。评估本地按需运行，绝不 gate CI。本节是调优路线图。
 
 **已建成（基础设施可用）：**
 
@@ -89,7 +88,7 @@
 - [X] 3 种 grader（code-based / llm-judge / hybrid），`evals/agents/grader.md` 带证据评分 + 自评 case 质量
 - [X] 产物持久化：transcript.md / grading.json / workspace 快照 / run-summary.json → `evals/results/`（gitignored）
 - [X] 超时 partial transcript 恢复（TimeoutExpired.stdout 不再丢弃）
-- [X] 10 个 case（6 正向 + 4 负控），4 个 fixture（cart-bug / paginate-buggy / buggy-diff / spec-brief）
+- [X] 11 个 case（6 正向 + 5 负控），6 个 fixture（cart-bug / paginate-buggy / buggy-diff / spec-brief / tdd-starter / prd-bloated）
 - [X] 负控测试精度（技能不该激活的任务，grader 反转逻辑）
 
 **实跑发现（GLM-5.2）：**
@@ -221,9 +220,9 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 ---
 
-## Tier F — 内容质量审计（2026-08-14 全量 skill 审计，skill 级具体发现）
+## Tier F — 内容质量审计（skill 级具体发现）
 
-> **来源：** 全量 skill 内容质量审计（非结构——结构归 validator）。与 Tier B/C（竞品调研来的扩展/新增）**互补不冲突**：
+> **来源：** 全量 skill 内容质量审计（非结构——结构归 validator）。与 Tier B/C **互补不冲突**：
 > B/C 答"该加什么深度"，F 答"现有内容哪里错/薄/矛盾"。交汇处已标注。
 
 ### HIGH — 错误 / 误导 / 缺失关键（已验证，优先修）
@@ -302,13 +301,13 @@ anatomy + validator + 5 处 discovery-surface 同步（plugin.json/AGENTS/phase-
 
 | 不做                                                                    | 理由                                                                                                      |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 47 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
+| 加权评分路由 + 结构化 metadata（keywords/tags/category 入 frontmatter） | 对 48 skill 过度工程；加 frontmatter 字段（validator 明令禁止）；违反纯 markdown；phase-tree 在此规模足够 |
 | scripts/templates/data 伴生文件                                         | 破坏跨 agent 可移植性                                                                                     |
 | MCP builder / MCP integration skill                                     | 包是 skill 包非 plugin-dev 包；README 明言 out of scope                                                   |
 | CloudBase/Godot/Tencent/Next.js/LangChain/FastAPI 等 vendor 技能        | 不可泛化                                                                                                  |
 | monorepo / Helm / K8s 打包 / secrets 基础设施                           | 工具/vendor 特定；implement/breakdown/ci-cd/security-review 已在正确高度覆盖概念                          |
 | UX copy / roadmap / test-case design                                    | PM/QA 侧，与现有 skill 部分重叠，边际价值低                                                               |
-| 第三人称改写 45 个 description                                          | 风格偏好非缺陷；当前第二人称祈使一致且有效；churn 巨大不值                                                |
+| 第三人称改写 48 个 description                                          | 风格偏好非缺陷；当前第二人称祈使一致且有效；churn 巨大不值                                                |
 | 行数预算放宽到 500 行                                                   | 当前 15-150 行**更严**，契合反臃肿哲学，保持                                                        |
 
 ---

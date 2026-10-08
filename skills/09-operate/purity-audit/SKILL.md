@@ -27,11 +27,9 @@ Pick the target: a single file, a skill folder, a doc set, or the whole pack. Lo
 
 ### 2. Grep-driven sweep — categories A / B / C
 
-These yield to batch grep. Run the checklist's "怎么查" commands:
-
-- **A (tracing residue)** — `（.*新` / `（.*保留` / `（.*事件` / `（.*已观测`; `v[0-9]\.[0-9]` in prose (not frontmatter / badges / dep declarations); "之前 / 原来 / 改为 / 迁移到 / 升级后" phrasing.
-- **B (decoration + redundancy)** — duplicated assertions (same claim grep ≥2 hits → should link, not copy); `**除非**` / `**注意**` / `**例外**` / `// 特殊` / `// HACK` special-case guards.
-- **C (dead content)** — dead links (`](x.md)` → nonexistent file); dead frontmatter / params (field name grep'd nowhere = unconsumed); "统一 / 一律 / 必须 / 全部" directives the body doesn't actually satisfy.
+These yield to batch grep. Run the checklist's「怎么查」commands for A (tracing residue), B
+(decoration + redundancy), and C (dead content) against the target — the checklist is the single
+owner of the patterns; don't re-derive them here.
 
 ### 3. Human-judgment sweep — categories D / E
 

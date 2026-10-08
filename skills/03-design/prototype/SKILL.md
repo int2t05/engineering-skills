@@ -32,6 +32,7 @@ surrounding code (backend module → logic; page/component → UI) and state the
 
 ### 2. Build it throwaway from day one
 
+- State the question being answered at the top of the prototype artifact
 - Locate it close to where it will be used, but name it so a reader sees it's a prototype
 - Trivial to run: one command in the task runner, or a single HTML file double-clicked
 - No persistence by default — state in memory; no tests, no abstractions, no polish

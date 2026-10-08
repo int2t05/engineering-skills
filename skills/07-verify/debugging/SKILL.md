@@ -54,7 +54,7 @@ Each probe maps to a specific prediction from step 3. **Change one variable at a
 - *Build failure* — type error (read it, check the cited location); import error (module exists, exports match, paths correct); config error (syntax/schema); dependency error (lockfile, reinstall); environment error (Node/OS version).
 - *Runtime error* — `TypeError: Cannot read property 'x' of undefined` (trace the data flow: where does this value come from?); network/CORS (URLs, headers, server CORS config); render error/white screen (error boundary, console, component tree); unexpected behavior with no error (add logging at key points, verify data at each step).
 
-**Instrumentation discipline.** Add logs only when you can't localize the failure to a specific line, or the issue is intermittent. Remove debug logs when the bug is fixed and tests guard against recurrence — tagged prefixes make cleanup one grep. Keep permanent instrumentation only for error boundaries with reporting, API error logging with request context, and perf metrics at key user flows.
+**Instrumentation discipline.** Add logs only when you can't localize the failure to a specific line, or the issue is intermittent. Remove debug logs when the bug is fixed and tests guard against recurrence — tagged prefixes make cleanup one grep. Delete step-1 throwaway harnesses and HITL scripts too, or move them to a clearly-marked debug location — the reproduction rig is not a deliverable. Keep permanent instrumentation only for error boundaries with reporting, API error logging with request context, and perf metrics at key user flows.
 
 ### 5. Fix the root cause
 

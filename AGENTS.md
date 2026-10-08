@@ -34,6 +34,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 
 | Phase | Skill | Triggers on |
 |---|---|---|
+| meta | `skill-authoring` | "写技能", "改技能", "技能评估", write/edit/eval a skill |
 | product | `brainstorm` | underspecified ask, "refine this idea", "头脑风暴" (*user-typed*) |
 | product | `spec` | new project/feature/change, "write spec", "create prd", "写需求文档", refactor/update a PRD for readability, "精简 PRD", "重构 PRD", "更新 PRD", "要做什么", "需求是什么" |
 | product | `oss-strategy` | OSS business model, COSS, "开源策略", "开源商业模式" |
@@ -52,7 +53,6 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | design | `prototype` | throwaway prototype, "原型", "试这个方案", "build a demo" |
 | develop | `implement` | implement spec/tickets, "实现", "编码", "改这个配置", "搭项目骨架", "改一下这个", "加个功能" |
 | develop | `multi-agent-orchestration` | "并行 agent", "子代理执行", "派发任务", parallel/sequenced subagents |
-| meta | `skill-authoring` | "写技能", "改技能", "技能评估", write/edit/eval a skill |
 | develop | `breakdown` | break work into tickets, "拆解任务", "拆票", decision map |
 | develop | `context-engineering` | agent needs context, "解释这段代码", "带我过一遍代码库" |
 | develop | `i18n` | "国际化", "本地化", "多语言", i18n, RTL, localization |
