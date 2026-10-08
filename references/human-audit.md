@@ -15,6 +15,7 @@ other doc-producing skill.
 - [AUD block — build-gating docs](#aud-block--build-gating-docs)
 - [确认 block — reports, research, ledgers](#确认-block--reports-research-ledgers)
 - [Status lifecycle](#status-lifecycle)
+- [Stable IDs — every part addressable](#stable-ids--every-part-addressable)
 - [Readability bar](#readability-bar)
 
 ## Two weights: AUD block vs 确认 block
@@ -78,12 +79,27 @@ to audit; the baseline applies to docs that persist in the repo.
 - New decisions after confirmation enter as new items and re-open the loop; never rewrite
   confirmed history in place.
 
+## Stable IDs — every part addressable
+
+An audit item must point at a part unambiguously — "the third section" is not addressable;
+`SEC-03` is. Every auditable doc numbers its parts:
+
+- Sections `SEC-01`, figures `FIG-01`, audit items `AUD-01`, findings `F-01`, open items `OPN-01`.
+- Domain items carry their own stable prefix, declared once per doc — spec's
+  `G/SCN/SCP/REQ/NFR/AC/DEC/MS`, ADR numbers (`docs/design/adr/NNNN-slug.md`), endpoint groups,
+  ledger entries.
+- Rules: IDs unique across the doc; decoupled from ordering — new items append, deleted IDs are
+  never reused; a rule is stated once and referenced by ID elsewhere; keep a meaningful name
+  after the ID; figure nodes and table headers are not IDs.
+
 ## Readability bar
 
 An unreadable doc cannot be audited — readability is an audit prerequisite, not styling:
 
 - First screen answers: what/why, for whom, this version's scope, status, blocking items.
 - Headings ≤ 3 levels; paragraphs 2–4 sentences; tables 3–5 columns (split beyond 6).
+- Every part carries its stable ID (see Stable IDs above) — audit items reference parts by ID,
+  never by position.
 - Every figure: ID, title, 1–2 sentence caption, linked items; branch flows show outcomes;
   the body stands without rendering.
 - A rule stated once and referenced by ID; bold only conclusions, boundaries, open items.
