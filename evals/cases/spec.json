@@ -47,5 +47,36 @@
     "runs": 1,
     "timeout_seconds": 180,
     "notes": "spec says NOT for single-line fixes — precision check"
+  },
+  {
+    "id": "spec-002",
+    "skill_under_test": "skills/01-product/spec",
+    "task_prompt": "Read PRD.md in this directory — it's a bloated product requirements document. Refactor it into a human-readable, auditable PRD. Do not implement any code.",
+    "negative_control": false,
+    "fixture": "evals/fixtures/prd-bloated",
+    "grader": {
+      "type": "hybrid",
+      "code_check": {
+        "command": "test -f docs/PRD.md",
+        "cwd": "{workspace}",
+        "pass_condition": "exit_code == 0"
+      },
+      "llm_judge": {
+        "agent": "evals/agents/grader.md",
+        "expectations": [
+          "The refactored PRD uses stable IDs (G/REQ/AC/AUD/OPN or a similar prefix scheme), unique and consistently referenced",
+          "A human-audit section exists with concrete check items, required evidence, and close criteria",
+          "Vague qualifiers from the source (fast/smooth/好用) are quantified, conditioned, or moved to open items — not copied verbatim",
+          "The duplicated rule (100 notifications/day stated twice) is stated once and referenced by ID elsewhere",
+          "The mermaid dead-end branch (the 否 branch) is resolved: branch flows show outcomes, or the figure was fixed/removed with the behavior stated in text",
+          "The unverified competitor claim (99.99% 送达率) and the uncertain cost figure are marked unverified/open — not presented as facts",
+          "Open items are collected in a dedicated section with impact/suggestion/decision owner",
+          "No implementation code was written — only the PRD document"
+        ]
+      }
+    },
+    "runs": 1,
+    "timeout_seconds": 600,
+    "notes": "Tests the merged readable-PRD discipline in spec: stable IDs, human-audit section, dedup, unverified-claim marking. Fixture has duplicated rules, vague qualifiers, a 12-column table, a mermaid dead-end, and unverified facts."
   }
 ]

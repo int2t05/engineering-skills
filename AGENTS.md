@@ -35,7 +35,7 @@ When a task arrives, identify the phase and reach for the matching skill. If uns
 | Phase | Skill | Triggers on |
 |---|---|---|
 | product | `brainstorm` | underspecified ask, "refine this idea", "头脑风暴" (*user-typed*) |
-| product | `spec` | new project/feature/change, "write spec", "create prd", "写需求文档", "要做什么", "需求是什么" |
+| product | `spec` | new project/feature/change, "write spec", "create prd", "写需求文档", refactor/update a PRD for readability, "精简 PRD", "重构 PRD", "更新 PRD", "要做什么", "需求是什么" |
 | product | `oss-strategy` | OSS business model, COSS, "开源策略", "开源商业模式" |
 | research | `research` | deep web research, cited report, "深度检索", "调研报告" |
 | research | `research` | "deep research", "市场调研", "竞品分析", "技术选型", "选哪个" (general/market/tech-selection modes) |

@@ -30,7 +30,7 @@ Task arrives
     │
     ├── 01 PRODUCT — shaping what to build
     │   ├── Vague idea, need to explore intent? ────────→ brainstorm
-    │   ├── Need a spec / acceptance criteria? ─────────→ spec
+    │   ├── Need a spec / PRD — write, refactor, update? → spec
     │   └── Open-source strategy / growth / COSS? ──────→ oss-strategy
     │
     ├── 02 RESEARCH — learning before deciding
