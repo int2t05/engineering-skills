@@ -57,9 +57,11 @@ Record the change in an attempt ledger so the same cut isn't re-investigated. Se
 
 **Red flags:** optimizing the cheap long tail while the top service is untouched; a cost cut with no before/after number; "we moved to spot" without a fallback for interruption; deleting resources to hit a short-term target with no guard against re-provisioning; a cut that regressed latency or p99 and was kept anyway.
 
-**Output:** `COST.md` (optional) — attempt ledger of cost changes (kept + reverted), mirroring `PERF.md`. Project-level, so a future session doesn't re-investigate a closed lever.
+**Output:** `COST.md` (optional) — attempt ledger of cost changes (kept + reverted), mirroring `PERF.md`. Project-level, so a future session doesn't re-investigate a closed lever. Every entry carries its before/after number; the human reviews kept-vs-reverted decisions before reopening a lever.
+Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, enforce simplicity, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/cost-drivers.md](references/cost-drivers.md) — symptom→cause map for cloud spend: over-provisioning, idle resources, egress, storage lifecycle, reserved-capacity gaps, with per-platform levers

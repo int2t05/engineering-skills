@@ -107,7 +107,7 @@ Separate input types (what the caller provides) from output types (what the syst
 including server-generated fields). Use branded types for IDs to prevent accidentally passing a
 `UserId` where a `TaskId` is expected.
 
-**Output:** `docs/API/*.md` — one file per endpoint group, with full request/response shapes, parameters, errors, and examples.
+**Output:** `docs/API/*.md` — one file per endpoint group, with full request/response shapes, parameters, errors, and examples. Close with an AUD block (6–10 items: contract consistency across endpoint groups, single error strategy, versioning/deprecation plan, naming conventions, pagination) — implementation starts only after the human audit passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -132,5 +132,6 @@ the start. "Nobody uses that undocumented behavior" — Hyrum's Law says someone
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, surgical scope, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/versioning-strategy.md](references/versioning-strategy.md) — when breaking change is unavoidable: URI/header versioning, sunset/deprecation headers (RFC 8594), dual-version coexistence, sunset timeline
 - [references/openapi-lifecycle.md](references/openapi-lifecycle.md) — design-first vs code-first, Spectral/Redocly linting, openapi-generator SDK generation, spec versioning, CI pipeline

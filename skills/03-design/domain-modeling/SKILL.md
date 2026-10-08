@@ -81,9 +81,13 @@ filling out sections.
 - [ ] Contradictions between user's language and code surfaced, not papered over
 
 **Output:** `CONTEXT.md` (root, ubiquitous language) + `docs/design/adr/NNNN-slug.md` (decision records, cross-version).
+Term entries are confirmed by the human through the challenge → scenario → agree loop — a
+glossary the human didn't confirm is a proposal, not language. ADRs cite real reference
+implementations where applicable. Audit-block baseline: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, manage confusion, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/context-format.md](references/context-format.md) — CONTEXT.md structure, rules, single vs multi-context repos
 - [references/adr-format.md](references/adr-format.md) — ADR template, numbering, what qualifies as an ADR-worthy decision

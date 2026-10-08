@@ -76,11 +76,13 @@ Then add monitoring or a regression test so the gain doesn't erode. If a perform
 
 **Red flags:** optimization without profiling data to justify it; N+1 patterns or unpaginated list endpoints in new code; images without dimensions / lazy loading / responsive sizes; `React.memo` / `useMemo` sprayed everywhere (overusing is as bad as underusing); a "win" that required a test to be changed, skipped, or deleted; several optimizations bundled into one unattributable measurement; the same failed optimization attempted again because nobody recorded the first attempt.
 
-**Output:** `PERF.md` (optional) — attempt ledger of performance changes (kept + reverted), so a dead idea isn't re-run next quarter. Mirrors `COST.md` in cost-optimization.
+**Output:** `PERF.md` (optional) — attempt ledger of performance changes (kept + reverted), so a dead idea isn't re-run next quarter. Mirrors `COST.md` in cost-optimization. Every verdict carries its measurement; the human reviews kept-vs-reverted decisions before repeating an attempt.
+Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, enforce simplicity, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/bottlenecks.md](references/bottlenecks.md) — symptom→cause decision tree, frontend/backend bottleneck tables, Core Web Vitals targets, performance budgets
 - [references/anti-patterns.md](references/anti-patterns.md) — N+1, unbounded fetching, image optimization, re-renders, bundle splitting, caching (with code examples)
 - [references/database-performance.md](references/database-performance.md) — DB-specific: EXPLAIN plan reading, index maintenance, slow-query analysis, N+1 detection, query anti-patterns, connection pooling

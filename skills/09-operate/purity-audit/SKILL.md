@@ -60,7 +60,7 @@ A3 is structural residue); delete dead content; sync doc ↔ impl. Per the purit
 "待清理 / 下次清理" TODOs** — that is itself a tracing-residue finding. Fix now or flag for a human
 decision in the report.
 
-**Output:** `docs/audit/YYYY-MM-DD-purity.md` — audit report (scope, checklist coverage A–E, before/after, fixed, needs review). Template in [references/templates.md](references/templates.md).
+**Output:** `docs/audit/YYYY-MM-DD-purity.md` — audit report (scope, checklist coverage A–E, before/after, fixed, needs review). Template in [references/templates.md](references/templates.md). Needs-review items close with the human's decision (采纳/修正/驳回 + reason) recorded in the report. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -74,6 +74,7 @@ decision in the report.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, surgical scope, verify don't assume).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [${CLAUDE_PLUGIN_ROOT}/references/purity-checklist.md](${CLAUDE_PLUGIN_ROOT}/references/purity-checklist.md) — the 16-point A–E checklist (the audit criteria).
 - [references/subagent-dispatch.md](references/subagent-dispatch.md) — per-category auditor dispatch: constructed-context template + worked Category-A example.
 - [references/templates.md](references/templates.md) — audit-report template.

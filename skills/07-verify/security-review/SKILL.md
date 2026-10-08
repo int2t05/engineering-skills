@@ -108,7 +108,7 @@ Map to the OWASP Top 10 for LLM Applications:
 - LLM/model output passed into a query, the DOM, a shell, or `eval`
 - Secrets, PII, or the full system prompt placed inside an LLM context window
 
-**Output:** `docs/security-report.md` — findings by severity, with runtime/build/deploy reachability and the fix or accept rationale per finding.
+**Output:** `docs/security-report.md` — findings by severity, with runtime/build/deploy reachability and the fix or accept rationale per finding. Each finding ends with the human's decision (修复/接受/驳回 + reason) recorded in the report — accepted risk stays documented, never silently dropped. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -125,5 +125,6 @@ Map to the OWASP Top 10 for LLM Applications:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/owasp-patterns.md](references/owasp-patterns.md) — OWASP Top 10 prevention code examples (injection, auth, XSS, access control, SSRF, validation, rate limiting, LLM output).
 - [references/compliance-process.md](references/compliance-process.md) — load when PII/payment assets appear in the threat model; GDPR/CCPA process layer: data inventory, DSR fulfillment, retention, right-to-erasure, privacy-by-design, audit readiness

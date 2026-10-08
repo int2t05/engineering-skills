@@ -53,7 +53,7 @@ Each finding is either **fix** (the default for AA-level issues) or **accept wit
 
 - A PR adding interactive UI with no keyboard-focus test; modals that don't trap or return focus; `div`/`span` used as a button without `role` and `tabindex`; error states signaled by color alone; `aria-live` missing on dynamic updates; images with meaningful content marked `alt=""`; a contrast ratio just under 4.5:1 left "because it looks fine"; automated scan green but no manual keyboard walkthrough done.
 
-**Output:** `docs/a11y-report.md` — findings by WCAG criterion / axe rule, severity, and the fix or accept rationale per finding. Mirrors `docs/security-report.md`.
+**Output:** `docs/a11y-report.md` — findings by WCAG criterion / axe rule, severity, and the fix or accept rationale per finding. Mirrors `docs/security-report.md`. Each finding ends with the human's decision (修复/接受/驳回 + reason) recorded in the report. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -70,4 +70,5 @@ Each finding is either **fix** (the default for AA-level issues) or **accept wit
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/wcag-checklist.md](references/wcag-checklist.md) — WCAG 2.2 AA criterion-by-criterion checklist mapped to axe-core rules, with the manual checks automated tools miss

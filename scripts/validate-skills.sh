@@ -221,7 +221,7 @@ ROOT_DOCS = {"README.md", "ROADMAP.md", "CONTEXT.md", "PERF.md",
              "REPOSITORY_SUMMARY.md", "THE_STORY_OF_THIS_REPO.md"}
 
 def is_md_path(p):
-    if p.startswith('references/'):
+    if p.startswith('references/') or '/references/' in p:
         return False  # a reference file the skill loads, not an output it produces
     return '.md' in p or p.startswith('docs/') or p in ROOT_DOCS
 

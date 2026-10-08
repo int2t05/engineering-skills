@@ -87,7 +87,7 @@ Write `docs/audit/YYYY-MM-DD-documentation.md` using the template in `references
 - **Fixed** — every sync applied
 - **Needs manual review** — items requiring a human decision or another skill
 
-**Output:** `docs/audit/YYYY-MM-DD-documentation.md` — audit report (scope, before/after, fixed, needs review). The synced docs are the primary product; the report is the trail.
+**Output:** `docs/audit/YYYY-MM-DD-documentation.md` — audit report (scope, before/after, fixed, needs review). The synced docs are the primary product; the report is the trail. Needs-review items close with the human's decision (采纳/修正/驳回 + reason) recorded in the report. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -100,5 +100,6 @@ Write `docs/audit/YYYY-MM-DD-documentation.md` using the template in `references
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/templates.md](references/templates.md) — audit-report template
 - [references/writing-docs.md](references/writing-docs.md) — writing new documentation from scratch (README, feature docs, API docs)

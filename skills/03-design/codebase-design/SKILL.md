@@ -81,7 +81,8 @@ decisions crystallize:
 **Output:** `docs/design/codebase-audit.md` — the deepening opportunities found (candidates with
 problem/solution/benefit/strength), the one chosen, and the grilled result (defined interface, seam
 placement, testing strategy). The HTML report (Step 2) is the visual presentation; this md is the
-durable record that survives the temp file.
+durable record that survives the temp file. Close with a 确认 block: the human's pick and any
+dismissed candidates stay in the doc with reasons. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -98,6 +99,7 @@ forbids; drifting to "component"/"service"/"API"/"boundary"; skipping the deleti
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/language.md](references/language.md) — glossary: module, interface, implementation, depth, seam, adapter, leverage, locality + principles (deletion test, interface is the test surface, one vs two adapters)
 - [references/deepening.md](references/deepening.md) — dependency categories (in-process, local-substitutable, ports & adapters, mock), seam discipline, replace-don't-layer testing
 - [references/html-report.md](references/html-report.md) — HTML scaffold, Tailwind/Mermaid via CDN, diagram patterns (mass, cross-section, call-graph collapse), tone and glossary usage

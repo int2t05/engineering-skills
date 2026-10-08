@@ -100,7 +100,10 @@ stated per entity._
 
 **Output:** `docs/design/SCHEMA.md` — the data model document: ER diagram, entity definitions with
 columns/types/constraints, index plan mapped to access patterns, partitioning strategy, and any
-denormalization trade-offs. Reference ADRs for significant model decisions.
+denormalization trade-offs. Reference ADRs for significant model decisions. Close with an AUD
+block (6–10 items: domain-model consistency, FK/constraint coverage, index-to-query mapping,
+partitioning decision, migration safety) — implementation starts only after the human audit
+passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -121,4 +124,5 @@ table that will exceed memory.
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, enforce simplicity, verify don't assume)
 - [${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md](${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md) — Mermaid erDiagram syntax for entity-relationship diagrams
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/schema-patterns.md](references/schema-patterns.md) — normalization trade-offs, index patterns, partitioning strategies, soft-delete policies

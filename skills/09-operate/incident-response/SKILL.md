@@ -94,7 +94,9 @@ contributing factor is a system gap, not a personal failure.
 - **Action items:** specific, owned, dated — each addresses a contributing factor
 
 **Output:** `docs/postmortem/YYYY-MM-DD-<slug>.md` — one file per incident, archived for
-organizational learning.
+organizational learning. Action items close with the human's confirmation (owner, date, decision
+recorded); the postmortem is final when the human has reviewed it blamelessly.
+Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -112,6 +114,7 @@ individuals instead of system gaps; action items with no owner or date.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surface assumptions)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/runbook-template.md](references/runbook-template.md) — runbook format for alert-linked playbooks
 - [references/postmortem-template.md](references/postmortem-template.md) — blameless postmortem template + action-item tracking
 - [references/dr-planning.md](references/dr-planning.md) — load during postmortem action-item planning for proactive DR; backup strategy, restore testing, DR drills, failover orchestration

@@ -98,7 +98,7 @@ candidate couldn't be fetched, drop it.
 End the reference board with the load instruction: "Load this file in `imagegen` Step 4 (Match
 references), `frontend-design` Step 2 (Pick a style), or `image-to-code` Step 1 (Plan sections)."
 
-**Output:** `docs/design/references.md` — curated reference board (source URL + image URL + text analysis + downstream-skill tag), feeding imagegen/frontend-design/image-to-code.
+**Output:** `docs/design/references.md` — curated reference board (source URL + image URL + text analysis + downstream-skill tag), feeding imagegen/frontend-design/image-to-code. Close with a 确认 block: the human marks which references are adopted (采纳/修正/驳回 with rationale) before downstream skills load the board. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -112,6 +112,7 @@ references), `frontend-design` Step 2 (Pick a style), or `image-to-code` Step 1 
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, push back when warranted)
 - [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, consistency from systems)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/sources.md](references/sources.md) — 5 free public sources (coverage, category URL patterns, WebFetch feasibility) + routing matrix + capability boundary (iOS per-screen, markdown-not-pixels)
 - [references/query-patterns.md](references/query-patterns.md) — brief → category URL path + search term, with per-goal example queries (fintech landing, SaaS hero, onboarding flow, error/empty states)
 - [references/analysis-framework.md](references/analysis-framework.md) — extraction axes (layout/grid/spacing/type/density/accent, text-descriptive) + 8 analysis lenses + 3 output frameworks (Reference Board / Competitive Comparison / Decision Log)

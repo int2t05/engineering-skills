@@ -45,7 +45,8 @@ and record the verdict + question settled. Main keeps only the validated decisio
 
 **Output:** `docs/design/prototype-findings.md` — the question tested, the verdict, and the validated
 decision. The prototype code itself stays on a throwaway branch; only the finding is promoted to main
-as a durable record.
+as a durable record. The verdict is the human's call — record it as a 确认 entry (采纳/修正/驳回
+with rationale). Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -59,5 +60,6 @@ as a durable record.
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (enforce simplicity, verify don't assume)
 - [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (hierarchy before decoration, design every state, recognize rather than recall).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/logic.md](references/logic.md) — single-shareable-HTML logic prototype: pure module, free-play + guided walkthroughs
 - [references/ui.md](references/ui.md) — toggleable UI variants: sub-shape A (existing page) vs B (throwaway route), floating switcher

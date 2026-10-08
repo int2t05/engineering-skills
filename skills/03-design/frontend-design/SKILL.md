@@ -104,7 +104,7 @@ visually striking, and meticulously refined.
 - Auditing an existing frontend → `docs/design/frontend-audit.md` — findings and optimization suggestions for current layout/components/typography/styles.
 - User research before design → `docs/research/ux-research.md` — personas, journey maps, empathy maps, usability-test findings (produced when the user/context is unknown; load references/ux-research.md).
 
-Then run the verification below.
+Every artifact closes with its human-audit block — AUD for DESIGN.md (implementation starts only after the human confirms), 确认 for frontend-audit/ux-research findings (采纳/修正/驳回 with rationale). Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -128,6 +128,7 @@ components; text under 12px; gray-on-gray; color as sole state indicator.
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
 - [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, minimize cognitive load, design every state, accessibility non-optional, consistency from systems)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [${CLAUDE_PLUGIN_ROOT}/references/product-icon.md](${CLAUDE_PLUGIN_ROOT}/references/product-icon.md) — generating a product icon / favicon as SVG (study OSS icon systems; not simple shapes + simple colors)
 - [references/styles.md](references/styles.md) — 21 UI styles with effect specs (shadows, blur, radius)
 - [references/palettes.md](references/palettes.md) — 12 palette directions by product type

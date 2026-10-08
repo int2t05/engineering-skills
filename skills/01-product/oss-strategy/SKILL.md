@@ -63,6 +63,8 @@ they become your marketing force through word-of-mouth, content, and recommendat
 
 **Output:** `docs/research/strategy.md` — the commercialization decision: business model, license,
 community plan, and growth-launch channel plan. A PRD input when commercialization shapes product scope.
+Closes with a 确认 block: the human marks each strategic decision 采纳/修正/驳回 with rationale
+before it feeds the PRD. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -75,5 +77,6 @@ community plan, and growth-launch channel plan. A PRD input when commercializati
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
 - [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (opportunity = demand × giant blind spot ÷ difficulty, the real competitor is the current workaround).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [references/commercialization-models.md](references/commercialization-models.md) — general pricing (subscription/freemium/usage/per-seat), value-based pricing, AI-product pricing trap, GTM motions (PLG/sales-led/product-led sales), indie-developer revenue ladder.
 - GitHub README/Topics/About beautification: `08-ship/oss-polish`.

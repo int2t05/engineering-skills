@@ -108,7 +108,10 @@ code commits pair with test results.
 
 **Output:** `docs/design/PROMPT.md` — the prompt design document: task definition, success
 criteria, prompt architecture (component breakdown), model selection rationale, eval harness
-description and dataset, guardrails, and version history with eval scores.
+description and dataset, guardrails, and version history with eval scores. Close with an AUD
+block (6–10 items: success-criteria measurability, eval coverage of failure modes, guardrail
+failure behaviors, cost caps, PII handling) — implementation starts only after the human audit
+passes. Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -129,4 +132,5 @@ vibes without a scorecard; no cost cap on a production prompt.
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, verify don't assume, goal-driven execution)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/prompt-architecture.md](references/prompt-architecture.md) — prompt component breakdown, few-shot patterns, structured-output techniques, model selection matrix, eval-harness setup, guardrail catalog

@@ -108,7 +108,7 @@ Report: file path, the key conclusion/recommendation, top reasons, main tradeoff
 count by source class, and any access limitations. If live browsing was unavailable or forbidden,
 do not present the result as researched — explain the limitation and offer an offline-only draft.
 
-**Output:** `docs/research/YYYY-MM-DD-<slug>.md` (general) / `docs/research/market.md` (market) / `docs/research/competitor.md` (tech-selection) — cited research artifact, archived cumulatively.
+**Output:** `docs/research/YYYY-MM-DD-<slug>.md` (general) / `docs/research/market.md` (market) / `docs/research/competitor.md` (tech-selection) — cited research artifact, archived cumulatively. Conclusions feed PRD/spec decisions: the human confirms key conclusions (采纳/修正/驳回) before they're adopted downstream — record the confirmation in the report. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -127,6 +127,7 @@ do not present the result as researched — explain the limitation and offer an 
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline for every skill (surface assumptions, verify don't assume, push back).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (the real competitor is the current workaround). Linked by market + tech-selection modes.
 - [references/report-spine.md](references/report-spine.md) — shared conclusion-first 9-section spine (TL;DR → 核心认知 → 主体 → 避坑 → 源附录与核查记录), main-thread rule, mermaid rules, shared skeleton.
 - [references/general-mode.md](references/general-mode.md) — general mode: 9-section conclusion-first template, fan-out source strategy, mermaid/glossary patterns.

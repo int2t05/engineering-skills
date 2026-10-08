@@ -111,7 +111,8 @@ These three modes run at different moments than pre-merge and have distinct post
 
 **Output:** `docs/TODO.md` — pre-merge findings consolidated as a project-level todo list, grouped by
 business area, with code↔TODO.md bidirectional sync. (In-flight/evidence-gate/receiving produce
-behavior, not a doc.)
+behavior, not a doc.) Each finding closes with the human's decision (修复/接受/驳回 + reason) —
+dismissed findings stay recorded. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -123,6 +124,7 @@ behavior, not a doc.)
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares (verify don't assume, push back when warranted, §9 behavior-preserving change).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [${CLAUDE_PLUGIN_ROOT}/references/clean-code.md](${CLAUDE_PLUGIN_ROOT}/references/clean-code.md) — naming, functions, smells.
 - [${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md](${CLAUDE_PLUGIN_ROOT}/references/mermaid-diagrams.md) — diagram structure when reviewing architecture.
 - [references/review-modes.md](references/review-modes.md) — the three non-default modes in full: in-flight adversarial doubt, evidence-gate verification, receiving review feedback.

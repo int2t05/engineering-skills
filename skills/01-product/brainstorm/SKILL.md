@@ -86,6 +86,9 @@ Each version's detailed PRD/TECH/PLAN live under `docs/vX.Y/` on the version bra
 architecture / breakdown Output). When discovery interviews ran (Step 3,
 `references/discovery-methods.md`), also produce `docs/research/interview.md` — consolidated
 user-interview findings (past behavior, workarounds, willingness to pay) that justify the roadmap.
+The roadmap closes with an AUD block (per-version goal/acceptance confirmation) — `spec` starts
+only after the human audit passes; interview findings get a 确认 block (采纳/修正/驳回).
+Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -103,5 +106,6 @@ user-interview findings (past behavior, workarounds, willingness to pay) that ju
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill.
 - [${CLAUDE_PLUGIN_ROOT}/references/product-principles.md](${CLAUDE_PLUGIN_ROOT}/references/product-principles.md) — product discipline (need≠feature, behavior is data, validate before building, say no to good ideas, discovery precedes delivery).
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [references/techniques.md](references/techniques.md) — ideation frameworks (SCAMPER, HMW, first principles, JTBD), decision techniques (design tree, questionnaire handoff), evaluation rubric, and worked examples.
 - [references/discovery-methods.md](references/discovery-methods.md) — problem-validation methods (Mom Test interview, JTBD switching interview, opportunity-solution tree, working backwards / PR-FAQ, Lean Canvas, MVP validation loop).

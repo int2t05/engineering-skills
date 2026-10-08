@@ -53,6 +53,9 @@ until the way to the destination is clear.
    - `docs/vX.Y/plan.md` — the current version's detailed ticket breakdown (title, blocked by,
      what it delivers, ordered blockers first), on the version branch. Falls back to
      `docs/PLAN.md` alone for single-version projects.
+   Close with an AUD block (6–10 items: slice completeness, blocking-edge correctness,
+   expand–contract sequencing, scope vs spec) — implementation starts only after the human
+   audit passes. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
    Work the **frontier**: any ticket whose blockers are all done.
 
 ### Mode 2 — Decision map (work too large for one session)
@@ -109,4 +112,5 @@ gist of the boundary decision; the remaining fog shrinks until the path is clear
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode.
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
 - [references/ticket-format.md](references/ticket-format.md) — local-ticket and issue templates, the staleness rule, and ticket-type routing.

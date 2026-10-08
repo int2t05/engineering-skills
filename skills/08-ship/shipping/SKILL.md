@@ -111,7 +111,7 @@ Every deployment needs a rollback plan written **before** it happens:
 5. Logs are flowing and readable.
 6. Rollback mechanism confirmed working (dry run if possible).
 
-**Output:** `docs/launch/rollback-plan.md` — the pre-launch rollback plan (trigger conditions, steps, database considerations, time-to-rollback). Launch-specific, project-level.
+**Output:** `docs/launch/rollback-plan.md` — the pre-launch rollback plan (trigger conditions, steps, database considerations, time-to-rollback). Launch-specific, project-level. Launch proceeds only after the human signs off the rollback plan (确认 block: each trigger condition and step checked with evidence). Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -133,5 +133,6 @@ After deploying:
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, surgical scope, simplicity)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/launch-monitoring.md](references/launch-monitoring.md) — what to monitor at launch (application p50/p95/p99, infrastructure CPU/DB-pool/disk, client Core Web Vitals/JS errors) + ErrorBoundary and error-middleware scaffolding
 - [references/changelog-and-release-notes.md](references/changelog-and-release-notes.md) — commit history → categorized changelog (keepachangelog) → user-language release notes

@@ -65,12 +65,15 @@ fits the task. Write it for routing, not as a feature list.
 ## Steps          — numbered, each step independently verifiable
 ## Verify         — concrete completion check (evidence, not "looks right")
 ## Output         — (doc-producing skills only) the artifact path(s) this skill produces
-## References     — link ${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md + skill-specific docs
+## References     — link ${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md + skill-specific docs (+ human-audit.md for doc-producing skills)
 
 ## Output declaration (doc-producing skills)
 
 Skills that produce a doc, image, or other discrete artifact declare `**Output:**` (bolded, exact marker) in Steps or
 after them, stating the artifact path(s). Skills whose output is only behavior (e.g. `implement`, `tdd`, `debugging`) omit it.
+A doc-producing skill's Output closes with its **human-audit block** — AUD (build-gating docs) or 确认
+(reports/research/ledgers) per [human-audit.md](human-audit.md): the doc is not done when written; it's done when a
+human has audited it. Statuses (草案/人工审计/已确认/成熟) move only by human decision.
 
 Two-layer convention for project-level formal docs (PRD/TECH/PLAN):
 - **Project-level** (uppercase, `docs/PRD.md` etc., concise, mermaid-heavy, main branch) — the

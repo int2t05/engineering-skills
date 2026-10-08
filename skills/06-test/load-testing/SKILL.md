@@ -101,7 +101,9 @@ thresholds based on the measured saturation point — alert before the break, no
 
 **Output:** load-test scripts under `test/` (committed, re-runnable) plus `docs/CAPACITY.md`
 (optional) — the capacity ceiling, bottleneck, autoscaling validation, and action items. Pair
-with `observability` for the alert thresholds.
+with `observability` for the alert thresholds. Every claim carries the run evidence behind it;
+action items close with the human's decision (采纳/修正/驳回 + reason).
+Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
 
 ## Verify
 
@@ -121,4 +123,5 @@ with no p99 or error rate; running one giant mixed test instead of isolated patt
 ## References
 
 - [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (verify don't assume, goal-driven execution)
+- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
 - [references/load-profiles.md](references/load-profiles.md) — traffic-mix modeling, test-pattern catalog (ramp/soak/spike/stress), breaking-point characterization, autoscaling validation checklist
