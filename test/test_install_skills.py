@@ -22,6 +22,7 @@ class InstallationTests(unittest.TestCase):
         manifest = json.loads((ROOT / '.codex-plugin/plugin.json').read_text(encoding='utf-8'))
         claude = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))
         self.assertEqual(manifest['version'], claude['version'])
+        self.assertEqual(manifest['hooks'], {'hooks': {}})
         discovered = set()
         for value in manifest['skills']:
             self.assertTrue(value.startswith('./'))

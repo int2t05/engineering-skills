@@ -30,7 +30,7 @@ codex plugin add engineering-skills@int2t05
 
 Check status with `codex plugin list --marketplace int2t05 --json`. Invoke `$engineering-skills:implement` or another namespaced skill. Restart Codex if its skill picker has not refreshed.
 
-The plugin preserves the repository's shared resources and declares each phase as a skill root. It does not require Python, install MCP servers, or change your global agent instructions. Claude's SessionStart hook is not configured for Codex; shared guidance is linked from each skill.
+The plugin preserves the repository's shared resources and declares each phase as a skill root. It does not require Python, install MCP servers, or change your global agent instructions. An explicit empty Codex hook configuration prevents default discovery of Claude's SessionStart hook; shared guidance is linked from each skill.
 
 Do not install this pack as both a plugin and standalone skills in the same host. Before migrating, inspect the old standalone folders for local edits and remove only copies owned by this pack.
 Uninstall the plugin with `codex plugin remove engineering-skills@int2t05`; remove its marketplace with `codex plugin marketplace remove int2t05` if no longer needed.

@@ -1,6 +1,6 @@
 {
   "name": "engineering-skills",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Task-focused engineering workflows for Claude Code, Codex and other coding agents.",
   "author": {
     "name": "int2t",
@@ -26,6 +26,7 @@
     "./skills/09-operate",
     "./skills/meta"
   ],
+  "hooks": { "hooks": {} },
   "interface": {
     "displayName": "Engineering Skills",
     "shortDescription": "Task-focused software engineering workflows",
