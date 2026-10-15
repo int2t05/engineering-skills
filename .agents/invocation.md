@@ -4,7 +4,7 @@
 - User-invoked skills: `disable-model-invocation: true` in SKILL.md pairs with `policy.allow_implicit_invocation: false` in the generated Codex adapter.
 
 `brainstorm` and `handoff` are user-invoked. Do not initiate an interview or transfer simply because a task could benefit from one.
-Claude Code uses `/skill-name` (or its plugin-qualified name); Codex uses `$skill-name`. Other hosts follow their own invocation mechanism.
+Claude Code uses `/skill-name` (or its plugin-qualified name); Codex plugins use `$engineering-skills:skill-name`, while standalone installation uses `$skill-name`. Other hosts follow their own invocation mechanism.
 Read an applicable skill's instructions using the tools the host provides. Do not require a specific Skill or Agent API in portable workflow instructions.
 
 ## Resources

@@ -14,7 +14,16 @@
 /plugin install engineering-skills@int2t05
 ```
 
-**Codex** — 需要 Python 3.10 或以上，支持 Windows：
+**Codex** — 原生插件：
+
+```bash
+codex plugin marketplace add https://github.com/int2t05/engineering-skills.git
+codex plugin add engineering-skills@int2t05
+```
+
+更新时先执行 `codex plugin marketplace upgrade int2t05`，再执行 `codex plugin add engineering-skills@int2t05` 刷新安装副本。必要时重启 Codex。
+
+**独立技能 / 其他宿主** — 需要 Python 3.10 或以上，支持 Windows：
 
 ```bash
 git clone https://github.com/int2t05/engineering-skills.git
@@ -27,7 +36,7 @@ python scripts/install-skills.py
 
 ## 使用
 
-Claude Code 输入 `/implement`；Codex 输入 `$implement`。支持自动发现的宿主也可根据意图选择技能。
+Claude Code 输入 `/implement`；Codex 插件输入 `$engineering-skills:implement`，独立安装输入 `$implement`。支持自动发现的宿主也可根据意图选择技能。
 `brainstorm` 与 `handoff` 需显式调用。路由不确定时用 `using-skills`，简单任务不必重复路由。
 
 从实际任务进入，明确的小改动不走完整生命周期。新建、移动、重命名文档前确认路径；重大需求与方案供人工审计，技术验证不代签人工确认。

@@ -1,0 +1,12 @@
+{
+  "name": "int2t05",
+  "interface": { "displayName": "int2t05 Engineering Skills" },
+  "plugins": [
+    {
+      "name": "engineering-skills",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

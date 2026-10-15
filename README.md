@@ -14,7 +14,16 @@ Use task-specific guidance for requirements, design, implementation, verificatio
 /plugin install engineering-skills@int2t05
 ```
 
-**Codex** — Python 3.10 or later, including Windows:
+**Codex** — managed plugin:
+
+```bash
+codex plugin marketplace add https://github.com/int2t05/engineering-skills.git
+codex plugin add engineering-skills@int2t05
+```
+
+Update with `codex plugin marketplace upgrade int2t05`, then `codex plugin add engineering-skills@int2t05` to refresh the installed copy. Restart Codex if needed.
+
+**Standalone skills / other hosts** — Python 3.10 or later, including Windows:
 
 ```bash
 git clone https://github.com/int2t05/engineering-skills.git
@@ -28,7 +37,7 @@ Avoid duplicate installations in the same host.
 
 ## Use
 
-Claude Code: `/implement`. Codex: `$implement`. Supported hosts may also select skills from matching intent.
+Claude Code: `/implement`. Codex plugin: `$engineering-skills:implement`; standalone: `$implement`. Supported hosts may also select skills from matching intent.
 `brainstorm` and `handoff` require explicit invocation. Use `using-skills` when routing is uncertain, not before every simple task.
 
 Start at the task that needs solving; a clear edit does not need a full lifecycle.

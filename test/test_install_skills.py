@@ -17,6 +17,23 @@ INSTALLER = ROOT / 'scripts' / 'install-skills.py'
 class InstallationTests(unittest.TestCase):
     """验证资源完整性、幂等性和已有内容保护。"""
 
+    def test_native_plugin_catalog_covers_all_skills(self):
+        """原生插件必须声明全部阶段，且两个宿主的发行版本保持一致。"""
+        manifest = json.loads((ROOT / '.codex-plugin/plugin.json').read_text(encoding='utf-8'))
+        claude = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))
+        self.assertEqual(manifest['version'], claude['version'])
+        discovered = set()
+        for value in manifest['skills']:
+            self.assertTrue(value.startswith('./'))
+            directory = (ROOT / value).resolve()
+            self.assertTrue(directory.is_relative_to(ROOT))
+            discovered.update(p.parent.relative_to(ROOT).as_posix() for p in directory.glob('*/SKILL.md'))
+        self.assertEqual(discovered, {p.removeprefix('./') for p in claude['skills']})
+        catalog = json.loads((ROOT / '.agents/plugins/marketplace.json').read_text(encoding='utf-8'))
+        self.assertEqual(catalog['name'], 'int2t05')
+        self.assertEqual(catalog['plugins'][0]['name'], manifest['name'])
+        self.assertEqual((ROOT / catalog['plugins'][0]['source']['path']).resolve(), ROOT)
+
     def run_install(self, destination, *arguments):
         """运行实际安装程序并保留退出状态与诊断。"""
         return subprocess.run([sys.executable, str(INSTALLER), '--dest', str(destination), *arguments], capture_output=True, text=True)

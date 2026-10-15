@@ -1,0 +1,36 @@
+{
+  "name": "engineering-skills",
+  "version": "3.1.0",
+  "description": "Task-focused engineering workflows for Claude Code, Codex and other coding agents.",
+  "author": {
+    "name": "int2t",
+    "url": "https://github.com/int2t05"
+  },
+  "repository": "https://github.com/int2t05/engineering-skills",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "agent-skills",
+    "codex",
+    "sdlc"
+  ],
+  "skills": [
+    "./skills/01-product",
+    "./skills/02-research",
+    "./skills/03-design",
+    "./skills/04-develop",
+    "./skills/05-tune",
+    "./skills/06-test",
+    "./skills/07-verify",
+    "./skills/08-ship",
+    "./skills/09-operate",
+    "./skills/meta"
+  ],
+  "interface": {
+    "displayName": "Engineering Skills",
+    "shortDescription": "Task-focused software engineering workflows",
+    "developerName": "int2t",
+    "category": "Productivity",
+    "brandColor": "#5b5bd6"
+  }
+}

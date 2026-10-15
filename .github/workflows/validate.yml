@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'skills/**'
+      - '.codex-plugin/**'
       - '.claude-plugin/plugin.json'
       - '.claude-plugin/marketplace.json'
       - 'references/**'
@@ -19,6 +20,7 @@ on:
     branches: [main]
     paths:
       - 'skills/**'
+      - '.codex-plugin/**'
       - '.claude-plugin/plugin.json'
       - '.claude-plugin/marketplace.json'
       - 'references/**'

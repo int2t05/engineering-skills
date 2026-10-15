@@ -14,6 +14,29 @@ The SessionStart hook loads the shared principles. Skill resources use source-re
 
 ## Codex
 
+Install the managed plugin with a Codex version that provides `codex plugin`:
+
+```bash
+codex plugin marketplace add https://github.com/int2t05/engineering-skills.git
+codex plugin add engineering-skills@int2t05
+```
+
+Update the Git marketplace snapshot, then refresh the installed plugin:
+
+```bash
+codex plugin marketplace upgrade int2t05
+codex plugin add engineering-skills@int2t05
+```
+
+Check status with `codex plugin list --marketplace int2t05 --json`. Invoke `$engineering-skills:implement` or another namespaced skill. Restart Codex if its skill picker has not refreshed.
+
+The plugin preserves the repository's shared resources and declares each phase as a skill root. It does not require Python, install MCP servers, or change your global agent instructions. Claude's SessionStart hook is not configured for Codex; shared guidance is linked from each skill.
+
+Do not install this pack as both a plugin and standalone skills in the same host. Before migrating, inspect the old standalone folders for local edits and remove only copies owned by this pack.
+Uninstall the plugin with `codex plugin remove engineering-skills@int2t05`; remove its marketplace with `codex plugin marketplace remove int2t05` if no longer needed.
+
+## Standalone skills
+
 Clone the repository and use the self-contained installer (Python 3.10 or later):
 
 ```bash
@@ -65,4 +88,4 @@ python -m unittest discover -s test -v
 ```
 
 Tests install into temporary directories. They do not modify your real skill installation.
-Official discovery and invocation behavior: [Codex skills](https://learn.chatgpt.com/docs/build-skills).
+Official formats: [Plugin packaging and marketplaces](https://developers.openai.com/plugins/build/plugins) · [Codex skills](https://learn.chatgpt.com/docs/build-skills).
