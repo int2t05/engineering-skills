@@ -44,9 +44,9 @@ def short_description(desc: str) -> str:
     # Capitalize the first letter (verb phrase for the picker)
     if d:
         d = d[0].upper() + d[1:]
-    # Trim to ~90 chars on a word boundary
-    if len(d) > 90:
-        d = d[:90].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    # Codex 的 UI 描述使用 25–64 字符，保留完整单词边界。
+    if len(d) > 64:
+        d = d[:63].rsplit(" ", 1)[0].rstrip(",;:") + "…"
     return d
 
 

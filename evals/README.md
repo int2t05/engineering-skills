@@ -1,160 +1,40 @@
-# Behavioral Eval Harness
+# Model Evaluation
 
-Tests whether a skill actually changes agent behavior — not just whether it's
-well-authored (the structural validator covers that). Implements the **RED-GREEN
-pattern**: every case runs twice, with-skill and without-skill (baseline). A case
-passes only when the with-skill run satisfies the expectations *and* the baseline
-does not — proving the skill itself made the difference.
+Model evaluations exercise real tasks with and without a skill. Task correctness and incremental value are separate: both runs passing means the skill has not demonstrated a benefit on that case, not that the task failed.
 
 ## Run
 
-```bash
-# All pilot skills (tdd, spec, code-review, debugging)
-bash scripts/run-eval.sh
-
-# One skill
-bash scripts/run-eval.sh --skill tdd
-
-# One case, 3 runs (statistical confidence)
-bash scripts/run-eval.sh --case tdd-001 --runs 3
-
-# Skip baselines (faster, but can't prove the skill changes behavior)
-bash scripts/run-eval.sh --no-baseline
-
-# Pin a model (else falls back to ANTHROPIC_MODEL env)
-bash scripts/run-eval.sh --model <your-model-id>
-```
-
-Exit code = number of failed cases (matches `validate-skills.sh` convention).
-
-## Environment
-
-The runner spawns `claude -p` subprocesses. It inherits the caller's environment
-(stripping only `CLAUDECODE` so nested execution is allowed), so the CLI's standard
-env vars route it correctly — including proxy/Bedrock endpoints:
+Requires the selected CLI to be installed and authenticated, plus the fixture tooling and Bash for shell-based acceptance commands. Do not include credentials in cases or transcripts.
 
 ```bash
-# Stock Anthropic:
-export ANTHROPIC_API_KEY=<key>
-
-# Proxy (e.g. GLM, Bedrock — the CLI reads these for non-default endpoints):
-export ANTHROPIC_AUTH_TOKEN=<token>
-export ANTHROPIC_BASE_URL=https://your-proxy/api/anthropic
-export ANTHROPIC_MODEL=<proxy-model-id>   # or pass --model <id>
+python scripts/run-eval.py --backend claude --skill tdd --runs 1
+python scripts/run-eval.py --backend codex --case tdd-001 --runs 1
+python scripts/run-eval.py --backend claude --case spec-neg-001 --runs 1
 ```
 
-If `--model` is omitted, the runner falls back to the `ANTHROPIC_MODEL` env var
-before letting the CLI use its default.
+`--model` selects a model explicitly; otherwise the CLI configuration applies. `--no-baseline` checks correctness only. All required rubric expectations must pass; the pass-rate threshold applies across repeated runs, not to silently dropping rubric items. More runs help reveal variance; a single sample is not statistical assurance.
+Codex tasks use an isolated workspace with workspace-write policy; `--workspace-root` can select a host-approved parent directory. Windows sandbox access must be available; permission-denied runs are not evidence of skill quality. Actual tool availability and permissions affect the result. Claude uses its configured tool permissions. Do not bypass failures or ask the grader to assume unavailable work succeeded.
 
-## When to run
+## What is measured
 
-- **On demand only** — before trusting a skill in production, after a SKILL.md rewrite.
-- **NEVER as a CI gate** — behavioral evals are slow (5-10 min/case),
-  non-deterministic, and token-costly. Tier 1 (`validate-skills.sh`) remains the
-  CI gate.
+- Actual task behavior and output correctness, with deterministic acceptance commands where applicable.
+- Relevant process evidence such as a real failing test before a fix.
+- Negative controls: the workflow must not force a spec or extra artifact onto an adjacent small task.
+- Baseline comparison for incremental benefit, separate from absolute success.
 
-> **Status: experimental / not-yet-proven.** The harness runs and produces artifacts, but
-> formal RED-GREEN runs on GLM-5.2 have not yet achieved discrimination (a strong
-> model passes the cases without the skill loaded). See `docs/TODO.md` (section A5)
-> for the tuning roadmap (pressure cases, analyzer pass, multi-run variance).
-> There is no CI workflow — evals run locally via the commands below.
+The with-skill run receives the self-contained installed content and can read its references. The baseline receives the same task without that content. Output paths in the task or acceptance checks are authorized for the isolated experiment.
+This injection-based harness does not reproduce every host's automatic discovery or routing. Validate implicit triggering separately with the pack installed in the actual host.
 
-## Directory structure
+## Cases and artifacts
 
-```
-evals/
-  cases/<skill>.json    # one JSON array per skill, each element is one eval case
-  fixtures/             # shared input files (starter repos, buggy diffs, failing tests)
-  agents/grader.md      # the LLM-judge grader prompt
-  results/              # gitignored run outputs (transcripts, grading.json, summary)
-```
+Cases live at `evals/cases/<skill>.json`, with real fixtures under `evals/fixtures/`. Preserve concrete behavior expectations; do not force a document section count or fixed wording as a substitute for quality.
 
-## Eval case format
+`grader.type` may be code-based, llm-judge or hybrid. Model grading is fallible: inspect the saved evidence and rerun suspected harness errors before attributing failure to a skill.
 
-Each case is a JSON object in `cases/<skill>.json`:
+Artifacts are saved under `evals/results/<backend>/<case-id>/<with|base>-<n>/`: prompt, transcript, actual workspace and metadata. Summaries use `run-summary-<backend>.json`. These local files are ignored by Git.
+Structural and installation tests run in CI. Model runs are on demand because they require access, time and tokens; a green structural check is not behavioral coverage.
 
-```json
-{
-  "id": "tdd-001",
-  "skill_under_test": "skills/06-test/tdd",
-  "task_prompt": "Implement parseDuration(s) ... Use TDD.",
-  "negative_control": false,
-  "fixture": "evals/fixtures/tdd-starter",
-  "grader": {
-    "type": "hybrid",
-    "code_check": {
-      "command": "npm test",
-      "cwd": "{workspace}",
-      "pass_condition": "exit_code == 0"
-    },
-    "llm_judge": {
-      "agent": "evals/agents/grader.md",
-      "expectations": [
-        "A test file was written before the implementation file",
-        "The agent ran the test and observed it fail (RED phase)",
-        "..."
-      ]
-    }
-  },
-  "runs": 1,
-  "timeout_seconds": 300
-}
-```
+## Coverage
 
-**Key fields:**
-- `id` — `<skill>-<NNN>` (positive) or `<skill>-neg-<NNN>` (negative control)
-- `skill_under_test` — path to the skill directory (runner reads SKILL.md)
-- `task_prompt` — exactly what the agent receives. Real user phrasing.
-- `negative_control` — `true` = the skill should NOT activate. Grader checks
-  absence of the skill's workflow, not presence. Tests precision, not just recall.
-- `fixture` — directory copied to a temp workspace per run. `null` if none.
-- `grader.type` — `code-based` (run a command, check exit code), `llm-judge`
-  (rubric scoring via grader subagent), or `hybrid` (both; pass = code AND judge).
-- `grader.code_check` — deterministic check: command, cwd, pass condition.
-- `grader.llm_judge.expectations` — verifiable statements the grader scores
-  PASS/FAIL against the transcript + output files.
-- `runs` — case-level default repetitions; `--runs` CLI flag overrides (1 for a quick
-  check, 3 for statistical confidence). A case passes if pass_rate >= 0.67 (2/3).
-- `timeout_seconds` — per-run wall-clock timeout.
-- `notes` — maintainer-facing intent record: what the case discriminates and why the
-  fixture is shaped the way it is. Read by humans, not by `run-eval.py`.
-
-## Grader types
-
-- **code-based** — runs a command (`npm test`, `pytest`), checks exit code + file
-  existence. Fast, deterministic. For code-producing skills (tdd, implement,
-  test-generation, api-testing, e2e-testing, etc.).
-- **llm-judge** — a grader subagent reads the transcript + output files, scores
-  each expectation PASS/FAIL with evidence. For doc/behavior skills (architecture,
-  code-review, etc.).
-- **hybrid** — both. Code check (tests pass) + LLM-judge (process followed).
-  The current pilots tdd, spec, debugging use hybrid; code-review uses llm-judge.
-
-## RED-GREEN baseline
-
-Every case runs with-skill AND without-skill. The with-skill prompt includes the
-full SKILL.md content; the baseline omits it. A case is **discriminating** when
-with-skill passes and baseline fails. If both pass, the case doesn't prove the
-skill adds value (flagged as "non-discriminating" in the summary, not a failure).
-
-## Negative controls
-
-Every skill's eval suite should include at least one negative control — a task
-where the skill should NOT activate. This tests precision (the skill doesn't
-over-trigger), not just recall. A negative control passes when the agent does NOT
-invoke the skill's workflow for a task outside its scope.
-
-## Writing new cases
-
-1. Pick a skill and a realistic task a user would actually phrase that way.
-2. Write 3-5 positive cases covering the skill's core workflow.
-3. Write 1-2 negative controls (tasks the skill's `**Not for:**` excludes).
-4. For code-producing skills, prefer `hybrid` graders (deterministic check +
-   process judge). For doc/behavior skills, use `llm-judge`.
-5. Expectations should be verifiable from the transcript or output files — not
-   subjective ("good quality"). Quote what evidence would satisfy each.
-6. Run `bash scripts/run-eval.sh --skill <name> --runs 3` and iterate until
-   with-skill reliably beats baseline.
-
-See `skills/meta/skill-authoring/references/eval-tiers.md` for the full tier
-methodology (structural / trigger-routing / behavioral).
+The pilot suites cover tdd, spec, code-review and debugging. Other workflows need representative tasks and actual model runs before a behavioral reliability claim.
+Use official evaluation patterns and real product tasks. Short descriptions and shared rules should earn their context cost by reducing observed errors or extra work, not by forcing a strong baseline to fail.

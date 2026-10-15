@@ -1,23 +1,21 @@
-# CLAUDE.md
+# Maintainer Instructions
 
-This is a **Claude Code plugin** (`engineering-skills`) — a curated pack of agent
-skills organized by the software development lifecycle. See README.md for the full
-catalog and install instructions.
+This is a cross-platform engineering skill pack. Read [AGENTS.md](AGENTS.md) for routing and [references/engineering-principles.md](references/engineering-principles.md) for shared discipline.
 
-> Note: this CLAUDE.md is contributor/maintainer documentation for the pack itself. It is
-> NOT auto-loaded into sessions that use the plugin. The SessionStart hook
-> (`hooks/session-start`) injects `references/engineering-principles.md` as ambient context
-> instead — that is how the discipline reaches every session. Non-Claude agents get the same
-> discipline via `AGENTS.md` at session start.
+## Maintain
 
-## Conventions
-- Skills live under `skills/` — `skills/meta/` plus 9 numbered phase dirs (`skills/01-product/` through `skills/09-operate/`).
-- Every skill is a folder with SKILL.md (uppercase). See references/skill-anatomy.md — including the `**Output:**` declaration convention and the two-layer (project-level + version-level) output pattern for PRD/TECH/PLAN.
-- Every skill links `${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` — the distilled discipline. PM-side skills (brainstorm, spec, oss-strategy, research market/tech-selection modes) also link `references/product-principles.md`; UIUX skills (frontend-design, image-to-code, imagegen, design-research, prototype) also link `references/design-principles.md` — domain discipline layers atop the shared engineering base. Doc-producing skills also link `references/human-audit.md` — every produced doc carries a human-audit block (AUD for build-gating docs, 确认 for reports) and a status lifecycle (草案/人工审计/已确认/成熟) only the human moves.
-- Shared references use `${CLAUDE_PLUGIN_ROOT}/...` (portable); in-skill refs use plain `references/...`.
-- Multi-framework: `AGENTS.md` (universal entry) + `.agents/` (`invocation.md`, `install-block.md`) + per-skill `agents/openai.yaml` (Codex adapter).
-- Planning uses Claude Code's built-in plan mode (EnterPlanMode/ExitPlanMode), not a skill.
+- Source skills use `skills/<phase>/<name>/SKILL.md`; follow [skill-anatomy.md](references/skill-anatomy.md).
+- Keep workflow descriptions concise and references task-specific. Shared links are relative to the source file, not a host environment variable.
+- Confirm document paths and apply [human-audit.md](references/human-audit.md); suggested output paths do not authorize creation.
+- The Claude hook injects shared principles; standalone installation bundles dependencies for Codex and other hosts.
+- Update manifests and routing catalogs when names change; update the output matrix when artifact contracts change.
 
-## Skill discovery
-Run /using-skills (meta) to route a task to the right phase skill, or invoke a skill
-directly by name.
+## Verify
+
+```bash
+python scripts/gen-agents-yaml.py
+bash scripts/validate-skills.sh
+python -m unittest discover -s test -v
+```
+
+Model evaluation is separate and on demand; do not claim behavioral quality from static checks. Do not publish without user authorization.

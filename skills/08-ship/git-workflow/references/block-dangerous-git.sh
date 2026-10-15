@@ -1,22 +1,21 @@
 #!/bin/bash
-# PreToolUse hook: block the agent from running destructive git commands.
-# ALL `git push` is blocked — pushing is a user action, not an agent action
-# (the agent prepares the commit; the user reviews and pushes). `--force` and
-# `reset --hard` are listed separately so they are caught even without the
-# `git` prefix (chained commands, aliases).
+# 可选执行钩子：阻止明显破坏性命令，不替代人工授权判断。
+# 普通 push 的确认由工作流管理；此处只拦强推和破坏性本地操作。
+
+command -v jq >/dev/null 2>&1 || { echo "This optional hook requires jq." >&2; exit 2; }
 
 INPUT=$(cat)
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command')
 
 DANGEROUS_PATTERNS=(
-  "git push"
   "git reset --hard"
   "git clean -fd"
   "git clean -f"
   "git branch -D"
   "git checkout \."
   "git restore \."
-  "push --force"
+  "push .*--force"
+  "push[[:space:]]+([^[:space:]]+[[:space:]]+)*-f([[:space:]]|$)"
   "reset --hard"
 )
 

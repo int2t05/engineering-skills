@@ -10,11 +10,26 @@ on:
       - 'scripts/**'
       - 'AGENTS.md'
       - '.agents/**'
+      - 'docs/**'
+      - 'README*'
+      - 'test/**'
+      - 'hooks/**'
+      - '.github/workflows/validate.yml'
   push:
     branches: [main]
     paths:
       - 'skills/**'
       - '.claude-plugin/plugin.json'
+      - '.claude-plugin/marketplace.json'
+      - 'references/**'
+      - 'scripts/**'
+      - 'AGENTS.md'
+      - '.agents/**'
+      - 'docs/**'
+      - 'README*'
+      - 'test/**'
+      - 'hooks/**'
+      - '.github/workflows/validate.yml'
 
 permissions:
   contents: read
@@ -31,10 +46,12 @@ jobs:
         run: python scripts/gen-agents-yaml.py
       - name: Check adapters are in sync
         run: |
-          if [ -n "$(git status --porcelain skills/*/agents/openai.yaml)" ]; then
+          if [ -n "$(git status --porcelain -- ':(glob)skills/*/*/agents/openai.yaml')" ]; then
             echo "::error::agents/openai.yaml files are out of sync with SKILL.md frontmatter. Run 'python scripts/gen-agents-yaml.py' locally and commit."
-            git diff --stat skills/*/agents/openai.yaml
+            git diff --stat -- ':(glob)skills/*/*/agents/openai.yaml'
             exit 1
           fi
       - name: Validate skills
         run: bash scripts/validate-skills.sh
+      - name: Exercise self-contained installation
+        run: python -m unittest discover -s test -v

@@ -1,91 +1,76 @@
 # Engineering Skills
 
-> Languages: English | [中文](README.zh-CN.md)
+[中文](README.zh-CN.md) · [MIT](LICENSE) · [CI](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 
-[![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
-[![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.14.0-blue)](./.claude-plugin/plugin.json)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-
-A Claude Code plugin — **engineering skills** organized by the software development
-lifecycle. Shared engineering principles are injected at every session start, so the
-discipline is ambient — not something you have to remember to load. PM and UIUX skills
-additionally layer `product-principles.md` / `design-principles.md` as domain discipline.
-
-Doc-producing skills split output into two layers: project-level (`docs/PRD.md` etc.,
-concise, on main) and version-level (`docs/vX.Y/prd.md` etc., detailed, on version
-branches). See [`docs/skill-outputs.md`](docs/skill-outputs.md) for the full matrix.
+Engineering workflows for Claude Code, Codex and other agents that read Agent Skills.
+Use task-specific guidance for requirements, design, implementation, verification and operation, with concise shared rules and human-auditable documents.
 
 ## Install
 
-**Claude Code (primary):**
+**Claude Code**
 
-```
+```text
 /plugin marketplace add https://github.com/int2t05/engineering-skills
 /plugin install engineering-skills@int2t05
 ```
 
-**Other agents (Codex, Cursor, Cline, Continue, OpenCode, Windsurf…):**
-skill content is plain markdown. See [`.agents/install-block.md`](.agents/install-block.md)
-for the canonical install commands.
+**Codex** — Python 3.10 or later, including Windows:
 
-## How to use
-
-- **Auto-trigger:** skills activate when a task matches their description (English or
-  Chinese — e.g. "技术选型", "性能优化", "深度检索").
-- **Explicit call:** type `/skill-name` (`/tdd`, `/code-review`, `/debugging`).
-- **Not sure which skill?** `/using-skills` routes the task to a phase.
-- **Planning:** uses the harness's built-in plan mode, not a custom skill.
-
-## Structure
-
-```
-engineering-skills/
-├── .claude-plugin/          # plugin.json (manifest) + marketplace.json
-├── .github/
-│   ├── workflows/validate.yml   # CI: schema + adapter-sync + invocation-sync
-│   ├── ISSUE_TEMPLATE/          # bug-report.md
-│   └── PULL_REQUEST_TEMPLATE.md
-├── skills/                   # 9 SDLC phases + meta
-│   ├── meta/using-skills/       # router
-│   ├── meta/skill-authoring/    # author + eval skills
-│   ├── 01-product/ … 09-operate/
-│   └── <skill>/SKILL.md + references/ + agents/openai.yaml
-├── references/               # engineering / product / design principles (shared)
-├── scripts/                  # validate-skills.sh, gen-agents-yaml.py, run-eval
-├── docs/                     # skill-outputs.md, workflow-prompts.md, TODO.md
-├── AGENTS.md                 # universal entry for non-Claude agents
-└── LICENSE                   # MIT
+```bash
+git clone https://github.com/int2t05/engineering-skills.git
+cd engineering-skills
+python scripts/install-skills.py
 ```
 
-## Catalog — skills by phase
+Installs self-contained skill folders into `~/.agents/skills`. Shared resources are bundled; no plugin root variable or symlink is needed.
+Use `--skill implement --skill debugging` for a selection. [Installation and updates](.agents/install-block.md) covers conflicts, local edits and other destinations.
+Avoid duplicate installations in the same host.
+
+## Use
+
+Claude Code: `/implement`. Codex: `$implement`. Supported hosts may also select skills from matching intent.
+`brainstorm` and `handoff` require explicit invocation. Use `using-skills` when routing is uncertain, not before every simple task.
+
+Start at the task that needs solving; a clear edit does not need a full lifecycle.
+Confirm document paths before creation, movement or renaming. Significant requirements and design remain reviewable; human acceptance is separate from technical checks.
+
+[Task prompts](docs/workflow-prompts.md) · [Routing](AGENTS.md) · [Output choices](docs/skill-outputs.md) · [Shared rules](references/engineering-principles.md)
+
+## Catalog
 
 | Phase | Skills |
 |---|---|
-| meta | using-skills, skill-authoring |
-| 01-product | brainstorm, spec, oss-strategy |
-| 02-research | research (general/market/tech-selection modes) |
-| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen, design-research |
-| 04-develop | implement, multi-agent-orchestration, breakdown, context-engineering, i18n, auth-implementation, error-handling |
-| 05-tune | cost-optimization, performance, simplify, refactoring |
-| 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
-| 07-verify | a11y-review, code-review, debugging, security-review, linting |
-| 08-ship | shipping, git-workflow, ci-cd, deprecation-migration, oss-polish |
-| 09-operate | observability, documentation-audit, purity-audit, incident-response, handoff |
+| 01-product | brainstorm, oss-strategy, spec |
+| 02-research | research |
+| 03-design | api-design, architecture, codebase-design, design-research, domain-modeling, frontend-design, image-to-code, imagegen, prompt-engineering, prototype, schema-design |
+| 04-develop | auth-implementation, breakdown, context-engineering, error-handling, i18n, implement, multi-agent-orchestration |
+| 05-tune | cost-optimization, performance, refactoring, simplify |
+| 06-test | api-testing, e2e-testing, load-testing, tdd, test-generation |
+| 07-verify | a11y-review, code-review, debugging, linting, security-review |
+| 08-ship | ci-cd, deprecation-migration, git-workflow, oss-polish, shipping |
+| 09-operate | documentation-audit, handoff, incident-response, observability, purity-audit |
+| meta | skill-authoring, using-skills |
 
-> Triggers + routing: [`AGENTS.md`](AGENTS.md) · Product matrix: [`docs/skill-outputs.md`](docs/skill-outputs.md)
+## Verify and contribute
 
-Validate the collection: `bash scripts/validate-skills.sh`
+```bash
+python scripts/gen-agents-yaml.py
+bash scripts/validate-skills.sh
+python -m unittest discover -s test -v
+```
 
-## Reporting Issues
+CI checks schema, catalogs, output declarations, adapter drift and self-contained installation. Behavioral model evaluation is separate and on demand; these checks do not prove model quality.
+See [evaluation guidance](evals/README.md). Report a reproducible problem via [GitHub Issues](https://github.com/int2t05/engineering-skills/issues); the issue and PR templates identify scope and evidence. Follow [skill anatomy](references/skill-anatomy.md) when contributing a workflow.
 
-Bugs and suggestions: [github.com/int2t05/engineering-skills/issues](https://github.com/int2t05/engineering-skills/issues)
+## Layout
 
-## License
+- `skills/`: phase-organized workflows, references and generated Codex adapters.
+- `references/`: shared engineering, product, design and human-audit guidance.
+- `scripts/` and `test/`: validation, installation and real filesystem checks.
+- `.claude-plugin/` and `hooks/`: Claude Code integration.
+- `docs/`: task prompts, output guidance and project coordination.
 
-MIT — see [LICENSE](LICENSE).
+## Sources
 
-## Provenance
-
-Original skill concepts adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) and [mattpocock/skills](https://github.com/mattpocock/skills). This pack is a ground-up rewrite fusing those concepts with systematic PM/UIUX principles.
+Workflow comparisons: [OpenAI skills](https://github.com/openai/skills), [Anthropic skills](https://github.com/anthropics/skills), [Superpowers](https://github.com/obra/superpowers), [Addy Osmani](https://github.com/addyosmani/agent-skills) and [Matt Pocock](https://github.com/mattpocock/skills).
+Instructions are adapted to this pack's task boundaries and approval model; reference projects are not runtime dependencies.

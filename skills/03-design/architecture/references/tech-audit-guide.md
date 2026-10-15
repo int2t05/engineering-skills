@@ -13,8 +13,9 @@ checks.
 
 ## Reference-first: no designing from nothing
 
-Every pattern, datastore, and component choice names a real implementation that faced similar
-requirements. A design with no nameable reference is unfinished, not creative.
+Consequential pattern, datastore and component choices should use real comparable implementations
+and current primary documentation. Routine choices within an established design do not need a fresh competitor study.
+When no comparable reference exists, make the uncertainty explicit and define a validation experiment.
 
 - **What counts:** OSS repos (and their architecture docs / RFCs), engineering blogs from
   teams at comparable scale, official case studies, published postmortems. A nameable,
@@ -32,7 +33,7 @@ requirements. A design with no nameable reference is unfinished, not creative.
 
 ## Lifecycle: audit → confirm → revise → mature
 
-Status lives on the first screen and moves only by human decision:
+Human acceptance lives on the first screen and moves only by human decision. Author checks may make a draft ready for review; measured implementation evidence is recorded separately:
 
 ```
 草案 draft ──→ 人工审计 in-audit ──→ 已确认 confirmed ──→ 成熟 mature

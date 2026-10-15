@@ -1,30 +1,30 @@
 # OWASP Prevention Patterns
 
-Reference for the `security-review` skill. Code examples for the OWASP Top 10 (2021)
+Reference for the `security-review` skill. Selected prevention examples aligned with the OWASP Top 10 (2025)
 prevention patterns and related hardening. Use these as the concrete "good pattern" to
 confirm against a diff.
 
-A04 (Insecure Design), A06 (Vulnerable Components), A08 (Software/Data Integrity), and
-A09 (Logging/Monitoring) are process concerns — threat modeling, dependency audit, CI
-integrity, audit logging — covered in the skill's Steps 1, 6, and 2 (STRIDE Repudiation),
-not as code patterns here. XSS was folded into A03 Injection in 2021; its encoding-specific
-example is kept under A03 below.
+Supply-chain controls, insecure design, integrity, logging and exceptional-condition handling
+need actual workflow and failure-path review in addition to code patterns. Injection examples
+include XSS with context-specific encoding; the categories are awareness guidance, not a proof of security.
+
+Current categories and scope: [OWASP Top 10:2025](https://owasp.org/Top10/2025/). This is a selected pattern reference, not a complete conformance checklist. In particular, assess supply-chain failures and exceptional-condition handling against the actual dependency and failure paths.
 
 ## Contents
 
-- [A03: Injection (SQL, NoSQL, OS command)](#a03-injection-sql-nosql-os-command)
+- [A05: Injection (SQL, NoSQL, OS command)](#a05-injection-sql-nosql-os-command)
 - [A07: Identification and Authentication Failures](#a07-identification-and-authentication-failures)
 - [A03 (cont): Cross-site scripting (XSS)](#a03-cont-cross-site-scripting-xss)
 - [A01: Broken Access Control](#a01-broken-access-control)
-- [A05: Security Misconfiguration (helmet / CSP / CORS)](#a05-security-misconfiguration-helmet--csp--cors)
-- [A02: Cryptographic Failures (field allowlist)](#a02-cryptographic-failures-field-allowlist)
-- [A10: Server-Side Request Forgery (SSRF)](#a10-server-side-request-forgery-ssrf)
+- [A02: Security Misconfiguration (helmet / CSP / CORS)](#a02-security-misconfiguration-helmet--csp--cors)
+- [A04: Cryptographic Failures (field allowlist)](#a04-cryptographic-failures-field-allowlist)
+- [Server-Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
 - [Input validation (zod)](#input-validation-zod)
 - [File upload validation](#file-upload-validation)
 - [Rate limiting (express-rate-limit)](#rate-limiting-express-rate-limit)
 - [LLM output handling](#llm-output-handling)
 
-## A03: Injection (SQL, NoSQL, OS command)
+## A05: Injection (SQL, NoSQL, OS command)
 
 ```typescript
 // BAD: SQL injection via string concatenation
@@ -95,7 +95,7 @@ app.patch('/api/tasks/:id', authenticate, async (req, res) => {
 });
 ```
 
-## A05: Security Misconfiguration (helmet / CSP / CORS)
+## A02: Security Misconfiguration (helmet / CSP / CORS)
 
 ```typescript
 // Security headers (use helmet for Express)
@@ -120,7 +120,7 @@ app.use(cors({
 }));
 ```
 
-## A02: Cryptographic Failures (field allowlist)
+## A04: Cryptographic Failures (field allowlist)
 
 ```typescript
 // Never return sensitive fields in API responses
@@ -134,7 +134,7 @@ const API_KEY = process.env.STRIPE_API_KEY;
 if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');
 ```
 
-## A10: Server-Side Request Forgery (SSRF)
+## Server-Side Request Forgery (SSRF)
 
 Any time the server fetches a URL the user influenced — webhooks, "import from
 URL", image proxies, link previews — an attacker can aim it at internal

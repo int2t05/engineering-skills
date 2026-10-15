@@ -1,8 +1,8 @@
 # Source Verification
 
 Detailed reference for the source-driven discipline used by the `implement`
-skill. Every framework-specific code decision must be backed by official
-documentation — not memory, not training data, not blog posts.
+skill. Verify unfamiliar or version-sensitive framework decisions against current official
+documentation. Reuse relevant retrieved evidence; do not fetch documentation for every trivial edit.
 
 ## Contents
 

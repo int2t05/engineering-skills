@@ -1,116 +1,34 @@
 ---
 name: breakdown
-description: Use when breaking a plan, spec, or conversation into tracer-bullet tickets, each declaring its blocking edges — for work too large for one session, builds a shared map of decision tickets resolved one at a time. Triggers on "break into tickets", "decompose", "wayfinder", "拆解任务", "拆票", "任务分解".
+description: Turn agreed requirements into executable dependency-aware tasks. Triggers on "break into tickets", "拆解任务".
 ---
 
 # Breakdown
 
-The plan itself comes from Claude Code's built-in plan mode
-(engineering-principles §7). This skill breaks the result into tickets.
-
-Two modes. For work that fits one session, break it into **tracer-bullet
-tickets** with blocking edges. For work too large for one session, chart a
-**decision map** — a shared index of decision tickets resolved one at a time
-until the way to the destination is clear.
-
 ## When to use
 
-- You have an approved plan, spec, or conversation result to break into tickets.
-- The work spans multiple sessions and needs a shared decision map.
-- You need to sequence work by blocking edges before implementation starts.
+- Turn agreed requirements into executable dependency-aware tasks.
 
-**Not for:** Work that fits one session (just `implement` it); writing the spec itself (use `spec`).
+**Not for:** spec for defining scope; multi-agent-orchestration for execution.
 
 ## Steps
 
-### Mode 1 — Tracer-bullet tickets (work fits one session)
+1. Read scope, design, current implementation and acceptance criteria.
 
-1. **Gather context.** Read the plan or spec. If the user passes a reference
-   (path, issue number, URL), fetch its full body. Explore the codebase if you
-   haven't, so ticket titles use the project's domain glossary and respect
-   existing ADRs.
+2. Create tasks around observable outcomes or necessary structural steps.
 
-2. **Draft vertical slices.** Each slice cuts a narrow but COMPLETE path through
-   every layer (schema, API, UI, tests) — vertical, not a horizontal layer. A
-   completed slice is demoable on its own. Size each to a single fresh context.
+3. Specify inputs, deliverables, dependencies, risks and concrete checks; identify critical path and safe parallelism.
 
-3. **Declare blocking edges.** For each ticket, list the tickets that must
-   complete before it can start. A ticket with no blockers starts immediately.
+4. Use available planning facilities or an inline plan; create PLAN only when persistent coordination is useful and the path is agreed.
 
-4. **Wide-refactor exception.** A single mechanical change fanning across the
-   codebase (rename a column, retype a shared symbol) can't land green as a
-   vertical slice. Sequence it as **expand–contract**: add the new form beside
-   the old, migrate call sites in per-package batches (each its own ticket
-   blocked by the expand), then delete the old form in a final ticket blocked
-   by every batch.
-
-5. **Quiz the user.** Present the breakdown as a numbered list — title, blocked
-   by, what it delivers. Ask: granularity right? Blocking edges correct? Any
-   tickets to merge or split? Iterate until approved.
-
-6. **Publish.** Two layers:
-   - `docs/PLAN.md` — project-level plan, concise (mermaid-heavy), on main.
-   - `docs/vX.Y/plan.md` — the current version's detailed ticket breakdown (title, blocked by,
-     what it delivers, ordered blockers first), on the version branch. Falls back to
-     `docs/PLAN.md` alone for single-version projects.
-   Close with an AUD block (6–12 items: slice completeness, blocking-edge correctness,
-   expand–contract sequencing, scope vs spec) — implementation starts only after the human
-   audit passes. Format: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
-   Work the **frontier**: any ticket whose blockers are all done.
-
-### Mode 2 — Decision map (work too large for one session)
-
-1. **Name the destination.** Pin down what this effort is finding its way to —
-   the spec, decision, or change. The destination fixes the scope; settle it
-   first.
-
-2. **Map the frontier, breadth-first.** Fan out across the whole space,
-   surfacing open decisions and first takeable steps. If this surfaces no fog,
-   the way is already clear — stop and ask the user how to proceed.
-
-3. **Create the map** as a single tracker issue labelled `wayfinder:map`:
-   Destination, Notes, empty Decisions-so-far, fog sketched into **Not yet
-   specified**.
-
-4. **Create the tickets you can specify now** as child issues, then wire
-   blocking edges in a second pass (issues need ids before they can reference
-   each other). Each ticket is a question sized to one session. What you can't
-   yet phrase sharply stays in **Not yet specified** — don't pre-slice fog.
-
-5. **Work the map one ticket per session.** Claim a frontier ticket, resolve
-   it, post the answer as a resolution comment, close the issue, and append a
-   one-line gist to the map's Decisions-so-far. Graduate fog that the answer
-   makes specifiable into fresh tickets. Rule out-of-scope work by closing the
-   ticket and noting it in **Out of scope** — never in Decisions-so-far.
-
-6. **Stop** when no tickets remain and the way to the destination is clear.
-
-**Example.** A team wants to extract an order service from a monolith but doesn't know
-where to start.
-
-- **Destination:** "Split the order service out of the monolith, zero downtime."
-- **Frontier (first pass):** "What is the order service boundary?" (research ticket);
-  "What is the current order data model?" (task ticket — can start now);
-  "How do peers handle the cutover?" (research ticket).
-- **Not yet specified (fog):** dual-write period length (can't phrase until the boundary
-  is decided); monitoring for the new service (can't phrase until it's extracted).
-
-After the boundary research resolves, dual-write and monitoring graduate from fog → two
-fresh task tickets, and the frontier advances. The map's Decisions-so-far gains a one-line
-gist of the boundary decision; the remaining fog shrinks until the path is clear.
+**Output:** Suggested paths, subject to [human audit](../../../references/human-audit.md): `docs/PLAN.md`; optionally `docs/vX.Y/plan.md` for separate release planning.
 
 ## Verify
 
-- Tickets written with blocking edges declared; each sized to a single session.
-- Map (if used) resolves to a clear path: Decisions-so-far indexes every closed
-  ticket, Not yet specified holds only fog you can't yet phrase sharply.
-- Wide refactors sequenced as expand–contract, not forced into tracer bullets.
-- Out-of-scope work ruled out explicitly, not left on the frontier.
-
-**Output:** `docs/PLAN.md` (project-level, concise, main) + `docs/vX.Y/plan.md` (version-level, detailed, version branch). Single-version projects fall back to `docs/PLAN.md` alone.
+- Tasks cover acceptance without speculative additions; dependencies are acyclic and checks are concrete.
 
 ## References
 
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline shared by every skill; §7 covers plan mode.
-- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar.
+- [engineering-principles.md](../../../references/engineering-principles.md) — shared decision boundaries, scope and verification.
+- [human-audit.md](../../../references/human-audit.md) — document consent, readability and human review.
 - [references/ticket-format.md](references/ticket-format.md) — local-ticket and issue templates, the staleness rule, and ticket-type routing.

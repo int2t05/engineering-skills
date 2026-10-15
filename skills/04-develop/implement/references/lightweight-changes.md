@@ -48,13 +48,13 @@ the change has no open design question; if it did, you'd be in `spec`, not here.
    (lint/format/typecheck), and a `.gitignore`.
 3. Run build + test once to prove the skeleton works before adding real
    features.
-4. Write a one-paragraph `README.md` stating what the project is and its run
+4. At the approved path, write a one-paragraph `README.md` stating what the project is and its run
    commands — enough for the next session to orient.
 
 ## When to escalate to a full spec
 
-- The "small change" starts touching more than ~3 files or crosses module
-  boundaries you don't fully understand → stop, switch to `spec`.
+- The "small change" starts touching unresolved behavior, acceptance criteria or consequential module
+  boundaries → stop, switch to `spec`.
 - The rename reveals a naming ambiguity that needs a decision → `spec`.
 - Scaffolding grows into architecture decisions (DB choice, service
   boundaries) → `architecture`.

@@ -17,7 +17,7 @@
         "expectations": [
           "docs/PRD.md exists and is non-empty",
           "The spec surfaces the brief's unknowns (channels, delivery guarantees, user preferences, frequency/batching, scaling, 'message' definition) as Open Questions or assumptions — it does NOT silently resolve them by picking one option without acknowledging the decision",
-          "A Non-Goals section is present with at least 3 explicit items (what the notification system will NOT do)",
+          "Scope and relevant non-goals are explicit without padding the document to a fixed item count",
           "Success criteria are specific and testable, not vague (e.g. a concrete delivery-latency threshold, not 'fast notifications')",
           "The email provider's 100 msg/sec rate limit constraint is reflected in the spec (e.g. a batching/queueing decision)",
           "Boundaries are stated (Always / Ask first / Never rules)",

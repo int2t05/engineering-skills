@@ -25,8 +25,8 @@ sub-agents work in parallel.
 
 ### 2. Spawn sub-agents
 
-Spawn 3+ sub-agents in parallel (your harness's subagent/dispatch mechanism; Claude Code: the
-Agent tool). Each must produce a **radically different**
+When delegation is explicitly authorized and supported, use independent reviewers through the available harness.
+Otherwise compare alternatives inline; do not impose an agent-count minimum. Each must produce a **radically different**
 interface for the deepened module.
 
 Prompt each sub-agent with a separate technical brief (file paths, coupling details, dependency

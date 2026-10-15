@@ -1,104 +1,33 @@
 ---
 name: tdd
-description: Use when implementing any feature or bugfix, before writing implementation code — red-green-refactor loop, one vertical slice at a time. Triggers on "tdd", "test-driven", "red green refactor", "测试驱动开发", "红绿重构", "测试驱动". Not for spec-driven slice implementation (use implement — it drives TDD within each slice) or generating tests for existing code (use test-generation).
+description: Implement behavior through a focused red-green-refactor loop. Triggers on "tdd", "测试驱动开发".
 ---
 
 # Test-Driven Development
 
-Write the failing test first. Watch it fail. Write minimal code to pass. Refactor.
-A test that passes immediately proves nothing — you never saw it catch a bug.
-
-**Iron law:** No production code without a failing test first. If you wrote code
-before the test, delete it and start over. "Keep as reference" is testing-after
-in disguise — delete means delete.
-
 ## When to use
 
-- Implementing any new feature or behavior
-- Fixing a bug (reproduce it with a test first — the Prove-It Pattern)
-- Refactoring or changing existing behavior
-- Triggers on "tdd", "test-driven", "red green refactor", "测试驱动开发", "红绿重构", "测试驱动"
+- Implement behavior through a focused red-green-refactor loop.
 
-**Not for:** generating tests for already-written code (use `test-generation`); have a spec and want slice-by-slice feature implementation (use `implement` — it drives TDD within each slice).
-
-**Exceptions (confirm with the user):** throwaway prototypes, generated code,
-pure configuration changes with no behavioral impact — for these, confirm with
-the user before skipping TDD rather than defaulting either way.
+**Not for:** implement for planned delivery; test-generation for existing behavior.
 
 ## Steps
 
-### 0. Discover the stack first
+1. Find real commands, layout and public seam; use real code and controlled data, disclosing external substitutes.
 
-The cycle is universal; the commands are not. Before the first test, find how
-*this* repo tests: read `package.json` / `pyproject.toml` / `Cargo.toml` /
-`pom.xml` / `go.mod`, check for `./gradlew`, `Makefile`, CI workflows, and
-existing test-file naming. Never assume `npm test` — use the repo's own command
-for every RED, GREEN, and final verification.
+2. Write one behavior test, run it and confirm failure from missing or incorrect behavior rather than harness errors.
 
-### 1. RED — write one failing test
+3. Implement minimally, run the focused test and relevant regressions, and refactor while green.
 
-One behavior, one test, one **vertical slice** (tracer bullet that responds to
-what the last cycle taught you). Write the test you wish existed — it describes
-the desired API, not the implementation. Name it as a specification
-("rejects empty email", not "test1").
-
-Agree the **seam** (public interface under test) before writing. No test at an
-unconfirmed seam — agreeing seams up front puts testing effort on critical paths
-instead of every edge case. Use real code over mocks; if you must double a
-dependency, use the simplest double that works (Real > Fake > Stub > Mock — see
-references/test-strategy.md). Mocks isolate boundaries, not the thing being tested.
-
-### 2. Verify RED — watch it fail
-
-Run the focused test command. Confirm:
-
-- It **fails** (not errors — errors mean fix the setup and re-run)
-- It fails for the **right reason** (feature missing, not a typo)
-- A test that passes immediately means you're testing existing behavior — fix
-  the test
-
-### 3. GREEN — write minimal code
-
-The simplest code that passes the test. No speculative features, no
-"flexibility", no refactoring adjacent code. YAGNI. Don't add test-only methods
-(`destroy()`, `reset()`) to production classes — put cleanup in test utilities.
-
-### 4. Verify GREEN — watch it pass
-
-Run the focused test command, then the full suite. Confirm:
-
-- The new test passes
-- No other tests broke (if they did, fix now — don't skip)
-- Output is pristine (no warnings, no skipped tests)
-
-### 5. REFACTOR — clean up
-
-Only while green: extract helpers, improve names, remove duplication. Run
-tests after every refactor step. Don't add behavior. Refactoring belongs to the
-review stage, not the red → green implementation cycle.
-
-### 6. Commit
-
-Commit the test and implementation together as one vertical slice. Then start
-the next failing test.
-
-### Bug fixes — the Prove-It Pattern
-
-Don't start by fixing. Write a test that reproduces the bug (RED confirms it
-exists), then fix (GREEN proves the fix works). The test stays as a regression
-guard. Never fix a bug without a reproduction test.
+4. Repeat for the next behavior and finish relevant verification; report observed red/green evidence and commit only on request.
 
 ## Verify
 
-- [ ] Every new behavior has a test that failed first
-- [ ] Full suite passes with the repo's own test command
-- [ ] Bug fixes include a reproduction test that failed before the fix
-- [ ] Test names describe behavior, not implementation
-- [ ] No tests skipped or disabled; no test-only methods in production code
+- A meaningful failure preceded the passing fix; assertions use independent expected behavior and checks are not disabled.
 
 ## References
 
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — discipline every skill shares
+- [engineering-principles.md](../../../references/engineering-principles.md) — shared decision boundaries, scope and verification.
 - [references/test-strategy.md](references/test-strategy.md) — test pyramid, test-double hierarchy (Real > Fake > Stub > Mock), DAMP over DRY
 - [references/testing-anti-patterns.md](references/testing-anti-patterns.md) — mock misuse, test-only methods, partial mocks, gate functions
 - [references/mocking.md](references/mocking.md) — when to mock, designing for mockability

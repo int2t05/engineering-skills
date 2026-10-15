@@ -70,7 +70,7 @@ engineering sections for pre-code specs.
 
 ## Human audit and open items
 
-- Always include an executable human-audit section — typically 6–12 items, trimmed by risk.
+- Always include an executable human-audit section — items selected by actual risk, without a fixed count.
 - Each AUD item has: ID, check question, linked REQ/AC, required evidence, and a close
   criterion. Owner and latest check stage go in a side table; use "to be assigned" when no
   name was provided.

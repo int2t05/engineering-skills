@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Behavioral eval orchestrator for the engineering-skills pack.
 
-Implements the RED-GREEN pattern: every case runs twice (with-skill and
-without-skill/baseline). A case passes only when with-skill satisfies the
-expectations AND the baseline does not — proving the skill changes behavior.
+Runs cases with and without a skill using Claude Code or Codex.
+Task correctness and incremental benefit are scored separately: a baseline
+success is not a task failure and does not prove that the skill adds value.
 
 Adapted from the anthropics skill-creator eval pattern
 (trigger detection → behavioral judgment). Uses `claude -p --output-format stream-json`
@@ -14,6 +14,7 @@ Exit code = number of failed cases (matches validate-skills.sh convention).
 """
 
 import argparse
+import importlib.util
 import json
 import os
 import shutil
@@ -30,6 +31,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # `.CMD` shim; subprocess.run (CreateProcess) only finds `.exe` without help,
 # so shutil.which (which honors PATHEXT) is required to locate it.
 CLAUDE_BIN = shutil.which("claude") or "claude"
+CODEX_BIN = shutil.which("codex.exe") or shutil.which("codex.cmd") or shutil.which("codex") or "codex"
+BASH_BIN = shutil.which("bash") or "bash"
+BACKEND = "claude"
+WORKSPACE_ROOT = None
 
 
 def load_cases(skill_filter=None, case_filter=None):
@@ -50,7 +55,9 @@ def load_cases(skill_filter=None, case_filter=None):
 
 def prepare_workspace(case, run_label):
     """Create a temp workspace. If the case has a fixture, copy it in."""
-    workspace = Path(tempfile.mkdtemp(prefix=f"eval-{case['id']}-{run_label}-"))
+    if WORKSPACE_ROOT:
+        WORKSPACE_ROOT.mkdir(parents=True, exist_ok=True)
+    workspace = Path(tempfile.mkdtemp(prefix=f"eval-{case['id']}-{run_label}-", dir=WORKSPACE_ROOT))
     fixture = case.get("fixture")
     if fixture:
         src = REPO_ROOT / fixture
@@ -67,7 +74,7 @@ def save_artifacts(case, run_label, run_idx, workspace, transcript, prompt, dura
     and agent-produced files are lost — leaving no evidence to audit. Artifacts
     are gitignored (evals/results/) so they never pollute the repo.
     """
-    out_dir = REPO_ROOT / "evals" / "results" / case["id"] / f"{run_label}-{run_idx}"
+    out_dir = REPO_ROOT / "evals" / "results" / BACKEND / case["id"] / f"{run_label}-{run_idx}"
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "transcript.md").write_text(transcript, encoding="utf-8")
     (out_dir / "prompt.txt").write_text(prompt, encoding="utf-8")
@@ -112,16 +119,25 @@ def build_prompt(case, workspace, with_skill):
     nonce = (
         "This is a non-interactive session — no one will answer questions. "
         "State your assumptions explicitly, then proceed autonomously to complete "
-        "the task and write any output files.\n\n"
+        "the task. Output paths explicitly named in this task or its acceptance checks "
+        "are approved for this isolated evaluation; all other document paths need confirmation. "
+        "Do not commit or publish.\n\n"
     )
     if with_skill:
         skill_path = REPO_ROOT / case["skill_under_test"] / "SKILL.md"
-        skill_content = skill_path.read_text(encoding="utf-8")
+        # 评估真实发行资源，避免只注入正文而丢失按需资料。
+        module_spec = importlib.util.spec_from_file_location("skill_installer", REPO_ROOT / "scripts/install-skills.py")
+        installer = importlib.util.module_from_spec(module_spec)
+        module_spec.loader.exec_module(installer)
+        installed = workspace / ".eval-skill"
+        installer.build_skill(skill_path.parent, installed)
+        skill_content = installed.joinpath("SKILL.md").read_text(encoding="utf-8")
         return (
             f"You are a software engineer working in this directory: {ws}\n\n"
             f"{nonce}"
             f"## Skill Instructions ({case['skill_under_test']})\n"
-            f"Follow these skill instructions carefully:\n\n"
+            f"Use this workflow only when the task matches its intent and boundary. "
+            f"The skill file is {installed / 'SKILL.md'}; resolve references relative to it.\n\n"
             f"{skill_content}\n\n"
             f"## Task\n{task}\n"
         )
@@ -140,6 +156,8 @@ def run_claude(prompt, workspace, timeout, model=None):
     quotes (e.g. skill descriptions with ``Triggers on "..."``), truncating the
     prompt so the model receives nothing. stdin bypasses all shell/arg escaping.
     """
+    if BACKEND == "codex":
+        return run_codex(prompt, workspace, timeout, model)
     cmd = [CLAUDE_BIN, "-p", "--output-format", "stream-json", "--verbose"]
     # Pin the model: explicit --model wins; else fall back to ANTHROPIC_MODEL,
     # matching the ANTHROPIC_AUTH_TOKEN / ANTHROPIC_BASE_URL naming family the
@@ -157,6 +175,8 @@ def run_claude(prompt, workspace, timeout, model=None):
             input=prompt,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=timeout,
             cwd=str(workspace),
             env=env,
@@ -181,6 +201,10 @@ def run_claude(prompt, workspace, timeout, model=None):
                         transcript_lines.append(block["text"])
                     elif block.get("type") == "tool_use":
                         transcript_lines.append(f"[tool: {block.get('name')}] {json.dumps(block.get('input', {}))[:200]}")
+            elif etype == "user":
+                for block in event.get("message", {}).get("content", []):
+                    if isinstance(block, dict) and block.get("type") == "tool_result":
+                        transcript_lines.append(f"[tool result: {block.get('tool_use_id')}] {json.dumps(block.get('content', ''), ensure_ascii=False)}")
             elif etype == "result":
                 usage = event.get("usage", {})
                 total_tokens = usage.get("output_tokens", 0) + usage.get("input_tokens", 0)
@@ -231,6 +255,39 @@ def run_claude(prompt, workspace, timeout, model=None):
         return "[ERROR: claude CLI not found — is it installed and on PATH?]", 0, 0
 
 
+def run_codex(prompt, workspace, timeout, model=None):
+    """在隔离工作区调用真实 Codex CLI，保留 JSON 轨迹中的动作与结果。"""
+    command = [CODEX_BIN, "exec", "--json", "--skip-git-repo-check", "--sandbox", "workspace-write", "-"]
+    if model:
+        command[2:2] = ["--model", model]
+    started = time.time()
+    try:
+        result = subprocess.run(command, input=prompt, capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=str(workspace), timeout=timeout)
+    except (FileNotFoundError, subprocess.TimeoutExpired) as error:
+        return f"[ERROR: Codex evaluation unavailable: {error}]", time.time() - started, 0
+    transcript = []
+    tokens = 0
+    for line in result.stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("type") == "item.completed":
+            item = event.get("item", {})
+            if item.get("type") == "agent_message":
+                transcript.append(item.get("text", ""))
+            else:
+                transcript.append(json.dumps(item, ensure_ascii=False))
+        elif event.get("type") == "turn.completed":
+            usage = event.get("usage", {})
+            tokens += usage.get("input_tokens", 0) + usage.get("output_tokens", 0)
+        elif event.get("type") in ("error", "turn.failed"):
+            transcript.append(json.dumps(event, ensure_ascii=False))
+    if result.returncode:
+        transcript.append(f"[ERROR: Codex exit {result.returncode}] {result.stderr[:1500]}")
+    return "\n\n".join(transcript) or "[ERROR: Codex produced no trace]", time.time() - started, tokens
+
+
 def grade_code(case, workspace):
     """Run the deterministic code check. Returns (passed, detail)."""
     grader = case.get("grader", {})
@@ -241,9 +298,11 @@ def grade_code(case, workspace):
     cwd = code_check.get("cwd", "{workspace}").replace("{workspace}", str(workspace))
     try:
         proc = subprocess.run(
-            ["bash", "-c", cmd],
+            [BASH_BIN, "-c", cmd],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=120,
             cwd=cwd,
         )
@@ -283,9 +342,8 @@ def grade_llm(case, transcript, workspace):
     negative = case.get("negative_control", False)
 
     # Write transcript to a file the grader can read
-    outputs_dir = workspace / "eval-outputs"
-    outputs_dir.mkdir(exist_ok=True)
-    transcript_file = outputs_dir / "transcript.md"
+    outputs_dir = workspace
+    transcript_file = workspace / "eval-transcript.md"
     transcript_file.write_text(transcript, encoding="utf-8")
 
     judge_prompt = (
@@ -296,11 +354,12 @@ def grade_llm(case, transcript, workspace):
         f"- transcript_path: {transcript_file}\n"
         f"- outputs_dir: {outputs_dir}\n\n"
         f"Read the transcript and outputs, grade each expectation per your process, "
-        f"and write grading.json to {outputs_dir}/../grading.json.\n"
+        f"and write grading.json to {workspace}/grading.json.\n"
         f"Then print ONLY the grading.json content as your final output.\n"
     )
 
-    transcript_out, _, _ = run_claude(judge_prompt, workspace, timeout=120)
+    transcript_out, _, _ = run_claude(judge_prompt, workspace, timeout=min(case.get("timeout_seconds", 300), 300))
+    (workspace / "eval-grader-transcript.md").write_text(transcript_out, encoding="utf-8")
     # Try to parse the judge output as JSON (it may have preamble)
     try:
         # Extract JSON from the output
@@ -346,7 +405,7 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
             gtype = grader.get("type", "llm-judge")
             code_pass, code_detail = (True, "n/a") if gtype == "llm-judge" else grade_code(case, ws)
             llm_rate, llm_detail = (1.0, "n/a") if gtype == "code-based" else grade_llm(case, transcript, ws)
-            passed = code_pass and (llm_rate >= threshold)
+            passed = code_pass and (llm_rate == 1.0)
             with_passes += int(passed)
             with_details.append(f"code:{code_detail} judge:{llm_detail}")
             verdict = {"passed": passed, "code": code_detail, "judge": llm_detail, "transcript_chars": len(transcript)}
@@ -370,7 +429,7 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
                 gtype = grader.get("type", "llm-judge")
                 code_pass, code_detail = (True, "n/a") if gtype == "llm-judge" else grade_code(case, ws)
                 llm_rate, llm_detail = (1.0, "n/a") if gtype == "code-based" else grade_llm(case, transcript, ws)
-                passed = code_pass and (llm_rate >= threshold)
+                passed = code_pass and (llm_rate == 1.0)
                 base_passes += int(passed)
                 baseline_details.append(f"code:{code_detail} judge:{llm_detail}")
                 verdict = {"passed": passed, "code": code_detail, "judge": llm_detail, "transcript_chars": len(transcript)}
@@ -412,14 +471,19 @@ def run_case(case, runs, with_baseline, model=None, threshold=0.67):
 
 
 def main():
+    global BACKEND, WORKSPACE_ROOT
     parser = argparse.ArgumentParser(description="Run behavioral evals for the engineering-skills pack")
     parser.add_argument("--skill", default=None, help="Skill to eval (default: all pilots)")
     parser.add_argument("--case", default=None, help="Single case id to run")
     parser.add_argument("--runs", type=int, default=None, help="Runs per case (overrides case-level runs; default: case's runs field or 1)")
     parser.add_argument("--no-baseline", action="store_true", help="Skip baseline runs (faster, less proof)")
-    parser.add_argument("--model", default=None, help="Model id for claude -p")
+    parser.add_argument("--model", default=None, help="Explicit model; otherwise use the selected CLI configuration")
+    parser.add_argument("--backend", choices=("claude", "codex"), default="claude", help="Actual agent CLI used for execution and grading")
+    parser.add_argument("--workspace-root", type=Path, help="Host-approved parent for isolated temporary workspaces")
     parser.add_argument("--threshold", type=float, default=0.67, help="Pass-rate threshold per case")
     args = parser.parse_args()
+    BACKEND = args.backend
+    WORKSPACE_ROOT = args.workspace_root.resolve() if args.workspace_root else None
 
     cases = load_cases(args.skill, args.case)
     if not cases:
@@ -457,19 +521,21 @@ def main():
     # Persist a machine-readable summary alongside the per-run artifacts.
     results_dir = REPO_ROOT / "evals" / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
-    summary_path = results_dir / "run-summary.json"
+    summary_path = results_dir / f"run-summary-{BACKEND}.json"
     summary_path.write_text(json.dumps({
         "cases": len(results),
         "passed": passed,
         "failed": failed,
         "runs_per_case": args.runs,
         "baseline_run": not args.no_baseline,
+        "backend": BACKEND,
+        "model": args.model,
         "threshold": args.threshold,
         "results": results,
     }, indent=2), encoding="utf-8")
     print(f"\nArtifacts written to: {results_dir}")
     print(f"  - {summary_path.relative_to(REPO_ROOT)}")
-    print(f"  - {results_dir.relative_to(REPO_ROOT)}/<case-id>/<with|base>-<n>/  (transcript.md, grading.json, workspace/, run-meta.json)")
+    print(f"  - {results_dir.relative_to(REPO_ROOT)}/{BACKEND}/<case-id>/<with|base>-<n>/  (transcript.md, grading.json, workspace/, run-meta.json)")
 
     # Non-discriminating positive cases (flag, don't fail)
     if not args.no_baseline:

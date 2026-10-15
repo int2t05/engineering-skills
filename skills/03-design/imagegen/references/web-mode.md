@@ -22,7 +22,7 @@ Read the brief and bias the picks to match — never force a recipe that contrad
 Hero Scale (Giant Statement / Mid Editorial / Mini Minimalist) for the whole site and execute it
 decisively.
 
-- Load [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/visual-direction.md) §2 for the brief→hero-scale mapping and the axis picks that match each brief signal. Subsequent steps reference sections of this file.
+- Load [../../../../skills/03-design/frontend-design/references/visual-direction.md](../../../../skills/03-design/frontend-design/references/visual-direction.md) §2 for the brief→hero-scale mapping and the axis picks that match each brief signal. Subsequent steps reference sections of this file.
 
 ## 3. Run the combinatorial variation engine
 

@@ -41,7 +41,7 @@ version bump, not a system replacement.
 6. **Verify behavior, not just types.** Tests passing is necessary but not
    sufficient for runtime-behavior changes (e.g. a framework's rendering
    timing). Run the app and exercise the affected paths.
-7. **Commit the upgrade alone.** One commit for the version bump + its
+7. **When a commit is requested, commit the upgrade alone.** One commit for the version bump + its
    required call-site fixes. Mixing a dependency upgrade with unrelated
    changes makes a rollback impossible if something breaks in production.
 

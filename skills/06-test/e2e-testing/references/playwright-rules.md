@@ -62,7 +62,7 @@ await page.locator('[data-testid="login-button"]').click();
 // Good: Role-based — mirrors user interaction
 await page.getByRole('button', { name: 'Sign In' }).click();
 await page.getByRole('tab', { name: 'Network' }).click();
-await page.getByRole('heading', { name: 'Dashboard' }).toBeVisible();
+await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
 
 // Good: Label-based — matches form field labels
 await page.getByLabel('Email').fill('user@example.com');
@@ -335,10 +335,9 @@ const timeInput = page.locator('#preferred-time');
 await timeInput.click();
 await page.keyboard.type('1000AM'); // 10:00 AM
 
-// Preferred: assert the sync happened rather than wait a fixed duration
-// (see Rule 8 — arbitrary waitForTimeout is a smell). If a web-first assertion
-// isn't feasible for this input type, this 200ms is the documented rare exception.
-await page.waitForTimeout(200);
+// 按实际控件值等待同步；提交后的业务结果另行断言。
+await expect(dateInput).toHaveValue('2026-04-16');
+await expect(timeInput).toHaveValue('10:00');
 ```
 
 ```javascript

@@ -1,49 +1,68 @@
-# The canonical install block
+# Install
 
-## Claude Code — the plugin (primary, with ambient principles)
+## Claude Code
 
-`engineering-skills` ships as a Claude Code plugin. On install, a SessionStart hook injects
-the 9 engineering principles into every session as ambient context.
+Install the managed plugin:
 
-```bash
+```text
 /plugin marketplace add https://github.com/int2t05/engineering-skills
 /plugin install engineering-skills@int2t05
 ```
 
-Or, for local development / an unreleased commit:
+For local development, run `claude --plugin-dir /absolute/path/to/engineering-skills`.
+The SessionStart hook loads the shared principles. Skill resources use source-relative paths.
+
+## Codex
+
+Clone the repository and use the self-contained installer (Python 3.10 or later):
 
 ```bash
-claude --plugin-dir /path/to/clone
+git clone https://github.com/int2t05/engineering-skills.git
+cd engineering-skills
+python scripts/install-skills.py
 ```
 
-## Codex — per-skill `agents/openai.yaml`
-
-Every skill carries an `agents/openai.yaml` beside its `SKILL.md` with Codex UI metadata
-(`interface.display_name`, `interface.short_description`) and, for user-invoked skills,
-`policy.allow_implicit_invocation: false`. To use the skills in Codex, copy the `skills/`
-tree into your Codex skills directory; the `agents/openai.yaml` files populate Codex's skill
-picker. Read `AGENTS.md` first each session for the principles + routing.
-
-## Other agents (Cursor, Gemini, Copilot, Cline, Continue, OpenCode, Windsurf)
-
-The skill content is plain markdown — any agent that reads `AGENTS.md` and `SKILL.md` files
-can use it. Two routes:
-
-**skills.sh (broadest, 70+ agents):**
+Default destination: `~/.agents/skills`, the user-level Codex discovery location. No symlink permission or Bash is needed for installation, including on Windows.
+Select individual skills:
 
 ```bash
-npx skills@latest add int2t05/engineering-skills
+python scripts/install-skills.py --skill implement --skill debugging
 ```
 
-Pick the skills you want and which agents to install them on. Note: skills.sh installs
-content files only — the Claude Code SessionStart hook does not transfer, so in non-Claude
-agents you get the skills but not ambient principle injection. Read `AGENTS.md` at the start
-of each session instead.
+Specify an explicit destination for another host or isolated setup:
 
-**Manual copy:** copy `skills/` and `references/` and `AGENTS.md` into your agent's
-instructions/skills directory. Point the agent at `AGENTS.md` for routing + principles.
+```bash
+python scripts/install-skills.py --dest /absolute/path/to/agent-skills
+```
 
-## The two routes are exclusive
+The installer flattens phase folders, copies required shared resources, rewrites local links and includes license and Codex adapters. Installed skills do not need the original checkout.
+It does not modify global agent instructions or install a Claude hook. Read the bundled engineering principles when using a skill.
 
-The Claude Code plugin is a managed bundle. skills.sh / manual copy writes files you own.
-Installing both leaves you with every skill twice — pick one.
+Update after pulling the repository:
+
+```bash
+git pull --ff-only
+python scripts/install-skills.py --replace
+```
+
+Repeated unchanged installation does nothing. Updates affect only installer-owned, unmodified folders; name conflicts, symlinks and local edits cause a diagnostic before installation. Preserve or reconcile local changes before updating.
+For removal, remove only the individual installed folders after inspecting local changes. The installer does not manage unrelated skills.
+
+Invoke with `$implement`, `$debugging` or another skill name. Codex discovers changes automatically; restart if the skill picker has not refreshed.
+
+## Other agents
+
+Use the same installer with the host's documented discovery directory. Plain SKILL.md content is portable, but automatic invocation and available tools depend on the host.
+Directly copying one source skill omits shared resources. Use the installer for standalone folders or retain the complete repository layout.
+Avoid installing the same skill through multiple routes in one host; duplicate names can appear independently.
+
+## Verify
+
+```bash
+python scripts/gen-agents-yaml.py
+bash scripts/validate-skills.sh
+python -m unittest discover -s test -v
+```
+
+Tests install into temporary directories. They do not modify your real skill installation.
+Official discovery and invocation behavior: [Codex skills](https://learn.chatgpt.com/docs/build-skills).

@@ -18,11 +18,8 @@ disclosure).
 
 ## Read the engineering principles first
 
-Before any task, load [`references/engineering-principles.md`](references/engineering-principles.md)
-(repo-relative path — resolves in every framework). It holds the 9 shared principles every
-skill assumes: surface assumptions, manage confusion, push back, enforce simplicity, surgical
-scope, verify don't assume, plan with built-in plan mode, goal-driven execution, behavior-preserving
-change discipline.
+Once per session, unless these rules are already loaded, read [`references/engineering-principles.md`](references/engineering-principles.md)
+(repo-relative path — resolves in every framework). It defines shared decision boundaries, scope discipline, verification, document consent and publication control.
 
 > **Claude Code** gets these injected automatically at session start (SessionStart hook).
 > **Other frameworks** — read the file above once per session.
@@ -108,9 +105,7 @@ and how it syncs across Claude Code (`disable-model-invocation`) and Codex
 
 ## Planning
 
-No custom plan skill. Use the harness's built-in plan mode (Claude Code: `EnterPlanMode` /
-`ExitPlanMode`; other frameworks: their equivalent). The `spec` skill's output is plan
-mode's input. For breaking a plan into tickets, use `breakdown`.
+Scale planning to the task. Use the harness planning facility when available, otherwise an inline plan. Use `breakdown` when durable dependency-aware tasks are useful. Do not force clear small edits through formal specifications.
 
 ## Install
 
@@ -122,10 +117,7 @@ commands (Claude Code plugin, Codex, and other agents).
 - Skills live under `skills/<phase>/<name>/SKILL.md` (uppercase `SKILL.md`).
 - Frontmatter: `name` + `description` (+ optional `disable-model-invocation`). Nothing else.
 - Every skill's `## References` links the shared engineering principles
-  (`${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md` in Claude Code; other
-  frameworks use the repo-relative path above). PM-side skills also link
+  (source-relative links; standalone installation bundles shared resources). PM-side skills also link
   `references/product-principles.md`; UIUX skills also link `references/design-principles.md`.
-- Doc-producing skills declare `**Output:**` (see `references/skill-anatomy.md`). Project-level
-  formal docs (PRD/TECH/PLAN) split into project-level (`docs/PRD.md`, concise, main) + version-level
-  (`docs/vX.Y/prd.md`, detailed, version branch). Single-version projects fall back to `docs/` root.
-- Validate: `bash scripts/validate-skills.sh`.
+- Doc-producing skills declare `**Output:**` (see `references/skill-anatomy.md`). Artifact paths are suggestions until confirmed. PRD/TECH/PLAN normally have one owner; separate release detail only when independently maintained scopes justify it. Human review uses `references/human-audit.md`.
+- Validate: `bash scripts/validate-skills.sh`; installation: `python -m unittest discover -s test -v`.

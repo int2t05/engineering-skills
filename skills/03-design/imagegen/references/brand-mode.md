@@ -6,12 +6,12 @@ messy AI moodboards. Every board is a visual argument for why the brand exists: 
 idea, presented as a complete identity system.
 
 The shared anti-slop ban list (banned brands, filler verbs, gradients, glassmorphism, blobs, fake
-KPIs) is canonical for all modes — load [${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md) and apply it. The brand-mode
+KPIs) is canonical for all modes — load [../../../../skills/03-design/frontend-design/references/anti-tells.md](../../../../skills/03-design/frontend-design/references/anti-tells.md) and apply it. The brand-mode
 Verify checklist below is a brand-specific subset, not a replacement for the full catalog.
 
 For the **app icon** panel — the product mark, not a UI glyph — load
-[product-icon.md](${CLAUDE_PLUGIN_ROOT}/references/product-icon.md): study real OSS icon systems;
-not simple shapes + simple colors.
+[product-icon.md](../../../../references/product-icon.md): study relevant mature brand references and test recognition at small sizes.
+For a restrained developer brand, use near-black or white backing, precise accents, linework and negative space; do not impose gradients or multi-tone depth.
 
 ## 1. Infer brand strategy first
 

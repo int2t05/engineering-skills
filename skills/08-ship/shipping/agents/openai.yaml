@@ -1,3 +1,3 @@
 interface:
   display_name: "Shipping"
-  short_description: "Deploying or launching to production — checklist-driven launch with rollback readiness…"
+  short_description: "Prepare and execute an authorized release with a checked…"

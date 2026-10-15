@@ -113,7 +113,7 @@ The core method: watch real users attempt specific tasks on the design.
 **Procedure:**
 1. **Define tasks** (not steps) — "book a flight to Tokyo next Tuesday," not "click the book button."
    Tasks state the goal; the user finds the path.
-2. **Recruit 5 users** from the target segment (see §7 — 5 is usually enough).
+2. **Recruit 5 users** from the target segment (see §7; adjust for user diversity and study goals).
 3. **Think-aloud protocol** — ask users to narrate what they're thinking as they go. "I'm looking for
    the calendar... I expect it under... oh, it's here."
 4. **Observe, don't help** — resist the urge to guide. Where they struggle is the finding.

@@ -27,7 +27,7 @@ finite, watch for quota/timeout errors, and fall through.
    quota/timeout error, do not retry the same dead tool — switch provider, then drop to the
    discovery layer to find a GitHub mirror, then back to Tier 0.
 4. **All fail?** → Mark the access limit in the source appendix (tool, tier, limit hit, fallback
-   tried). Do not present the result as researched — see SKILL.md Step 6.
+   tried). Do not present the result as researched — follow the research skill verification criteria.
 
 ## Discipline
 

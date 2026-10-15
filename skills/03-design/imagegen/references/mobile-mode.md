@@ -87,7 +87,7 @@ decorative small type.
 
 **Anti-AI-tells** (ban unless explicitly requested): the shared ban list (banned brands, filler
 verbs, purple-blue gradients, glassmorphism, blobs) lives in
-[${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md) —
+[../../../../skills/03-design/frontend-design/references/anti-tells.md](../../../../skills/03-design/frontend-design/references/anti-tells.md) —
 load and apply it. Mobile-mode-specific tells to also ban:
 - Layout: fake chart dashboard spam, repeated stat cards, a homepage of 12 widgets fighting for attention, cloned screens, phone-shaped websites.
 - UI clutter: too many pills/badges/tiny labels, fake system markers, meaningless avatar rows, decorative toggles.

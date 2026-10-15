@@ -1,136 +1,38 @@
 ---
 name: frontend-design
-description: Use when building web components, pages, or applications with distinctive, production-grade design quality — color, typography, layout, interaction states, and platform conventions. Triggers on "frontend", "UI design", "design", "组件设计", "界面设计", "前端设计", "视觉风格".
+description: Design or improve an interface and validate its rendered behavior. Triggers on "frontend", "组件设计".
 ---
 
 # Frontend Design
 
-Build distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics.
-The method: pick a bold aesthetic direction, apply a color formula, pair typography deliberately,
-specify interaction states, and execute with precision. Bold maximalism and refined minimalism both
-work — the key is intentionality, not intensity.
-
 ## When to use
 
-- Building web components, pages, or applications (HTML/CSS/JS, React, Vue, Svelte, etc.)
-- Choosing a design direction, color palette, or typography system for a project
-- Reviewing UI for visual quality, accessibility, or interaction polish
-- Implementing responsive layouts, dark mode, or platform-specific conventions (Apple HIG, Material)
-- Triggers on "frontend", "UI design", "组件设计", "界面设计", "前端设计", "视觉风格"
+- Design or improve an interface and validate its rendered behavior.
 
-**Not for:** pure data visualization (use dataviz); backend logic with no visual surface;
-API contract design (use api-design). Visually important web work where image-first is preferred
-(use `image-to-code`).
+**Not for:** image-to-code for reference fidelity; design-research for existing visuals.
 
 ## Steps
 
-### 1. Define the element and project context
+1. Identify users, core flow, design system, framework and viewports; do not fabricate personas or usability results.
 
-Before coding, commit to a bold aesthetic direction. Answer:
+2. Define hierarchy, layout, typography, spacing and color from the brief and existing system rather than universal color formulas.
 
-- **Element**: What are you building? (button, card, modal, navbar, page, full app)
-- **Purpose**: What problem does this interface solve? Who uses it?
-- **Tone**: Pick an extreme — brutally minimal, maximalist, retro-futuristic, organic, luxury, playful, editorial, brutalist, art deco, industrial. Commit fully; never default to "safe."
-- **Differentiation**: What makes this UNFORGETTABLE? The one thing someone will remember.
+3. Specify relevant loading, empty, error, focus, disabled and success states, keyboard access and responsive behavior.
 
-Match implementation complexity to the vision: maximalist designs need elaborate code; minimalist
-designs need restraint and precision. NEVER use generic AI aesthetics — overused fonts (Inter,
-Roboto, Arial), purple gradients on white, rounded-2xl everything, stock card grids, lorem ipsum.
+4. Implement when authorized, run the interface and inspect screenshots and interactions; create a design report only when its consumer and path are agreed.
 
-- Load [references/brief-inference.md](references/brief-inference.md) for the design-read protocol (infer page kind, audience, vibe, constraints before coding) and the three dials (DESIGN_VARIANCE, MOTION_INTENSITY, VISUAL_DENSITY) that gate layout, motion, and density
-- Load [references/design-foundations.md](references/design-foundations.md) §Perception & Gestalt and §Hierarchy & Layout for the visual-organization principles beneath layout — Gestalt laws, the four hierarchy techniques, F/Z reading patterns, the squint and 5-second tests, CRAP expanded
-- Load [references/design-foundations.md](references/design-foundations.md) §Cognitive Laws for the psychology laws that constrain layout — Hick's, Fitts's, Miller's 7±2, Tesler, Von Restorff, cognitive load types, progressive disclosure
-- Load [references/ux-research.md](references/ux-research.md) when the user or context is unknown — interviews, personas, journey maps, empathy maps, usability testing (run discovery before visual design)
-- Load [references/design-foundations.md](references/design-foundations.md) §Information Architecture when organizing content — the four IA elements, tree vs network, card sorting, navigation depth, labeling systems
-
-### 2. Pick a style
-
-If `docs/design/references.md` exists (produced by `design-research`), load it first — ground the
-style choice in what real market references actually ship, not internal catalogs alone.
-Choose a concrete visual style that fits the product type and tone. Consistency across all pages is
-non-negotiable — don't mix flat and skeuomorphic randomly. Use SVG icons (Lucide, Heroicons), never
-emoji as structural icons. Effects (shadows, blur, radius) must align with the chosen style.
-
-- Load [references/styles.md](references/styles.md) for the style catalog (glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, skeuomorphism, flat design, and more) with characteristics, when-to-use, and effects
-- Load [references/apple-hig.md](references/apple-hig.md) when designing for Apple platforms (iOS, iPadOS, macOS, tvOS, visionOS, watchOS) — HIG specs, routing table, critical design rules
-- Load [references/material-design.md](references/material-design.md) when designing for Android or Google-ecosystem products — Material 3 color/type/elevation/state-layer roles, M3 vs M2, when Material vs HIG vs custom
-
-### 3. Apply the color formula
-
-Use a dominant-surface-accent distribution, not timid even palettes. Define semantic tokens
-(never raw hex in components), meet WCAG contrast, and design light/dark variants together.
-
-- Load [references/palettes.md](references/palettes.md) for the 60/30/10 formula, semantic token table, contrast ratios, dark-mode rules, and palette selection by product type
-- Load [references/design-foundations.md](references/design-foundations.md) §Color for the theory beneath the formula — HSB model, five color schemes, 70:25:5 proportion, color psychology, cultural variance, the gray-test
-
-### 4. Typography pairing
-
-Pair a distinctive display font with a refined body font. Avoid generic defaults. Vary between
-generations — never converge on the same choice every time.
-
-- Load [references/font-pairings.md](references/font-pairings.md) for the type scale, weight hierarchy, line-height/line-length targets, tabular figures, and pairing catalog by personality
-- Load [references/design-foundations.md](references/design-foundations.md) §Typography for the theory — font anatomy (x-height, counters, contrast), optical sizing, vertical rhythm, modular scale ratios, rendering
-
-### 5. Specify interaction states and mark specs
-
-Every interactive element needs all states: default, hover, focus, pressed, disabled, loading.
-Use consistent scales for spacing, radius, elevation, and icons — not arbitrary values. Every
-view must also handle the four user-side states — design them explicitly, don't leave them to chance:
-
-| State | Design job |
-|---|---|
-| **Loading** | Show structure (skeleton screen), not a bare spinner |
-| **Error** | Explain what happened in plain language + a concrete next step |
-| **Empty** | Explain why it's empty + guide the user to a first action |
-| **Partial** | Make loaded parts interactive; don't block the whole view on one fetch |
-
-Load for depth (the essentials above are enough to specify the step; load these when the corresponding concern is in play):
-
-- [references/ux-guidelines.md](references/ux-guidelines.md) — touch-target sizes, focus rings, reduced-motion, spacing scale, pre-delivery checklist
-- [references/motion-system.md](references/motion-system.md) — motion token scale (duration, easing, distance), choreography patterns (stagger, shared-element, cross-fade), scroll-animation skeletons
-- [references/design-tokens.md](references/design-tokens.md) — token tiers (global → semantic → component), naming convention, scales (spacing, radius, elevation, z-index)
-- [references/component-anatomy.md](references/component-anatomy.md) — part-based design (compound components, slots), variant axes mapped to tokens (load when building component systems)
-- [references/design-foundations.md](references/design-foundations.md) §Usability Heuristics — Nielsen's 10, Heuristic Evaluation, Norman, Rams (load when evaluating)
-- [references/state-design.md](references/state-design.md) — skeleton-screen patterns, empty-state copy, error-recovery flows beyond the table above
-- [references/state-management.md](references/state-management.md) — load only when the UI has complex data-flow (client/server state, cache strategy, optimistic updates); that's an architecture concern, not a state-spec one
-
-### 6. Implement and verify
-
-Implement working code (HTML/CSS/JS, React, Vue, etc.) that is production-grade, functional,
-visually striking, and meticulously refined. Responsive at 320 / 768 / 1024 / 1440px — no
-horizontal scroll on mobile.
-
-**Output:**
-- Designing UI from scratch → `docs/design/DESIGN.md` — the UIUX design report: design system, information architecture, interaction patterns, component plan.
-- Auditing an existing frontend → `docs/design/frontend-audit.md` — findings and optimization suggestions for current layout/components/typography/styles.
-- User research before design → `docs/research/ux-research.md` — personas, journey maps, empathy maps, usability-test findings (produced when the user/context is unknown; load references/ux-research.md).
-
-Every artifact closes with its human-audit block — AUD for DESIGN.md (implementation starts only after the human confirms), 确认 for frontend-audit/ux-research findings (采纳/修正/驳回 with rationale). Format and statuses: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
+**Output:** Suggested paths, subject to [human audit](../../../references/human-audit.md): `docs/design/DESIGN.md`, `docs/design/frontend-audit.md` or `docs/research/ux-research.md` only for corresponding requested work.
 
 ## Verify
 
-- [ ] Aesthetic direction is bold and intentional — not generic AI slop (no purple-on-white, no rounded-2xl everything, no stock card grids)
-- [ ] Color formula applied: dominant/surface/accent distribution, semantic tokens, 4.5:1 contrast
-- [ ] Typography: distinctive display + refined body, consistent type scale, no skipped heading levels
-- [ ] Interaction states: every interactive element has default/hover/focus/pressed/disabled
-- [ ] Touch targets ≥44pt; spacing on 4/8dp scale; consistent radius and elevation scales
-- [ ] Responsive: works at 320px, 768px, 1024px, 1440px; no horizontal scroll on mobile
-- [ ] Dark mode designed alongside light mode, not bolted on
-- [ ] Accessibility: keyboard navigation, ARIA labels, focus management, reduced-motion support
-- [ ] No emoji as icons; SVG icons from one consistent family
-
-**Red flags:** purple/indigo everything; excessive gradients; rounded-2xl on everything; lorem
-ipsum copy; oversized uniform padding; stock card grids; shadow-heavy layering; hardcoded hex in
-components; text under 12px; gray-on-gray; color as sole state indicator.
-
-- Load [references/anti-tells.md](references/anti-tells.md) for the full forbidden-patterns list and the pre-flight check matrix — run every box before delivering
+- Critical flows work at target viewports and with keyboard input; visual claims use actual renders.
 
 ## References
 
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, minimize cognitive load, design every state, accessibility non-optional, consistency from systems)
-- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
-- [${CLAUDE_PLUGIN_ROOT}/references/product-icon.md](${CLAUDE_PLUGIN_ROOT}/references/product-icon.md) — generating a product icon / favicon as SVG (study OSS icon systems; not simple shapes + simple colors)
+- [engineering-principles.md](../../../references/engineering-principles.md) — shared decision boundaries, scope and verification.
+- [design-principles.md](../../../references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, minimize cognitive load, design every state, accessibility non-optional, consistency from systems)
+- [human-audit.md](../../../references/human-audit.md) — document consent, readability and human review.
+- [product-icon.md](../../../references/product-icon.md) — generating a product icon / favicon as SVG (mature brand references, restrained geometry and small-size checks)
 - [references/styles.md](references/styles.md) — 21 UI styles with effect specs (shadows, blur, radius)
 - [references/palettes.md](references/palettes.md) — 12 palette directions by product type
 - [references/font-pairings.md](references/font-pairings.md) — 31 font pairings across 10 personality categories

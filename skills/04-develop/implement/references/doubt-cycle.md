@@ -68,7 +68,7 @@ Strip your reasoning. If you hand over conclusions, you'll get back validation
 of your conclusions. The unit must be small enough that a reviewer can hold it
 in mind in one read — if it's a 500-line PR, decompose first.
 
-### Step 3: DOUBT — Invoke the fresh-context reviewer
+### Step 3: DOUBT — Review independently when authorized
 
 The reviewer's prompt **must be adversarial**. Framing decides the answer.
 
@@ -82,7 +82,7 @@ Assume the author is overconfident. Look for:
 - Existing conventions this might break
 - Failure modes under unexpected input
 
-Do NOT validate. Do NOT summarize. Find issues, or state
+Try to falsify the claim, without inventing findings. Find issues, or state
 explicitly that you cannot find any after thorough examination.
 
 ARTIFACT: <paste artifact>
@@ -127,7 +127,7 @@ big — return to Step 2 and decompose. Do not lift the bound.
 ## Cross-model escalation
 
 A single-model reviewer shares blind spots with the original author. In
-interactive sessions, **always offer** a cross-model second opinion after the
+interactive sessions, offer a cross-model second opinion only when the unresolved risk warrants it after the
 single-model review, before RECONCILE — even on artifacts that feel low-stakes.
 The user decides whether the cost is worth it.
 
@@ -139,7 +139,7 @@ the full prompt to a file and pipe via stdin so shell metacharacters in the
 artifact stay inert.
 
 In non-interactive contexts (CI, autonomous loops): cross-model is skipped, and
-the skip must be announced in the output.
+state a review limit when it materially affects confidence.
 
 ## Doubt theater — checkable signal
 

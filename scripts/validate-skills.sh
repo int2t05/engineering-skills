@@ -122,7 +122,7 @@ for entry in arr:
         errs.append(f"plugin.json skills[] entry '{entry}' has no SKILL.md")
 # set comparison: array entries vs actual skill dirs
 actual = set()
-for root, dirs, files in os.walk("."):
+for root, dirs, files in os.walk("skills"):
     if "archive" in root.split(os.sep): continue
     if "SKILL.md" in files:
         actual.add("./" + root.replace("\\", "/").lstrip("./"))

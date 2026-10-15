@@ -28,7 +28,7 @@ escape_for_json() {
 
 principles_escaped=$(escape_for_json "$principles_content")
 
-session_context="<EXTREMELY_IMPORTANT>\nYou have the engineering-skills pack — ${skill_count} skills organized by the software development lifecycle (product, research, design, develop, tune, test, verify, ship, operate) plus a meta router.\n\nTo route a task to the right skill, invoke the \`using-skills\` skill via the Skill tool, or invoke any skill directly by name (e.g. tdd, code-review, debugging, spec).\n\nPlanning uses your built-in plan mode (EnterPlanMode/ExitPlanMode), not a custom skill.\n\nBelow are the shared engineering principles every skill in this pack assumes. Apply them at all times:\n\n${principles_escaped}\n</EXTREMELY_IMPORTANT>"
+session_context="\nYou have the engineering-skills pack — ${skill_count} skills organized by the software development lifecycle (product, research, design, develop, tune, test, verify, ship, operate) plus a meta router.\n\nTo route a task to the right skill, read the applicable skill; use \`using-skills\` when routing is uncertain, or invoke a skill directly by name (e.g. tdd, code-review, debugging, spec).\n\nScale planning to the task; use available planning tools or an inline plan.\n\nBelow are the shared engineering principles every skill in this pack assumes. Apply them at all times:\n\n${principles_escaped}\n"
 
 # Emit context injection as JSON.
 # Cursor hooks expect additional_context (snake_case).

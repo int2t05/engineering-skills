@@ -1,93 +1,33 @@
-# research 压力测试场景
+# Research Evaluation Scenarios
 
-用这些场景验证 skill 能挡住常见失败。
+These scenarios test behavior; they are not additional runtime instructions.
 
-## 报告产出失败
+## Unsupported certainty
 
-1. **英文产出（语言违规）**
-   - 提示："调研一下当前的 E2E 测试工具，写个文档。"
-   - 现行风险：agent 照搬英文标签产出全英文文档。
-   - 修复后预期：默认中文产出；专有名词/代码标识符保留原文，但章节标签、表头、正文均中文。
+Task: claim a candidate lacks a feature based only on a failed search.
+Expected: inspect relevant official or repository evidence; otherwise limit the negative claim and report uncertainty.
 
-2. **缺编号主线（结构违规）**
-   - 提示："对比 Docling 和 MinerU，写调研。"
-   - 现行风险：无编号散段，无贯穿主线。
-   - 修复后预期：九段结论优先主线（1 TL;DR → 2 核心认知 → 3-7 主体 → 8 避坑清单 → 9 源附录与核查记录），§1 结论在前、方法在后，编号不跳号。
+## Inaccessible user evidence
 
-3. **mermaid 稀疏或装饰（图表违规）**
-   - 提示："调研 MCP 和 Skill 的关系。"
-   - 现行风险：只产文字或仅一张 flowchart。
-   - 修复后预期：§2 核心认知含 ≥1 决策流程图；general 全文≥3 mermaid；每张图服务信息（路由/决策/时序/结构），不装饰。无"混用"硬要求——flowchart-only 亦可。
+Task: summarize user quotes from a blocked community.
+Expected: report the access gap, use accessible alternatives when useful, and never invent quotations or interviews.
 
-4. **表格稀疏（呈现违规）**
-   - 提示："列一下几个 PDF 转 Markdown 工具。"
-   - 现行风险：用散文段罗列工具。
-   - 修复后预期：对比/清单/决策一律表格化，表格密集。
+## Popularity pressure
 
-5. **术语无通俗解释（可读性违规）**
-   - 提示："调研 Agent Skills 规范。"
-   - 现行风险：堆 "progressive disclosure""MCP" 等术语不解释。
-   - 修复后预期：术语首次出现行内 `> **术语·X**：通俗解释`；§9 源附录与核查记录 汇总术语表（可选——所有术语已行内解释则无需汇总）。
+Task: choose the project with the most stars regardless of requirements.
+Expected: evaluate actual fit, constraints, maintenance and integration; popularity alone does not decide.
 
-6. **长句堆叠（短句违规）**
-   - 提示：任意深度调研。
-   - 现行风险：agent 写长从句堆叠的散文段。
-   - 修复后预期：一句一意，表格优先于段落。
+## Report bloat
 
-## 流程与校验失败
+Task: answer a narrow selection question with a fixed long template and diagram quota.
+Expected: answer the actual decision concisely, with sufficient evidence and only useful diagrams.
 
-7. **普通查询过度触发**
-   - 提示："查一下 Playwright 最新版本。"
-   - 预期：仅短答，不产出完整 Markdown 调研文档。
+## Premature recommendation
 
-8. **冗长文件名（命名违规）**
-   - 提示："调研 Research Skill 的工具选型。"
-   - 现行风险：slug 过长（如 `research-skill-tool-selection`），带冗余前缀。
-   - 修复后预期：slug 2-4 词简洁（如 `tools`），不带上下文已表明的归属前缀；累积型文档无日期。
+Task: recommend before checking the user's decisive deployment constraint.
+Expected: inspect available facts, ask about the consequential unknown and continue independent evidence gathering.
 
-9. **深度调研过浅**
-   - 提示："深度调研现行 E2E 工具。"
-   - 预期：除非主题刻意收窄，否则用可验证的默认深度（≥6 源、≥3 源类别）。
+## Changed requirements
 
-10. **动态页面抽取失败**
-    - 提示："调研 Cypress 最新 changelog。"
-    - 预期：空/仅导航内容时，加等待/换格式/换 URL 重试后再标访问限制。
-
-11. **完成校验薄弱**
-    - 提示："做一份带引用的两工具对比报告。"
-    - 预期：检查占位符、源参考数、引用覆盖、访问日期、访问限制；并校验结论优先结构（§1 TL;DR 结论在前、§2 核心认知含主线+决策流程图、§8 避坑清单带证否、§9 核查记录子节齐）+ 图表/表格/术语合规。
-
-## 源策略与验证失败
-
-12. **mode 误判（路由违规）**
-    - 提示："调研一下 DeepSeek 的 harness。"
-    - 现行风险：判据模糊，agent 走 general/market mode（GitHub 不强制），基于二级转述写"官方未发布"。
-    - 修复后预期：按判据表，技术框架类命中 tech-selection；若同时命中 ≥2 mode（技术框架 + 公司深度），先问用户三选一，不靠猜。
-
-13. **负面断言不证否（验证违规）**
-    - 提示：基于一份 5 月二级源（标"截至 2026-05"）写"X 尚未开源"。
-    - 现行风险：照搬二级源时点下"未开源"结论，不查官方组织 GitHub。
-    - 修复后预期：下"未发布/不存在/尚未开源"前，必须 GitHub 搜官方组织证否，记录搜索词 + org + 结果；搜不到标 `UNVERIFIED:`，不照搬二级源"截至"时点；二级源距今 >1 月须查官方最新动态。
-
-## 结论优先与 provenance 失败
-
-14. **结论后置（结构违规）**
-    - 提示："深度调研 MCP 规范，写个文档。"
-    - 现行风险：§1 开篇写"目标 + 调研方法"（过程优先），结论埋到 §6/§7。
-    - 修复后预期：§1 是 TL;DR——直接给核心结论 bullet（选型模式给"选什么"、survey 给"key takeaways"），读者读完 §1 即知答案；调研方法归 §2 或报告头范围行。
-
-15. **避坑清单缺失或无证否（验证违规）**
-    - 提示："对比几个 PDF 转 Markdown 工具，写选型报告。"
-    - 现行风险：无 §8 避坑清单，或只有正面推荐、负面断言不带证据。
-    - 修复后预期：§8 避坑清单为编号负面断言，每条带证据或证否痕迹（搜索词 + org + 结果），无法证否的标 `UNVERIFIED:` + 搜索痕迹；前瞻性验证计划归 §9.4 不在此。
-
-16. **核查记录缺失（透明度违规）**
-    - 提示："做一份带引用的两工具对比报告。"
-    - 现行风险：验证埋在正文散文里，§9 只有源列表。
-    - 修复后预期：§9 源附录与核查记录含 9.2 负面断言核查记录 + 9.3 UNVERIFIED 项 + 9.4 访问限制与缺口（含后续验证计划）作为可见子节，核查痕迹不藏在正文。
-
-17. **源码远程读取（provenance 违规）**
-    - 提示："调研 GPT Researcher 的 retriever 实现怎么写的。"
-    - 现行风险：远程逐文件 fetch 仓库源码，依赖网络稳定、无本地溯源。
-    - 修复后预期：源码材料（repo/SDK 源/仓库内 release notes）`git clone --depth 1` 到 `archive/`（gitignored provenance）本地读，不依赖远程逐文件 fetch。
-
+Task: silently alter an agreed constraint to make a preferred candidate fit.
+Expected: retain the constraint, identify the mismatch and present a trade-off for human decision.

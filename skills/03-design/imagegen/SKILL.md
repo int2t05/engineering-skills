@@ -1,79 +1,35 @@
 ---
 name: imagegen
-description: Use when generating premium design reference images across three modes — brand identity boards, website section images, or mobile app screens — art-directed and implementation-friendly, not generic AI slop. Output is images only, never code. Triggers on "brand kit", "logo 设计", "品牌系统", "web design image", "landing page image", "网站设计图", "mobile design image", "app screen image", "移动端设计图", "手机界面图". Not for frontend code (use frontend-design) or image-to-code pipeline (use image-to-code).
+description: Generate brand, website or mobile design images from a visual brief. Triggers on "brand kit", "logo 设计".
 ---
 
 # Imagegen
 
-Generate premium design reference images across three modes — brand identity, web sections, mobile
-screens — that feel art-directed and implementation-friendly, not generic AI slop. Output is images
-only, never code.
-
 ## When to use
 
-- Brand identity boards, logo concepts, identity systems → **brand** mode
-- Website section reference images (one horizontal image per section) → **web** mode
-- Mobile app screen concepts and multi-screen flows → **mobile** mode
-- Triggers on "brand kit", "logo 设计", "品牌系统", "web design image", "landing page image", "网站设计图", "mobile design image", "app screen image", "移动端设计图", "手机界面图"
+- Generate brand, website or mobile design images from a visual brief.
 
-**Not for:** frontend code (use `frontend-design`); image-to-code pipeline (use `image-to-code`).
-
-**Tool note:** use an available image-generation tool — do not bind to a specific product.
+**Not for:** frontend-design or image-to-code for implementation.
 
 ## Steps
 
-### 1. Pick the mode and load its workflow
+1. Confirm subject, audience, intended use and constraints; load only the relevant brand, web or mobile guidance.
 
-Infer from the brief which mode fits, then load that mode's reference for the full workflow. Each
-mode has its own section-count rule, composition logic, and anti-slop list.
+2. Inspect references and mature marks; use deliberate geometry, negative space and restrained palettes when the brief calls for them.
 
-- **brand** — brand-kit overview boards, logo concepting, identity systems → [references/brand-mode.md](references/brand-mode.md)
-- **web** — one horizontal section image per section, premium art direction → [references/web-mode.md](references/web-mode.md)
-- **mobile** — phone-mockup-framed app screens and multi-screen flows → [references/mobile-mode.md](references/mobile-mode.md)
+3. Use an available image generation tool; preserve requested transparency and reference identity, and produce only necessary deliverables.
 
-If the brief spans modes (e.g. a brand system plus web mockups), lead with the primary mode and
-note the secondary. Do not mash modes into one frame.
-
-### 2. Hold one art direction across the set
-
-Whatever the mode, lock one visual direction — palette, typography, imagery treatment, corner
-radius, density — and keep it consistent across every image in the set. Screen 3 must not drift
-into a different product world than screen 1. The mode reference defines the mode-specific bible;
-this step is the shared consistency spine across the whole set.
-
-### 3. Ban AI slop (all modes)
-
-The shared anti-slop ban list (banned brands, filler verbs, purple-blue gradients, glassmorphism,
-blobs, fake KPI columns) lives in
-[${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md](${CLAUDE_PLUGIN_ROOT}/skills/03-design/frontend-design/references/anti-tells.md) —
-load it and apply it. Mode-specific tells to also ban: stock-template boards, phone-shaped
-websites. If a render is weak — tiny text, unclear spacing, fake navigation, clutter, inconsistent
-framing — regenerate it. Do not settle for the first mediocre render.
-
-### 4. Match references without copying
-
-If `docs/design/references.md` exists (produced by `design-research`), load it as the primary
-reference source — it pairs real published designs with pre-extracted layout/grid/spacing/type/
-density/accent analysis. If the user provides reference images directly, extract their layout rhythm, grid, spacing, type scale,
-visual density, and accent-color logic. Do NOT copy exact logos, brand names, compositions,
-slogans, or unique visual assets. References are quality training, not templates.
-
-**Output:** design reference image(s). Not code.
+4. Inspect composition, consistency and legibility, show results and obtain feedback before downstream implementation.
 
 ## Verify
 
-- [ ] Mode chosen decisively (brand / web / mobile) and the mode reference loaded
-- [ ] One art direction held across every image in the set (palette, type, radius, imagery treatment)
-- [ ] No AI slop — no purple-blue gradients, blobs, cloned blocks, fake brands, generic copy
-- [ ] Weak renders regenerated — no tiny text, fake navigation, or clutter settled for
-- [ ] User references matched for quality/rhythm only — no exact logos, names, or compositions copied
-- [ ] Output is images only — a developer or designer could use them as reference, never code
+- Assets match the brief and are inspectable; marks are evaluated at small sizes and in monochrome.
 
 ## References
 
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, push back, verify don't assume)
-- [${CLAUDE_PLUGIN_ROOT}/references/design-principles.md](${CLAUDE_PLUGIN_ROOT}/references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional, consistency from systems)
-- [${CLAUDE_PLUGIN_ROOT}/references/product-icon.md](${CLAUDE_PLUGIN_ROOT}/references/product-icon.md) — product-icon execution criterion (study OSS icon systems; not simple shapes + simple colors)
+- [engineering-principles.md](../../../references/engineering-principles.md) — shared decision boundaries, scope and verification.
+- [design-principles.md](../../../references/design-principles.md) — design discipline (CRAP, hierarchy before decoration, design every state, accessibility non-optional, consistency from systems)
+- [product-icon.md](../../../references/product-icon.md) — product-icon execution criterion (mature brand references, restrained geometry and small-size checks)
 - [references/brand-mode.md](references/brand-mode.md) — brand identity board workflow (strategy, visual modes, logo concepting, board composition)
 - [references/web-mode.md](references/web-mode.md) — web section image workflow (section count, hero scale, 9-axis variation engine)
 - [references/mobile-mode.md](references/mobile-mode.md) — mobile screen flow workflow (platform mode, design bible, phone mockup, safe areas)

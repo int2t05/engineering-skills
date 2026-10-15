@@ -177,4 +177,4 @@ describe("checkout (characterization — pins current behavior)", () => {
 After the move, run this suite unmodified. Any red means behavior shifted — revert the
 step. Tests modified to pass mean behavior changed (a red flag in SKILL.md).
 
-- See [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md §9](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — behavior-preserving change discipline: incremental test-pinned steps, separate refactor from feature work, Rule of 500, each step independently revertible.
+- See [Shared engineering principles](../../../../references/engineering-principles.md) — behavior-preserving change discipline: incremental test-pinned steps, separate refactor from feature work, automation for repetitive changes, each step independently revertible.

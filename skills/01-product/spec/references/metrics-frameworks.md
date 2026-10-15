@@ -104,8 +104,8 @@ run ≥ 7 days → statistical analysis → decision.
 1. **One variable at a time** — changing headline + button + layout means you can't attribute the effect.
 2. **Sufficient sample size** — calculate it before running; under-powered tests produce noise read as
    signal.
-3. **Confidence ≥ 95% and run a full week** — p < 0.05 means "probability this result is pure luck is
-   under 5%." Run a full week to absorb day-of-week variance; a 3-day test confounds the effect with
+3. **Confidence ≥ 95% and run a full week** — p < 0.05 describes how incompatible the observed data are with the null model;
+   it is not the probability that the result is luck or that the hypothesis is true. Run a full week to absorb day-of-week variance; a 3-day test confounds the effect with
    "it was the weekend."
 
 **When NOT to A/B:** the change is too small to move a metric, traffic is too low to reach significance,

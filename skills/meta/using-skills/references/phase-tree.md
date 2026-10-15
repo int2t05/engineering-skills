@@ -100,30 +100,17 @@ Task arrives
 
 ## Typical sequences
 
-A full feature often runs several phases in order:
+Choose only steps needed for the task, reusing confirmed decisions:
 
-```
-brainstorm → spec → architecture → implement → tdd → code-review → simplify → git-workflow → shipping
-```
-
-A bug fix is shorter:
-
-```
-debugging → tdd → code-review → git-workflow
-```
-
-A greenfield effort too big for one session:
-
-```
-brainstorm → spec → breakdown → (implement per ticket) → ...
-```
+- Clear edit: implement → relevant verification.
+- Feature: spec when behavior is unresolved → architecture when design is consequential → implement → review.
+- Bug: debugging with a real regression check → relevant review.
+- Structural change: codebase-design when the boundary is undecided → refactoring → verification.
+- Release: verified artifact → authorized Git/release operations → health checks.
 
 ## Routing heuristics
 
-- **Building new?** Start at `01-product` (`brainstorm` or `spec`), not `04-develop`.
-- **Something broke?** `debugging` first, then `tdd` to lock the fix with a regression test.
-- **Reviewing a diff?** `code-review`, then `simplify` if it's overcomplex.
-- **Multiple skills fit?** Process skills (`brainstorm`, `debugging`, `code-review`)
-  before implementation skills (`frontend-design`, `api-design`).
-- **In doubt about the phase?** Default to the earliest phase that could apply —
-  rework is cheaper upstream.
+Match the problem, not an obligatory lifecycle stage. New code with clear requirements can go directly to implement.
+Do not auto-invoke user-only brainstorm or handoff. TDD is a method within implementation, not a mandatory separate phase after implementation.
+Multiple file changes do not imply unclear requirements. Route to spec only for consequential behavior ambiguity, and to architecture for consequential system choices.
+If no skill adds useful guidance, use ordinary engineering judgment rather than force-fitting a workflow.

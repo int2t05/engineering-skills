@@ -1,87 +1,73 @@
 # Engineering Skills
 
-> 语言：[English](README.md) | 中文
+[English](README.md) · [MIT](LICENSE) · [CI](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
 
-[![Build](https://img.shields.io/github/actions/workflow/status/int2t05/engineering-skills/validate.yml?label=build&branch=main)](https://github.com/int2t05/engineering-skills/actions/workflows/validate.yml)
-[![Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-DA7857?logo=anthropic)](https://claude.ai/code)
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![version](https://img.shields.io/badge/version-2.14.0-blue)](./.claude-plugin/plugin.json)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-
-一个 Claude Code 插件——**工程技能**，按软件开发生命周期组织。工程原则在每次会话
-启动时注入，纪律成为环境上下文而非需要记住加载的东西。PM 与 UIUX 技能额外叠加
-`product-principles.md` / `design-principles.md` 作为领域纪律层。
-
-文档型技能的产物分两层：项目级（`docs/PRD.md` 等，简洁，main 分支）+ 版本级
-（`docs/vX.Y/prd.md` 等，详细，版本分支）。完整矩阵见 [`docs/skill-outputs.md`](docs/skill-outputs.md)。
+面向 Claude Code、Codex 与其他 Agent Skills 宿主的软件工程技能包。
+按任务提供需求、设计、开发、验证与运维工作流；通用规则保持简洁，文档支持人工审计。
 
 ## 安装
 
-**Claude Code（主要）：**
+**Claude Code**
 
-```
+```text
 /plugin marketplace add https://github.com/int2t05/engineering-skills
 /plugin install engineering-skills@int2t05
 ```
 
-**其他 agent（Codex、Cursor、Cline、Continue、OpenCode、Windsurf…）：**
-技能内容是纯 markdown。标准安装命令见 [`.agents/install-block.md`](.agents/install-block.md)。
+**Codex** — 需要 Python 3.10 或以上，支持 Windows：
 
-## 使用方式
+```bash
+git clone https://github.com/int2t05/engineering-skills.git
+cd engineering-skills
+python scripts/install-skills.py
+```
 
-- **自动触发**：任务匹配技能描述时自动激活（中英文均可，如"技术选型"、"性能优化"、"深度检索"）。
-- **显式调用**：输入 `/技能名`（如 `/tdd`、`/code-review`、`/debugging`）。
-- **不知用哪个技能？** `/using-skills` 路由到对应阶段。
-- **规划**：用内置 plan 模式，不是某个技能。
+默认安装到 `~/.agents/skills`。每个技能包含所需共享资源，不依赖插件环境变量或符号链接。
+只装部分技能可加 `--skill implement --skill debugging`。更新、冲突保护及其他宿主见[安装说明](.agents/install-block.md)。同一宿主避免重复安装。
+
+## 使用
+
+Claude Code 输入 `/implement`；Codex 输入 `$implement`。支持自动发现的宿主也可根据意图选择技能。
+`brainstorm` 与 `handoff` 需显式调用。路由不确定时用 `using-skills`，简单任务不必重复路由。
+
+从实际任务进入，明确的小改动不走完整生命周期。新建、移动、重命名文档前确认路径；重大需求与方案供人工审计，技术验证不代签人工确认。
+
+[任务提示词](docs/workflow-prompts.md) · [技能路由](AGENTS.md) · [产物选择](docs/skill-outputs.md) · [通用准则](references/engineering-principles.md)
+
+## 技能目录
+
+| Phase | Skills |
+|---|---|
+| 01-product | brainstorm, oss-strategy, spec |
+| 02-research | research |
+| 03-design | api-design, architecture, codebase-design, design-research, domain-modeling, frontend-design, image-to-code, imagegen, prompt-engineering, prototype, schema-design |
+| 04-develop | auth-implementation, breakdown, context-engineering, error-handling, i18n, implement, multi-agent-orchestration |
+| 05-tune | cost-optimization, performance, refactoring, simplify |
+| 06-test | api-testing, e2e-testing, load-testing, tdd, test-generation |
+| 07-verify | a11y-review, code-review, debugging, linting, security-review |
+| 08-ship | ci-cd, deprecation-migration, git-workflow, oss-polish, shipping |
+| 09-operate | documentation-audit, handoff, incident-response, observability, purity-audit |
+| meta | skill-authoring, using-skills |
+
+## 验证与贡献
+
+```bash
+python scripts/gen-agents-yaml.py
+bash scripts/validate-skills.sh
+python -m unittest discover -s test -v
+```
+
+CI 检查结构、目录、产物声明、适配器漂移与真实安装。模型行为评估单独按需运行，格式和安装通过不代表模型效果已证实。
+见[评估说明](evals/README.md)。通过 [GitHub Issues](https://github.com/int2t05/engineering-skills/issues) 提交可复现的问题；Issue/PR 模板记录范围与证据。贡献技能遵循[编写规范](references/skill-anatomy.md)。
 
 ## 结构
 
-```
-engineering-skills/
-├── .claude-plugin/          # plugin.json（清单）+ marketplace.json
-├── .github/
-│   ├── workflows/validate.yml   # CI：schema + adapter-sync + invocation-sync
-│   ├── ISSUE_TEMPLATE/          # bug-report.md
-│   └── PULL_REQUEST_TEMPLATE.md
-├── skills/                   # 9 个 SDLC 阶段 + meta
-│   ├── meta/using-skills/       # 路由
-│   ├── meta/skill-authoring/    # 写 + 评估技能
-│   ├── 01-product/ … 09-operate/
-│   └── <skill>/SKILL.md + references/ + agents/openai.yaml
-├── references/               # engineering / product / design 原则（共享）
-├── scripts/                  # validate-skills.sh, gen-agents-yaml.py, run-eval
-├── docs/                     # skill-outputs.md, workflow-prompts.md, TODO.md
-├── AGENTS.md                 # 非 Claude agent 的通用入口
-└── LICENSE                   # MIT
-```
+- `skills/`：按阶段组织的工作流、引用资料与 Codex 适配器。
+- `references/`：共享工程、产品、设计与人工审计规则。
+- `scripts/`、`test/`：验证、安装和真实文件系统检查。
+- `.claude-plugin/`、`hooks/`：Claude Code 集成。
+- `docs/`：任务提示词、产物说明与项目协调文档。
 
-## 目录——按阶段分列全部技能
+## 参考来源
 
-| 阶段 | 技能 |
-|---|---|
-| meta | using-skills, skill-authoring |
-| 01-product | brainstorm, spec, oss-strategy |
-| 02-research | research（general/market/tech-selection 模式） |
-| 03-design | architecture, api-design, frontend-design, schema-design, prompt-engineering, domain-modeling, prototype, codebase-design, image-to-code, imagegen, design-research |
-| 04-develop | implement, multi-agent-orchestration, breakdown, context-engineering, i18n, auth-implementation, error-handling |
-| 05-tune | cost-optimization, performance, simplify, refactoring |
-| 06-test | tdd, test-generation, api-testing, e2e-testing, load-testing |
-| 07-verify | a11y-review, code-review, debugging, security-review, linting |
-| 08-ship | shipping, git-workflow, ci-cd, deprecation-migration, oss-polish |
-| 09-operate | observability, documentation-audit, purity-audit, incident-response, handoff |
-
-> 触发词与路由：[`AGENTS.md`](AGENTS.md) · 产物矩阵：[`docs/skill-outputs.md`](docs/skill-outputs.md)
-
-校验本集合：`bash scripts/validate-skills.sh`
-
-## 报告问题
-
-Bug 与建议：[github.com/int2t05/engineering-skills/issues](https://github.com/int2t05/engineering-skills/issues)
-
-## 许可证
-
-MIT —— 见 [LICENSE](LICENSE)。
-
-## 来源
-
-原始技能概念改编自 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 与 [mattpocock/skills](https://github.com/mattpocock/skills)。本包是在其概念基础上融合系统性 PM/UIUX 原理的重新撰写。
+参考 [OpenAI skills](https://github.com/openai/skills)、[Anthropic skills](https://github.com/anthropics/skills)、[Superpowers](https://github.com/obra/superpowers)、[Addy Osmani](https://github.com/addyosmani/agent-skills)、[Matt Pocock](https://github.com/mattpocock/skills) 的实际工作流与资源组织，按本包的任务边界和人工确认方式重新组织。参考仓库不是运行依赖。

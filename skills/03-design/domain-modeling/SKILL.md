@@ -1,93 +1,35 @@
 ---
 name: domain-modeling
-description: Use when building or sharpening a project's domain model — challenging terms, stress-testing with scenarios, and updating CONTEXT.md and ADRs to establish a shared ubiquitous language. Triggers on "domain model", "ubiquitous language", "CONTEXT.md", "领域模型", "统一语言", "领域建模".
+description: Clarify domain terms, invariants and ownership from real scenarios. Triggers on "domain model", "领域模型".
 ---
 
 # Domain Modeling
 
-Actively build and sharpen the project's domain model as you design. This is the *active* discipline
-— challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the
-moment they crystallise. This skill is for when you're **changing** the model.
-
 ## When to use
 
-- Pinning down domain terminology or establishing a ubiquitous language
-- A term the user uses conflicts with the existing `CONTEXT.md` glossary
-- Stress-testing domain relationships against concrete edge-case scenarios
-- Recording an architectural decision that is hard to reverse, surprising, or a real trade-off
-- Another skill needs to maintain or update the domain model
-- Triggers on "domain model", "ubiquitous language", "CONTEXT.md", "ADR", "领域模型", "统一语言", "领域建模"
+- Clarify domain terms, invariants and ownership from real scenarios.
 
-**Not for:** merely *reading* `CONTEXT.md` for vocabulary — that's a habit any skill can do; this
-skill is for when you're **changing** the model. NOT for greenfield system architecture (use
-`architecture`).
+**Not for:** schema-design for storage; architecture for system boundaries.
 
 ## Steps
 
-### 1. Locate the context
+1. Read existing terminology, requirements, code and decisions; identify ambiguous concepts.
 
-Most repos have a single `CONTEXT.md` at the root. If a `CONTEXT-MAP.md` exists, the repo has
-multiple contexts — read it to find which context the current topic relates to. If neither exists,
-create a root `CONTEXT.md` lazily when the first term is resolved. Create `docs/design/adr/`
-lazily when the first ADR is needed.
+2. Test terms against normal and exceptional scenarios, specifying invariants and state transitions rather than extracting nouns into entities.
 
-### 2. Challenge terms against the glossary
+3. Resolve business ambiguity with the user and update the glossary and affected approved descriptions consistently.
 
-When the user uses a term that conflicts with the existing language in `CONTEXT.md`, call it out
-immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+4. Record only consequential decisions separately; give examples distinguishing similar concepts.
 
-When terms are vague or overloaded, propose a precise canonical term. "You're saying 'account' —
-do you mean the Customer or the User? Those are different things."
-
-### 3. Stress-test with concrete scenarios
-
-When domain relationships are being discussed, invent scenarios that probe edge cases and force the
-user to be precise about the boundaries between concepts. The awkward cases — the happy path, a
-tricky edge case, an attempt at something that should be illegal — are where the model breaks.
-
-When the user states how something works, check whether the code agrees. If you find a
-contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation
-is possible — which is right?"
-
-### 4. Update CONTEXT.md inline
-
-When a term is resolved, update `CONTEXT.md` right there — don't batch these up. Capture them as
-they happen, using the format in `references/context-format.md`.
-
-`CONTEXT.md` is a glossary and nothing else. No implementation details, no specs, no scratch-pad
-notes. Be opinionated: when multiple words exist for the same concept, pick the best one and list
-the others under `_Avoid_`.
-
-### 5. Offer ADRs sparingly
-
-Only offer to create an ADR when **all three** are true:
-
-1. **Hard to reverse** — the cost of changing your mind later is meaningful
-2. **Surprising without context** — a future reader will wonder "why did they do it this way?"
-3. **The result of a real trade-off** — there were genuine alternatives and you picked one for
-   specific reasons
-
-If any of the three is missing, skip the ADR. Use the format in `references/adr-format.md`. An ADR
-can be a single paragraph — the value is recording *that* a decision was made and *why*, not
-filling out sections.
+**Output:** Suggested paths, subject to [human audit](../../../references/human-audit.md): `CONTEXT.md`; optionally `docs/design/adr/NNNN-slug.md`.
 
 ## Verify
 
-- [ ] `CONTEXT.md` updated inline with every resolved term (not batched)
-- [ ] Terms are opinionated — canonical word chosen, alternatives listed under `_Avoid_`
-- [ ] `CONTEXT.md` contains only glossary entries, no implementation details
-- [ ] ADR offered only for decisions meeting all three criteria (hard to reverse, surprising, real trade-off)
-- [ ] ADRs record the decision and why, not boilerplate sections
-- [ ] Contradictions between user's language and code surfaced, not papered over
-
-**Output:** `CONTEXT.md` (root, ubiquitous language) + `docs/design/adr/NNNN-slug.md` (decision records, cross-version).
-Term entries are confirmed by the human through the challenge → scenario → agree loop — a
-glossary the human didn't confirm is a proposal, not language. ADRs cite real reference
-implementations where applicable. Audit-block baseline: `${CLAUDE_PLUGIN_ROOT}/references/human-audit.md`.
+- Terms explain actual scenarios and invariants; glossary and implementation agree or discrepancies are explicit.
 
 ## References
 
-- [${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md](${CLAUDE_PLUGIN_ROOT}/references/engineering-principles.md) — shared discipline (surface assumptions, manage confusion, verify don't assume)
-- [${CLAUDE_PLUGIN_ROOT}/references/human-audit.md](${CLAUDE_PLUGIN_ROOT}/references/human-audit.md) — audit-block baseline: AUD vs 确认 blocks, status lifecycle, readability bar
+- [engineering-principles.md](../../../references/engineering-principles.md) — shared decision boundaries, scope and verification.
+- [human-audit.md](../../../references/human-audit.md) — document consent, readability and human review.
 - [references/context-format.md](references/context-format.md) — CONTEXT.md structure, rules, single vs multi-context repos
 - [references/adr-format.md](references/adr-format.md) — ADR template, numbering, what qualifies as an ADR-worthy decision
